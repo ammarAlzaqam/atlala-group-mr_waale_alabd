@@ -53,7 +53,7 @@ export default function ChaletCard({ ch }) {
             />
           </div>
           {/* price */}
-          <button className="absolute bottom-4 left-4 flex flex-col items-start gap-1 bg-white/70 backdrop-blur-xs px-2 py-1 rounded-lg">
+          <button className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 flex flex-col items-start gap-1 bg-white/70 backdrop-blur-xs px-2 py-1 rounded-lg">
             <h4 className="font-bold text-2xl">
               {ch.price.toLocaleString("en-US")} ج.م
             </h4>

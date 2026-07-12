@@ -38,7 +38,7 @@ export default function App() {
               }
             />
           </Route>
-          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/chalets/favorites" element={<FavoritesPage />} />
         </Routes>
       </BrowserRouter>
     </div>

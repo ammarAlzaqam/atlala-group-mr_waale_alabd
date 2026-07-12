@@ -74,10 +74,10 @@ export default function Filters() {
       {/*//* filters */}
       <div
         className={clsx(
-          "flex flex-col gap-6 transition-all duration-300 px-4 md:max-h-[calc(100dvh-160px)] md:overflow-auto md:pt-2 md:pb-6",
+          "flex flex-col gap-6 transition-all duration-300 px-4 md:max-h-[calc(100dvh-170px)] md:overflow-auto md:pt-2 md:pb-6",
           open
-            ? "max-h-[calc(100dvh-160px)] overflow-auto pt-2 pb-6"
-            : "max-h-0 py-0 overflow-hidden md:max-h-[calc(100dvh-160px)] md:overflow-auto",
+            ? "max-h-[calc(100dvh-170px)] overflow-auto pt-2 pb-6"
+            : "max-h-0 py-0 overflow-hidden md:max-h-[calc(100dvh-170px)] md:overflow-auto",
         )}
       >
         {/*//* price range */}

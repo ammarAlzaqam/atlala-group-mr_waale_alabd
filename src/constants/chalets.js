@@ -34,6 +34,8 @@ import airConditionIcon from "../assets/icons/adv/air-conditioner.png";
 import grillIcon from "../assets/icons/adv/grill.png";
 import gardenIcon from "../assets/icons/adv/garden.png";
 import privacyIcon from "../assets/icons/adv/privacy.png";
+import aquaIcon from "../assets/icons/adv/aqua.png";
+import kidsAreaIcon from "../assets/icons/adv/kids-area.png";
 
 export const viewOptions = [
   {
@@ -96,6 +98,8 @@ export const advList = [
   { label: "grill", name: "شواية", icon: grillIcon },
   { label: "garden", name: "حديقة خاصة", icon: gardenIcon },
   { label: "privacy", name: "خصوصية عالية", icon: privacyIcon },
+  { label: "aqua", name: "قريب من منطقة الاكوا", icon: aquaIcon },
+  { label: "kidsArea", name: "مطل علي اكوا الاطفال", icon: kidsAreaIcon },
 ];
 
 const adv = {
@@ -105,6 +109,8 @@ const adv = {
   grill: { label: "grill", name: "شواية" },
   garden: { label: "garden", name: "حديقة خاصة" },
   privacy: { label: "privacy", name: "خصوصية عالية" },
+  aqua: { label: "aqua", name: "قريب من منطقة الاكوا" },
+  kidsArea: { label: "kidsArea", name: "مطل علي اكوا الأطفال" },
 };
 
 export const areas = {
@@ -237,7 +243,7 @@ const chaletsList = [
     price: 3300,
     area: areasList[1],
     tags: [tags.available, tags.beachView],
-    adv: [adv.family, adv.modern, adv.privacy, adv.airCon],
+    adv: [adv.family, adv.modern, adv.privacy, adv.airCon, adv.aqua],
     rooms: rooms.fourRooms,
     details: [
       areas.area75,
@@ -254,7 +260,7 @@ const chaletsList = [
     price: 5700,
     area: areasList[2],
     tags: [tags.reserved, tags.beachView],
-    adv: [adv.family, adv.modern, adv.privacy, adv.airCon],
+    adv: [adv.family, adv.modern, adv.privacy, adv.airCon, adv.aqua],
     rooms: rooms.fiveRooms,
     details: [
       areas.area96,
@@ -286,7 +292,7 @@ const chaletsList = [
     price: 2800,
     area: areasList[0],
     tags: [tags.reserved, tags.gardenView],
-    adv: [adv.modern, adv.privacy, adv.airCon],
+    adv: [adv.modern, adv.privacy, adv.airCon, adv.kidsArea],
     rooms: rooms.towRooms,
     details: [
       areas.area48,
@@ -319,7 +325,7 @@ const chaletsList = [
     price: 3400,
     area: areasList[1],
     tags: [tags.available, tags.gardenView],
-    adv: [adv.family, adv.modern, adv.airCon],
+    adv: [adv.family, adv.modern, adv.airCon, adv.aqua],
     rooms: rooms.fourRooms,
     details: [
       areas.area75,
@@ -369,7 +375,7 @@ const chaletsList = [
     price: 3050,
     area: areasList[1],
     tags: [tags.available, tags.poolView],
-    adv: [adv.family, adv.modern, adv.airCon],
+    adv: [adv.family, adv.modern, adv.airCon, adv.kidsArea],
     rooms: rooms.threeRooms,
     details: [
       areas.area75,
@@ -435,7 +441,7 @@ const chaletsList = [
     price: 2750,
     area: areasList[0],
     tags: [tags.available, tags.beachView],
-    adv: [adv.modern, adv.airCon, adv.privacy],
+    adv: [adv.modern, adv.airCon, adv.privacy, adv.aqua, adv.kidsArea],
     rooms: rooms.towRooms,
     details: [
       areas.area48,
@@ -467,7 +473,7 @@ const chaletsList = [
     price: 3250,
     area: areasList[1],
     tags: [tags.available, tags.gardenView],
-    adv: [adv.family, adv.modern, adv.airCon],
+    adv: [adv.family, adv.modern, adv.airCon, adv.kidsArea],
     rooms: rooms.threeRooms,
     details: [
       areas.area75,
@@ -547,7 +553,7 @@ const chaletsList = [
     price: 3150,
     area: areasList[1],
     tags: [tags.available, tags.poolView],
-    adv: [adv.family, adv.modern, adv.airCon],
+    adv: [adv.family, adv.modern, adv.airCon, adv.kidsArea],
     rooms: rooms.threeRooms,
     details: [
       areas.area75,

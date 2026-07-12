@@ -76,7 +76,7 @@ export default function ChaletsPage() {
   }, [filteredChalets, pageNumber, chPerPage]);
 
   return (
-    <section className="flex flex-col bg-primary-300/10 pb-12">
+    <section className="flex flex-col gap-8 bg-[#FCFBFE] pb-12">
       <HeadTitle />
       {/*Main (filters & Chalets) */}
       <div className="flex justify-center">
@@ -105,40 +105,49 @@ export default function ChaletsPage() {
                 <option value="lowest">الاقل سعراً</option>
               </select>
             </div>
-            {/* chalets */}
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full">
-              {chaletsForPage.map((ch) => (
-                <ChaletCard key={ch.num} ch={ch} />
-              ))}
-            </div>
-            {/* pagination */}
-            <div className="join self-center">
-              <button
-                className="join-item btn"
-                onClick={() => {
-                  if (pageNumber < nofPages) {
-                    setPageNumber(pageNumber + 1);
-                    scrollTo(0, 0);
-                  }
-                }}
-              >
-                «
-              </button>
-              <button className="join-item btn">
-                Page {pageNumber} of {nofPages}
-              </button>
-              <button
-                className="join-item btn"
-                onClick={() => {
-                  if (pageNumber > 1) {
-                    setPageNumber(pageNumber - 1);
-                    scrollTo(0, 0);
-                  }
-                }}
-              >
-                »
-              </button>
-            </div>
+            {chaletsForPage.length > 0 ? (
+              <div className="flex flex-col gap-8">
+                {/* chalets */}
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full">
+                  {chaletsForPage.map((ch) => (
+                    <ChaletCard key={ch.num} ch={ch} />
+                  ))}
+                </div>
+                {/* pagination */}
+                <div className="join self-center">
+                  <button
+                    className="join-item btn"
+                    onClick={() => {
+                      if (pageNumber < nofPages) {
+                        setPageNumber(pageNumber + 1);
+                        scrollTo(0, 0);
+                      }
+                    }}
+                  >
+                    «
+                  </button>
+                  <button className="join-item btn">
+                    Page {pageNumber} of {nofPages}
+                  </button>
+                  <button
+                    className="join-item btn"
+                    onClick={() => {
+                      if (pageNumber > 1) {
+                        setPageNumber(pageNumber - 1);
+                        scrollTo(0, 0);
+                      }
+                    }}
+                  >
+                    »
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <p className="text-secondary-400">
+                لم نعثر على أي شاليهات مطابقة. جرّب تعديل معايير البحث أو إزالة
+                بعض الفلاتر.
+              </p>
+            )}
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ export default function HeroSec() {
   return (
     <section className="bg-[url('/images/porto-main-img.webp')] bg-cover bg-center">
       {/*//! Overlay */}
-      <div className="w-full h-full bg-black/30 flex justify-center py-10 ">
+      <div className="w-full h-full bg-black/30 pt-20 flex justify-center pb-10 ">
         {/*//! Container */}
         <div className="container flex flex-col items-center gap-8">
           {/*//* head title */}

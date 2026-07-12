@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/icons/logo.png";
 import { FaPhone, FaWhatsapp } from "react-icons/fa";
@@ -9,9 +9,25 @@ import SideBar from "./SideBar";
 
 export default function Header() {
   const [isOpen, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(scrollY > 20);
+    };
+
+    addEventListener("scroll", handleScroll);
+
+    return () => removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className="sticky top-0 z-40 flex justify-center bg-white">
+    <div
+      className={clsx(
+        "fixed w-full top-0 z-40 flex justify-center transition-all shadow-lg shadow-transparent",
+        isScrolled ? "bg-primary-700 shadow-primary-400/10!" : "bg-transparent",
+      )}
+    >
       <div className="container py-2 flex flex-row-reverse sm:flex-row justify-between gap-3">
         <Link to="/">
           <img src={Logo} alt="logo img" className="w-35 md:w-40 lg:w-50" />
@@ -24,7 +40,7 @@ export default function Header() {
               className={({ isActive }) =>
                 clsx(
                   "headerLink flex items-center",
-                  isActive ? "active" : "*:text-secondary-500!",
+                  isActive ? "active" : "*:text-white/80!",
                 )
               }
             >
@@ -37,8 +53,10 @@ export default function Header() {
             href="tel:+201021387202"
             className="btn media flex items-center gap-2 border bg-transparent border-primary-500 py-1.5 px-3 rounded-lg"
           >
-            <FaPhone className="text-sm md:text-lg text-primary-500" />
-            <span className="hidden lg:block">01021387202</span>
+            <FaPhone className="text-sm md:text-lg text-primary-200" />
+            <span className="hidden lg:block text-primary-200!">
+              01021387202
+            </span>
           </a>
 
           <a
@@ -54,7 +72,7 @@ export default function Header() {
           <Hamburger
             toggled={isOpen}
             toggle={setOpen}
-            color={isOpen ? "#ffffff" : "#035054"}
+            color={isOpen ? "#ffffff" : "#85cfff"}
             size={26}
           />
         </div>

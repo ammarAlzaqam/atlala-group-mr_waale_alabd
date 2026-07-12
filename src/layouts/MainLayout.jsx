@@ -18,10 +18,10 @@ export default function HomeLayout() {
 
       <Footer />
 
-      {/*//* favorite icon */}
+      {/*//* fixed icons (favorites & whatsapp) */}
       <div className="fixed z-100 bottom-5 right-5 flex flex-col gap-2">
         <Link
-          to="/favorites"
+          to="/chalets/favorites"
           className={clsx(
             "bg-red-500 p-2 rounded-full shadow-lg hover:shadow-red-500/50 transition-all duration-300 hover:bg-red-500/80 cursor-pointer group backdrop-blur-[2px]",
             favorites.length > 0
