@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  /* Primary */
+  --color-primary-100: #c7e7ff;
+  --color-primary-200: #85cfff;
+  --color-primary-300: #69b3e2;
+  --color-primary-400: #4c98c6;
+  --color-primary-500: #2c7eaa;
+  --color-primary-600: #00658e;
+  --color-primary-700: #004c6c;
+  --color-primary-800: #00344c;
+  --color-primary-900: #001e2e;
+
+  /* Secondary */
+  --color-secondary-100: #e4e4cc;
+  --color-secondary-200: #c8c8b0;
+  --color-secondary-300: #acad96;
+  --color-secondary-400: #91927d;
+  --color-secondary-500: #777964;
+  --color-secondary-600: #5e604d;
+  --color-secondary-700: #474836;
+  --color-secondary-800: #303221;
+  --color-secondary-900: #1b1d0e;
+
+  /* Accent */
+  --color-accent-100: #9af6b8;
+  --color-accent-200: #7ed99e;
+  --color-accent-300: #63bd84;
+  --color-accent-400: #47a26b;
+  --color-accent-500: #298753;
+  --color-accent-600: #006d3d;
+  --color-accent-700: #00522d;
+  --color-accent-800: #00391d;
+  --color-accent-900: #00210f;
+
+  /* Fonts */
+  --font-head: "Tajawal", sans-serif;
+  --font-body: "Cairo", sans-serif;
+}
+
+p,
+span,
+input,
+label,
+select,
+a {
+  font-family: "Cairo", sans-serif;
+  color: #5e604d;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+.headerLink {
+  font-family: "Tajawal", sans-serif;
+  color: #00658e;
+
+  * {
+    font-family: "Tajawal", sans-serif;
+    color: #00658e;
+  }
+}
+
+.btn {
+  cursor: pointer;
+
+  transition: opacity 0.3s ease;
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    opacity: 0.85;
+
+    svg {
+      transform: scale(1.1) translateX(2px);
+    }
+  }
+
+  &.media {
+    @media (max-width: 1024px) {
+      border: none;
+      box-shadow: none;
+      background-color: transparent;
+      border-bottom: 1px solid #00658e;
+
+      * {
+        color: #00658e !important;
+        font-size: 1.2rem;
+      }
+    }
+
+    svg {
+      @media (max-width: 1024px) {
+        transform: scale(1.1) translateY(-3px);
+      }
+    }
+  }
+
+  &.light {
+    * {
+      color: white;
+    }
+  }
+}
+
+.container {
+  @media (max-width: 767px) {
+    padding-inline: 1rem;
+  }
+}
+
+.headerLink {
+  position: relative;
+  * {
+    transition: color 0.3s ease;
+  }
+
+  &.active {
+    * {
+      color: #00658e;
+    }
+
+    &::before {
+      transform-origin: right;
+      transform: scaleX(1);
+      background-color: #00658e;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: calc(100% - 20px);
+    height: 4px;
+    border-radius: 4px;
+    background-color: #777964;
+    bottom: 13px;
+    right: 20px;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+
+    @media (max-width: 1024px) {
+      bottom: 7px;
+    }
+  }
+
+  &:hover::before {
+    transform-origin: right;
+    transform: scaleX(1);
+  }
+}
+
+/* hide calendar icon in date input */
+.input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.blue-img-filter {
+  filter: brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(2400%)
+    hue-rotate(170deg) brightness(85%) contrast(105%);
+}
+
+.green-img-filter {
+  filter: brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(2200%)
+    hue-rotate(132deg) brightness(78%) contrast(110%);
+}
+
+@keyframes lineMove {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(80%);
+  }
+}
+
+.moveAnimate {
+  animation: lineMove 35s infinite linear;
+}
+
+.animate-border {
+  animation: dash 35s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -160;
+  }
+}
