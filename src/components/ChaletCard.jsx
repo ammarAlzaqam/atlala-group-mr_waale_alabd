@@ -67,9 +67,7 @@ export default function ChaletCard({ ch }) {
           <div className="flex flex-col gap-4">
             {/* title & adv */}
             <div className="flex flex-col gap-1">
-              <h3 className="font-bold text-xl text-neutral-800!">
-                شالية - {ch.num}#
-              </h3>
+              <h3 className="font-bold text-xl">شالية - {ch.num}#</h3>
               {/* adv */}
               <div className="flex flex-wrap items-center gap-1.5">
                 {ch.adv.map((a, index) => (
@@ -123,7 +121,7 @@ export default function ChaletCard({ ch }) {
               </div>
             )}
             <Link to="/" className="shrink-0">
-              <button className="btn text-white! bg-primary-600 rounded-xl">
+              <button className="btn text-white! bg-accent-600 rounded-xl">
                 عرض التفاصيل
               </button>
             </Link>

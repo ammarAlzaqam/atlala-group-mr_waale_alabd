@@ -4,6 +4,7 @@ import { PiMapPinSimpleAreaBold } from "react-icons/pi";
 import additionalPayments from "../../constants/additionalPayments";
 import logo from "../../assets/icons/logo-icon.png";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function HeroSec() {
   const arrivalDateRef = useRef();
@@ -31,6 +32,21 @@ export default function HeroSec() {
               استمتع بإجازة لا تُنسى في بورتو مطروح شاليهات فاخرة - خدمات
               متكاملة - شاطئ خاص
             </p>
+            {/*// Cta btn */}
+            <div className="pt-2 z-2 flex justify-center gap-2 md:gap-3 w-full">
+              <Link
+                to="/chalets"
+                className="btn px-0 w-[50%] sm:w-40 rounded-lg text-white! bg-accent-500 border-none"
+              >
+                استعرض الشاليهات
+              </Link>
+              <Link
+                to="/contact"
+                className="btn px-0 w-[50%] sm:w-40 rounded-lg bg-transparent text-accent-200! border-accent-200 text-shadow-lg text-shadow-black-50"
+              >
+                تواصل معنا
+              </Link>
+            </div>
             <img
               className="absolute z-1 h-full top-0 left-1/2 -translate-x-1/2 opacity-40"
               src={logo}
@@ -110,7 +126,7 @@ export default function HeroSec() {
                   </Field>
                   <PiMapPinSimpleAreaBold className="absolute bottom-4 right-4 text-primary-500" />
                 </div>
-                <button className="w-full md:w-40 btn h-11 rounded-xl light bg-primary-500 mt-5 sm:mt-0 border-none shadow shadow-primary-500/50">
+                <button className="w-full md:w-40 btn h-11 rounded-xl light bg-accent-500 mt-5 sm:mt-0 border-none shadow shadow-primary-500/50">
                   <FaSearch className="text-lg" />
                   <span className="font-bold text-lg">بحث</span>
                 </button>

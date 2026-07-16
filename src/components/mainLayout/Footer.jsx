@@ -9,7 +9,7 @@ import logoIcon from "../../assets/icons/logo-icon.png";
 
 export default function Footer() {
   return (
-    <div className="bg-white! flex flex-col items-center justify-center gap-10 py-10">
+    <div className="bg-white! flex flex-col items-center justify-center gap-10 pt-10">
       <div className="container grid grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-10">
         <div className="col-span-2 flex flex-col gap-4">
           <img src={logoIcon} alt="logo-icon" className="w-15" />
@@ -74,9 +74,9 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="container text-center pt-10 border-t border-secondary-500/50">
+      <div className="container text-center py-6 border-t border-secondary-500/50">
         <p className="text-sm text-secondary-400!">
-          © 2024 إطلالة العقارية. جميع الحقوق محفوظة
+          © 2026 إطلالة العقارية. جميع الحقوق محفوظة
         </p>
       </div>
     </div>

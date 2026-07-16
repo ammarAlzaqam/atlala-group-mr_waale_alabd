@@ -29,7 +29,7 @@ export default function FavoritesPage() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <HeadTitle favorites={favorites} />
+        <FvHeroSec favorites={favorites} />
       </div>
       <div className="flex justify-center">
         <div className="container">
@@ -42,41 +42,26 @@ export default function FavoritesPage() {
       </div>
 
       {/*//* fixed icons (favorites & whatsapp) */}
-      <div className="fixed z-100 bottom-5 right-5 flex flex-col gap-2">
-        <Link
-          to="/"
+      <Link
+        to="/"
+        className={clsx(
+          "fixed z-100 bottom-17 right-5 bg-primary-500 p-2 rounded-full shadow-lg hover:shadow-primary-500/50 transition-all duration-300 hover:bg-primary-500/80 cursor-pointer group backdrop-blur-[2px]",
+          favorites.length > 0
+            ? "opacity-100!"
+            : "opacity-0! pointer-events-none translate-y-2",
+        )}
+      >
+        <MdHome
           className={clsx(
-            "bg-primary-500 p-2 rounded-full shadow-lg hover:shadow-primary-500/50 transition-all duration-300 hover:bg-primary-500/80 cursor-pointer group backdrop-blur-[2px]",
-            favorites.length > 0
-              ? "opacity-100!"
-              : "opacity-0! pointer-events-none translate-y-2",
+            "text-2xl text-white group-hover:scale-110 transition-transform duration-300",
           )}
-        >
-          <MdHome
-            className={clsx(
-              "text-2xl text-white group-hover:scale-110 transition-transform duration-300",
-            )}
-          />
-        </Link>
-
-        <div
-          className={clsx(
-            "bg-green-500 p-2 rounded-full shadow-lg hover:shadow-green-500/50 transition-all duration-300 hover:bg-green-500/80 cursor-pointer group backdrop-blur-[2px]",
-          )}
-        >
-          {/*//TODO >> add whatsapp link */}
-          <FaWhatsapp
-            className={clsx(
-              "text-2xl text-white group-hover:scale-110 transition-transform duration-300",
-            )}
-          />
-        </div>
-      </div>
+        />
+      </Link>
     </div>
   );
 }
 
-const HeadTitle = ({ favorites }) => {
+const FvHeroSec = ({ favorites }) => {
   return (
     <div className="container flex flex-col gap-4 pb-70 sm:pb-40 pt-10 sm:pt-40">
       <div className="flex items-center gap-2">

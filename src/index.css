@@ -25,16 +25,18 @@
   --color-secondary-800: #303221;
   --color-secondary-900: #1b1d0e;
 
-  /* Accent */
-  --color-accent-100: #9af6b8;
-  --color-accent-200: #7ed99e;
-  --color-accent-300: #63bd84;
-  --color-accent-400: #47a26b;
-  --color-accent-500: #298753;
-  --color-accent-600: #006d3d;
-  --color-accent-700: #00522d;
-  --color-accent-800: #00391d;
-  --color-accent-900: #00210f;
+  /* Accent - Luxury Gold */
+  --color-accent-100: #fbf6ec;
+  --color-accent-200: #f2e5c7;
+  --color-accent-300: #e7d09c;
+  --color-accent-400: #d9ba78;
+  --color-accent-500: #cca763;
+  --color-accent-600: #b38946;
+  --color-accent-700: #936f37;
+  --color-accent-800: #6f5429;
+  --color-accent-900: #4b391b;
+
+  --color-main-bg: #fbfafd;
 
   /* Fonts */
   --font-head: "Tajawal", sans-serif;
@@ -60,17 +62,16 @@ h6,
 button,
 .headerLink {
   font-family: "Tajawal", sans-serif;
-  color: #00658e;
+  color: #004c6c;
 
   * {
     font-family: "Tajawal", sans-serif;
-    color: #00658e;
+    color: #004c6c;
   }
 }
 
 .btn {
   cursor: pointer;
-
   transition: opacity 0.3s ease;
 
   svg {
@@ -128,13 +129,13 @@ button,
 
   &.active {
     * {
-      color: #85cfff;
+      color: #d9ba78;
     }
 
     &::before {
       transform-origin: right;
       transform: scaleX(1);
-      background-color: #85cfff;
+      background-color: #d9ba78;
     }
   }
 
@@ -204,4 +205,85 @@ button,
   to {
     stroke-dashoffset: -160;
   }
+}
+
+.line {
+  position: relative;
+  overflow: hidden;
+}
+
+.line::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    transparent
+  );
+  animation: shine 2.5s linear infinite;
+  transform: translateX(-300%);
+}
+
+@keyframes shine {
+  from {
+    transform: translateX(-300%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+
+.line-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.line-btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -35%;
+  width: 30%;
+  height: 200%;
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 30%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.15) 70%,
+    transparent 100%
+  );
+
+  transform: translateX(10%) rotate(25deg);
+  animation: shine-btn 6s ease-in-out infinite;
+}
+
+@keyframes shine-btn {
+  0%,
+  70% {
+    transform: translateX(10%) rotate(25deg);
+  }
+
+  100% {
+    transform: translateX(500%) rotate(25deg);
+  }
+}
+
+@keyframes socialSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate {
+  animation: socialSpin 3s linear infinite;
 }

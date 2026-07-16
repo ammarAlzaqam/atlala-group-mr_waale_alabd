@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import ChaletCard from "../components/ChaletCard";
 import Filters from "../components/Chalets/Filters";
-import HeadTitle from "../components/Chalets/HeadTitle";
+import HeroSec from "../components/HeroSec";
 import chaletsList from "../constants/chalets";
 import {
   useAdv,
@@ -66,7 +66,7 @@ export default function ChaletsPage() {
     }
 
     setNofPages(Math.ceil(data.length / chPerPage));
-
+    setPageNumber(1);
     return data;
   }, [priceRanking, priceRange, view, adv, area, room]);
 
@@ -77,7 +77,10 @@ export default function ChaletsPage() {
 
   return (
     <section className="flex flex-col gap-8 bg-[#FCFBFE] pb-12">
-      <HeadTitle />
+      <HeroSec
+        title="اكتشف شاليهك المثالي"
+        des="اختر من بين 63 شاليه مميز في قرية بورتو مطروح بأفضل المواقع والأسعار."
+      />
       {/*Main (filters & Chalets) */}
       <div className="flex justify-center">
         <div className="container flex flex-col md:flex-row md:items-start gap-6">
@@ -120,7 +123,7 @@ export default function ChaletsPage() {
                     onClick={() => {
                       if (pageNumber < nofPages) {
                         setPageNumber(pageNumber + 1);
-                        scrollTo(0, 0);
+                        scrollTo(0, 350);
                       }
                     }}
                   >
@@ -134,7 +137,7 @@ export default function ChaletsPage() {
                     onClick={() => {
                       if (pageNumber > 1) {
                         setPageNumber(pageNumber - 1);
-                        scrollTo(0, 0);
+                        scrollTo(0, 350);
                       }
                     }}
                   >

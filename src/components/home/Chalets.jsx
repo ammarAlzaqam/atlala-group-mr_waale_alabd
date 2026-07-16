@@ -13,9 +13,7 @@ export default function Chalets() {
       <div className="container flex flex-col gap-8">
         <div className="flex flex-col md:flex-row items-end justify-between gap-5">
           <div className="flex flex-col gap-4">
-            <h1 className="text-3xl font-bold text-neutral-900!">
-              استكشف أفخم الشاليهات
-            </h1>
+            <h1 className="text-3xl font-bold">استكشف أفخم الشاليهات</h1>
             <p className="text-sm">
               استكشف مجموعتنا المختارة بعناية من الشاليهات الفاخرة في قلب قرية
               بورتو مطروح.

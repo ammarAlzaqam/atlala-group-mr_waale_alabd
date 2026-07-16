@@ -51,10 +51,10 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-4">
           <a
             href="tel:+201021387202"
-            className="btn media flex items-center gap-2 border bg-transparent border-primary-500 py-1.5 px-3 rounded-lg"
+            className="btn media flex items-center gap-2 border bg-transparent border-accent-500 py-1.5 px-3 rounded-lg"
           >
-            <FaPhone className="text-sm md:text-lg text-primary-200" />
-            <span className="hidden lg:block text-primary-200!">
+            <FaPhone className="text-sm md:text-lg text-accent-200" />
+            <span className="hidden lg:block text-accent-200!">
               01021387202
             </span>
           </a>
@@ -62,7 +62,7 @@ export default function Header() {
           <a
             href="https://wa.me/201021387202"
             target="_blank"
-            className="btn light media flex items-center gap-2 bg-primary-500 border border-primary-500 py-1.5 px-3 rounded-lg"
+            className="btn light media flex items-center gap-2 bg-accent-500 border border-accent-500 py-1.5 px-3 rounded-lg"
           >
             <FaWhatsapp className="text-sm md:text-lg" />
             <span className="hidden lg:block">تواصل واتساب</span>

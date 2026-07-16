@@ -6,7 +6,7 @@ export default function ChooseUs() {
     <div className="flex justify-center pt-10 pb-16 bg-primary-100/20">
       <div className="container flex flex-col items-center gap-16">
         <div className="text-center flex flex-col gap-4">
-          <h2 className="text-2xl font-bold text-neutral-800!">
+          <h2 className="text-2xl md:text-3xl font-bold">
             لماذا تختار "إطلالة العقارية"؟
           </h2>
           <p className="text-secondary-500!">

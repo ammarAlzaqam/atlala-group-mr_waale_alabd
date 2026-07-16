@@ -87,7 +87,7 @@ export const tags = {
     icon: gardenViewIcon,
     name: "على الحديقة",
     label: "garden view",
-    color: "bg-accent-400/80 text-white",
+    color: "bg-green-700/80 text-white",
   },
 };
 
