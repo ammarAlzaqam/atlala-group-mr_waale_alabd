@@ -15,7 +15,7 @@ export default function Layout() {
       {/*//* fixed icons (favorites & whatsapp) */}
       <div
         className={clsx(
-          "fixed z-100 bottom-5 right-5 bg-green-500 p-2 rounded-full shadow-lg hover:shadow-green-500/50 transition-all duration-300 hover:bg-green-500/80 cursor-pointer group backdrop-blur-[2px]",
+          "fixed z-30 bottom-5 right-5 bg-green-500 p-2 rounded-full shadow-lg hover:shadow-green-500/50 transition-all duration-300 hover:bg-green-500/80 cursor-pointer group backdrop-blur-[2px]",
         )}
       >
         {/*//TODO >> add whatsapp link */}

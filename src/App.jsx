@@ -8,6 +8,8 @@ import ServicesPage from "./pages/ServicesPage";
 import Layout from "./layouts/Layout";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import ChaletDetailsPage from "./pages/ChaletDetailsPage";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   return (
@@ -23,9 +25,11 @@ export default function App() {
               <Route path="contact" element={<ContactPage />} />
             </Route>
             <Route path="chalets/favorites" element={<FavoritesPage />} />
+            <Route path="chalets/:chaletNum" element={<ChaletDetailsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
+      <Toaster />
     </div>
   );
 }

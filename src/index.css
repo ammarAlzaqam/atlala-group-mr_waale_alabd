@@ -4,15 +4,16 @@
 
 @theme {
   /* Primary */
-  --color-primary-100: #c7e7ff;
-  --color-primary-200: #85cfff;
-  --color-primary-300: #69b3e2;
-  --color-primary-400: #4c98c6;
-  --color-primary-500: #2c7eaa;
+  --color-primary-100: #d8f2ff;
+  --color-primary-200: #aee3ff;
+  --color-primary-300: #73cbff;
+  --color-primary-400: #36aedf;
+  --color-primary-500: #0b8dc4;
   --color-primary-600: #00658e;
   --color-primary-700: #004c6c;
   --color-primary-800: #00344c;
   --color-primary-900: #001e2e;
+  --color-primary-950: #00111a;
 
   /* Secondary */
   --color-secondary-100: #e4e4cc;
@@ -26,15 +27,16 @@
   --color-secondary-900: #1b1d0e;
 
   /* Accent - Luxury Gold */
-  --color-accent-100: #fbf6ec;
-  --color-accent-200: #f2e5c7;
-  --color-accent-300: #e7d09c;
-  --color-accent-400: #d9ba78;
+  --color-accent-100: #f9efd6;
+  --color-accent-200: #f2ddb0;
+  --color-accent-300: #e9ca87;
+  --color-accent-400: #ddb760;
   --color-accent-500: #cca763;
-  --color-accent-600: #b38946;
-  --color-accent-700: #936f37;
-  --color-accent-800: #6f5429;
-  --color-accent-900: #4b391b;
+  --color-accent-600: #b48f49;
+  --color-accent-700: #937337;
+  --color-accent-800: #6f5627;
+  --color-accent-900: #4d3b18;
+  --color-accent-950: #2f220d;
 
   --color-main-bg: #fbfafd;
 
@@ -68,6 +70,29 @@ button,
     font-family: "Tajawal", sans-serif;
     color: #004c6c;
   }
+}
+
+::selection {
+  background: var(--color-primary-600);
+  color: white;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #001e2e;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #00658e;
+  border-radius: 999px;
+  border: 2px solid #001e2e;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #85cfff;
 }
 
 .btn {
@@ -286,4 +311,25 @@ button,
 
 .animate-rotate {
   animation: socialSpin 3s linear infinite;
+}
+
+@keyframes bg-mover {
+  0% {
+    background-position: right bottom;
+    background-size: 200%;
+  }
+  50% {
+    background-position: left bottom;
+    background-size: 400%;
+  }
+  100% {
+    background-position: right bottom;
+    background-size: 200%;
+  }
+}
+
+.bg-move {
+  @media (max-width: 600px) {
+    animation: bg-mover 30s ease-in-out infinite;
+  }
 }

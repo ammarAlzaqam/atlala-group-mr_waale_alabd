@@ -120,7 +120,7 @@ export default function ChaletCard({ ch }) {
                 </span>
               </div>
             )}
-            <Link to="/" className="shrink-0">
+            <Link to={`/chalets/${ch.num}`} className="shrink-0">
               <button className="btn text-white! bg-accent-600 rounded-xl">
                 عرض التفاصيل
               </button>

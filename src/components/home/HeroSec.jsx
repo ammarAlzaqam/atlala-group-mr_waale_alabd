@@ -2,7 +2,7 @@ import { Field, Form, Formik } from "formik";
 import { FaRegCalendarAlt, FaRegUser, FaSearch } from "react-icons/fa";
 import { PiMapPinSimpleAreaBold } from "react-icons/pi";
 import additionalPayments from "../../constants/additionalPayments";
-import logo from "../../assets/icons/logo-icon.png";
+import logo from "../../assets/icons/logo2.png";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 

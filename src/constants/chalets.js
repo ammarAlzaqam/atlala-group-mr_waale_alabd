@@ -19,6 +19,13 @@ import chaletImg6 from "../assets/images/chalets/6.jpg";
 import chaletImg7 from "../assets/images/chalets/7.jpg";
 import chaletImg8 from "../assets/images/chalets/8.jpg";
 
+import chDetailsImg1 from "../assets/images/chalets-details/chDetailsImg1.jpg";
+import chDetailsImg2 from "../assets/images/chalets-details/chDetailsImg2.jpg";
+import chDetailsImg3 from "../assets/images/chalets-details/chDetailsImg3.jpg";
+import chDetailsImg4 from "../assets/images/chalets-details/chDetailsImg4.jpg";
+import chDetailsImg5 from "../assets/images/chalets-details/chDetailsImg5.jpg";
+import chDetailsImg6 from "../assets/images/chalets-details/chDetailsImg6.jpg";
+
 import area48 from "../assets/icons/areas/studio.png";
 import area75 from "../assets/icons/areas/2rooms.png";
 import area96 from "../assets/icons/areas/3rooms.png";
@@ -206,7 +213,15 @@ export const rooms = {
 const chaletsList = [
   {
     coverImg: chaletImg4,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg4,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 12001, // عمارة 01 - أرضي - شاليه 01
     price: 2350,
     area: areasList[0],
@@ -222,7 +237,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg2,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg2,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 73002, // عمارة 73 - أرضي - شاليه 02
     price: 2600,
     area: areasList[0],
@@ -238,7 +261,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg3,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg3,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 48105, // عمارة 48 - أول - شاليه 05
     price: 3300,
     area: areasList[1],
@@ -255,7 +286,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg1,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg1,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 23209, // عمارة 23 - ثاني - شاليه 09
     price: 5700,
     area: areasList[2],
@@ -271,7 +310,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg2,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg2,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 17004, // عمارة 07 - أرضي - شاليه 04
     price: 3150,
     area: areasList[1],
@@ -287,7 +334,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg4,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg4,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 59111, // عمارة 59 - أول - شاليه 11
     price: 2800,
     area: areasList[0],
@@ -303,7 +358,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg5,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg5,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 31008, // عمارة 31 - أرضي - شاليه 08
     price: 5500,
     area: areasList[2],
@@ -320,7 +383,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg6,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg6,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 12206, // عمارة 12 - ثاني - شاليه 06
     price: 3400,
     area: areasList[1],
@@ -337,7 +408,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg3,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg3,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 41003, // عمارة 41 - أرضي - شاليه 03
     price: 2450,
     area: areasList[0],
@@ -354,7 +433,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg1,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg1,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 81110, // عمارة 81 - أول - شاليه 10
     price: 5200,
     area: areasList[2],
@@ -370,7 +457,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg6,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg6,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 18112, // عمارة 18 - أول - شاليه 12
     price: 3050,
     area: areasList[1],
@@ -386,7 +481,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg4,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg4,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 68007, // عمارة 68 - أرضي - شاليه 07
     price: 2700,
     area: areasList[0],
@@ -403,7 +506,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg5,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg5,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 37204, // عمارة 37 - ثاني - شاليه 04
     price: 5900,
     area: areasList[2],
@@ -419,7 +530,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg7,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg7,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 52010, // عمارة 52 - أرضي - شاليه 10
     price: 3450,
     area: areasList[1],
@@ -436,7 +555,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg3,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg3,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 92108, // عمارة 92 - أول - شاليه 08
     price: 2750,
     area: areasList[0],
@@ -452,7 +579,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg1,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg1,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 23006, // عمارة 23 - أرضي - شاليه 06
     price: 5400,
     area: areasList[2],
@@ -468,7 +603,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg6,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg6,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 63102, // عمارة 63 - أول - شاليه 02
     price: 3250,
     area: areasList[1],
@@ -484,7 +627,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg8,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg8,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 12009, // عمارة 12 - أرضي - شاليه 09
     price: 2550,
     area: areasList[0],
@@ -500,7 +651,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg5,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg5,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 73111, // عمارة 73 - أول - شاليه 11
     price: 3350,
     area: areasList[1],
@@ -516,7 +675,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg7,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg7,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 41201, // عمارة 41 - ثاني - شاليه 01
     price: 5700,
     area: areasList[2],
@@ -532,7 +699,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg8,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg8,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 59011, // عمارة 59 - أرضي - شاليه 11
     price: 2750,
     area: areasList[0],
@@ -548,7 +723,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg7,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg7,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 18205, // عمارة 18 - ثاني - شاليه 05
     price: 3150,
     area: areasList[1],
@@ -564,7 +747,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg6,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg6,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 81012, // عمارة 81 - أرضي - شاليه 12
     price: 5500,
     area: areasList[2],
@@ -580,7 +771,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg8,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg8,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 31103, // عمارة 31 - أول - شاليه 03
     price: 3450,
     area: areasList[1],
@@ -596,7 +795,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg7,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg7,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 27008, // عمارة 07 - أرضي - شاليه 08
     price: 2400,
     area: areasList[0],
@@ -612,7 +819,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg4,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg4,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 68106, // عمارة 68 - أول - شاليه 06
     price: 5300,
     area: areasList[2],
@@ -628,7 +843,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg6,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg6,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 23110, // عمارة 23 - أول - شاليه 10
     price: 3300,
     area: areasList[1],
@@ -644,7 +867,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg1,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg1,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 52002, // عمارة 52 - أرضي - شاليه 02
     price: 2250,
     area: areasList[0],
@@ -660,7 +891,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg3,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg3,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 92203, // عمارة 92 - ثاني - شاليه 03
     price: 5850,
     area: areasList[2],
@@ -676,7 +915,15 @@ const chaletsList = [
   },
   {
     coverImg: chaletImg2,
-    chaletImages: [],
+    chaletImages: [
+      chaletImg2,
+      chDetailsImg1,
+      chDetailsImg2,
+      chDetailsImg3,
+      chDetailsImg4,
+      chDetailsImg5,
+      chDetailsImg6,
+    ],
     num: 41104, // عمارة 41 - أول - شاليه 04
     price: 3100,
     area: areasList[1],

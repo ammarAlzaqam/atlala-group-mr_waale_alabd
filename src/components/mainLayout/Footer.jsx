@@ -5,7 +5,7 @@ import {
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 import navLinks from "../../constants/navLinks";
-import logoIcon from "../../assets/icons/logo-icon.png";
+import logoIcon from "../../assets/icons/logo2.png";
 
 export default function Footer() {
   return (

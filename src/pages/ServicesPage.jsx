@@ -35,7 +35,7 @@ export default function ServicesPage() {
             title="خدمتنا العقارية"
             des="نوفر لك مجموعة متنوعة من الخدمات العقارية بأعلى مستويات الجودة والمصداقية"
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-9">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-7 gap-y-9">
             {servicesList.map(({ img, icon, title, des, adv, color, btn }) => (
               <div
                 key={title}

@@ -1,9 +1,12 @@
 import chaletsImg from "../assets/images/services/chalets.jpg";
 import flatsImg from "../assets/images/services/flats.jpeg";
 import saleImg from "../assets/images/services/sale.jpeg";
+import finishImg from "../assets/images/services/finish.jpeg";
+
 import chaletsIcon from "../assets/icons/services/chalets.png";
 import flatsIcon from "../assets/icons/services/flats.png";
 import saleIcon from "../assets/icons/services/sale.png";
+import finishIcon from "../assets/icons/services/finish.png";
 
 const servicesList = [
   {
@@ -71,6 +74,31 @@ const servicesList = [
       gradient: "bg-linear-to-t from-[#40a669]/60 to-black/50",
     },
     btn: { text: "تواصل معنا", route: "/contact" },
+  },
+  {
+    img: finishImg,
+    icon: finishIcon,
+    title: "تشطيب وتجهيز الشاليهات",
+    des: "نقدم خدمات تشطيب الشاليهات من الطوب الأحمر وحتى التسليم الكامل، مع إمكانية الفرش والتجهيز بأحدث التصميمات والخامات لتصبح جاهزة للسكن أو الاستثمار.",
+    adv: [
+      "تشطيب كامل من الطوب الأحمر",
+      "فرش وتجهيز بأثاث عصري",
+      "تصميمات وتشطيبات متنوعة",
+      "خامات عالية الجودة",
+    ],
+    color: {
+      text: "text-accent-500!",
+      bg: "bg-accent-500/90",
+      bgT: "bg-accent-500/30",
+      btn: "bg-accent-500",
+      shadowHover: "hover:shadow-accent-500/30",
+      insetShadow: "inset-shadow-[0px_-5px_5px_#cca76355]",
+      gradient: "bg-linear-to-t from-accent-500/60 to-black/50",
+    },
+    btn: {
+      text: "اطلب الخدمة",
+      route: "/contact",
+    },
   },
 ];
 export default servicesList;

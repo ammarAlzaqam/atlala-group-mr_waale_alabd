@@ -22,7 +22,7 @@ export default function ContactPage() {
               {/* modern Under line */}
               <div className="relative flex gap-2">
                 <div
-                  className="w-17 h-1 rounded-[100%]"
+                  className="w-17 line-btn h-1 rounded-[100%]"
                   style={{
                     background: `
       linear-gradient(
@@ -41,7 +41,7 @@ export default function ContactPage() {
                   }}
                 />
                 <div
-                  className="w-17 h-1 rounded-[100%]"
+                  className="w-17 line-btn h-1 rounded-[100%]"
                   style={{
                     background: `
       linear-gradient(
@@ -69,31 +69,44 @@ export default function ContactPage() {
             {/* contact infos */}
             <div className="flex flex-col gap-3">
               {contactInfoList.map(
-                ({ FillIcon, OutlineIcon, title, des, dir }) => (
+                ({ FillIcon, OutlineIcon, title, des, dir, color, hover }) => (
                   <div
                     key={title}
-                    className="relative overflow-hidden group px-4 py-6 rounded-lg bg-white shadow flex items-center justify-between gap-4 transition-all duration-300 hover:shadow-primary-700/30"
+                    className={`relative overflow-hidden group px-4 py-6 rounded-lg shadow shadow-accent-500/30 ${hover.shadow} flex items-center justify-between gap-4 transition-all duration-500 hover:shadow-primary-700/30`}
                   >
-                    <div className="flex items-center gap-4 transition-all duration-300 group-hover:scale-0 group-hover:opacity-0 group-hover:translate-x-80">
+                    {/* icon, title and des */}
+                    <div className="flex items-center gap-4 transition-all duration-500 group-hover:scale-0 group-hover:opacity-0 group-hover:translate-x-80">
                       {/* Fill Icon */}
-                      <div className="bg-primary-700 p-3 rounded-full">
-                        <FillIcon className="text-white text-2xl" />
+                      <div
+                        className={`bg-white ${color.shadow} p-3 rounded-full`}
+                      >
+                        <FillIcon className={`text-2xl ${color.text}`} />
                       </div>
                       {/* Details (title, des) */}
                       <div className="flex flex-col">
                         <h3 className="text-lg font-bold">{title}</h3>
-                        <p dir={dir}>{des}</p>
+                        <p className="text-sm sm:text-[16px]" dir={dir}>
+                          {des}
+                        </p>
                       </div>
                     </div>
-                    <OutlineIcon className="shrink-0 text-2xl text-accent-500 transition-all duration-300 group-hover:scale-0 group-hover:opacity-0 group-hover:-translate-x-20" />
-                    {/* bg-img */}
-                    <div className="absolute top-0 right-0 w-full h-full rounded-lg z-1 transition-all -translate-y-5 duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 bg-[linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('/images/location-bg.png')]">
-                      {/* <img
-                        src={locationBg}
-                        alt="bg-img"
-                        className="w-full h-full object-cover opacity-90"
-                      /> */}
+                    <OutlineIcon
+                      className={`shrink-0 text-2xl text-accent-500 transition-all duration-500 group-hover:scale-0 group-hover:opacity-0 group-hover:-translate-x-20`}
+                    />
+                    {/* Hover content */}
+                    <div className="absolute opacity-0 translate-y-full z-2 bottom-1/2 right-1/2 translate-1/2 w-full h-full flex flex-col text-center justify-center items-center transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-1/2">
+                      <h3 className="text-lg font-bold text-white!">{title}</h3>
+                      <p
+                        className="text-white/95! max-w-80 font-semibold text-shadow-md text-shadow-black/50"
+                        dir={dir}
+                      >
+                        {des}
+                      </p>
                     </div>
+                    {/* Hover bg-img */}
+                    <div
+                      className={`absolute top-0 right-0 w-full h-full rounded-lg z-1 transition-all -translate-y-5 duration-500 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 bg-cover bg-center ${hover?.bgImg}`}
+                    />
                   </div>
                 ),
               )}
@@ -126,7 +139,7 @@ export default function ContactPage() {
               {/* modern Under line */}
               <div className="relative flex gap-2">
                 <div
-                  className="w-20 h-1 rounded-[100%]"
+                  className="w-20 h-1 line-btn rounded-[100%]"
                   style={{
                     background: `
       linear-gradient(
@@ -145,7 +158,7 @@ export default function ContactPage() {
                   }}
                 />
                 <div
-                  className="w-20 h-1 rounded-[100%]"
+                  className="w-20 h-1 line-btn rounded-[100%]"
                   style={{
                     background: `
       linear-gradient(

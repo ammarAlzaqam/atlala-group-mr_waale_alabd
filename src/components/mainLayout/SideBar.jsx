@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import logoIcon from "../../assets/icons/logo-icon.png";
+import logoIcon from "../../assets/icons/logo2.png";
 import homeIcon from "../../assets/icons/nav/home.png";
 import navLinks from "../../constants/navLinks";
 import clsx from "clsx";
@@ -97,7 +97,7 @@ export default function SideBar({ isOpen, setOpen }) {
         </div>
         {/*//TODO>> add Media links */}
         <div className="w-full flex justify-between gap-4">
-          <div className="p-3 contrast-150 rounded-full sepia-100 hover:sepia-0 shadow-md shadow-secondary-500/70 transition-all duration-300 hover:scale-110 hover:shadow-accent-500/80 cursor-pointer hover:bg-accent-500">
+          <div className="p-3 rounded-full shadow-md shadow-secondary-500/70 transition-all duration-300 hover:scale-110 hover:shadow-[#00c950]/80 cursor-pointer hover:bg-[#00c950]">
             <FaWhatsapp className="text-xl text-white" />
           </div>
 
