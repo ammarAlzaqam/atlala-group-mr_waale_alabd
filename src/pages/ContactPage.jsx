@@ -72,10 +72,10 @@ export default function ContactPage() {
                 ({ FillIcon, OutlineIcon, title, des, dir, color, hover }) => (
                   <div
                     key={title}
-                    className={`relative overflow-hidden group px-4 py-6 rounded-lg shadow shadow-accent-500/30 ${hover.shadow} flex items-center justify-between gap-4 transition-all duration-500 hover:shadow-primary-700/30`}
+                    className={`relative overflow-hidden group px-4 py-6 rounded-lg shadow shadow-accent-500/30 ${hover.shadow} flex items-center justify-between gap-4 transition-all duration-500 hover:shadow-primary-700/30 active:shadow-primary-700/30`}
                   >
                     {/* icon, title and des */}
-                    <div className="flex items-center gap-4 transition-all duration-500 group-hover:scale-0 group-hover:opacity-0 group-hover:translate-x-80">
+                    <div className="flex items-center gap-4 transition-all duration-500 group-hover:scale-0 group-hover:opacity-0 group-hover:translate-x-80 group-active:scale-0 group-active:opacity-0 group-active:translate-x-80">
                       {/* Fill Icon */}
                       <div
                         className={`bg-white ${color.shadow} p-3 rounded-full`}
@@ -91,10 +91,10 @@ export default function ContactPage() {
                       </div>
                     </div>
                     <OutlineIcon
-                      className={`shrink-0 text-2xl text-accent-500 transition-all duration-500 group-hover:scale-0 group-hover:opacity-0 group-hover:-translate-x-20`}
+                      className={`shrink-0 text-2xl text-accent-500 transition-all duration-500 group-hover:scale-0 group-hover:opacity-0 group-hover:-translate-x-20  group-active:scale-0 group-active:opacity-0 group-active:-translate-x-20`}
                     />
                     {/* Hover content */}
-                    <div className="absolute opacity-0 translate-y-full z-2 bottom-1/2 right-1/2 translate-1/2 w-full h-full flex flex-col text-center justify-center items-center transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-1/2">
+                    <div className="absolute opacity-0 translate-y-full z-2 bottom-1/2 right-1/2 translate-1/2 w-full h-full flex flex-col text-center justify-center items-center transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-1/2 group-active:opacity-100 group-active:translate-y-1/2">
                       <h3 className="text-lg font-bold text-white!">{title}</h3>
                       <p
                         className="text-white/95! max-w-80 font-semibold text-shadow-md text-shadow-black/50"
@@ -105,7 +105,7 @@ export default function ContactPage() {
                     </div>
                     {/* Hover bg-img */}
                     <div
-                      className={`absolute top-0 right-0 w-full h-full rounded-lg z-1 transition-all -translate-y-5 duration-500 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 bg-cover bg-center ${hover?.bgImg}`}
+                      className={`absolute top-0 right-0 w-full h-full rounded-lg z-1 transition-all -translate-y-5 duration-500 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 group-active:opacity-100 group-active:translate-y-0 bg-cover bg-center ${hover?.bgImg}`}
                     />
                   </div>
                 ),
@@ -123,7 +123,7 @@ export default function ContactPage() {
                   >
                     <div
                       key="label"
-                      className="p-2 w-10 h-10 rounded-full border-3 border-transparent border-dashed outline outline-offset-0 transition-all duration-300 hover:scale-115 outline-transparent animate-rotate"
+                      className="p-2 w-10 h-10 rounded-full border-3 border-transparent border-dashed outline outline-offset-0 transition-all duration-300 hover:scale-115 active:scale-115 outline-transparent animate-rotate"
                     />
                     <Icon className="absolute bottom-1/2 right-1/2 translate-1/2 text-xl text-white transition-colors duration-300 pointer-events-none" />
                   </div>
