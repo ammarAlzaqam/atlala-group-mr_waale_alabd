@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 export const usePriceRange = create((set) => ({
-  priceRange: [1500, 3200],
+  priceRange: [2200, 6200],
   setPriceRange: (newValue) => set(() => ({ priceRange: newValue })),
 }));
 

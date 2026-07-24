@@ -12,7 +12,57 @@ export default function Footer() {
     <div className="bg-white! flex flex-col items-center justify-center gap-10 pt-10">
       <div className="container grid grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-10">
         <div className="col-span-2 flex flex-col gap-4">
-          <img src={logoIcon} alt="logo-icon" className="w-15" />
+          <div className="flex items-center gap-1">
+            <img src={logoIcon} alt="logo-icon" className="w-15" />
+            <div className="flex flex-col items-center gap-0.5">
+              <h3 className="font-bold text-xl text-primary-600! leading-[100%]">
+                إطلالة العقارية
+              </h3>
+              <div className="flex items-center gap-1">
+                <div
+                  className="w-7 h-0.75 rounded-[100%]"
+                  style={{
+                    background: `
+        linear-gradient(
+          90deg,
+          rgba(204,167,99,0) 0%,
+          #b88d46 20%,
+          #f8e3b5 50%,
+          #b88d46 80%,
+          rgba(204,167,99,0) 100%
+        )
+      `,
+                    boxShadow: `
+        0 0 10px rgba(204,167,99,.35),
+        0 0 3px rgba(255,240,210,.5)
+      `,
+                  }}
+                />
+
+                <p className="text-sm text-accent-600!">بورتو مطروح</p>
+
+                <div
+                  className="w-7 h-0.75 rounded-[100%]"
+                  style={{
+                    background: `
+        linear-gradient(
+          90deg,
+          rgba(204,167,99,0) 0%,
+          #b88d46 20%,
+          #f8e3b5 50%,
+          #b88d46 80%,
+          rgba(204,167,99,0) 100%
+        )
+      `,
+                    boxShadow: `
+        0 0 10px rgba(204,167,99,.35),
+        0 0 3px rgba(255,240,210,.5)
+      `,
+                  }}
+                />
+              </div>
+            </div>
+          </div>
 
           <p className="text-sm text-secondary-500!">
             رفيقك الأمثل في رحلة البحث عن التميز والراحة في قلب بورتو مطروح. نحن

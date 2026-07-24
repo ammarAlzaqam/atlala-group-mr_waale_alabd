@@ -9,7 +9,7 @@ export default function Layout() {
     scrollTo(0, 0);
   }, [location]);
   return (
-    <div className="bg-[#fbfafd]">
+    <div className="bg-main-bg">
       <Outlet />
 
       {/*//* fixed icons (favorites & whatsapp) */}

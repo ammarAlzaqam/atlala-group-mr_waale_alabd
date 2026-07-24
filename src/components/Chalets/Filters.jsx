@@ -135,8 +135,8 @@ export default function Filters() {
                 className={clsx(
                   "py-2 rounded-lg border flex flex-col justify-center items-center gap-2 cursor-pointer transition-all duration-300",
                   view === v.label
-                    ? "border-accent-600/50"
-                    : "border-[#E2E8F0] hover:shadow-lg hover:shadow-accent-500/30",
+                    ? "border-[#00560e]/50"
+                    : "border-[#E2E8F0] hover:shadow-lg hover:shadow-[#00560e]/30",
                 )}
                 onClick={() =>
                   view === v.label ? setView(null) : setView(v.label)
@@ -156,7 +156,7 @@ export default function Filters() {
                   className={clsx(
                     "font-medium text-xs leading-4 transition-colors duration-300",
                     view === v.label
-                      ? "text-accent-600!"
+                      ? "text-[#00560e]!"
                       : "text-secondary-400!",
                   )}
                 >
@@ -225,8 +225,8 @@ export default function Filters() {
                 className={clsx(
                   "py-2 rounded-lg border flex flex-col justify-center items-center gap-2 cursor-pointer transition-all duration-300",
                   area === a.label
-                    ? "border-primary-600/50"
-                    : "border-[#E2E8F0] hover:shadow-lg hover:shadow-primary-500/30",
+                    ? "border-accent-600/50"
+                    : "border-[#E2E8F0] hover:shadow-lg hover:shadow-accent-500/30",
                 )}
                 onClick={() =>
                   area === a.label ? setArea(null) : setArea(a.label)
@@ -236,7 +236,7 @@ export default function Filters() {
                   className={clsx(
                     "w-8 h-8 object-contain",
                     area === a.label
-                      ? "blue-img-filter"
+                      ? "gold-img-filter"
                       : "grayscale-100 opacity-50",
                   )}
                   src={a.icon}
@@ -246,7 +246,7 @@ export default function Filters() {
                   className={clsx(
                     "font-medium text-xs leading-4 transition-colors duration-300",
                     area === a.label
-                      ? "text-primary-600!"
+                      ? "text-accent-600!"
                       : "text-secondary-400!",
                   )}
                 >

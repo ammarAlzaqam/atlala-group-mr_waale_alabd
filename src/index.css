@@ -77,24 +77,6 @@ button,
   color: white;
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #001e2e;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #00658e;
-  border-radius: 999px;
-  border: 2px solid #001e2e;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #85cfff;
-}
-
 .btn {
   cursor: pointer;
   transition: opacity 0.3s ease;
@@ -206,6 +188,11 @@ button,
 .green-img-filter {
   filter: brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(2200%)
     hue-rotate(132deg) brightness(78%) contrast(110%);
+}
+
+.gold-img-filter {
+  filter: brightness(0) saturate(100%) invert(58%) sepia(28%) saturate(862%)
+    hue-rotate(10deg) brightness(95%) contrast(91%);
 }
 
 @keyframes lineMove {

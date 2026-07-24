@@ -70,4 +70,31 @@ export const advListAdv = [
   },
 ];
 
+export const pestAdvList = [
+  {
+    title: "موقف سيارات",
+    icon: parkingIcon,
+  },
+  {
+    title: "أمن وحراسة",
+    icon: safeIcon,
+  },
+  {
+    title: "صيانة ودعم",
+    icon: maintenanceIcon,
+  },
+  {
+    title: "أكوا بارك",
+    icon: aquaParkIcon,
+  },
+  {
+    title: "شماسي وكراسي",
+    icon: chairIcon,
+  },
+  {
+    title: "20 حمام سباحة",
+    icon: poolIcon,
+  },
+];
+
 export default advList;

@@ -1,11 +1,11 @@
-import insurance from "../assets/icons/extraPayments/insurance.png";
-import customerService from "../assets/icons/extraPayments/customer-service.png";
-import park from "../assets/icons/extraPayments/park.png";
+import insurance from "../assets/icons/extraPayments/save.png";
+import customerService from "../assets/icons/extraPayments/service.png";
+import park from "../assets/icons/extraPayments/aquaPark.png";
 import family from "../assets/icons/extraPayments/family.png";
 
 const additionalPayments = [
   {
-    title: "الحجوزات للعائلات فقط",
+    title: "للعائلات فقط",
     icon: family,
   },
   {
@@ -17,7 +17,7 @@ const additionalPayments = [
     icon: customerService,
   },
   {
-    title: "الاكوا بارك 400ج 'اختياري'",
+    title: "الاكوا بارك 400ج",
     icon: park,
   },
 ];

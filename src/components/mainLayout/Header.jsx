@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/icons/logo2.png";
+import logo from "../../assets/icons/logo.png";
 import { FaPhone, FaWhatsapp } from "react-icons/fa";
 import clsx from "clsx";
 import { Turn as Hamburger } from "hamburger-react";
@@ -30,7 +30,7 @@ export default function Header() {
     >
       <div className="container py-2 flex flex-row-reverse sm:flex-row justify-between gap-3">
         <Link to="/" className="flex items-center gap-4">
-          <img src={logo} alt="logo_img" className="w-14 md:w-16 lg:w-16" />
+          <img src={logo} alt="logo_img" className="w-35 md:w-40 lg:w-45" />
         </Link>
         <nav className="hidden sm:flex *:pr-5">
           {navLinks.map(({ name, route }) => (

@@ -10,8 +10,29 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import ChaletDetailsPage from "./pages/ChaletDetailsPage";
 import { Toaster } from "react-hot-toast";
+import { useEffect, useMemo, useState } from "react";
+import { chM7Link } from "./constants/sheetLink";
 
 export default function App() {
+  const [sheetData, setSheetData] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const res = await fetch(chM7Link);
+      const data = await res.json();
+
+      const bookings = {};
+      [...data[0].slice(2), ...data[1].slice(2)].forEach((row) => {
+        bookings[row[0]] = row.slice(1);
+      });
+
+      console.log(bookings);
+
+      setSheetData(bookings);
+    };
+
+    getData();
+  }, []);
+
   return (
     <div className="text-right" data-theme="light" dir="rtl">
       <BrowserRouter>

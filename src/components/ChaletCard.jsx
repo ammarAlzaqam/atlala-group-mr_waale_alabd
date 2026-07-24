@@ -89,13 +89,13 @@ export default function ChaletCard({ ch }) {
               </div>
             </div>
             {/* details */}
-            <div className="grid grid-cols-3 gap-3 py-3 border-t-2 border-b-2 border-neutral-200/40">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-4 py-4 border-t-2 border-b-2 border-neutral-200/40">
               {ch.details.map((el) => (
                 <div key={el.title} className="flex items-center gap-2">
                   <img
                     src={el.icon}
                     alt="details-icon"
-                    className="w-4 blue-img-filter"
+                    className="w-5 md:w-4 blue-img-filter"
                   />
                   <span className="text-sm font-semibold">{el.title}</span>
                 </div>
