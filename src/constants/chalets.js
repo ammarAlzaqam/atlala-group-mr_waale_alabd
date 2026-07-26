@@ -41,22 +41,6 @@ import beachViewIcon from "../assets/icons/chalets/tags/beachView.png";
 import poolViewIcon from "../assets/icons/chalets/tags/poolView.png";
 import gardenViewIcon from "../assets/icons/chalets/tags/gardenView.png";
 
-import chaletImg1 from "../assets/images/chalets/1.png";
-import chaletImg2 from "../assets/images/chalets/2.png";
-import chaletImg3 from "../assets/images/chalets/3.png";
-import chaletImg4 from "../assets/images/chalets/4.jpg";
-import chaletImg5 from "../assets/images/chalets/5.jpg";
-import chaletImg6 from "../assets/images/chalets/6.jpg";
-import chaletImg7 from "../assets/images/chalets/7.jpg";
-import chaletImg8 from "../assets/images/chalets/8.jpg";
-
-import chDetailsImg1 from "../assets/images/chalets-details/chDetailsImg1.jpg";
-import chDetailsImg2 from "../assets/images/chalets-details/chDetailsImg2.jpg";
-import chDetailsImg3 from "../assets/images/chalets-details/chDetailsImg3.jpg";
-import chDetailsImg4 from "../assets/images/chalets-details/chDetailsImg4.jpg";
-import chDetailsImg5 from "../assets/images/chalets-details/chDetailsImg5.jpg";
-import chDetailsImg6 from "../assets/images/chalets-details/chDetailsImg6.jpg";
-
 import area48 from "../assets/icons/areas/studio.png";
 import area75 from "../assets/icons/areas/2rooms.png";
 import area96 from "../assets/icons/areas/3rooms.png";

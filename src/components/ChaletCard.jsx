@@ -41,6 +41,7 @@ export default function ChaletCard({ ch }) {
         <div className="relative h-72 overflow-hidden">
           <img
             src={ch.coverImg}
+            loading="lazy"
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             alt="chalet-cover-img"
           />

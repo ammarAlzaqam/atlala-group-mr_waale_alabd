@@ -59,6 +59,7 @@ export default function ChaletDetailsPage() {
   };
 
   const isDesktop = window.innerWidth >= 1024;
+  const currentMonth = new Date().getMonth() + 1;
 
   useEffect(() => {
     let chaletData = chaletsList.find((ch) => ch.num == chaletNum);
@@ -118,6 +119,7 @@ export default function ChaletDetailsPage() {
                 {chalet?.chaletImages?.map((chImg, index) => (
                   <img
                     src={chImg}
+                    loading="lazy"
                     key={index}
                     alt="chalet-details-img"
                     className={clsx(
@@ -136,26 +138,34 @@ export default function ChaletDetailsPage() {
                   <IoIosArrowBack className="text-lg md:text-2xl text-white transition-all duration-300 group-hover:-translate-x-0.5 group-hover:scale-105" />
                 </div>
                 {/*// is valid tag */}
-                <div
-                  className={clsx(
-                    `absolute z-10 top-2 right-2 text-sm rounded-full px-4 py-1 transition-opacity duration-300 group cursor-pointer hover:opacity-85 flex items-center gap-1`,
-                    sheetChaletData?.validList?.[0]?.from?.d === currDay
-                      ? tags.available.color
-                      : tags.reserved.color,
-                  )}
-                >
-                  <img
-                    src={
+                {sheetChaletData ? (
+                  <div
+                    className={clsx(
+                      `absolute z-10 top-2 right-2 text-sm rounded-full px-4 py-1 transition-opacity duration-300 group cursor-pointer hover:opacity-85 flex items-center gap-1`,
                       sheetChaletData?.validList?.[0]?.from?.d === currDay
-                        ? tags.available.icon
-                        : tags.reserved.icon
-                    }
-                    className="w-4 invert-100"
+                        ? tags.available.color
+                        : tags.reserved.color,
+                    )}
+                  >
+                    <img
+                      src={
+                        sheetChaletData?.validList?.[0]?.from?.d === currDay
+                          ? tags.available.icon
+                          : tags.reserved.icon
+                      }
+                      className="w-4 invert-100"
+                    />
+                    {sheetChaletData?.validList?.[0]?.from?.d === currDay
+                      ? tags.available.name
+                      : tags.reserved.name}
+                  </div>
+                ) : (
+                  <div
+                    className={clsx(
+                      `absolute z-10 top-2 right-2 rounded-full w-23 h-7 bg-neutral-200 skeleton`,
+                    )}
                   />
-                  {sheetChaletData?.validList?.[0]?.from?.d === currDay
-                    ? tags.available.name
-                    : tags.reserved.name}
-                </div>
+                )}
               </div>
               {/*//* Chalet images List */}
               <div
@@ -275,24 +285,99 @@ export default function ChaletDetailsPage() {
                   <h3 className="font-semibold text-lg sm:text-xl">
                     توفر الشالية
                   </h3>
-                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 w-full">
-                    {sheetChaletData?.validList
-                      ?.concat(sheetChaletDataNextM?.validList)
-                      .map(({ from, to }, index) => (
-                        <div
-                          key={index}
-                          className="bg-white px-3 py-2 rounded-lg flex items-center justify-between gap-2"
-                        >
-                          <p className="text-green-700! font-semibold text-sm text-shadow-lg text-shadow-green-700/10">
-                            {from.d} {getMonthName(from.m)} - {to.d}{" "}
-                            {getMonthName(from.m)}{" "}
-                          </p>
-                          <p className="text-xs text-green-700! shrink-0">
-                            {handleNumbers("ليلة", "ليالي", to.d - from.d + 1)}
-                          </p>
+                  {sheetChaletData ? (
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 w-full">
+                      {sheetChaletData?.validList
+                        ?.concat(sheetChaletDataNextM?.validList)
+                        .map(({ from, to }, index) => (
+                          <div
+                            key={index}
+                            className="bg-white px-3 py-2 rounded-lg flex items-center justify-between gap-2"
+                          >
+                            <p className="text-green-700! font-semibold text-sm text-shadow-lg text-shadow-green-700/10">
+                              {from.d} {getMonthName(from.m)} - {to.d}{" "}
+                              {getMonthName(from.m)}{" "}
+                            </p>
+                            <p className="text-xs text-green-700! shrink-0">
+                              {handleNumbers(
+                                "ليلة",
+                                "ليالي",
+                                to.d - from.d + 1,
+                              )}
+                            </p>
+                          </div>
+                        ))}
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 w-full">
+                      {Array(4)
+                        .fill(null)
+                        .map((_, index) => (
+                          <div
+                            key={index}
+                            className="bg-neutral-200 skeleton h-10 rounded-lg"
+                          />
+                        ))}
+                    </div>
+                  )}
+                </div>
+                {/*//* calendar valid time */}
+                <div className="w-full flex flex-col gap-5 px-7 py-4">
+                  <h3 className="font-semibold text-lg sm:text-xl">
+                    تقويم التوفر
+                  </h3>
+
+                  {[currentMonth, currentMonth + 1].map((month) => {
+                    const days = getNumOfDays(new Date(2026, currentMonth - 1));
+
+                    return (
+                      <div key={month} className="space-y-3">
+                        <h4 className="font-bold text-primary-600">
+                          {getMonthName(month)} - {month}
+                        </h4>
+
+                        <div className="grid grid-cols-7 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-2">
+                          {Array.from({ length: days }, (_, i) => {
+                            const day = i + 1;
+
+                            const isAvailable = [
+                              ...(sheetChaletData?.validList ?? []),
+                              ...(sheetChaletDataNextM?.validList ?? []),
+                            ].some(
+                              ({ from, to }) =>
+                                from.m === month &&
+                                day >= from.d &&
+                                day <= to.d,
+                            );
+
+                            const isToday =
+                              month === new Date().getMonth() + 1 &&
+                              day === new Date().getDate();
+
+                            return (
+                              <div
+                                key={day}
+                                className={clsx(
+                                  "aspect-square rounded-lg flex items-center justify-center text-sm font-bold transition-all",
+                                  sheetChaletData
+                                    ? "opacity-100"
+                                    : " skeleton bg-neutral-200 text-neutral-200!",
+                                  isAvailable
+                                    ? "bg-green-500 text-white"
+                                    : "bg-neutral-100 text-neutral-400",
+                                  isToday &&
+                                    sheetChaletData &&
+                                    "ring-2 ring-primary-500 ring-offset-2",
+                                )}
+                              >
+                                {day}
+                              </div>
+                            );
+                          })}
                         </div>
-                      ))}
-                  </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
               {/*//* Ch Price and buttons */}
@@ -391,12 +476,12 @@ export default function ChaletDetailsPage() {
 
                     <TransformComponent
                       wrapperClass="!w-full !h-full"
-                      contentClass="!w-full"
+                      contentClass="!w-full !h-full"
                     >
                       <img
                         src={chalet.locationImg}
                         alt="location"
-                        className="w-full object-cover select-none"
+                        className="w-full h-full object-cover select-none"
                         draggable={false}
                       />
                     </TransformComponent>
@@ -425,7 +510,7 @@ import { pestAdvList } from "../constants/advantages";
 import { LuCircleDotDashed } from "react-icons/lu";
 import { useSheetChaletsList } from "../store";
 import { date } from "yup";
-import { getMonthName } from "../utils/dateHelpers";
+import { getMonthName, getNumOfDays } from "../utils/dateHelpers";
 import { handleNumbers } from "../utils/textFormate";
 
 function ChHeroSec() {
