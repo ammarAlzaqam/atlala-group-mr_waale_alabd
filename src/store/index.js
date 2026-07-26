@@ -62,3 +62,8 @@ export const usePageNumber = create((set) => ({
       pageNumber: newValue,
     })),
 }));
+
+export const useSheetChaletsList = create((set) => ({
+  sheetChaletList: {},
+  setSheetChaletList: (newValue) => set(() => ({ sheetChaletList: newValue })),
+}));

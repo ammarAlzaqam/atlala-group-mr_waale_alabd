@@ -1,4 +1,5 @@
 //? Chalets Images
+//* Ch 23011 75m أرضي
 import ch23011_75CoverImg from "../assets/images/chalets/23011-75/coverImg.jpeg";
 import ch23011_75Img1 from "../assets/images/chalets/23011-75/1.jpeg";
 import ch23011_75Img2 from "../assets/images/chalets/23011-75/2.jpeg";
@@ -15,6 +16,18 @@ import ch23011_75Img12 from "../assets/images/chalets/23011-75/12.jpeg";
 import ch23011_75Img13 from "../assets/images/chalets/23011-75/13.jpeg";
 import ch23011_75Img14 from "../assets/images/chalets/23011-75/14.jpeg";
 import ch23011_75Img15 from "../assets/images/chalets/23011-75/15.jpeg";
+//* Ch 23012 75m أرضي
+import ch23012_75CoverImg from "../assets/images/chalets/23012-75/coverImg.jpeg";
+import ch23012_75Img1 from "../assets/images/chalets/23012-75/1.jpeg";
+import ch23012_75Img2 from "../assets/images/chalets/23012-75/2.jpeg";
+import ch23012_75Img3 from "../assets/images/chalets/23012-75/3.jpeg";
+import ch23012_75Img4 from "../assets/images/chalets/23012-75/4.jpeg";
+import ch23012_75Img5 from "../assets/images/chalets/23012-75/5.jpeg";
+import ch23012_75Img6 from "../assets/images/chalets/23012-75/6.jpeg";
+import ch23012_75Img7 from "../assets/images/chalets/23012-75/7.jpeg";
+import ch23012_75Img8 from "../assets/images/chalets/23012-75/8.jpeg";
+import ch23012_75Img9 from "../assets/images/chalets/23012-75/9.jpeg";
+import ch23012_75Img10 from "../assets/images/chalets/23012-75/10.jpeg";
 
 //! Icons
 // Details icons
@@ -93,31 +106,36 @@ export const tags = {
     icon: availableIcon,
     name: "متاح الآن",
     label: "available",
-    color: "bg-green-500/80 text-white",
+    color:
+      "bg-linear-to-t from-green-500/80 via-40% via-green-600/80 to-70% to-green-700/80 text-white!",
   },
   reserved: {
     icon: reservedIcon,
     name: "محجوز",
     label: "reserved",
-    color: "bg-orange-600/80 text-white",
+    color:
+      "bg-linear-to-t from-red-500/80 via-40% via-red-600/80 to-70% to-red-700/80 text-white!",
   },
   beachView: {
     icon: beachViewIcon,
     name: "على الشاطئ",
     label: "beach view",
-    color: "bg-cyan-700/80 text-white",
+    color:
+      "bg-linear-to-t from-cyan-500/80 via-40% via-cyan-600/80 to-70% to-cyan-700/80 text-white!",
   },
   poolView: {
     icon: poolViewIcon,
     name: "على المسبح",
     label: "pool view",
-    color: "bg-blue-600/80 text-white",
+    color:
+      "bg-linear-to-t from-blue-500/80 via-40% via-blue-600/80 to-70% to-blue-700/80 text-white!",
   },
   gardenView: {
     icon: gardenViewIcon,
     name: "على الحديقة",
     label: "garden view",
-    color: "bg-green-700/80 text-white",
+    color:
+      "bg-linear-to-t from-green-600/80 via-40% via-green-700/80 to-70% to-green-800/80 text-white!",
   },
 };
 
@@ -254,7 +272,6 @@ export const rooms = {
 const chaletsList = [
   {
     coverImg: ch23011_75CoverImg,
-    locationImg: chLocationImg,
     chaletImages: [
       ch23011_75CoverImg,
       ch23011_75Img1,
@@ -273,10 +290,11 @@ const chaletsList = [
       ch23011_75Img14,
       ch23011_75Img15,
     ],
-    num: 23011, // عمارة 73 - أرضي - شاليه 02
+    locationImg: chLocationImg,
+    num: 23011,
     price: 4500,
     area: areasList[1],
-    tags: [tags.available, tags.poolView],
+    view: tags.poolView,
     adv: [adv.modern, adv.airCon, adv.privacy, adv.garden, adv.grill],
     rooms: rooms.threeRooms,
     details: [
@@ -285,7 +303,35 @@ const chaletsList = [
       { title: "2 غرفة", icon: bedIcon },
       { title: "1 حمام", icon: bathRoomIcon },
     ],
-    available: true,
+  },
+  {
+    coverImg: ch23012_75CoverImg,
+    chaletImages: [
+      ch23012_75CoverImg,
+      ch23012_75Img1,
+      ch23012_75Img2,
+      ch23012_75Img3,
+      ch23012_75Img4,
+      ch23012_75Img5,
+      ch23012_75Img6,
+      ch23012_75Img7,
+      ch23012_75Img8,
+      ch23012_75Img9,
+      ch23012_75Img10,
+    ],
+    locationImg: chLocationImg,
+    num: 23012,
+    price: 4500,
+    area: areasList[1],
+    view: tags.poolView,
+    adv: [adv.modern, adv.airCon, adv.privacy, adv.garden, adv.grill],
+    rooms: rooms.threeRooms,
+    details: [
+      floors.ground,
+      areas.area75,
+      { title: "2 غرفة", icon: bedIcon },
+      { title: "1 حمام", icon: bathRoomIcon },
+    ],
   },
   // {
   //   coverImg: chaletImg4,

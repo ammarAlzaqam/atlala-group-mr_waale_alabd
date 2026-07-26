@@ -3,35 +3,80 @@ import clsx from "clsx";
 import { FaArrowLeft, FaRegHeart, FaRegHourglass } from "react-icons/fa";
 import { IoMdArrowBack, IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { useAdv, useFavorites } from "../store";
+import { useAdv, useFavorites, useSheetChaletsList } from "../store";
+import { useEffect, useMemo, useState } from "react";
+import { tags } from "../constants/chalets";
+import { getMonthName, getNumOfDays } from "../utils/dateHelpers";
 
 export default function ChaletCard({ ch }) {
+  const [sheetChaletData, setSheetChaletData] = useState({});
+  const [sheetChaletDataNextM, setSheetChaletDataNextM] = useState({});
   const favorites = useFavorites((state) => state.favorites);
   const toggleFavorites = useFavorites((state) => state.toggleFavorites);
 
   const adv = useAdv((state) => state.adv);
 
+  const sheetChaletList = useSheetChaletsList((state) => state.sheetChaletList);
+
+  const currDay = new Date().getDate();
+
+  useEffect(() => {
+    const date = new Date();
+    const currentMonth = date.getMonth() + 1;
+    if (sheetChaletList?.m7) {
+      setSheetChaletData(sheetChaletList[`m${currentMonth}`][ch.num]);
+      setSheetChaletDataNextM(sheetChaletList[`m${currentMonth + 1}`][ch.num]);
+    }
+  }, [sheetChaletList]);
+
+  const validData = sheetChaletData?.validFromToDay?.data ?? [];
+
+  const firstValid = validData[0];
+  const lastValid = validData.at(-1);
+
   return (
     <div className="bg-white border border-secondary-500/15 shadow-lg rounded-2xl overflow-hidden transition-transform group duration-700 hover:-translate-y-2">
       <div className="flex flex-col gap-4 h-full">
-        {/*//! imgs and absolute tags and favIcon, price */}
+        {/*//! imgs and absolute view and favIcon, price */}
         <div className="relative h-72 overflow-hidden">
           <img
             src={ch.coverImg}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             alt="chalet-cover-img"
           />
-          {/* tags */}
+          {/* view */}
           <div className="absolute top-4 right-4 flex flex-col gap-2">
-            {ch.tags.map((t) => (
-              <div
-                key={t.name}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold ${t.color} flex items-center gap-1`}
-              >
-                <img className="w-4 invert-100" src={t.icon} />
-                {t.name}
-              </div>
-            ))}
+            <div
+              key={ch.view.name}
+              className={`px-3 py-1.5 rounded-full text-xs font-bold ${ch.view.color} flex items-center gap-1`}
+            >
+              <img className="w-4 invert-100" src={ch.view.icon} />
+              {ch.view.name}
+            </div>
+            {/*// is valid tag */}
+            <div
+              className={clsx(
+                `text-sm rounded-full px-4 py-1 transition-opacity duration-300 group cursor-pointer hover:opacity-85 flex items-center gap-1`,
+                sheetChaletData?.validList?.length > 0 &&
+                  sheetChaletData?.validList[0].from?.d === currDay
+                  ? tags.available.color
+                  : tags.reserved.color,
+              )}
+            >
+              <img
+                src={
+                  sheetChaletData?.validList?.length > 0 &&
+                  sheetChaletData?.validList[0].from?.d === currDay
+                    ? tags.available.icon
+                    : tags.reserved.icon
+                }
+                className="w-4 invert-100"
+              />
+              {sheetChaletData?.validList?.length > 0 &&
+              sheetChaletData?.validList[0].from?.d === currDay
+                ? tags.available.name
+                : tags.reserved.name}
+            </div>
           </div>
           {/* favorite */}
           <div
@@ -105,19 +150,31 @@ export default function ChaletCard({ ch }) {
 
           {/* valid or not and view details */}
           <div className="flex items-center justify-between gap-5">
-            {ch.available ? (
+            {sheetChaletData?.validList?.[0]?.from?.d === currDay ? (
               <div className="flex items-center gap-1">
-                <IoMdCheckmarkCircleOutline className="text-sm text-green-600" />
+                <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
                 <span className="text-xs sm:text-sm font-semibold text-green-600!">
-                  متاح للحجز
+                  متاح حتي يوم {lastValid?.to} {getMonthName(lastValid.m)}
                 </span>
               </div>
             ) : (
               <div className="flex items-center gap-2">
-                <FaRegHourglass className="text-sm text-orange-600" />
-                <span className="text-xs sm:text-sm font-semibold text-orange-600!">
-                  متاح من 15 يوليو
-                </span>
+                <FaRegHourglass className="text-sm text-red-500 shrink-0" />
+                {lastValid?.from === lastValid?.to ? (
+                  <span className="text-xs sm:text-sm font-semibold text-red-500!">
+                    متاح في يوم {lastValid?.from} {getMonthName(lastValid?.m)}
+                  </span>
+                ) : (
+                  <span className="text-xs sm:text-sm font-semibold text-red-500!">
+                    متاح من يوم {lastValid?.from} {getMonthName(lastValid?.m)}{" "}
+                    حتي يوم {lastValid?.to}{" "}
+                    {getMonthName(
+                      sheetChaletData?.validFromToDay?.data?.[
+                        sheetChaletData?.validFromToDay?.data.length - 1
+                      ].m,
+                    )}
+                  </span>
+                )}
               </div>
             )}
             <Link to={`/chalets/${ch.num}`} className="shrink-0">

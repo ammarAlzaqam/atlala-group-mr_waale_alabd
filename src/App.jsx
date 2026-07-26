@@ -11,26 +11,40 @@ import ContactPage from "./pages/ContactPage";
 import ChaletDetailsPage from "./pages/ChaletDetailsPage";
 import { Toaster } from "react-hot-toast";
 import { useEffect, useMemo, useState } from "react";
-import { chM7Link } from "./constants/sheetLink";
+import sheetDataLink from "./constants/sheetLink";
+import { useSheetChaletsList } from "./store";
+import buildBookings from "./utils/buildBookings";
 
 export default function App() {
-  const [sheetData, setSheetData] = useState([]);
+  const setSheetChaletList = useSheetChaletsList(
+    (state) => state.setSheetChaletList,
+  );
+
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(chM7Link);
+      const res = await fetch(sheetDataLink);
       const data = await res.json();
 
-      const bookings = {};
-      [...data[0].slice(2), ...data[1].slice(2)].forEach((row) => {
-        bookings[row[0]] = row.slice(1);
+      setSheetChaletList({
+        m7: buildBookings(data.m7, 7, null, data.m8),
+        m8: buildBookings(data.m8, 8, data.m7, data.m9),
+        m9: buildBookings(data.m9, 9, data.m8, data.m10),
+        m10: buildBookings(data.m10, 10, data.m9, null),
       });
 
-      console.log(bookings);
-
-      setSheetData(bookings);
+      console.log({
+        m7: buildBookings(data.m7, 7, null, data.m8),
+        m8: buildBookings(data.m8, 8, data.m7, data.m9),
+        m9: buildBookings(data.m9, 9, data.m8, data.m10),
+        m10: buildBookings(data.m10, 10, data.m9, null),
+      });
     };
 
     getData();
+
+    const interval = setInterval(getData, 60000); // كل 30 ثانية
+
+    return () => clearInterval(interval);
   }, []);
 
   return (

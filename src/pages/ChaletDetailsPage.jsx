@@ -1,4 +1,4 @@
-import chaletsList from "../constants/chalets";
+import chaletsList, { tags } from "../constants/chalets";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import selectIcon from "../assets/icons/chalets/details/select.png";
@@ -6,6 +6,8 @@ import selectIcon from "../assets/icons/chalets/details/select.png";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { LuCalendarCheck2 } from "react-icons/lu";
+import { TbCalendarTime } from "react-icons/tb";
 
 export default function ChaletDetailsPage() {
   const { chaletNum } = useParams();
@@ -13,21 +15,16 @@ export default function ChaletDetailsPage() {
   const [imgIndex, setImgIndex] = useState(0);
   const [showZoom, setShowZoom] = useState(false);
   const [zoomStyle, setZoomStyle] = useState({});
+  const [sheetChaletData, setSheetChaletData] = useState(null);
+  const [sheetChaletDataNextM, setSheetChaletDataNextM] = useState(null);
+
   const imgRef = useRef(null);
   const thumbsRef = useRef([]);
   const containerRef = useRef(null);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    let chaletData = chaletsList.find((ch) => ch.num == chaletNum);
-    setChalet(chaletData);
-
-    if (!chaletData) {
-      toast.error(`الشاليه ${chaletNum}# غير موجود`);
-      navigate("/chalets");
-    }
-  }, [chaletNum, navigate]);
+  const sheetChaletList = useSheetChaletsList((state) => state.sheetChaletList);
 
   const handleImgSwiper = (type) => {
     if (type === "increase") {
@@ -64,6 +61,27 @@ export default function ChaletDetailsPage() {
   const isDesktop = window.innerWidth >= 1024;
 
   useEffect(() => {
+    let chaletData = chaletsList.find((ch) => ch.num == chaletNum);
+    setChalet(chaletData);
+
+    if (!chaletData) {
+      toast.error(`الشاليه ${chaletNum}# غير موجود`);
+      navigate("/chalets");
+    }
+
+    const date = new Date();
+    const currentMonth = date.getMonth() + 1;
+    if (sheetChaletList?.m7) {
+      setSheetChaletData(sheetChaletList?.[`m${currentMonth}`][`${chaletNum}`]);
+      setSheetChaletDataNextM(
+        sheetChaletList?.[`m${currentMonth + 1}`][`${chaletNum}`],
+      );
+    }
+  }, [sheetChaletList]);
+
+  const currDay = new Date().getDate();
+
+  useEffect(() => {
     const current = thumbsRef.current[imgIndex];
 
     if (current && containerRef.current) {
@@ -85,9 +103,10 @@ export default function ChaletDetailsPage() {
           {/*//? chImgs and details */}
           <div className="grid grid-cols-5 gap-4">
             {/*//! Chalet images */}
-            <div className="col-span-5 md:col-span-3 rounded-2xl overflow-hidden flex flex-col gap-2 border-2 border-primary-800/10 shadow-xl shadow-primary-200/40">
+            <div className="md:sticky md:top-3 col-span-5 md:col-span-3 rounded-2xl overflow-hidden self-start flex flex-col gap-2 border-2 border-primary-800/10 shadow-xl shadow-primary-200/40">
               {/*//* Chalet display Img */}
               <div className="relative w-full aspect-5/4 md:aspect-video overflow-hidden">
+                {/*// swiper arrows */}
                 <div
                   onClick={() => handleImgSwiper("decrease")}
                   className={clsx(
@@ -109,11 +128,33 @@ export default function ChaletDetailsPage() {
                     )}
                   />
                 ))}
+                {/*// swiper arrows */}
                 <div
                   onClick={() => handleImgSwiper("increase")}
                   className="absolute z-10 bottom-1/2 left-2 translate-y-1/2 rounded-full p-2 transition-opacity duration-300 group bg-linear-to-t from-primary-600 via-20% via-primary-700 to-70% to-primary-800 cursor-pointer hover:opacity-85"
                 >
                   <IoIosArrowBack className="text-lg md:text-2xl text-white transition-all duration-300 group-hover:-translate-x-0.5 group-hover:scale-105" />
+                </div>
+                {/*// is valid tag */}
+                <div
+                  className={clsx(
+                    `absolute z-10 top-2 right-2 text-sm rounded-full px-4 py-1 transition-opacity duration-300 group cursor-pointer hover:opacity-85 flex items-center gap-1`,
+                    sheetChaletData?.validList?.[0]?.from?.d === currDay
+                      ? tags.available.color
+                      : tags.reserved.color,
+                  )}
+                >
+                  <img
+                    src={
+                      sheetChaletData?.validList?.[0]?.from?.d === currDay
+                        ? tags.available.icon
+                        : tags.reserved.icon
+                    }
+                    className="w-4 invert-100"
+                  />
+                  {sheetChaletData?.validList?.[0]?.from?.d === currDay
+                    ? tags.available.name
+                    : tags.reserved.name}
                 </div>
               </div>
               {/*//* Chalet images List */}
@@ -174,7 +215,8 @@ export default function ChaletDetailsPage() {
               </div>
             </div>
             {/*//! Chalet details */}
-            <div className="col-span-5 md:col-span-2 rounded-2xl overflow-hidden flex flex-col items-center justify-between pb-10 gap-2 border-2 border-primary-800/10 shadow-xl shadow-primary-200/40">
+            <div className="col-span-5 md:col-span-2 bg-primary-200/30 rounded-2xl overflow-hidden flex flex-col items-center justify-between pb-10 border-2 border-primary-800/10 shadow-xl shadow-primary-200/40">
+              {/*//* Details (num&adv&details) */}
               <div className="flex flex-col items-center gap-2 w-full">
                 {/* Ch Num */}
                 <div className="flex flex-col items-center gap-1 px-5 pt-6 pb-3">
@@ -206,9 +248,9 @@ export default function ChaletDetailsPage() {
                 {/*//* Divider */}
                 <div className="w-[85%] border-t-5 border-dashed rounded-[100%] border-primary-500/10"></div>
                 {/*//* Ch Adv */}
-                <div className="flex flex-col gap-2 px-7 py-4">
+                <div className="flex flex-col gap-2 px-7 py-4 w-full">
                   <h3 className="font-semibold text-lg sm:text-xl">
-                    مميزات الشاليه
+                    مميزات الشالية
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {chalet?.adv?.map(({ name, label }, index) => (
@@ -226,9 +268,35 @@ export default function ChaletDetailsPage() {
                     ))}
                   </div>
                 </div>
+                {/*//* Divider */}
+                <div className="w-[85%] border-t-2 rounded-[100%] border-primary-500/10"></div>
+                {/*//* valid time */}
+                <div className="flex flex-col gap-3 px-7 py-4 w-full">
+                  <h3 className="font-semibold text-lg sm:text-xl">
+                    توفر الشالية
+                  </h3>
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 w-full">
+                    {sheetChaletData?.validList
+                      ?.concat(sheetChaletDataNextM?.validList)
+                      .map(({ from, to }, index) => (
+                        <div
+                          key={index}
+                          className="bg-white px-3 py-2 rounded-lg flex items-center justify-between gap-2"
+                        >
+                          <p className="text-green-700! font-semibold text-sm text-shadow-lg text-shadow-green-700/10">
+                            {from.d} {getMonthName(from.m)} - {to.d}{" "}
+                            {getMonthName(from.m)}{" "}
+                          </p>
+                          <p className="text-xs text-green-700! shrink-0">
+                            {handleNumbers("ليلة", "ليالي", to.d - from.d + 1)}
+                          </p>
+                        </div>
+                      ))}
+                  </div>
+                </div>
               </div>
-              {/*//* Ch Price */}
-              <div className="flex flex-col gap-8 w-[95%] rounded-2xl border-t-2 border-primary-300/20 shadow-[0px_-100px_200px_1px_#73cbff40] px-8 py-5">
+              {/*//* Ch Price and buttons */}
+              <div className="relative flex flex-col gap-8 w-[95%] rounded-2xl bg-linear-to-b from-primary-100/80 via-[#cbedff] to-[#cbedff] px-8 pt-12 pb-5 inset-shadow-sm inset-shadow-[#cbedff]">
                 {/* price */}
                 <div className="flex flex-col items-center gap-2">
                   <h3>السعر لليلة</h3>
@@ -246,8 +314,8 @@ export default function ChaletDetailsPage() {
                 </div>
                 {/* buttons */}
                 <div className="flex flex-col gap-4">
-                  <div className="btn bg-accent-500 text-primary-100! rounded-lg">
-                    <FaCalendar className="text-primary-100!" />
+                  <div className="btn bg-accent-500 text-white! rounded-lg">
+                    <FaCalendar className="text-white!" />
                     احجز الأن
                   </div>
                   {/*//TODO>> Whatsapp link */}
@@ -256,6 +324,8 @@ export default function ChaletDetailsPage() {
                     تواصل عبر واتساب
                   </button>
                 </div>
+                {/*// Absolute Divider */}
+                <div className="absolute top-0 right-1/2 translate-x-1/2 w-full h-10 rounded-b-[100%] border-primary-300/50 bg-[#cbedff] bg-linear-to-b from-primary-[#cbedff] via-[#cbedff] to-primary-200/50"></div>
               </div>
             </div>
           </div>
@@ -299,21 +369,21 @@ export default function ChaletDetailsPage() {
                     <div className="absolute top-3 right-3 z-20 flex flex-col gap-2">
                       <div
                         onClick={() => zoomIn()}
-                        className="w-10 h-10 btn flex justify-center border-none items-center rounded-full bg-primary-600! text-white! shadow-lg"
+                        className="w-10 h-10 btn p-0 flex justify-center border-none items-center rounded-full bg-accent-500/50! backdrop-blur-sm text-white! shadow-lg"
                       >
                         <FaPlus />
                       </div>
 
                       <div
                         onClick={() => zoomOut()}
-                        className="w-10 h-10 btn flex justify-center border-none items-center rounded-full bg-primary-600! text-white! shadow-lg"
+                        className="w-10 h-10 btn p-0 flex justify-center border-none items-center rounded-full bg-accent-500/50! backdrop-blur-sm text-white! shadow-lg"
                       >
                         <FaMinus />
                       </div>
 
                       <div
                         onClick={() => resetTransform()}
-                        className="px-3 py-2 btn rounded-full bg-primary-600! border-none text-white! text-sm shadow-lg"
+                        className="px-3 py-2 btn rounded-full bg-accent-500/50! backdrop-blur-sm border-none text-white! text-sm shadow-lg"
                       >
                         Reset
                       </div>
@@ -353,6 +423,10 @@ import { FaCalendar } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
 import { pestAdvList } from "../constants/advantages";
 import { LuCircleDotDashed } from "react-icons/lu";
+import { useSheetChaletsList } from "../store";
+import { date } from "yup";
+import { getMonthName } from "../utils/dateHelpers";
+import { handleNumbers } from "../utils/textFormate";
 
 function ChHeroSec() {
   return (
