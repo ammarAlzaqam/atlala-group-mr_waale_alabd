@@ -318,9 +318,16 @@ button,
 }
 
 .bg-move {
-  @media (max-width: 600px) {
-    animation: bg-mover 30s ease-in-out infinite;
-  }
+  background:
+    linear-gradient(
+      to top,
+      var(--color-primary-100) 0%,
+      #d8f2ff60 35%,
+      rgba(0, 0, 0, 0.1) 70%,
+      rgba(0, 0, 0, 0.25) 100%
+    ),
+    url("/images/chaletHeroSec.png");
+  animation: bg-mover 30s ease-in-out infinite;
 }
 
 .progress-circle {

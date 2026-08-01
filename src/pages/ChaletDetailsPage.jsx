@@ -667,7 +667,10 @@ export default function ChaletDetailsPage() {
               </div>
             </div>
             {/*//! Ch Location img */}
-            <div className="relative col-span-1 md:col-span-5 rounded-xl overflow-hidden border-2 border-primary-300/30">
+            <div
+              onDoubleClick={(e) => e.stopPropagation()}
+              className="relative col-span-1 md:col-span-5 rounded-xl overflow-hidden border-2 border-primary-300/30"
+            >
               <TransformWrapper
                 initialScale={1}
                 minScale={1}
@@ -746,7 +749,7 @@ import { toastInfo } from "../utils/toast";
 
 function ChHeroSec({ chNum }) {
   return (
-    <div className="flex justify-center pt-17 pb-22 bg-[linear-gradient(to_top,var(--color-primary-100)_0%,#d8f2ff60_35%,rgba(0,0,0,0.10)70%,rgba(0,0,0,0.25)100%),url('/images/chaletHeroSec.png')] md:bg-top bg-move bg-cover">
+    <div className="flex justify-center pt-17 pb-22 md:bg-top bg-move">
       <div className="container flex flex-col items-center text-center">
         <div className="relative w-full flex justify-center">
           <img src={logo} alt="logo-icon" className="w-40 z-2" />

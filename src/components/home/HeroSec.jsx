@@ -3,27 +3,23 @@ import { FaRegCalendarAlt, FaRegUser, FaSearch } from "react-icons/fa";
 import { PiMapPinSimpleAreaBold } from "react-icons/pi";
 import additionalPayments from "../../constants/additionalPayments";
 import logo from "../../assets/icons/logo2.png";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { clsx } from "clsx";
+import { getTodayString } from "../../utils/dateHelpers";
+import { IoSearch } from "react-icons/io5";
 
 export default function HeroSec() {
-  const arrivalDateRef = useRef();
-  const departureDateRef = useRef();
+  const calendarArriveRef = useRef();
+  const calendarLiveRef = useRef();
 
-  const filtersInitialValues = {
-    arrivalDate: "",
-    departureDate: "",
-    numOfGuests: "",
-    area: "",
-  };
+  const [arriveDate, setArriveDate] = useState("");
+  const [liveDate, setLiveDate] = useState("");
 
   return (
-    <section
-      data-aos="fade-down"
-      className="bg-[url('/images/porto-main-img.webp')] bg-cover bg-center"
-    >
+    <section className="bg-[url('/images/main-herosec.png')] bg-cover bg-center">
       {/*//! Overlay */}
-      <div className="w-full h-full bg-black/30 pt-20 flex justify-center pb-10 ">
+      <div className="w-full h-full bg-black/50 pt-20 flex justify-center pb-10 ">
         {/*//! Container */}
         <div className="container flex flex-col items-center gap-0">
           {/*//* head title */}
@@ -56,6 +52,70 @@ export default function HeroSec() {
               تواصل معنا
             </Link>
           </div>
+          {/* form */}
+          <div className="flex w-full max-w-250 flex-col rounded-xl overflow-hidden mt-6">
+            <form className="flex items-end gap-2 bg-white pt-3 pb-6 px-3 *:flex-1">
+              {/*//* Filter by date */}
+              {/* arrival date */}
+              <div className="relative w-fit sm:w-auto flex flex-col gap-1.5">
+                <label
+                  htmlFor="arrival"
+                  className="font-bold font-head! text-neutral-800!"
+                >
+                  تاريخ الوصول
+                </label>
+                <div className="relative">
+                  <DatePicker
+                    id="arrive-date"
+                    date={arriveDate}
+                    setDate={setArriveDate}
+                    calendarRef={calendarArriveRef}
+                    arriveDate={arriveDate}
+                    liveDate={liveDate}
+                  />
+                  <FaRegCalendarAlt
+                    className={clsx(
+                      "absolute pointer-events-none bottom-1/2 right-1.5 translate-y-1/2 cursor-pointer transition-colors duration-300",
+                      arriveDate ? "text-primary-500!" : "text-secondary-500!",
+                    )}
+                  />
+                </div>
+              </div>
+              {/* departure date */}
+              <div className="relative w-fit sm:w-auto flex flex-col gap-1.5">
+                <label
+                  htmlFor="departure"
+                  className="font-bold font-head! text-neutral-800!"
+                >
+                  تاريخ المغادرة
+                </label>
+                <div className="relative">
+                  <DatePicker
+                    id="live-date"
+                    date={liveDate}
+                    setDate={setLiveDate}
+                    calendarRef={calendarLiveRef}
+                    arriveDate={arriveDate}
+                    liveDate={liveDate}
+                  />
+                  <FaRegCalendarAlt
+                    className={clsx(
+                      "absolute pointer-events-none bottom-1/2 right-1.5 translate-y-1/2 cursor-pointer transition-colors duration-300",
+                      liveDate ? "text-primary-500!" : "text-secondary-500!",
+                    )}
+                  />
+                </div>
+              </div>
+              {/* submit btn */}
+              <div
+                type="submit"
+                className="btn h-[90%] flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 active:scale-[0.98] text-white! border-none text-lg font-head rounded-xl py-3 cursor-pointer transition-all duration-200 shadow-lg shadow-cyan-500/25"
+              >
+                <IoSearch className="text-white!" />
+                بحث
+              </div>
+            </form>
+          </div>
           {/* CTA Card */}
           <div className="w-full mt-8 max-w-5xl p-px rounded-2xl bg-linear-to-b from-white/20 via-white/5 to-transparent">
             <div className="rounded-2xl bg-accent-950/40 backdrop-blur-sm overflow-hidden p-3 sm:p-4">
@@ -66,7 +126,7 @@ export default function HeroSec() {
                     key={title}
                     className="group relative flex items-center justify-center aspect-video sm:aspect-auto sm:py-9 text-center sm:text-start rounded-xl bg-white/5 px-4 border border-white/10 overflow-hidden transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-linear-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                     <img
                       src={icon}
@@ -85,5 +145,61 @@ export default function HeroSec() {
         </div>
       </div>
     </section>
+  );
+}
+
+function DatePicker({ date, setDate, calendarRef, id, arriveDate, liveDate }) {
+  const popoverRef = useRef();
+  const today = getTodayString();
+
+  useEffect(() => {
+    const calendar = calendarRef.current;
+
+    const handleChange = () => {
+      setDate(calendar.value);
+
+      requestAnimationFrame(() => {
+        popoverRef.current?.hidePopover();
+      });
+    };
+
+    calendar.addEventListener("change", handleChange);
+
+    return () => {
+      calendar.removeEventListener("change", handleChange);
+    };
+  }, []);
+
+  return (
+    <>
+      <button
+        popoverTarget={id}
+        type="button"
+        className={clsx(
+          "input pr-7",
+          date ? "text-primary-500!" : "text-secondary-500!",
+        )}
+        style={{ anchorName: `--${id}` }}
+      >
+        {date || "اختر التاريخ"}
+      </button>
+
+      <div
+        id={id}
+        ref={popoverRef}
+        popover="auto"
+        className="dropdown bg-base-100 rounded-box shadow-lg"
+        style={{ positionAnchor: `--${id}` }}
+      >
+        <calendar-date
+          ref={calendarRef}
+          class="cally"
+          min={id === "arrive-date" ? today : arriveDate || today}
+          max={id === "live-date" ? undefined : liveDate || undefined}
+        >
+          <calendar-month />
+        </calendar-date>
+      </div>
+    </>
   );
 }

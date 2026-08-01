@@ -128,7 +128,7 @@ export default function Layout() {
               </g>
             </svg>
             <input
-              type="search"
+              type="number"
               list="chNums"
               id="search"
               ref={searchRef}
