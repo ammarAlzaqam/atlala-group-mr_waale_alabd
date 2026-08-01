@@ -11,16 +11,24 @@ import ContactPage from "./pages/ContactPage";
 import ChaletDetailsPage from "./pages/ChaletDetailsPage";
 import { Toaster } from "react-hot-toast";
 import { useEffect, useMemo, useState } from "react";
-import sheetDataLink from "./constants/sheetLink";
 import { useSheetChaletsList } from "./store";
 import buildBookings from "./utils/buildBookings";
-
+import "cally";
+import "aos/dist/aos.css";
+import Aos from "aos";
 export default function App() {
   const setSheetChaletList = useSheetChaletsList(
     (state) => state.setSheetChaletList,
   );
+  const sheetDataLink = import.meta.env.VITE_SHEET_API_URL;
 
+  // aos and get data from sheet
   useEffect(() => {
+    // Animate on scroll initiate
+    Aos.init({
+      duration: 1000,
+    });
+
     const getData = async () => {
       const res = await fetch(sheetDataLink);
       const data = await res.json();
@@ -42,9 +50,27 @@ export default function App() {
 
     getData();
 
-    const interval = setInterval(getData, 60000); // كل 30 ثانية
+    const interval = setInterval(getData, 1000 * 60 * 10); // 10m
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    document.querySelector(".btn")?.addEventListener("dblclick", (e) => {
+      e.stopPropagation();
+    });
+
+    document.querySelector("button")?.addEventListener("dblclick", (e) => {
+      e.stopPropagation();
+    });
+
+    document.querySelector("input")?.addEventListener("dblclick", (e) => {
+      e.stopPropagation();
+    });
+
+    document.querySelector("a")?.addEventListener("dblclick", (e) => {
+      e.stopPropagation();
+    });
   }, []);
 
   return (

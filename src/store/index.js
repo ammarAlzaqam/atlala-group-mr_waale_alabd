@@ -1,8 +1,18 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+export const useArriveDate = create((set) => ({
+  arriveDate: "",
+  setArriveDate: (newValue) => set(() => ({ arriveDate: newValue })),
+}));
+
+export const useLiveDate = create((set) => ({
+  liveDate: "",
+  setLiveDate: (newValue) => set(() => ({ liveDate: newValue })),
+}));
+
 export const usePriceRange = create((set) => ({
-  priceRange: [2200, 6200],
+  priceRange: [1800, 8500],
   setPriceRange: (newValue) => set(() => ({ priceRange: newValue })),
 }));
 
@@ -29,6 +39,21 @@ export const useRoom = create((set) => ({
 export const usePriceRanking = create((set) => ({
   priceRanking: "highest",
   setPriceRanking: (newValue) => set(() => ({ priceRanking: newValue })),
+}));
+
+export const useClassification = create((set) => ({
+  classification: "",
+  setClassification: (newValue) => set(() => ({ classification: newValue })),
+}));
+
+export const useBed = create((set) => ({
+  bed: "",
+  setBed: (newValue) => set(() => ({ bed: newValue })),
+}));
+
+export const useFloor = create((set) => ({
+  floor: "",
+  setFloor: (newValue) => set(() => ({ floor: newValue })),
 }));
 
 export const useFavorites = create(
@@ -67,3 +92,15 @@ export const useSheetChaletsList = create((set) => ({
   sheetChaletList: {},
   setSheetChaletList: (newValue) => set(() => ({ sheetChaletList: newValue })),
 }));
+
+export const useFastSearch = create(
+  persist(
+    (set) => ({
+      fastSearch: false,
+      setFastSearch: (newValue) => set(() => ({ fastSearch: newValue })),
+    }),
+    {
+      name: "fastSearch-storage",
+    },
+  ),
+);

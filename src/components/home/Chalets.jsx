@@ -31,7 +31,7 @@ export default function Chalets() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
           {chaletsList
-            .filter((ch) => ch.vip)
+            ?.filter((ch) => ch.infos[0].label === "vip")
             .map((ch) => (
               <ChaletCard key={ch.num} ch={ch} />
             ))}

@@ -1,4 +1,5 @@
 import HeroSec from "../components/HeroSec";
+import moImg from "../assets/images/moImg.png";
 
 export default function AboutPage() {
   return (

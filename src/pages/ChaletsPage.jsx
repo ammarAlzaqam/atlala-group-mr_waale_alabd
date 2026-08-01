@@ -6,10 +6,16 @@ import chaletsList from "../constants/chalets";
 import {
   useAdv,
   useArea,
+  useArriveDate,
+  useBed,
+  useClassification,
+  useFloor,
+  useLiveDate,
   usePageNumber,
   usePriceRange,
   usePriceRanking,
   useRoom,
+  useSheetChaletsList,
   useView,
 } from "../store";
 
@@ -17,18 +23,50 @@ export default function ChaletsPage() {
   const [nofPages, setNofPages] = useState(0);
   const chPerPage = 8;
 
+  const sheetChaletList = useSheetChaletsList((state) => state.sheetChaletList);
+
   const priceRanking = usePriceRanking((state) => state.priceRanking);
   const setPriceRanking = usePriceRanking((state) => state.setPriceRanking);
 
+  const arriveDate = useArriveDate((state) => state.arriveDate);
+  const liveDate = useLiveDate((state) => state.liveDate);
   const priceRange = usePriceRange((state) => state.priceRange);
   const view = useView((state) => state.view);
   const adv = useAdv((state) => state.adv);
   const area = useArea((state) => state.area);
   const room = useRoom((state) => state.room);
+  const classification = useClassification((state) => state.classification);
+  const bed = useBed((state) => state.bed);
+  const floor = useFloor((state) => state.floor);
+
   const pageNumber = usePageNumber((state) => state.pageNumber);
   const setPageNumber = usePageNumber((state) => state.setPageNumber);
 
-  const filteredChalets = useMemo(() => {
+  const isDateAvailable = (chaletNum, arriveDate, leaveDate) => {
+    const arrive = new Date(arriveDate);
+    const leave = new Date(leaveDate);
+    const current = new Date(arrive);
+    while (current <= leave) {
+      const monthKey = `m${current.getMonth() + 1}`;
+      const chalet = sheetChaletList?.[monthKey]?.[chaletNum];
+      if (!chalet) return false;
+
+      const dayIndex = current.getDate() - 1;
+
+      const value = chalet.data[dayIndex];
+
+      // أي حاجة غير فاضي تعتبر محجوزة
+      if (String(value).trim() !== "") {
+        return false;
+      }
+
+      current.setDate(current.getDate() + 1);
+    }
+
+    return true;
+  };
+
+  const filteredChaletsBeforeDate = useMemo(() => {
     let data = [...chaletsList];
 
     data = data.filter((chalet) => {
@@ -38,7 +76,7 @@ export default function ChaletsPage() {
 
       // الإطلالة
       const viewMatched =
-        !view || chalet.tags.some((tag) => tag.label === view);
+        !view || chalet.view.some((tag) => tag.label === view);
 
       // المرافق
       const advMatched =
@@ -48,13 +86,30 @@ export default function ChaletsPage() {
         );
 
       // المساحة
-      const areaMatched = !area || chalet.area.label === area;
+      const areaMatched = !area || chalet.details[1].label === area;
 
       // عدد الغرف
-      const roomMatched = !room || chalet.rooms.label === room;
+      const roomMatched = !room || chalet.details[2].label === room;
+
+      // الفئة
+      const classificationMatched =
+        !classification || chalet.infos[0].label === classification;
+
+      // السراير
+      const bedMatched = !bed || chalet.infos[1].label === bed;
+
+      // الدور
+      const floorMatched = !floor || chalet.details[0].label === floor;
 
       return (
-        priceMatched && viewMatched && advMatched && areaMatched && roomMatched
+        priceMatched &&
+        viewMatched &&
+        advMatched &&
+        areaMatched &&
+        roomMatched &&
+        classificationMatched &&
+        bedMatched &&
+        floorMatched
       );
     });
 
@@ -68,7 +123,33 @@ export default function ChaletsPage() {
     setNofPages(Math.ceil(data.length / chPerPage));
     setPageNumber(1);
     return data;
-  }, [priceRanking, priceRange, view, adv, area, room]);
+  }, [
+    priceRanking,
+    priceRange,
+    view,
+    adv,
+    area,
+    room,
+    classification,
+    bed,
+    floor,
+  ]);
+
+  const filteredChalets = useMemo(() => {
+    let data = [...filteredChaletsBeforeDate];
+
+    data = data.filter((chalet) => {
+      // تاريخ الوصول والمغادرة
+      let dateMatched = true;
+
+      if (arriveDate && liveDate) {
+        dateMatched = isDateAvailable(chalet.num, arriveDate, liveDate);
+      }
+      return dateMatched;
+    });
+
+    return data;
+  }, [arriveDate, liveDate, filteredChaletsBeforeDate, sheetChaletList]);
 
   const chaletsForPage = useMemo(() => {
     const skip = (pageNumber - 1) * chPerPage;

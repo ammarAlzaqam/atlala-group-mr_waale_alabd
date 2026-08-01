@@ -18,7 +18,10 @@ export default function HeroSec() {
   };
 
   return (
-    <section className="bg-[url('/images/porto-main-img.webp')] bg-cover bg-center">
+    <section
+      data-aos="fade-down"
+      className="bg-[url('/images/porto-main-img.webp')] bg-cover bg-center"
+    >
       {/*//! Overlay */}
       <div className="w-full h-full bg-black/30 pt-20 flex justify-center pb-10 ">
         {/*//! Container */}
@@ -39,7 +42,7 @@ export default function HeroSec() {
             />
           </div>
           {/*// Cta btn */}
-          <div className="pt-5 z-2 flex justify-center gap-2 md:gap-3 w-full">
+          <div className="pt-5 z-2 flex justify-center gap-2 md:gap-3 w-full max-w-140">
             <Link
               to="/chalets"
               className="btn px-0 flex-1 sm:w-40 rounded-lg text-white! bg-accent-500 border-none"
@@ -53,27 +56,30 @@ export default function HeroSec() {
               تواصل معنا
             </Link>
           </div>
-          {/*//TODO>> Search filters () */}
           {/* CTA Card */}
-          <div className="w-full mt-8 max-w-5xl p-2 rounded-xl bg-accent-900/30 backdrop-blur-xs overflow-hidden">
-            {/* Features */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {additionalPayments.map(({ title, icon }) => (
-                <div
-                  key={title}
-                  className="relative flex items-center justify-center aspect-video sm:aspect-auto sm:py-8 text-center sm:text-start rounded-lg bg-white/10 px-4 border border-white/10"
-                >
-                  <img
-                    src={icon}
-                    alt={title}
-                    className="invert absolute bottom-1/2 right-1/2 translate-1/2 w-[90%] sm:w-4/5 h-[90%] sm:h-4/5 opacity-40 object-contain"
-                  />
+          <div className="w-full mt-8 max-w-5xl p-px rounded-2xl bg-linear-to-b from-white/20 via-white/5 to-transparent">
+            <div className="rounded-2xl bg-accent-950/40 backdrop-blur-sm overflow-hidden p-3 sm:p-4">
+              {/* Features */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                {additionalPayments.map(({ title, icon }) => (
+                  <div
+                    key={title}
+                    className="group relative flex items-center justify-center aspect-video sm:aspect-auto sm:py-9 text-center sm:text-start rounded-xl bg-white/5 px-4 border border-white/10 overflow-hidden transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  <span className="text-white! font-bold leading-[140%] text-base sm:text-lg text-shadow-md text-shadow-black/50">
-                    {title}
-                  </span>
-                </div>
-              ))}
+                    <img
+                      src={icon}
+                      alt={title}
+                      className="invert absolute bottom-1/2 right-1/2 translate-1/2 w-[85%] sm:w-3/4 h-[85%] sm:h-3/4 opacity-[0.15] group-hover:opacity-25 object-contain transition-opacity duration-300"
+                    />
+
+                    <span className="relative z-10 text-white! font-bold leading-[140%] text-base sm:text-lg tracking-tight text-shadow-md text-shadow-black/50">
+                      {title}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,11 @@
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { MdPhoneInTalk } from "react-icons/md";
 
+export const mediaLinks = {
+  whatsapp: "https://wa.me/201021387202",
+  phone: "tel:+201021387202",
+};
+
 const socialList = [
   {
     route: "/",

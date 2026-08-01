@@ -302,15 +302,17 @@ button,
 
 @keyframes bg-mover {
   0% {
-    background-position: right bottom;
+    background-position: right;
     background-size: 200%;
   }
+
   50% {
-    background-position: left bottom;
+    background-position: left;
     background-size: 400%;
   }
+
   100% {
-    background-position: right bottom;
+    background-position: right;
     background-size: 200%;
   }
 }
@@ -318,5 +320,21 @@ button,
 .bg-move {
   @media (max-width: 600px) {
     animation: bg-mover 30s ease-in-out infinite;
+  }
+}
+
+.progress-circle {
+  stroke-dasharray: 126;
+  stroke-dashoffset: 126;
+  animation: progressCircle 3s linear infinite;
+}
+
+@keyframes progressCircle {
+  from {
+    stroke-dashoffset: 126;
+  }
+
+  to {
+    stroke-dashoffset: 0;
   }
 }

@@ -9,6 +9,8 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 import { LuCalendarCheck2 } from "react-icons/lu";
 import { TbCalendarTime } from "react-icons/tb";
 
+import waveLine from "../assets/icons/random/wave-line.png";
+
 export default function ChaletDetailsPage() {
   const { chaletNum } = useParams();
   const [chalet, setChalet] = useState({});
@@ -17,6 +19,8 @@ export default function ChaletDetailsPage() {
   const [zoomStyle, setZoomStyle] = useState({});
   const [sheetChaletData, setSheetChaletData] = useState(null);
   const [sheetChaletDataNextM, setSheetChaletDataNextM] = useState(null);
+  const [autoDisplay, setAutoDisplay] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const imgRef = useRef(null);
   const thumbsRef = useRef([]);
@@ -61,6 +65,28 @@ export default function ChaletDetailsPage() {
   const isDesktop = window.innerWidth >= 1024;
   const currentMonth = new Date().getMonth() + 1;
 
+  const mergeValidLists = (current = [], next = []) => {
+    const list = [...current];
+
+    if (list.length && next.length) {
+      const lastCurrent = list[list.length - 1];
+      const firstNext = next[0];
+
+      if (lastCurrent.to.m + 1 === firstNext.from.m && firstNext.from.d === 1) {
+        // ادمج آخر فترة في الشهر الحالي مع أول فترة في الشهر اللي بعده
+        list[list.length - 1] = {
+          from: lastCurrent.from,
+          to: firstNext.to,
+        };
+
+        // رجع باقي فترات الشهر الجديد
+        return [...list, ...next.slice(1)];
+      }
+    }
+
+    return [...list, ...next];
+  };
+
   useEffect(() => {
     let chaletData = chaletsList.find((ch) => ch.num == chaletNum);
     setChalet(chaletData);
@@ -78,7 +104,7 @@ export default function ChaletDetailsPage() {
         sheetChaletList?.[`m${currentMonth + 1}`][`${chaletNum}`],
       );
     }
-  }, [sheetChaletList]);
+  }, [sheetChaletList, chaletNum]);
 
   const currDay = new Date().getDate();
 
@@ -96,10 +122,32 @@ export default function ChaletDetailsPage() {
     }
   }, [imgIndex]);
 
+  useEffect(() => {
+    setImgIndex(0);
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setImgIndex((prev) => (prev + 1) % chalet?.chaletImages?.length);
+    }, 3000);
+
+    if (!autoDisplay) {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [autoDisplay, chaletNum, chalet?.chaletImages?.length]);
+
+  const validRanges = mergeValidLists(
+    sheetChaletData?.validList,
+    sheetChaletDataNextM?.validList,
+  );
+
   return (
     <div className="min-h-dvh flex flex-col bg-primary-100">
-      <ChHeroSec />
-      <div className="flex justify-center -mt-5 pb-20">
+      <ChHeroSec chNum={chalet.num} />
+      <div className="flex justify-center -mt-5 pb-12 md:pb-15">
         <div className="container flex flex-col gap-5">
           {/*//? chImgs and details */}
           <div className="grid grid-cols-5 gap-4">
@@ -109,7 +157,8 @@ export default function ChaletDetailsPage() {
               <div className="relative w-full aspect-5/4 md:aspect-video overflow-hidden">
                 {/*// swiper arrows */}
                 <div
-                  onClick={() => handleImgSwiper("decrease")}
+                  onClick={(e) => handleImgSwiper("decrease")}
+                  onDoubleClick={(e) => e.stopPropagation()}
                   className={clsx(
                     "absolute z-10 bottom-1/2 right-2 translate-y-1/2 rounded-full p-2 transition-opacity duration-300 group bg-linear-to-t from-primary-600 via-20% via-primary-700 to-70% to-primary-800 cursor-pointer hover:opacity-85",
                   )}
@@ -125,52 +174,135 @@ export default function ChaletDetailsPage() {
                     className={clsx(
                       "absolute z-2 top-0 right-0 w-full h-full object-cover transition-all",
                       imgIndex === index
-                        ? "opacity-100 duration-200"
-                        : "opacity-0 -translate-15 -rotate-10 duration-300",
+                        ? "opacity-100 duration-300"
+                        : "opacity-0 -translate-y-25 duration-500",
                     )}
                   />
                 ))}
                 {/*// swiper arrows */}
                 <div
-                  onClick={() => handleImgSwiper("increase")}
+                  onClick={(e) => handleImgSwiper("increase", e)}
+                  onDoubleClick={(e) => e.stopPropagation()}
                   className="absolute z-10 bottom-1/2 left-2 translate-y-1/2 rounded-full p-2 transition-opacity duration-300 group bg-linear-to-t from-primary-600 via-20% via-primary-700 to-70% to-primary-800 cursor-pointer hover:opacity-85"
                 >
                   <IoIosArrowBack className="text-lg md:text-2xl text-white transition-all duration-300 group-hover:-translate-x-0.5 group-hover:scale-105" />
                 </div>
                 {/*// is valid tag */}
-                {sheetChaletData ? (
-                  <div
-                    className={clsx(
-                      `absolute z-10 top-2 right-2 text-sm rounded-full px-4 py-1 transition-opacity duration-300 group cursor-pointer hover:opacity-85 flex items-center gap-1`,
-                      sheetChaletData?.validList?.[0]?.from?.d === currDay
-                        ? tags.available.color
-                        : tags.reserved.color,
-                    )}
-                  >
-                    <img
-                      src={
+                <div className="absolute z-10 top-2 right-2 flex gap-2 flex-wrap">
+                  {sheetChaletData ? (
+                    <div
+                      className={clsx(
+                        `text-sm rounded-full px-4 py-1 transition-opacity duration-300 group cursor-pointer hover:opacity-85 flex items-center gap-1`,
                         sheetChaletData?.validList?.[0]?.from?.d === currDay
-                          ? tags.available.icon
-                          : tags.reserved.icon
-                      }
-                      className="w-4 invert-100"
+                          ? tags.available.color
+                          : tags.reserved.color,
+                      )}
+                    >
+                      <img
+                        src={
+                          sheetChaletData?.validList?.[0]?.from?.d === currDay
+                            ? tags.available.icon
+                            : tags.reserved.icon
+                        }
+                        className="w-4 invert-100"
+                      />
+                      {sheetChaletData?.validList?.[0]?.from?.d === currDay
+                        ? tags.available.name
+                        : tags.reserved.name}
+                    </div>
+                  ) : (
+                    <div
+                      className={clsx(
+                        `rounded-full w-23 h-7 bg-neutral-200 skeleton`,
+                      )}
                     />
-                    {sheetChaletData?.validList?.[0]?.from?.d === currDay
-                      ? tags.available.name
-                      : tags.reserved.name}
-                  </div>
-                ) : (
-                  <div
+                  )}
+                  {chalet?.view?.map(({ name, label, color, icon }) => (
+                    <div
+                      key={name}
+                      className={`px-3 py-1.5 rounded-full text-xs font-bold ${color} flex items-center gap-1`}
+                    >
+                      <img className="w-4 invert-100" src={icon} />
+                      {name}
+                    </div>
+                  ))}
+                </div>
+                {/*// switch auto display */}
+                <div
+                  onDoubleClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    autoDisplay
+                      ? toastInfo("تم إيقاف وضع العرض التلقائ")
+                      : toast.success("تم تفعيل وضع العرض التلقائي");
+                    setAutoDisplay(!autoDisplay);
+                  }}
+                  className={clsx(
+                    "absolute z-10 bottom-4 right-4 p-2 rounded-full cursor-pointer transition-all duration-300 backdrop-blur-sm",
+                    autoDisplay
+                      ? "bg-primary-500 shadow-lg shadow-primary-500/40 ring-2 ring-white/20"
+                      : "bg-black/60 hover:bg-black/80",
+                  )}
+                >
+                  {autoDisplay && isLoaded && (
+                    <svg
+                      className="absolute inset-0 -rotate-90"
+                      viewBox="0 0 48 48"
+                    >
+                      <circle
+                        cx="24"
+                        cy="24"
+                        r="20"
+                        fill="none"
+                        stroke="var(--color-primary-500)"
+                        strokeWidth="3"
+                      />
+
+                      <circle
+                        cx="24"
+                        cy="24"
+                        r="20"
+                        fill="none"
+                        stroke="var(--color-primary-400)"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        className="progress-circle"
+                      />
+                    </svg>
+                  )}
+                  <MdOutlineAutoMode
                     className={clsx(
-                      `absolute z-10 top-2 right-2 rounded-full w-23 h-7 bg-neutral-200 skeleton`,
+                      "text-3xl transition-all duration-300",
+                      autoDisplay
+                        ? "text-white animate-spin [animation-duration:3s]"
+                        : "text-gray-300",
                     )}
                   />
-                )}
+                  {/*// Display Img number */}
+                  <div
+                    className={clsx(
+                      "absolute w-5 h-5 backdrop-blur-sm rounded-full bottom-1/2 right-1/2 translate-1/2",
+                      autoDisplay ? "bg-primary-500/50" : "bg-black/50",
+                    )}
+                  >
+                    {chalet?.chaletImages?.map((_, i) => (
+                      <p
+                        key={i}
+                        className={clsx(
+                          "absolute bottom-1/2 right-1/2 translate-1/2 text-white! transition-all duration-300 select-none",
+                          imgIndex !== i && "opacity-0 scale-200",
+                        )}
+                      >
+                        {i + 1}
+                      </p>
+                    ))}
+                  </div>
+                </div>
               </div>
               {/*//* Chalet images List */}
               <div
                 ref={containerRef}
                 className="relative w-full flex overflow-auto scrollbar-none gap-2 p-1"
+                onDoubleClick={(e) => e.stopPropagation()}
               >
                 {chalet?.chaletImages?.map((chImg, index) => (
                   <div
@@ -179,7 +311,7 @@ export default function ChaletDetailsPage() {
                     className={clsx(
                       "rounded-xl relative w-[calc(25%-6px)] shrink-0 transition-all duration-300 outline-2 outline-offset-1 outline-transparent shadow-lg shadow-transparent",
                       index !== imgIndex &&
-                        "cursor-pointer hover:outline-white! hover:shadow-primary-500!",
+                        "cursor-pointer select-none hover:outline-white! hover:shadow-primary-500!",
                     )}
                     onClick={() => setImgIndex(index)}
                   >
@@ -187,7 +319,7 @@ export default function ChaletDetailsPage() {
                       src={chImg}
                       alt="chalet-details-img"
                       className={clsx(
-                        "w-full aspect-5/4 md:aspect-video object-cover rounded-xl",
+                        "w-full select-non aspect-5/4 md:aspect-video object-cover rounded-xl",
                       )}
                     />
                     <div
@@ -199,7 +331,7 @@ export default function ChaletDetailsPage() {
                       )}
                     >
                       <img
-                        className="h-6/10 invert-100 opacity-90"
+                        className="h-6/10 invert-100 opacity-90 select-none"
                         src={selectIcon}
                         alt="select-icon"
                       />
@@ -279,6 +411,44 @@ export default function ChaletDetailsPage() {
                   </div>
                 </div>
                 {/*//* Divider */}
+                <div className="w-[85%] border-t-5 border-dashed rounded-[100%] border-primary-500/10"></div>
+                {/*//* Ch infos */}
+                <div className="flex flex-col gap-2 px-7 py-4 w-full">
+                  <h3 className="font-semibold text-lg sm:text-xl">
+                    معلومات الشالية
+                  </h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    {chalet?.infos?.map(({ title, icon }, index) => (
+                      <div
+                        key={index}
+                        className="group relative flex flex-col items-center justify-start gap-2 overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-primary-300/10 p-6 text-center shadow-lg shadow-primary-300/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary-300/40"
+                      >
+                        {/* خلفية الأيقونة */}
+                        <img
+                          className="absolute gold-img-filter inset-0 z-0 h-full w-full object-contain opacity-10 transition-all duration-500 group-hover:scale-110 group-hover:opacity-20"
+                          src={icon}
+                          alt="ch-infos-icon"
+                        />
+
+                        {/* طبقة تدرج خفيفة لتحسين تباين النص */}
+                        <div className="absolute inset-0 z-1 bg-linear-to-t from-primary-300/20 via-primary-200/15 to-transparent" />
+
+                        {/* الأيقونة الصغيرة الظاهرة */}
+                        <img
+                          className="relative z-2 h-12 w-12 object-contain drop-shadow-md transition-translate duration-300 gold-img-filter group-hover:-translate-y-2"
+                          src={icon}
+                          alt=""
+                        />
+
+                        {/* العنوان */}
+                        <p className="relative z-2 text-lg font-semibold text-shadow-lg text-shadow-primary-600/40 tracking-wide text-white! drop-shadow-sm">
+                          {title}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/*//* Divider */}
                 <div className="w-[85%] border-t-2 rounded-[100%] border-primary-500/10"></div>
                 {/*//* valid time */}
                 <div className="flex flex-col gap-3 px-7 py-4 w-full">
@@ -287,26 +457,83 @@ export default function ChaletDetailsPage() {
                   </h3>
                   {sheetChaletData ? (
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 w-full">
-                      {sheetChaletData?.validList
-                        ?.concat(sheetChaletDataNextM?.validList)
-                        .map(({ from, to }, index) => (
-                          <div
-                            key={index}
-                            className="bg-white px-3 py-2 rounded-lg flex items-center justify-between gap-2"
-                          >
-                            <p className="text-green-700! font-semibold text-sm text-shadow-lg text-shadow-green-700/10">
-                              {from.d} {getMonthName(from.m)} - {to.d}{" "}
-                              {getMonthName(from.m)}{" "}
-                            </p>
-                            <p className="text-xs text-green-700! shrink-0">
-                              {handleNumbers(
-                                "ليلة",
-                                "ليالي",
-                                to.d - from.d + 1,
-                              )}
-                            </p>
-                          </div>
-                        ))}
+                      {validRanges.map(({ from, to }, index) => (
+                        <div
+                          key={index}
+                          className="bg-white px-4 xl:px-2 py-3 rounded-lg flex items-center justify-between gap-2"
+                        >
+                          {from.d === to.d && from.m === to.m ? (
+                            from.d === currDay && from.m === currentMonth ? (
+                              <p className="text-green-700! font-semibold text-sm whitespace-nowrap">
+                                متاح اليوم ( {from.d}
+                                <span className="relative">
+                                  <span className="relative z-2 text-green-700! font-semibold text-sm">
+                                    {getMonthName(from.m)}
+                                  </span>
+                                  <span className="absolute z-1 bottom-1/2 opacity-20 right-1/2 translate-1/2 text-4xl font-bold leading-[100%] bg-linear-to-br from-green-700/80 via-green-600 to-green-700/80 bg-clip-text text-transparent!">
+                                    {from.m}
+                                  </span>
+                                </span>
+                                )
+                              </p>
+                            ) : (
+                              <p className="text-green-700! font-semibold text-sm whitespace-nowrap">
+                                متاح في يوم ( {from.d}
+                                <span className="relative">
+                                  <span className="relative z-2 text-green-700! font-semibold text-sm">
+                                    {getMonthName(from.m)}
+                                  </span>
+                                  <span className="absolute z-1 bottom-1/2 opacity-20 right-1/2 translate-1/2 text-4xl font-bold leading-[100%] bg-linear-to-br from-green-700/80 via-green-600 to-green-700/80 bg-clip-text text-transparent!">
+                                    {from.m}
+                                  </span>
+                                </span>
+                                )
+                              </p>
+                            )
+                          ) : (
+                            <div className="flex items-center gap-1">
+                              <p className="text-green-700! font-semibold text-sm whitespace-nowrap">
+                                {from.d}{" "}
+                                <span className="relative">
+                                  <span className="relative z-2 text-green-700! font-semibold text-sm">
+                                    {getMonthName(from.m)}
+                                  </span>
+                                  <span className="absolute z-1 bottom-1/2 opacity-20 right-1/2 translate-1/2 text-4xl font-bold leading-[100%] bg-linear-to-br from-green-700/80 via-green-600 to-green-700/80 bg-clip-text text-transparent!">
+                                    {from.m}
+                                  </span>
+                                </span>
+                              </p>
+                              <img
+                                src={waveLine}
+                                alt=""
+                                className="w-3.5 h-4"
+                              />
+                              <p className="text-green-700! font-semibold text-sm whitespace-nowrap">
+                                {to.d}{" "}
+                                <span className="relative">
+                                  <span className="relative z-2 text-green-700! font-semibold text-sm">
+                                    {getMonthName(to.m)}
+                                  </span>
+                                  <span className="absolute z-1 bottom-1/2 opacity-20 right-1/2 translate-1/2 text-4xl font-bold leading-[100%] bg-linear-to-br from-green-700/80 via-green-600 to-green-700/80 bg-clip-text text-transparent!">
+                                    {to.m}
+                                  </span>
+                                </span>
+                              </p>
+                            </div>
+                          )}
+                          <p className="text-xs text-green-700 shrink-0">
+                            {handleNumbers(
+                              "ليلة",
+                              "ليالي",
+                              Math.floor(
+                                (new Date(2026, to.m - 1, to.d) -
+                                  new Date(2026, from.m - 1, from.d)) /
+                                  (1000 * 60 * 60 * 24),
+                              ) + 1,
+                            )}
+                          </p>
+                        </div>
+                      ))}
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 w-full">
@@ -328,8 +555,7 @@ export default function ChaletDetailsPage() {
                   </h3>
 
                   {[currentMonth, currentMonth + 1].map((month) => {
-                    const days = getNumOfDays(new Date(2026, currentMonth - 1));
-
+                    const days = getNumOfDays(new Date(2026, month - 1));
                     return (
                       <div key={month} className="space-y-3">
                         <h4 className="font-bold text-primary-600">
@@ -363,7 +589,7 @@ export default function ChaletDetailsPage() {
                                     ? "opacity-100"
                                     : " skeleton bg-neutral-200 text-neutral-200!",
                                   isAvailable
-                                    ? "bg-green-500 text-white"
+                                    ? "bg-green-600 text-white"
                                     : "bg-neutral-100 text-neutral-400",
                                   isToday &&
                                     sheetChaletData &&
@@ -404,10 +630,13 @@ export default function ChaletDetailsPage() {
                     احجز الأن
                   </div>
                   {/*//TODO>> Whatsapp link */}
-                  <button className="btn bg-transparent border-primary-300/50 rounded-lg">
+                  <Link
+                    to=""
+                    className="btn bg-transparent border-primary-300/50 rounded-lg"
+                  >
                     <FaWhatsapp />
                     تواصل عبر واتساب
-                  </button>
+                  </Link>
                 </div>
                 {/*// Absolute Divider */}
                 <div className="absolute top-0 right-1/2 translate-x-1/2 w-full h-10 rounded-b-[100%] border-primary-300/50 bg-[#cbedff] bg-linear-to-b from-primary-[#cbedff] via-[#cbedff] to-primary-200/50"></div>
@@ -496,7 +725,7 @@ export default function ChaletDetailsPage() {
   );
 }
 
-import { MdOutlineArrowBackIos } from "react-icons/md";
+import { MdOutlineArrowBackIos, MdOutlineAutoMode } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import logo from "../assets/icons/logo2.png";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -512,13 +741,25 @@ import { useSheetChaletsList } from "../store";
 import { date } from "yup";
 import { getMonthName, getNumOfDays } from "../utils/dateHelpers";
 import { handleNumbers } from "../utils/textFormate";
+import { BiInfoCircle } from "react-icons/bi";
+import { toastInfo } from "../utils/toast";
 
-function ChHeroSec() {
+function ChHeroSec({ chNum }) {
   return (
-    <div className="flex justify-center pt-17 pb-22 bg-[linear-gradient(to_top,var(--color-primary-100)_0%,#d8f2ff60_35%,rgba(0,0,0,0.10)70%,rgba(0,0,0,0.25)100%),url('/images/chaletHeroSec.png')] bg-right md:bg-top bg-move bg-cover">
+    <div className="flex justify-center pt-17 pb-22 bg-[linear-gradient(to_top,var(--color-primary-100)_0%,#d8f2ff60_35%,rgba(0,0,0,0.10)70%,rgba(0,0,0,0.25)100%),url('/images/chaletHeroSec.png')] md:bg-top bg-move bg-cover">
       <div className="container flex flex-col items-center text-center">
-        <img src={logo} alt="logo-icon" className="w-40" />
-        <div className="flex flex-col items-center text-center gap-2">
+        <div className="relative w-full flex justify-center">
+          <img src={logo} alt="logo-icon" className="w-40 z-2" />
+          <h3
+            className="absolute z-1 bottom-0 right-1/2 translate-1/2 text-8xl font-black opacity-50
+             bg-linear-to-b from-primary-600 via-[#d9bf7a] to-secondary-600
+             bg-clip-text text-transparent!
+             drop-shadow-[0_2px_10px_rgba(180,143,73,0.35)]"
+          >
+            {chNum}
+          </h3>
+        </div>
+        <div className="z-5 flex flex-col items-center text-center gap-2">
           <h1
             className="text-4xl sm:text-5xl font-black bg-clip-text text-transparent! leading-[120%] drop-shadow-[0_2px_12px_rgba(255,255,255,.15)]"
             style={{
@@ -570,7 +811,7 @@ function ChHeroSec() {
       <Link
         to="/chalets"
         className={clsx(
-          "fixed z-30 bottom-17 right-5 bg-primary-500 p-2 rounded-full shadow-lg hover:shadow-primary-500/50 transition-all duration-300 hover:bg-primary-500/80 cursor-pointer group backdrop-blur-[2px]",
+          "fixed z-30 bottom-29 right-5 bg-primary-400 p-2 rounded-full shadow-lg hover:shadow-primary-500/50 transition-all duration-300 hover:bg-primary-500/80 cursor-pointer group backdrop-blur-[2px]",
         )}
       >
         <PiWarehouse

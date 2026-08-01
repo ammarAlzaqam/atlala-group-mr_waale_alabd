@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { Turn as Hamburger } from "hamburger-react";
 import navLinks from "../../constants/navLinks";
 import SideBar from "./SideBar";
+import { mediaLinks } from "../../constants/social";
 
 export default function Header() {
   const [isOpen, setOpen] = useState(false);
@@ -50,7 +51,7 @@ export default function Header() {
         </nav>
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="tel:+201021387202"
+            href={mediaLinks.phone}
             className="btn media flex items-center gap-2 border bg-transparent border-accent-500 py-1.5 px-3 rounded-lg"
           >
             <FaPhone className="text-sm md:text-lg text-accent-200" />
@@ -60,7 +61,7 @@ export default function Header() {
           </a>
 
           <a
-            href="https://wa.me/201021387202"
+            href={mediaLinks.whatsapp}
             target="_blank"
             className="btn light media flex items-center gap-2 bg-accent-500 border border-accent-500 py-1.5 px-3 rounded-lg"
           >

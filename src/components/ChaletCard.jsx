@@ -9,8 +9,8 @@ import { tags } from "../constants/chalets";
 import { getMonthName, getNumOfDays } from "../utils/dateHelpers";
 
 export default function ChaletCard({ ch }) {
-  const [sheetChaletData, setSheetChaletData] = useState({});
-  const [sheetChaletDataNextM, setSheetChaletDataNextM] = useState({});
+  const [sheetChaletData, setSheetChaletData] = useState(null);
+  const [sheetChaletDataNextM, setSheetChaletDataNextM] = useState(null);
   const favorites = useFavorites((state) => state.favorites);
   const toggleFavorites = useFavorites((state) => state.toggleFavorites);
 
@@ -45,39 +45,45 @@ export default function ChaletCard({ ch }) {
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             alt="chalet-cover-img"
           />
-          {/* view */}
-          <div className="absolute top-4 right-4 flex flex-col gap-2">
-            <div
-              key={ch.view.name}
-              className={`px-3 py-1.5 rounded-full text-xs font-bold ${ch.view.color} flex items-center gap-1`}
-            >
-              <img className="w-4 invert-100" src={ch.view.icon} />
-              {ch.view.name}
-            </div>
+          {/* view & isValid */}
+          <div className="absolute top-4 right-4 flex flex-wrap *:shrink-0 gap-2">
             {/*// is valid tag */}
-            <div
-              className={clsx(
-                `text-sm rounded-full px-4 py-1 transition-opacity duration-300 group cursor-pointer hover:opacity-85 flex items-center gap-1`,
-                sheetChaletData?.validList?.length > 0 &&
-                  sheetChaletData?.validList[0].from?.d === currDay
-                  ? tags.available.color
-                  : tags.reserved.color,
-              )}
-            >
-              <img
-                src={
+            {sheetChaletData ? (
+              <div
+                className={clsx(
+                  `text-sm rounded-full px-4 py-1 transition-opacity duration-300 group cursor-pointer hover:opacity-85 flex items-center gap-1`,
                   sheetChaletData?.validList?.length > 0 &&
-                  sheetChaletData?.validList[0].from?.d === currDay
-                    ? tags.available.icon
-                    : tags.reserved.icon
-                }
-                className="w-4 invert-100"
-              />
-              {sheetChaletData?.validList?.length > 0 &&
-              sheetChaletData?.validList[0].from?.d === currDay
-                ? tags.available.name
-                : tags.reserved.name}
-            </div>
+                    sheetChaletData?.validList[0].from?.d === currDay
+                    ? tags.available.color
+                    : tags.reserved.color,
+                )}
+              >
+                <img
+                  src={
+                    sheetChaletData?.validList?.length > 0 &&
+                    sheetChaletData?.validList[0].from?.d === currDay
+                      ? tags.available.icon
+                      : tags.reserved.icon
+                  }
+                  className="w-4 invert-100"
+                />
+                {sheetChaletData?.validList?.length > 0 &&
+                sheetChaletData?.validList[0].from?.d === currDay
+                  ? tags.available.name
+                  : tags.reserved.name}
+              </div>
+            ) : (
+              <div className="rounded-full w-22 h-8 skeleton" />
+            )}
+            {ch.view.map(({ name, label, color, icon }) => (
+              <div
+                key={name}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold ${color} flex items-center gap-1`}
+              >
+                <img className="w-4 invert-100" src={icon} />
+                {name}
+              </div>
+            ))}
           </div>
           {/* favorite */}
           <div
@@ -149,35 +155,45 @@ export default function ChaletCard({ ch }) {
             </div>
           </div>
 
-          {/* valid or not and view details */}
+          {/* valid or not */}
           <div className="flex items-center justify-between gap-5">
-            {sheetChaletData?.validList?.[0]?.from?.d === currDay ? (
-              <div className="flex items-center gap-1">
-                <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-green-600!">
-                  متاح حتي يوم {lastValid?.to} {getMonthName(lastValid.m)}
-                </span>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <FaRegHourglass className="text-sm text-red-500 shrink-0" />
-                {lastValid?.from === lastValid?.to ? (
-                  <span className="text-xs sm:text-sm font-semibold text-red-500!">
-                    متاح في يوم {lastValid?.from} {getMonthName(lastValid?.m)}
-                  </span>
+            {sheetChaletData ? (
+              sheetChaletData?.validList?.[0]?.from?.d === currDay ? (
+                firstValid?.from === firstValid?.to ? (
+                  <div className="flex items-center gap-1">
+                    <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
+                    <span className="text-xs sm:text-sm font-semibold text-green-600!">
+                      متاح اليوم
+                    </span>
+                  </div>
                 ) : (
-                  <span className="text-xs sm:text-sm font-semibold text-red-500!">
-                    متاح من يوم {lastValid?.from} {getMonthName(lastValid?.m)}{" "}
-                    حتي يوم {lastValid?.to}{" "}
-                    {getMonthName(
-                      sheetChaletData?.validFromToDay?.data?.[
-                        sheetChaletData?.validFromToDay?.data.length - 1
-                      ].m,
-                    )}
-                  </span>
-                )}
-              </div>
+                  <div className="flex items-center gap-1">
+                    <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
+                    <span className="text-xs sm:text-sm font-semibold text-green-600!">
+                      متاح حتي يوم {lastValid?.to}~{getMonthName(lastValid.m)}
+                    </span>
+                  </div>
+                )
+              ) : (
+                <div className="flex items-center gap-2">
+                  <FaRegHourglass className="text-sm text-red-500 shrink-0" />
+                  {firstValid?.from === firstValid?.to ? (
+                    <span className="text-xs sm:text-sm font-semibold text-red-500!">
+                      متاح في يوم {firstValid?.from}~
+                      {getMonthName(firstValid?.m)}
+                    </span>
+                  ) : (
+                    <span className="text-xs sm:text-sm font-semibold text-red-500!">
+                      متاح من يوم {firstValid?.from}~{firstValid?.m} حتي يوم{" "}
+                      {lastValid?.to}~{lastValid?.m}
+                    </span>
+                  )}
+                </div>
+              )
+            ) : (
+              <div className="w-full max-w-55 h-7 skeleton" />
             )}
+
             <Link to={`/chalets/${ch.num}`} className="shrink-0">
               <button className="btn text-white! bg-accent-600 rounded-xl">
                 عرض التفاصيل

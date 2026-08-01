@@ -3,14 +3,34 @@ import filtersIcon from "../../assets/icons/chalets/filters/filters.png";
 import {
   advList,
   areasList,
+  beds,
+  classificationList,
+  floors,
+  floorsList,
   roomsList,
   viewOptions,
 } from "../../constants/chalets";
-import { useAdv, useArea, usePriceRange, useRoom, useView } from "../../store";
+import {
+  useAdv,
+  useArea,
+  useArriveDate,
+  useBed,
+  useClassification,
+  useFloor,
+  useLiveDate,
+  usePriceRange,
+  useRoom,
+  useView,
+} from "../../store";
 import clsx from "clsx";
 
 export default function Filters() {
   const [open, setOpen] = useState(false);
+  const [classificationValue, setClassificationValue] = useState("");
+  const arriveDate = useArriveDate((state) => state.arriveDate);
+  const setArriveDate = useArriveDate((state) => state.setArriveDate);
+  const liveDate = useLiveDate((state) => state.liveDate);
+  const setLiveDate = useLiveDate((state) => state.setLiveDate);
   const priceRange = usePriceRange((state) => state.priceRange);
   const setPriceRange = usePriceRange((state) => state.setPriceRange);
 
@@ -22,9 +42,20 @@ export default function Filters() {
   const setArea = useArea((state) => state.setArea);
   const room = useRoom((state) => state.room);
   const setRoom = useRoom((state) => state.setRoom);
+  const classification = useClassification((state) => state.classification);
+  const setClassification = useClassification(
+    (state) => state.setClassification,
+  );
+  const bed = useBed((state) => state.bed);
+  const setBed = useBed((state) => state.setBed);
+  const floor = useFloor((state) => state.floor);
+  const setFloor = useFloor((state) => state.setFloor);
 
   const arrivalDateRef = useRef(null);
   const departureDateRef = useRef(null);
+
+  const calendarArriveRef = useRef(null);
+  const calendarLiveRef = useRef(null);
 
   const collectSelectedAdv = (label) => {
     const exists = adv.find((advLabel) => advLabel === label);
@@ -45,16 +76,45 @@ export default function Filters() {
     else setRoom(label);
   };
 
+  const handelClearFilters = (e) => {
+    e.stopPropagation();
+    setArriveDate("");
+    setLiveDate("");
+    setPriceRange([1800, 8500]);
+    setView("");
+    setAdv([]);
+    setArea("");
+    setRoom("");
+    setClassification("");
+  };
+
+  const noFilters = useMemo(
+    () =>
+      !arriveDate &&
+      !liveDate &&
+      priceRange[0] === 1800 &&
+      priceRange[1] === 8500 &&
+      !view &&
+      adv.length === 0 &&
+      !area &&
+      !room &&
+      !classification,
+    [arriveDate, liveDate, priceRange, view, adv, area, room, classification],
+  );
+
   useEffect(() => {
     handelRoomsNum(room);
   }, [area]);
 
   return (
-    <div className="z-30 sticky top-18 md:top-22.25 w-full md:w-70 lg:w-100 shrink-0 bg-white border border-neutral-300/50 rounded-xl flex flex-col">
+    <div
+      onDoubleClick={(e) => e.stopPropagation()}
+      className="z-30 sticky top-18 md:top-20 w-full md:w-70 lg:w-100 shrink-0 bg-white border border-neutral-300/50 rounded-xl flex flex-col"
+    >
       {/*//* title */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center justify-between gap-4 p-4 pt-6 cursor-pointer md:cursor-auto group"
+        className="flex items-center justify-between gap-4 p-4 lg:pt-6 cursor-pointer md:cursor-auto group"
       >
         <p className="text-primary-600!">تصفية النتائج</p>
         <div className="flex items-center grow md:grow-0 justify-between gap-3">
@@ -63,12 +123,25 @@ export default function Filters() {
             alt="filter-icon"
             className="blue-img-filter w-6"
           />
-          <IoIosArrowUp
-            className={clsx(
-              "flex md:hidden md:pointer-events-none cursor-pointer transition-transform group-hover:scale-110",
-              !open && "rotate-180",
-            )}
-          />
+          <div className="flex items-center gap-2">
+            <div
+              className={clsx(
+                "btn h-8 flex items-center gap-1 transition-opacity duration-300",
+                noFilters && "opacity-50 pointer-events-none",
+              )}
+              onClick={(e) => handelClearFilters(e)}
+              onDoubleClick={(e) => e.stopPropagation()}
+            >
+              <MdOutlineFilterAltOff className="text-secondary-500!" />
+              <span>مسح</span>
+            </div>
+            <IoIosArrowUp
+              className={clsx(
+                "flex md:hidden md:pointer-events-none cursor-pointer transition-transform group-hover:scale-110",
+                !open && "rotate-180",
+              )}
+            />
+          </div>
         </div>
       </button>
       {/*//* filters */}
@@ -76,7 +149,7 @@ export default function Filters() {
         className={clsx(
           "flex flex-col gap-6 transition-all duration-300 px-4 md:max-h-[calc(100dvh-170px)] md:overflow-auto md:pt-2 md:pb-6",
           open
-            ? "max-h-[calc(100dvh-170px)] overflow-auto pt-2 pb-6"
+            ? "max-h-[calc(100dvh-150px)] md:max-h-[calc(100dvh-170px)] overflow-auto pt-2 pb-6"
             : "max-h-0 py-0 overflow-hidden md:max-h-[calc(100dvh-170px)] md:overflow-auto",
         )}
       >
@@ -92,17 +165,20 @@ export default function Filters() {
             >
               تاريخ الوصول
             </label>
-            <input
-              ref={arrivalDateRef}
-              name="arrivalDate"
-              type="date"
-              id="arrival"
-              className="input w-fit h-12 focus:outline-none rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] px-4 transition-colors focus:border-accent-500"
-            />
-            <FaRegCalendarAlt
-              onClick={() => arrivalDateRef.current?.showPicker()}
-              className="absolute bottom-4 right-4 text-primary-500 cursor-pointer"
-            />
+            <div className="relative">
+              <DatePicker
+                id="arrive-date"
+                date={arriveDate}
+                setDate={setArriveDate}
+                calendarRef={calendarArriveRef}
+              />
+              <FaRegCalendarAlt
+                className={clsx(
+                  "absolute pointer-events-none bottom-1/2 right-1.5 translate-y-1/2 cursor-pointer transition-colors duration-300",
+                  arriveDate ? "text-primary-500!" : "text-secondary-500!",
+                )}
+              />
+            </div>
           </div>
           {/* departure date */}
           <div className="relative w-fit sm:w-auto flex flex-col gap-1.5">
@@ -112,17 +188,177 @@ export default function Filters() {
             >
               تاريخ المغادرة
             </label>
-            <input
-              name="departureDate"
-              type="date"
-              id="departure"
-              ref={departureDateRef}
-              className="input w-fit h-12 focus:outline-none rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] px-4 transition-colors focus:border-accent-500"
-            />
-            <FaRegCalendarAlt
-              onClick={() => departureDateRef.current?.showPicker()}
-              className="absolute bottom-4 right-4 text-primary-500 cursor-pointer"
-            />
+            <div className="relative">
+              <DatePicker
+                id="live-date"
+                date={liveDate}
+                setDate={setLiveDate}
+                calendarRef={calendarLiveRef}
+              />
+              <FaRegCalendarAlt
+                className={clsx(
+                  "absolute pointer-events-none bottom-1/2 right-1.5 translate-y-1/2 cursor-pointer transition-colors duration-300",
+                  liveDate ? "text-primary-500!" : "text-secondary-500!",
+                )}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className={clsx(
+            "flex flex-col transition-all duration-300",
+            area ? "gap-6" : "gap-0",
+          )}
+        >
+          {/*//* Filter by areas */}
+          <div className="flex flex-col gap-2">
+            <h3 className="font-bold text-neutral-800!">المساحة</h3>
+            <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2">
+              {areasList.map((a) => (
+                <button
+                  key={a.label}
+                  className={clsx(
+                    "py-2 rounded-lg border flex flex-col justify-center items-center gap-2 cursor-pointer transition-all duration-300",
+                    area === a.label
+                      ? "border-primary-600/50"
+                      : "border-[#E2E8F0] hover:shadow-lg hover:shadow-primary-500/30",
+                  )}
+                  onClick={() =>
+                    area === a.label ? setArea(null) : setArea(a.label)
+                  }
+                >
+                  <img
+                    className={clsx(
+                      "w-8 h-8 object-contain",
+                      area === a.label
+                        ? "blue-img-filter"
+                        : "grayscale-100 opacity-50",
+                    )}
+                    src={a.icon}
+                    alt="brand-img"
+                  />
+                  <span
+                    className={clsx(
+                      "font-medium text-xs leading-4 transition-colors duration-300",
+                      area === a.label
+                        ? "text-primary-600!"
+                        : "text-secondary-400!",
+                    )}
+                  >
+                    {a.name}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+          {/*//* Filter by beds */}
+          <div className={clsx("transition-all duration-300")}>
+            <div
+              className={clsx(
+                "flex flex-col gap-2 transition-all duration-300",
+                area
+                  ? "max-h-200 overflow-y-auto"
+                  : "max-h-0 overflow-y-hidden",
+              )}
+            >
+              <h3 className="font-bold text-neutral-800!">السراير</h3>
+              <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                {beds.map((bedItem, index) => (
+                  <BedCard
+                    key={index}
+                    bedItem={bedItem}
+                    index={index}
+                    bed={bed}
+                    setBed={setBed}
+                    area={area}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*//* Filter by classification */}
+        <div className="flex flex-col gap-2">
+          <h3 className="font-bold text-neutral-800!">الفئة</h3>
+          <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2">
+            {classificationList.map(({ label, title, icon }) => (
+              <button
+                key={label}
+                className={clsx(
+                  "py-2 rounded-lg border flex flex-col justify-center items-center gap-2 cursor-pointer transition-all duration-300",
+                  classification === label
+                    ? "border-accent-600/50"
+                    : "border-[#E2E8F0] hover:shadow-lg hover:shadow-accent-500/30",
+                )}
+                onClick={() =>
+                  classification === label
+                    ? setClassification(null)
+                    : setClassification(label)
+                }
+              >
+                <img
+                  className={clsx(
+                    "w-8 h-8 object-contain",
+                    classification === label
+                      ? "gold-img-filter"
+                      : "grayscale-100 opacity-50",
+                  )}
+                  src={icon}
+                  alt="brand-img"
+                />
+                <span
+                  className={clsx(
+                    "font-medium text-xs leading-4 transition-colors duration-300",
+                    classification === label
+                      ? "text-accent-600!"
+                      : "text-secondary-400!",
+                  )}
+                >
+                  {title}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+        {/*//* Filter by floor */}
+        <div className="flex flex-col gap-2">
+          <h3 className="font-bold text-neutral-800!">الطابق</h3>
+          <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2">
+            {floorsList.map(({ label, title, icon }) => (
+              <button
+                key={label}
+                className={clsx(
+                  "py-2 rounded-lg border flex flex-col justify-center items-center gap-2 cursor-pointer transition-all duration-300",
+                  floor === label
+                    ? "border-accent-600/50"
+                    : "border-[#E2E8F0] hover:shadow-lg hover:shadow-accent-500/30",
+                )}
+                onClick={() =>
+                  floor === label ? setFloor(null) : setFloor(label)
+                }
+              >
+                <img
+                  className={clsx(
+                    "w-8 h-8 object-contain",
+                    floor === label
+                      ? "gold-img-filter"
+                      : "grayscale-100 opacity-50",
+                  )}
+                  src={icon}
+                  alt="brand-img"
+                />
+                <span
+                  className={clsx(
+                    "font-medium text-xs leading-4 transition-colors duration-300",
+                    floor === label
+                      ? "text-accent-600!"
+                      : "text-secondary-400!",
+                  )}
+                >
+                  {title}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
         {/*//* Filter By View */}
@@ -215,47 +451,6 @@ export default function Filters() {
             ))}
           </div>
         </div>
-        {/*//* Filter by areas */}
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-neutral-800!">المساحة</h3>
-          <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2">
-            {areasList.map((a) => (
-              <button
-                key={a.label}
-                className={clsx(
-                  "py-2 rounded-lg border flex flex-col justify-center items-center gap-2 cursor-pointer transition-all duration-300",
-                  area === a.label
-                    ? "border-accent-600/50"
-                    : "border-[#E2E8F0] hover:shadow-lg hover:shadow-accent-500/30",
-                )}
-                onClick={() =>
-                  area === a.label ? setArea(null) : setArea(a.label)
-                }
-              >
-                <img
-                  className={clsx(
-                    "w-8 h-8 object-contain",
-                    area === a.label
-                      ? "gold-img-filter"
-                      : "grayscale-100 opacity-50",
-                  )}
-                  src={a.icon}
-                  alt="brand-img"
-                />
-                <span
-                  className={clsx(
-                    "font-medium text-xs leading-4 transition-colors duration-300",
-                    area === a.label
-                      ? "text-accent-600!"
-                      : "text-secondary-400!",
-                  )}
-                >
-                  {a.name}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
         {/*//* Filter By rooms num */}
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-neutral-800!">الغرف</h3>
@@ -331,8 +526,10 @@ export default function Filters() {
 }
 
 import { Range, getTrackBackground } from "react-range";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
+import { getTodayString } from "../../utils/dateHelpers";
+import { MdOutlineFilterAltOff } from "react-icons/md";
 const PriceRange = ({ values, setValues }) => {
   return (
     <div className="flex flex-col gap-2" dir="ltr">
@@ -381,5 +578,119 @@ const PriceRange = ({ values, setValues }) => {
         </p>
       </div>
     </div>
+  );
+};
+
+function DatePicker({ date, setDate, calendarRef, id }) {
+  const popoverRef = useRef();
+  const today = getTodayString();
+
+  const arriveDate = useArriveDate((state) => state.arriveDate);
+  const liveDate = useLiveDate((state) => state.liveDate);
+
+  useEffect(() => {
+    const calendar = calendarRef.current;
+
+    const handleChange = () => {
+      setDate(calendar.value);
+
+      requestAnimationFrame(() => {
+        popoverRef.current?.hidePopover();
+      });
+    };
+
+    calendar.addEventListener("change", handleChange);
+
+    return () => {
+      calendar.removeEventListener("change", handleChange);
+    };
+  }, []);
+
+  return (
+    <>
+      <button
+        popoverTarget={id}
+        className={clsx(
+          "input pr-7",
+          date ? "text-primary-500!" : "text-secondary-500!",
+        )}
+        style={{ anchorName: `--${id}` }}
+      >
+        {date || "اختر التاريخ"}
+      </button>
+
+      <div
+        id={id}
+        ref={popoverRef}
+        popover="auto"
+        className="dropdown bg-base-100 rounded-box shadow-lg"
+        style={{ positionAnchor: `--${id}` }}
+      >
+        <calendar-date
+          ref={calendarRef}
+          class="cally"
+          min={id === "arrive-date" ? today : arriveDate || today}
+          max={id === "live-date" ? undefined : liveDate || undefined}
+        >
+          <calendar-month />
+        </calendar-date>
+      </div>
+    </>
+  );
+}
+
+const BedCard = ({ bedItem, index, bed, setBed, area }) => {
+  const bedValue =
+    index === 1 || index === 3
+      ? !area || area === 48
+        ? bedItem.sm
+        : bedItem.xl
+      : bedItem;
+
+  const isDisabled =
+    (area === 48 && [2, 4].includes(index)) ||
+    (area === 75 && index === 4) ||
+    (area === 96 && index !== 4) ||
+    !area;
+
+  useEffect(() => {
+    if ((isDisabled && bed === bedValue.label) || !area) {
+      setBed("");
+    }
+  }, [isDisabled, bed, bedValue.label]);
+
+  return (
+    <button
+      key={bedValue.label}
+      className={clsx(
+        "py-2 rounded-lg border flex flex-col justify-center items-center gap-2 cursor-pointer transition-all duration-300",
+        bed === bedValue.label
+          ? "border-primary-600/50"
+          : "border-[#E2E8F0] hover:shadow-lg hover:shadow-primary-500/30",
+        isDisabled && "opacity-40 pointer-events-none scale-75",
+      )}
+      onClick={() =>
+        bed === bedValue.label ? setBed(null) : setBed(bedValue.label)
+      }
+    >
+      <img
+        className={clsx(
+          "w-8 h-8 object-contain",
+          bed === bedValue.label
+            ? "blue-img-filter"
+            : "grayscale-100 opacity-50",
+        )}
+        src={bedValue.icon}
+        alt="brand-img"
+      />
+      <span
+        className={clsx(
+          "font-medium text-xs leading-4 transition-colors duration-300",
+          bed === bedValue.label ? "text-primary-600!" : "text-secondary-400!",
+        )}
+      >
+        {bedValue.title}
+      </span>
+    </button>
   );
 };
