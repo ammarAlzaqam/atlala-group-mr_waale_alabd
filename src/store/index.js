@@ -88,10 +88,30 @@ export const usePageNumber = create((set) => ({
     })),
 }));
 
-export const useSheetChaletsList = create((set) => ({
-  sheetChaletList: {},
-  setSheetChaletList: (newValue) => set(() => ({ sheetChaletList: newValue })),
-}));
+export const useSheetChaletsList = create(
+  persist(
+    (set) => ({
+      sheetChaletList: {},
+      setSheetChaletList: (newValue) =>
+        set(() => ({ sheetChaletList: newValue })),
+    }),
+    {
+      name: "sheet_chalets_storage",
+    },
+  ),
+);
+
+export const useSheetNotes = create(
+  persist(
+    (set) => ({
+      setSheetNotes: {},
+      setSheetNotes: (newValue) => set(() => ({ sheetNots: newValue })),
+    }),
+    {
+      name: "sheet_notes_storage",
+    },
+  ),
+);
 
 export const useFastSearch = create(
   persist(

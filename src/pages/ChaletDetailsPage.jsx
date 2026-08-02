@@ -98,7 +98,7 @@ export default function ChaletDetailsPage() {
 
     const date = new Date();
     const currentMonth = date.getMonth() + 1;
-    if (sheetChaletList?.m7) {
+    if (sheetChaletList?.[`m${currentMonth}`]) {
       setSheetChaletData(sheetChaletList?.[`m${currentMonth}`][`${chaletNum}`]);
       setSheetChaletDataNextM(
         sheetChaletList?.[`m${currentMonth + 1}`][`${chaletNum}`],

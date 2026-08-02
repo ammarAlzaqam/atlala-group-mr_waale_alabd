@@ -571,10 +571,10 @@ const PriceRange = ({ values, setValues }) => {
 
       <div className="flex items-center justify-between">
         <p className="font-medium text-sm leading-5 text-primary-500">
-          ${values[0].toLocaleString()}
+          {values[0].toLocaleString()} EGP
         </p>
         <p className="font-medium text-sm leading-5 text-primary-500">
-          ${values[1].toLocaleString()}
+          {values[1].toLocaleString()} EGP
         </p>
       </div>
     </div>

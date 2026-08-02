@@ -11,15 +11,18 @@ import ContactPage from "./pages/ContactPage";
 import ChaletDetailsPage from "./pages/ChaletDetailsPage";
 import { Toaster } from "react-hot-toast";
 import { useEffect, useMemo, useState } from "react";
-import { useSheetChaletsList } from "./store";
+import { useSheetChaletsList, useSheetNotes } from "./store";
 import buildBookings from "./utils/buildBookings";
 import "cally";
 import "aos/dist/aos.css";
 import Aos from "aos";
+import buildNotes from "./utils/buildNots";
 export default function App() {
   const setSheetChaletList = useSheetChaletsList(
     (state) => state.setSheetChaletList,
   );
+  const setSheetNotes = useSheetNotes((state) => state.setSheetNotes);
+
   const sheetDataLink = import.meta.env.VITE_SHEET_API_URL;
 
   // aos and get data from sheet
@@ -34,15 +37,25 @@ export default function App() {
       const data = await res.json();
 
       setSheetChaletList({
-        m7: buildBookings(data.m7, 7, null, data.m8),
-        m8: buildBookings(data.m8, 8, data.m7, data.m9),
+        m8: buildBookings(data.m8, 8, null, data.m9),
         m9: buildBookings(data.m9, 9, data.m8, data.m10),
         m10: buildBookings(data.m10, 10, data.m9, null),
       });
 
+      setSheetNotes({
+        m8: buildNotes(data.note.m8),
+        m9: buildNotes(data.note.m9),
+        m10: buildNotes(data.note.m10),
+      });
+
       console.log({
-        m7: buildBookings(data.m7, 7, null, data.m8),
-        m8: buildBookings(data.m8, 8, data.m7, data.m9),
+        m8: buildNotes(data.note.m8),
+        m9: buildNotes(data.note.m9),
+        m10: buildNotes(data.note.m10),
+      });
+
+      console.log({
+        m8: buildBookings(data.m8, 8, null, data.m9),
         m9: buildBookings(data.m9, 9, data.m8, data.m10),
         m10: buildBookings(data.m10, 10, data.m9, null),
       });

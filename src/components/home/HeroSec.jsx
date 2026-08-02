@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { clsx } from "clsx";
 import { getTodayString } from "../../utils/dateHelpers";
 import { IoSearch } from "react-icons/io5";
+import { GoPeople } from "react-icons/go";
 
 export default function HeroSec() {
   const calendarArriveRef = useRef();
@@ -15,6 +16,7 @@ export default function HeroSec() {
 
   const [arriveDate, setArriveDate] = useState("");
   const [liveDate, setLiveDate] = useState("");
+  const [nofPeople, setNofPeople] = useState("");
 
   return (
     <section className="bg-[url('/images/main-herosec.png')] bg-cover bg-center">
@@ -54,10 +56,13 @@ export default function HeroSec() {
           </div>
           {/* form */}
           <div className="flex w-full max-w-250 flex-col rounded-xl overflow-hidden mt-6">
-            <form className="flex items-end gap-2 bg-white pt-3 pb-6 px-3 *:flex-1">
+            <form
+              id="filter-form"
+              className="flex items-end gap-2 bg-white pt-4 pb-6 px-4 *:flex-1"
+            >
               {/*//* Filter by date */}
               {/* arrival date */}
-              <div className="relative w-fit sm:w-auto flex flex-col gap-1.5">
+              <div className="relative sm:w-auto flex flex-col gap-1.5">
                 <label
                   htmlFor="arrival"
                   className="font-bold font-head! text-neutral-800!"
@@ -82,9 +87,9 @@ export default function HeroSec() {
                 </div>
               </div>
               {/* departure date */}
-              <div className="relative w-fit sm:w-auto flex flex-col gap-1.5">
+              <div className="relative sm:w-auto flex flex-col gap-1.5">
                 <label
-                  htmlFor="departure"
+                  htmlFor="live-date"
                   className="font-bold font-head! text-neutral-800!"
                 >
                   تاريخ المغادرة
@@ -106,14 +111,33 @@ export default function HeroSec() {
                   />
                 </div>
               </div>
+              {/* nofPeople  */}
+              <label htmlFor="nofPeople" className="flex flex-col gap-1.5">
+                <span className="font-bold font-head! text-neutral-800!">
+                  عدد الضيوف
+                </span>
+                <div className="relative">
+                  <input
+                    value={nofPeople}
+                    onChange={(e) => setNofPeople(e.target.value)}
+                    type="number"
+                    id="nofPeople"
+                    className="input pr-7 "
+                    placeholder="اختر العدد"
+                  />
+                  <GoPeople
+                    className={clsx(
+                      "absolute pointer-events-none bottom-1/2 right-1.5 translate-y-1/2 cursor-pointer transition-colors duration-300",
+                      liveDate ? "text-primary-500!" : "text-secondary-500!",
+                    )}
+                  />
+                </div>
+              </label>
               {/* submit btn */}
-              <div
-                type="submit"
-                className="btn h-[90%] flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 active:scale-[0.98] text-white! border-none text-lg font-head rounded-xl py-3 cursor-pointer transition-all duration-200 shadow-lg shadow-cyan-500/25"
-              >
+              <button className="btn flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 active:scale-[0.98] text-white! border-none text-lg font-head rounded-xl py-3 cursor-pointer transition-all duration-300 shadow-lg shadow-cyan-500/25">
                 <IoSearch className="text-white!" />
                 بحث
-              </div>
+              </button>
             </form>
           </div>
           {/* CTA Card */}

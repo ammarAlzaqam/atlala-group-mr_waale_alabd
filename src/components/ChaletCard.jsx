@@ -23,7 +23,7 @@ export default function ChaletCard({ ch }) {
   useEffect(() => {
     const date = new Date();
     const currentMonth = date.getMonth() + 1;
-    if (sheetChaletList?.m7) {
+    if (sheetChaletList?.[`m${currentMonth}`]) {
       setSheetChaletData(sheetChaletList[`m${currentMonth}`][ch.num]);
       setSheetChaletDataNextM(sheetChaletList[`m${currentMonth + 1}`][ch.num]);
     }
