@@ -1,6 +1,2 @@
-const priceFormate = (price) =>
-  price.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
+const priceFormate = (price) => price.toLocaleString("en-US");
 export default priceFormate;

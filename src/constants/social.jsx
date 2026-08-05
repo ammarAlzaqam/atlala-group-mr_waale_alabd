@@ -1,6 +1,15 @@
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { MdPhoneInTalk } from "react-icons/md";
 
+export const whatsappNumber = [
+  "201032591608",
+  "201120003830",
+  "201021387202",
+  "201022824644",
+  "201271975042",
+  "201021174061",
+];
+
 export const mediaLinks = {
   whatsapp: "https://wa.me/201021387202",
   phone: "tel:+201021387202",

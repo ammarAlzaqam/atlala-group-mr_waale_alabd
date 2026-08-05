@@ -5,13 +5,14 @@ import selectIcon from "../assets/icons/chalets/details/select.png";
 
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
-import { FaPlus, FaMinus } from "react-icons/fa";
+import { FaPlus, FaMinus, FaRegCalendarAlt } from "react-icons/fa";
 import { LuCalendarCheck2 } from "react-icons/lu";
 import { TbCalendarTime } from "react-icons/tb";
 
 import waveLine from "../assets/icons/random/wave-line.png";
 
 export default function ChaletDetailsPage() {
+  const [open, setOpen] = useState(false);
   const { chaletNum } = useParams();
   const [chalet, setChalet] = useState({});
   const [imgIndex, setImgIndex] = useState(0);
@@ -139,15 +140,27 @@ export default function ChaletDetailsPage() {
     return () => clearInterval(interval);
   }, [autoDisplay, chaletNum, chalet?.chaletImages?.length]);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [open]);
+
   const validRanges = mergeValidLists(
     sheetChaletData?.validList,
     sheetChaletDataNextM?.validList,
   );
 
   return (
-    <div className="min-h-dvh flex flex-col bg-primary-100">
+    <div className="min-h-dvh flex flex-col">
       <ChHeroSec chNum={chalet.num} />
-      <div className="flex justify-center -mt-5 pb-12 md:pb-15">
+      <div className="z-10 relative flex justify-center -mt-5 pb-12 md:pb-15">
         <div className="container flex flex-col gap-5">
           {/*//? chImgs and details */}
           <div className="grid grid-cols-5 gap-4">
@@ -357,7 +370,7 @@ export default function ChaletDetailsPage() {
               </div>
             </div>
             {/*//! Chalet details */}
-            <div className="col-span-5 md:col-span-2 bg-primary-200/30 rounded-2xl overflow-hidden flex flex-col items-center justify-between pb-10 border-2 border-primary-800/10 shadow-xl shadow-primary-200/40">
+            <div className="col-span-5 md:col-span-2 bg-primary-100/30 rounded-2xl overflow-hidden flex flex-col items-center justify-between pb-10 border-2 border-primary-500/10 shadow-xl shadow-primary-200/40">
               {/*//* Details (num&adv&details) */}
               <div className="flex flex-col items-center gap-2 w-full">
                 {/* Ch Num */}
@@ -388,7 +401,7 @@ export default function ChaletDetailsPage() {
                   ))}
                 </div>
                 {/*//* Divider */}
-                <div className="w-[85%] border-t-5 border-dashed rounded-[100%] border-primary-500/10"></div>
+                <div className="w-[85%] border-3 border-dashed rounded-[100%] border-primary-500/10"></div>
                 {/*//* Ch Adv */}
                 <div className="flex flex-col gap-2 px-7 py-4 w-full">
                   <h3 className="font-semibold text-lg sm:text-xl">
@@ -411,7 +424,7 @@ export default function ChaletDetailsPage() {
                   </div>
                 </div>
                 {/*//* Divider */}
-                <div className="w-[85%] border-t-5 border-dashed rounded-[100%] border-primary-500/10"></div>
+                <div className="w-[85%] border-3 border-dashed rounded-[100%] border-primary-500/10"></div>
                 {/*//* Ch infos */}
                 <div className="flex flex-col gap-2 px-7 py-4 w-full">
                   <h3 className="font-semibold text-lg sm:text-xl">
@@ -431,7 +444,7 @@ export default function ChaletDetailsPage() {
                         />
 
                         {/* طبقة تدرج خفيفة لتحسين تباين النص */}
-                        <div className="absolute inset-0 z-1 bg-linear-to-t from-primary-300/20 via-primary-200/15 to-transparent" />
+                        <div className="absolute inset-0 z-1 bg-linear-to-t from-primary-200/30 via-primary-100/20 to-transparent" />
 
                         {/* الأيقونة الصغيرة الظاهرة */}
                         <img
@@ -449,7 +462,7 @@ export default function ChaletDetailsPage() {
                   </div>
                 </div>
                 {/*//* Divider */}
-                <div className="w-[85%] border-t-2 rounded-[100%] border-primary-500/10"></div>
+                <div className="w-[85%] border-3 border-dashed rounded-[100%] border-primary-500/10"></div>
                 {/*//* valid time */}
                 <div className="flex flex-col gap-3 px-7 py-4 w-full">
                   <h3 className="font-semibold text-lg sm:text-xl">
@@ -607,16 +620,14 @@ export default function ChaletDetailsPage() {
                 </div>
               </div>
               {/*//* Ch Price and buttons */}
-              <div className="relative flex flex-col gap-8 w-[95%] rounded-2xl bg-linear-to-b from-primary-100/80 via-[#cbedff] to-[#cbedff] px-8 pt-12 pb-5 inset-shadow-sm inset-shadow-[#cbedff]">
+              <div className="relative flex flex-col gap-8 w-[95%] rounded-2xl bg-linear-to-b from-primary-100/50 via-[#f0f8fe] to-[#f0f8fe] px-8 pt-14 pb-5 inset-shadow-sm inset-shadow-[#cbedff]">
                 {/* price */}
                 <div className="flex flex-col items-center gap-2">
                   <h3>السعر لليلة</h3>
                   <div className="flex items-end gap-1">
                     <h4 className="text-accent-600! text-4xl font-semibold">
-                      {chalet?.price?.toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                      })}
+                      {/* {priceFormate(chalet?.price)} */}
+                      {chalet?.price?.toLocaleString("en-US")}
                     </h4>
                     <h4 className="text-accent-600! font-semibold text-lg">
                       ج.م
@@ -625,21 +636,26 @@ export default function ChaletDetailsPage() {
                 </div>
                 {/* buttons */}
                 <div className="flex flex-col gap-4">
-                  <div className="btn bg-accent-500 text-white! rounded-lg">
+                  <div
+                    onClick={() => {
+                      setOpen(true);
+                    }}
+                    className="btn bg-accent-500 text-white! rounded-lg"
+                  >
                     <FaCalendar className="text-white!" />
                     احجز الأن
                   </div>
                   {/*//TODO>> Whatsapp link */}
                   <Link
-                    to=""
-                    className="btn bg-transparent border-primary-300/50 rounded-lg"
+                    to={mediaLinks.whatsapp}
+                    className="btn bg-transparent text-primary-700! border-primary-300/50 rounded-lg"
                   >
-                    <FaWhatsapp />
+                    <FaWhatsapp className="text-primary-700!" />
                     تواصل عبر واتساب
                   </Link>
                 </div>
                 {/*// Absolute Divider */}
-                <div className="absolute top-0 right-1/2 translate-x-1/2 w-full h-10 rounded-b-[100%] border-primary-300/50 bg-[#cbedff] bg-linear-to-b from-primary-[#cbedff] via-[#cbedff] to-primary-200/50"></div>
+                <div className="absolute top-0 right-1/2 translate-x-1/2 w-full h-10 rounded-b-[100%] bg-[#f0f8fe] bg-linear-to-b from-primary-[#f0f8fe] via-[#f0f8fe] to-primary-200/50"></div>
               </div>
             </div>
           </div>
@@ -724,6 +740,14 @@ export default function ChaletDetailsPage() {
           </div>
         </div>
       </div>
+      {/* Reservation Modal */}
+      <ReservationModal
+        chalet={chalet}
+        sheetChaletData={sheetChaletData}
+        sheetChaletDataNextM={sheetChaletDataNextM}
+        open={open}
+        setOpen={setOpen}
+      />
     </div>
   );
 }
@@ -731,21 +755,34 @@ export default function ChaletDetailsPage() {
 import { MdOutlineArrowBackIos, MdOutlineAutoMode } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import logo from "../assets/icons/logo2.png";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import {
+  IoIosArrowBack,
+  IoIosArrowForward,
+  IoMdInformationCircle,
+} from "react-icons/io";
 import clsx from "clsx";
 import { PiWarehouse } from "react-icons/pi";
 import { useEffect, useMemo, useRef, useState } from "react";
 import chDetailsIcon from "../assets/icons/chalets/details/main.png";
-import { FaCalendar } from "react-icons/fa6";
+import { FaCalendar, FaHouseCircleCheck, FaX } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
 import { pestAdvList } from "../constants/advantages";
 import { LuCircleDotDashed } from "react-icons/lu";
-import { useSheetChaletsList } from "../store";
+import { useArriveDate, useLiveDate, useSheetChaletsList } from "../store";
 import { date } from "yup";
-import { getMonthName, getNumOfDays } from "../utils/dateHelpers";
+import {
+  getMonthName,
+  getNumOfDays,
+  getStayDuration,
+  getTodayString,
+} from "../utils/dateHelpers";
 import { handleNumbers } from "../utils/textFormate";
 import { BiInfoCircle } from "react-icons/bi";
 import { toastInfo } from "../utils/toast";
+import priceFormate from "../utils/priceFormate";
+import { mediaLinks } from "../constants/social";
+import { CiCircleQuestion } from "react-icons/ci";
+import { GoPeople, GoQuestion } from "react-icons/go";
 
 function ChHeroSec({ chNum }) {
   return (
@@ -824,5 +861,604 @@ function ChHeroSec({ chNum }) {
         />
       </Link>
     </div>
+  );
+}
+
+import infoIcon from "../assets/icons/chalets/reservation/info.png";
+import reservationIcon from "../assets/icons/chalets/reservation/reservation.png";
+import { IoSearch } from "react-icons/io5";
+import { GiConfirmed } from "react-icons/gi";
+
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
+import { isValidPhoneNumber } from "libphonenumber-js";
+import { format } from "date-fns";
+
+function ReservationModal({
+  chalet,
+  sheetChaletData,
+  sheetChaletDataNextM,
+  open,
+  setOpen,
+}) {
+  const [nofNights, setNofNights] = useState(1);
+  const calendarArriveRef = useRef();
+  const calendarLiveRef = useRef();
+
+  const arriveDate = useArriveDate((state) => state.arriveDate);
+  const liveDate = useLiveDate((state) => state.liveDate);
+
+  const [username, setUsername] = useState("");
+  const [phone, setPhone] = useState("");
+  const [arriveDateValue, setArriveDateValue] = useState(arriveDate);
+  const [liveDateValue, setLiveDateValue] = useState(liveDate);
+
+  const navigate = useNavigate();
+
+  const saveAmount = 2500;
+
+  const handelReservation = (e) => {
+    e.preventDefault();
+
+    if (!arriveDateValue || !liveDateValue || !username) {
+      toast.error("يرجى اختيار تاريخ الحجز والاسم أولًا.");
+      return;
+    }
+    if (username.trim().split(/\s+/).length < 3) {
+      toast.error("يرجي كتابه الاسم الثلاثي كامل");
+      return;
+    }
+    if (!phone) {
+      toast.error("يرجى إدخال رقم الهاتف");
+      return;
+    }
+    if (!isValidPhoneNumber(phone)) {
+      toast.error("رقم الهاتف غير صحيح");
+      return;
+    }
+
+    const totalPrice = chalet.price * nofNights;
+    const finalPrice = totalPrice + saveAmount;
+    const deposit = chalet.price; // عربون = سعر ليلة واحدة
+
+    const checkIn = `${format(new Date(arriveDateValue), "dd/MM/yyyy")}`;
+    const checkOut = `${format(new Date(liveDateValue), "dd/MM/yyyy")}`;
+    const whatsappMessage = `
+السلام عليكم ورحمة الله وبركاته،
+
+السادة/ مكتب اطلالة العقارية،
+
+أتقدم إليكم بطلب حجز للشاليه الموضح أدناه، وأرجو منكم التكرم بمراجعة الطلب وإفادتي بتأكيد التوفر وإتمام إجراءات الحجز.
+
+بيانات الحجز
+
+الاسم: ${username}
+رقم الهاتف: ${phone}
+
+رقم الشاليه: #${chalet.num}
+
+الوصول: ${checkIn} (1:00 ظهراً)
+المغادرة: ${checkOut} (10:00 صباحاً)
+
+عدد الليالي: ${nofNights}
+
+سعر الليلة: ${chalet.price.toLocaleString()} ج.م
+إجمالي الإقامة: ${totalPrice.toLocaleString()} ج.م
+مبلغ التأمين (مسترد): ${saveAmount.toLocaleString()} ج.م
+إجمالي المبلغ: ${finalPrice.toLocaleString()} ج.م
+
+أؤكد استعدادي لتحويل عربون الحجز وقدره ${deposit.toLocaleString()} ج.م (قيمة ليلة واحدة) فور تأكيد الحجز.
+
+شاكرين لكم حسن تعاونكم، وفي انتظار ردكم الكريم.
+
+مع خالص التحية،
+${username}
+`;
+
+    window.open(
+      `${mediaLinks.whatsapp}?text=${encodeURIComponent(whatsappMessage)}`,
+      "_blank",
+    );
+
+    setArriveDateValue("");
+    setLiveDateValue("");
+    setUsername("");
+    setPhone("");
+    setOpen(false);
+  };
+
+  const isDateEnabled = (date) => {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+
+    return validList.some(({ from, to }) => {
+      const fromDate = new Date(2026, from.m - 1, from.d);
+      const toDate = new Date(2026, to.m - 1, to.d);
+
+      return date >= fromDate && date <= toDate;
+    });
+  };
+
+  useEffect(
+    () => setNofNights(getStayDuration(arriveDateValue, liveDateValue) || 1),
+    [arriveDateValue, liveDateValue],
+  );
+
+  const validList = useMemo(() => {
+    console.log([
+      ...(sheetChaletData?.validList ?? []),
+      ...(sheetChaletDataNextM?.validList ?? []),
+    ]);
+    return [
+      ...(sheetChaletData?.validList ?? []),
+      ...(sheetChaletDataNextM?.validList ?? []),
+    ];
+  }, [sheetChaletData, sheetChaletDataNextM]);
+
+  return (
+    <div
+      onClick={() => setOpen(false)}
+      className={clsx(
+        "fixed z-9000 top-0 left-0 w-full h-dvh overflow-hidden px-4 py-6 flex justify-center items-center bg-black/60 transition-opacity duration-300",
+        open
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none",
+      )}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        onDoubleClick={(e) => e.stopPropagation()}
+        className={clsx(
+          "relative container flex flex-col gap-6 xl:max-w-250 py-8 px-4 h-full scrollbar-none overflow-y-auto overflow-x-hidden bg-white rounded-xl transition-all duration-300",
+          !open && "-translate-y-2 5 opacity-50",
+        )}
+      >
+        {/*//! head title */}
+        <div className="flex flex-col items-center gap-2 text-center">
+          <h1 className="z-2 text-3xl font-bold">احجز الآن</h1>
+          <p className="z-2">أكمل بيانات الحجز للاستمرار</p>
+          {/* absolute shadow bg */}
+          <div className="relative w-20 h-1 bg-primary-700 rounded-[100%] mt-3">
+            <div className="absolute z-1 top-0 right-full w-30 h-0 rotate-45 shadow-[0_-40px_100px_8px_var(--color-accent-700)]" />
+            <div className="absolute z-1 top-0 left-0 translate-x-20 w-30 h-0 -rotate-45 shadow-[0_-40px_100px_8px_var(--color-primary-700)]" />
+          </div>
+        </div>
+        <div className="flex z-2 flex-col-reverse md:flex-row gap-4">
+          {/*//! Chalet info */}
+          <div className="flex-1 flex flex-col gap-8 bg-main-bg shadow-lg px-2 sm:px-4 py-6 rounded-xl">
+            {/* infos title */}
+            <div className="flex items-center gap-3">
+              <img
+                src={infoIcon}
+                alt="info-icon"
+                className="w-5 blue-img-filter"
+              />
+              <h3 className="text-primary-600! text-lg font-bold">
+                معلومات الشاليه
+              </h3>
+            </div>
+            {/* chalet img and data */}
+            <div className="flex justify-between gap-6">
+              {/* chalet data */}
+              <div className="flex flex-col gap-3 shrink-0">
+                <div className="flex flex-col gap-1">
+                  <p className="font-semibold">رقم الشاليه</p>
+                  <h4 className="text-3xl font-bold">#{chalet?.num}</h4>
+                </div>
+                <p>شاليه {chalet?.details?.[1].title}</p>
+                <div className="flex flex-col gap-1">
+                  {chalet?.view?.map(({ name, label, icon }) => (
+                    <div key={label} className="flex items-center gap-3">
+                      <img
+                        src={icon}
+                        alt="info-icon"
+                        className="w-5 blue-img-filter"
+                      />
+                      <h3 className="text-primary-600!">{name}</h3>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* chalet img */}
+              <div
+                className="relative aspect-12/11 rounded-xl overflow-hidden"
+                style={{ backgroundImage: chalet.coverImg }}
+              >
+                <img
+                  src={chalet.coverImg}
+                  className="absolute top-0 left-0 w-full h-full aspect-square object-cover"
+                  alt="chalet-cover-img"
+                />
+              </div>
+            </div>
+            {/* price data */}
+            <div className="flex flex-col">
+              {/* price per night */}
+              <div className="flex items-center justify-between py-4 border-t border-black/10">
+                <span className="font-semibold">سعر الليلة</span>
+                <div className="flex items-end gap-1">
+                  <h4 className="text-primary-600! text-xl font-semibold">
+                    {chalet?.price?.toLocaleString("en-US")}
+                  </h4>
+                  <h4 className="text-primary-600! font-semibold">ج.م</h4>
+                </div>
+              </div>
+              {/* nof nights */}
+              <div className="flex items-center justify-between py-4 border-t border-black/10">
+                <span className="font-semibold">عدد الليالي</span>
+                <h4 className="text-primary-600! text-xl font-semibold">
+                  {/* {priceFormate(chalet?.price)} */}
+                  {/*//ToDO>> nof days (live - arrive) */}
+                  {handleNumbers("ليلة", "ليالي", nofNights)}
+                </h4>
+              </div>
+              {/* price for period */}
+              <div className="flex items-center justify-between py-4 border-t border-black/10">
+                <span className="font-semibold">السعر الكلي</span>
+                <div className="flex items-end gap-1">
+                  <h4 className="text-primary-600! text-xl font-semibold">
+                    {(chalet?.price * nofNights)?.toLocaleString("en-US")}
+                  </h4>
+                  <h4 className="text-primary-600! font-semibold">ج.م</h4>
+                </div>
+              </div>
+              {/* price for save */}
+              <div className="flex items-start justify-between py-4 border-t border-black/10">
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-center gap-1.5">
+                    <p className="font-bold text-black!">تأمين مسترد</p>
+                    <GoQuestion className="text-lg text-black!" />
+                  </div>
+                  <p className="text-sm">
+                    يتم استرداده بعد انتهاء فترة الإقامة
+                  </p>
+                </div>
+                <div className="flex items-end gap-1">
+                  <h4 className="text-accent-600! text-xl font-semibold">
+                    {saveAmount?.toLocaleString("en-US")}
+                  </h4>
+                  <h4 className="text-accent-600! font-semibold">ج.م</h4>
+                </div>
+              </div>
+              {/* price after saveAmount */}
+              <div className="flex justify-between items-center px-3 py-5 mt-4 rounded-xl bg-primary-300/15">
+                <p className="font-bold md:text-lg text-primary-600!">
+                  الإجمالي بعد التأمين
+                </p>
+                <div className="flex items-end gap-1">
+                  <h4 className="text-primary-600! text-xl sm:text-2xl font-bold">
+                    {(chalet?.price * nofNights + saveAmount)?.toLocaleString(
+                      "en-US",
+                    )}
+                  </h4>
+                  <h4 className="text-primary-600! font-semibold">ج.م</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/*//! reservation data input form */}
+          <div className="flex-1 flex flex-col gap-4 py-6 px-2 sm:px-4">
+            {/* infos title */}
+            <div className="flex items-center gap-3">
+              <img
+                src={reservationIcon}
+                alt="info-icon"
+                className="w-5 blue-img-filter"
+              />
+              <h3 className="text-primary-600! text-lg font-bold">
+                بيانات الحجز
+              </h3>
+            </div>
+            <form
+              onSubmit={handelReservation}
+              id="reservation-form"
+              className="flex flex-wrap gap-5 bg-white"
+            >
+              {/* username  */}
+              <label
+                htmlFor="username"
+                className="flex flex-col w-full gap-1.5 shrink-0"
+              >
+                <span className="font-semibold font-head! text-neutral-800!">
+                  الأسم الثلاثي
+                </span>
+                <div className="relative">
+                  <input
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    type="text"
+                    id="username"
+                    placeholder="ادخل اسمك"
+                    className={clsx(
+                      "input pr-7 w-full py-6",
+                      username ? "text-primary-500!" : "text-secondary-500!",
+                    )}
+                  />
+                  <GoPeople
+                    className={clsx(
+                      "absolute pointer-events-none bottom-1/2 right-1.5 translate-y-1/2 cursor-pointer transition-colors duration-300",
+                      username ? "text-primary-500!" : "text-secondary-500!",
+                    )}
+                  />
+                </div>
+              </label>
+              {/* phone  */}
+              <label
+                htmlFor="phone"
+                className="flex flex-col w-full gap-1.5 shrink-0"
+              >
+                <span className="font-semibold font-head! text-neutral-800!">
+                  رقم التليفون
+                </span>
+                <PhoneInput
+                  defaultCountry="eg"
+                  value={phone}
+                  onChange={setPhone}
+                  id="phone"
+                />
+              </label>
+              {/* arrival date */}
+              <div className="relative w-full flex flex-col gap-1.5">
+                <label
+                  htmlFor="arrival"
+                  className="font-semibold font-head! text-neutral-800!"
+                >
+                  تاريخ الوصول
+                </label>
+                <div className="relative">
+                  <DatePicker
+                    id="arrive-date"
+                    date={arriveDateValue}
+                    setDate={setArriveDateValue}
+                    calendarRef={calendarArriveRef}
+                    arriveDate={arriveDateValue}
+                    liveDate={liveDateValue}
+                    validList={validList}
+                    setLiveDate={setLiveDateValue}
+                    className="w-full py-6"
+                  />
+                  <FaRegCalendarAlt
+                    className={clsx(
+                      "absolute pointer-events-none bottom-1/2 right-1.5 translate-y-1/2 cursor-pointer transition-colors duration-300",
+                      arriveDateValue
+                        ? "text-primary-500!"
+                        : "text-secondary-500!",
+                    )}
+                  />
+                </div>
+              </div>
+              {/* departure date */}
+              <div className="relative w-full flex flex-col gap-1.5">
+                <label
+                  htmlFor="live-date"
+                  className="font-semibold font-head! text-neutral-800!"
+                >
+                  تاريخ المغادرة
+                </label>
+                <div className="relative">
+                  <DatePicker
+                    id="live-date"
+                    date={liveDateValue}
+                    setDate={setLiveDateValue}
+                    calendarRef={calendarLiveRef}
+                    arriveDate={arriveDateValue}
+                    liveDate={liveDateValue}
+                    validList={validList}
+                    className="w-full py-6"
+                  />
+                  <FaRegCalendarAlt
+                    className={clsx(
+                      "absolute pointer-events-none bottom-1/2 right-1.5 translate-y-1/2 cursor-pointer transition-colors duration-300",
+                      liveDateValue
+                        ? "text-primary-500!"
+                        : "text-secondary-500!",
+                    )}
+                  />
+                </div>
+              </div>
+            </form>
+            {/* nofPeopel hent */}
+            <div className="flex items-center gap-3 px-3 py-5 rounded-xl bg-primary-300/15">
+              <IoMdInformationCircle className="text-lg text-primary-600!" />
+              <p className="font-semibold text-primary-600!">
+                الحد الأقصي المسموح: {chalet?.infos?.[2]?.title}
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* submit btn */}
+        <button
+          form="reservation-form"
+          className="btn w-full flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 active:scale-[0.98] text-white! border-none text-lg font-head rounded-xl py-6 cursor-pointer transition-all duration-300 shadow-lg shadow-cyan-500/25"
+        >
+          <FaHouseCircleCheck className="text-white!" />
+          تأكيد الحجز
+        </button>
+        <div
+          onClick={() => setOpen(false)}
+          className="absolute top-3 right-3 transition-colors duration-300 group hover:bg-red-500 rounded-full p-2 cursor-pointer"
+        >
+          <FaX className="text-lg text-red-500 transition-colors duration-300 group-hover:text-white" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+import { DayPicker } from "react-day-picker";
+import mergeValidList from "../utils/mergeValidList";
+
+function DatePicker({
+  date,
+  setDate,
+  id,
+  className = "",
+  validList = [],
+  arriveDate,
+  liveDate,
+  setLiveDate,
+}) {
+  const popoverRef = useRef();
+  const year = new Date().getFullYear();
+
+  const mergedValidList = useMemo(
+    () => mergeValidList(validList, year),
+    [validList],
+  );
+
+  const selectedDate = date ? new Date(date) : undefined;
+
+  const firstDate = useMemo(() => {
+    if (!mergedValidList.length) return new Date();
+
+    return new Date(
+      year,
+      mergedValidList[0].from.m - 1,
+      mergedValidList[0].from.d,
+    );
+  }, [mergedValidList]);
+
+  const lastDate = useMemo(() => {
+    if (!mergedValidList.length) return undefined;
+    console.log(mergedValidList);
+    const last = mergedValidList.at(-1);
+
+    return new Date(year, last.to.m - 1, last.to.d);
+  }, [mergedValidList]);
+
+  const currentRange = useMemo(() => {
+    if (!arriveDate) return null;
+
+    const arrive = new Date(arriveDate);
+
+    return mergedValidList.find(({ from, to }) => {
+      const fromDate = new Date(year, from.m - 1, from.d);
+      const toDate = new Date(year, to.m - 1, to.d);
+
+      return arrive >= fromDate && arrive <= toDate;
+    });
+  }, [arriveDate, mergedValidList]);
+
+  const disabledDays = useMemo(() => {
+    return [
+      (day) => {
+        // DatePicker بتاع الوصول
+        if (id === "arrive-date") {
+          return !mergedValidList.some(({ from, to }) => {
+            const fromDate = new Date(year, from.m - 1, from.d);
+            const toDate = new Date(year, to.m - 1, to.d);
+
+            return day >= fromDate && day <= toDate;
+          });
+        }
+
+        // لسه مختارش arriveDate
+        if (!currentRange || !arriveDate) return true;
+
+        const arrive = new Date(arriveDate);
+        arrive.setHours(0, 0, 0, 0);
+
+        const fromDate = new Date(
+          year,
+          currentRange.from.m - 1,
+          currentRange.from.d,
+        );
+        fromDate.setHours(0, 0, 0, 0);
+
+        const toDate = new Date(year, currentRange.to.m - 1, currentRange.to.d);
+
+        // تاريخ المغادرة = اليوم اللي بعد آخر يوم متاح
+        toDate.setDate(toDate.getDate() + 1);
+        toDate.setHours(23, 59, 59, 999);
+
+        // يمنع يوم الوصول نفسه وما قبله
+        if (day <= arrive) return true;
+
+        // يمنع أي يوم خارج الرينج الحالي
+        return day < fromDate || day > toDate;
+      },
+    ];
+  }, [id, arriveDate, currentRange, mergedValidList]);
+
+  const handleSelect = (day) => {
+    if (!day) return;
+
+    if (id === "arrive-date") setLiveDate("");
+
+    setDate(format(day, "yyyy-MM-dd"));
+
+    popoverRef.current?.hidePopover();
+  };
+
+  const liveMaxDate = useMemo(() => {
+    if (!currentRange) return lastDate;
+
+    const max = new Date(year, currentRange.to.m - 1, currentRange.to.d + 1);
+
+    return max;
+  }, [currentRange, lastDate]);
+
+  return (
+    <>
+      <button
+        popoverTarget={id}
+        type="button"
+        style={{ anchorName: `--${id}` }}
+        className={clsx(
+          "input pr-7",
+          className,
+          date ? "text-primary-500!" : "text-secondary-500!",
+        )}
+      >
+        {date || "اختر التاريخ"}
+      </button>
+
+      <div
+        id={id}
+        popover="auto"
+        ref={popoverRef}
+        style={{ positionAnchor: `--${id}` }}
+        className="dropdown rounded-xl bg-white p-3 shadow-xl border"
+        dir="ltr"
+      >
+        <DayPicker
+          mode="single"
+          selected={selectedDate}
+          onSelect={handleSelect}
+          disabled={disabledDays}
+          fromDate={
+            id === "live-date"
+              ? arriveDate
+                ? new Date(
+                    new Date(arriveDate).setDate(
+                      new Date(arriveDate).getDate(),
+                    ),
+                  )
+                : firstDate
+              : firstDate
+          }
+          toDate={
+            id === "live-date"
+              ? liveMaxDate
+              : liveDate
+                ? new Date(liveDate)
+                : lastDate
+          }
+          startMonth={
+            new Date(
+              year,
+              mergedValidList[0]?.from.m - 1 ?? new Date().getMonth(),
+            )
+          }
+          endMonth={
+            new Date(
+              year,
+              mergedValidList.at(-1)?.to.m - 1 ?? new Date().getMonth(),
+            )
+          }
+          animate
+        />
+      </div>
+    </>
   );
 }

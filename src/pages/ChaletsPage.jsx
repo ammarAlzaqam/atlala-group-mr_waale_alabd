@@ -148,6 +148,8 @@ export default function ChaletsPage() {
       return dateMatched;
     });
 
+    setNofPages(Math.ceil(data.length / chPerPage));
+    setPageNumber(1);
     return data;
   }, [arriveDate, liveDate, filteredChaletsBeforeDate, sheetChaletList]);
 
@@ -171,8 +173,8 @@ export default function ChaletsPage() {
             <div className="flex items-start md:items-center justify-between">
               {/*//TODO => Num of chalets */}
               <div className="flex flex-col gap-2">
-                <h3 className="font-bold text-xl md:text-2xl leading-[100%]">
-                  اعثر على الشاليه المناسب لك
+                <h3 className="font-bold text-xl md:text-2xl leading-[120%]">
+                  اعثر على شاليهك المفضل
                 </h3>
                 <p className="text-xs md:text-sm text-secondary-500 whitespace-nowrap">
                   تم العثور على ({filteredChalets.length}) من (
@@ -183,7 +185,7 @@ export default function ChaletsPage() {
                 onChange={(e) => {
                   setPriceRanking(e.target.value);
                 }}
-                className="select w-fit rounded-xl border-secondary-100"
+                className="select w-fit shrink-0 rounded-xl border-secondary-100"
               >
                 <option value="highest">الاعلي سعراً</option>
                 <option value="lowest">الاقل سعراً</option>

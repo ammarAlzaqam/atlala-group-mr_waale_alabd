@@ -1,22 +1,42 @@
 import { Field, Form, Formik } from "formik";
 import { FaRegCalendarAlt, FaRegUser, FaSearch } from "react-icons/fa";
 import { PiMapPinSimpleAreaBold } from "react-icons/pi";
-import additionalPayments from "../../constants/additionalPayments";
 import logo from "../../assets/icons/logo2.png";
 import { useRef, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clsx } from "clsx";
 import { getTodayString } from "../../utils/dateHelpers";
 import { IoSearch } from "react-icons/io5";
 import { GoPeople } from "react-icons/go";
+import additionalAdv from "../../constants/additionalAdv";
+import toast from "react-hot-toast";
+import { useArea, useArriveDate, useLiveDate } from "../../store";
 
 export default function HeroSec() {
   const calendarArriveRef = useRef();
   const calendarLiveRef = useRef();
 
-  const [arriveDate, setArriveDate] = useState("");
-  const [liveDate, setLiveDate] = useState("");
-  const [nofPeople, setNofPeople] = useState("");
+  const setArea = useArea((state) => state.setArea);
+  const setArriveDate = useArriveDate((state) => state.setArriveDate);
+  const setLiveDate = useLiveDate((state) => state.setLiveDate);
+
+  const [arriveDateValue, setArriveDateValue] = useState("");
+  const [liveDateValue, setLiveDateValue] = useState("");
+  const [areaValue, setAreaValue] = useState("");
+
+  const navigate = useNavigate();
+
+  const handelOnSubmit = (e) => {
+    e.preventDefault();
+    if (!arriveDateValue || !liveDateValue || !areaValue) {
+      toast.error("يرجى اختيار تاريخ الحجز والمساحة أولًا.");
+      return;
+    }
+    setArriveDate(arriveDateValue);
+    setLiveDate(liveDateValue);
+    setArea(areaValue);
+    navigate("/chalets");
+  };
 
   return (
     <section className="bg-[url('/images/main-herosec.png')] bg-cover bg-center">
@@ -54,15 +74,15 @@ export default function HeroSec() {
               تواصل معنا
             </Link>
           </div>
-          {/* form */}
+          {/* form && additional adv */}
           <div className="flex w-full max-w-250 flex-col rounded-xl overflow-hidden mt-6">
             <form
+              onSubmit={handelOnSubmit}
               id="filter-form"
-              className="flex items-end gap-2 bg-white pt-4 pb-6 px-4 *:flex-1"
+              className="flex flex-wrap md:flex-nowrap items-end gap-2 bg-white pt-4 pb-6 px-4 md:*:flex-1"
             >
-              {/*//* Filter by date */}
               {/* arrival date */}
-              <div className="relative sm:w-auto flex flex-col gap-1.5">
+              <div className="relative w-[calc(50%-4px)] md:w-auto flex flex-col gap-1.5">
                 <label
                   htmlFor="arrival"
                   className="font-bold font-head! text-neutral-800!"
@@ -72,22 +92,24 @@ export default function HeroSec() {
                 <div className="relative">
                   <DatePicker
                     id="arrive-date"
-                    date={arriveDate}
-                    setDate={setArriveDate}
+                    date={arriveDateValue}
+                    setDate={setArriveDateValue}
                     calendarRef={calendarArriveRef}
-                    arriveDate={arriveDate}
-                    liveDate={liveDate}
+                    arriveDate={arriveDateValue}
+                    liveDate={liveDateValue}
                   />
                   <FaRegCalendarAlt
                     className={clsx(
                       "absolute pointer-events-none bottom-1/2 right-1.5 translate-y-1/2 cursor-pointer transition-colors duration-300",
-                      arriveDate ? "text-primary-500!" : "text-secondary-500!",
+                      arriveDateValue
+                        ? "text-primary-500!"
+                        : "text-secondary-500!",
                     )}
                   />
                 </div>
               </div>
               {/* departure date */}
-              <div className="relative sm:w-auto flex flex-col gap-1.5">
+              <div className="relative w-[calc(50%-4px)] md:w-auto flex flex-col gap-1.5">
                 <label
                   htmlFor="live-date"
                   className="font-bold font-head! text-neutral-800!"
@@ -97,72 +119,90 @@ export default function HeroSec() {
                 <div className="relative">
                   <DatePicker
                     id="live-date"
-                    date={liveDate}
-                    setDate={setLiveDate}
+                    date={liveDateValue}
+                    setDate={setLiveDateValue}
                     calendarRef={calendarLiveRef}
-                    arriveDate={arriveDate}
-                    liveDate={liveDate}
+                    arriveDate={arriveDateValue}
+                    liveDate={liveDateValue}
                   />
                   <FaRegCalendarAlt
                     className={clsx(
                       "absolute pointer-events-none bottom-1/2 right-1.5 translate-y-1/2 cursor-pointer transition-colors duration-300",
-                      liveDate ? "text-primary-500!" : "text-secondary-500!",
+                      liveDateValue
+                        ? "text-primary-500!"
+                        : "text-secondary-500!",
                     )}
                   />
                 </div>
               </div>
               {/* nofPeople  */}
-              <label htmlFor="nofPeople" className="flex flex-col gap-1.5">
+              <label
+                htmlFor="nofPeople"
+                className="flex flex-col w-full md:w-auto gap-1.5 shrink-0"
+              >
                 <span className="font-bold font-head! text-neutral-800!">
-                  عدد الضيوف
+                  المساحة
                 </span>
                 <div className="relative">
-                  <input
-                    value={nofPeople}
-                    onChange={(e) => setNofPeople(e.target.value)}
+                  <select
+                    value={areaValue}
+                    onChange={(e) => setAreaValue(+e.target.value)}
                     type="number"
                     id="nofPeople"
-                    className="input pr-7 "
-                    placeholder="اختر العدد"
-                  />
+                    className={clsx(
+                      "select pr-7 w-full",
+                      areaValue ? "text-primary-500!" : "text-secondary-500!",
+                    )}
+                  >
+                    <option hidden value="">
+                      أختر المساحة
+                    </option>
+                    <option value="48" className="flex">
+                      48 متر - 3 أفراد وطفلين
+                    </option>
+                    <option value="75" className="flex">
+                      75 متر - 5 أفراد وطفلين
+                    </option>
+                    <option value="96" className="flex">
+                      96 متر - 7 أفراد وطفلين
+                    </option>
+                  </select>
                   <GoPeople
                     className={clsx(
                       "absolute pointer-events-none bottom-1/2 right-1.5 translate-y-1/2 cursor-pointer transition-colors duration-300",
-                      liveDate ? "text-primary-500!" : "text-secondary-500!",
+                      areaValue ? "text-primary-500!" : "text-secondary-500!",
                     )}
                   />
                 </div>
               </label>
               {/* submit btn */}
-              <button className="btn flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 active:scale-[0.98] text-white! border-none text-lg font-head rounded-xl py-3 cursor-pointer transition-all duration-300 shadow-lg shadow-cyan-500/25">
+              <button className="btn w-full md:w-auto flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 active:scale-[0.98] text-white! border-none text-lg font-head rounded-xl py-3 cursor-pointer transition-all duration-300 shadow-lg shadow-cyan-500/25">
                 <IoSearch className="text-white!" />
                 بحث
               </button>
             </form>
-          </div>
-          {/* CTA Card */}
-          <div className="w-full mt-8 max-w-5xl p-px rounded-2xl bg-linear-to-b from-white/20 via-white/5 to-transparent">
-            <div className="rounded-2xl bg-accent-950/40 backdrop-blur-sm overflow-hidden p-3 sm:p-4">
-              {/* Features */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                {additionalPayments.map(({ title, icon }) => (
-                  <div
-                    key={title}
-                    className="group relative flex items-center justify-center aspect-video sm:aspect-auto sm:py-9 text-center sm:text-start rounded-xl bg-white/5 px-4 border border-white/10 overflow-hidden transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5"
-                  >
-                    <div className="absolute inset-0 bg-linear-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    <img
-                      src={icon}
-                      alt={title}
-                      className="invert absolute bottom-1/2 right-1/2 translate-1/2 w-[85%] sm:w-3/4 h-[85%] sm:h-3/4 opacity-[0.15] group-hover:opacity-25 object-contain transition-opacity duration-300"
-                    />
-
-                    <span className="relative z-10 text-white! font-bold leading-[140%] text-base sm:text-lg tracking-tight text-shadow-md text-shadow-black/50">
-                      {title}
-                    </span>
-                  </div>
-                ))}
+            {/* Additional adv */}
+            <div className="w-full bg-linear-to-b from-white via-white/80 to-transparent">
+              <div className="bg-neutral-100 overflow-hidden px-4 py-4 sm:p-3">
+                {/* Features */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                  {additionalAdv.map(({ title, icon }) => (
+                    <div
+                      key={title}
+                      className="group relative flex items-center justify-center aspect-auto py-3 text-center sm:text-start rounded-xl bg-linear-to-br from-primary-500 via-primary-500 to-transparent px-4 overflow-hidden transition-all duration-300 hover:-translate-y-0.5"
+                    >
+                      <div className="absolute inset-0 bg-linear-to-br from-primary-500 via-primary-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <img
+                        src={icon}
+                        alt={title}
+                        className="absolute bottom-1/2 right-1/2 translate-1/2 invert-100 w-2/3 sm:w-1/3 h-full sm:h-full opacity-40 transition-all duration-300 group-hover:opacity-30 group-hover:invert-100! object-cover"
+                      />
+                      <span className="relative z-10 text-white! font-bold leading-[140%] text-base sm:text-lg tracking-tight text-shadow-md text-shadow-black/50">
+                        {title}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

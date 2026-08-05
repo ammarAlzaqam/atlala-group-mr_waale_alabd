@@ -167,10 +167,12 @@ export default function Filters() {
             </label>
             <div className="relative">
               <DatePicker
-                id="arrive-date"
                 date={arriveDate}
                 setDate={setArriveDate}
-                calendarRef={calendarArriveRef}
+                arriveDate={arriveDate}
+                liveDate={liveDate}
+                setLiveDate={setLiveDate}
+                id="arrive-date"
               />
               <FaRegCalendarAlt
                 className={clsx(
@@ -190,10 +192,13 @@ export default function Filters() {
             </label>
             <div className="relative">
               <DatePicker
-                id="live-date"
                 date={liveDate}
                 setDate={setLiveDate}
-                calendarRef={calendarLiveRef}
+                minDate={arriveDate ? new Date(arriveDate) : null}
+                arriveDate={arriveDate}
+                liveDate={liveDate}
+                setLiveDate={setLiveDate}
+                id="live-date"
               />
               <FaRegCalendarAlt
                 className={clsx(
@@ -204,6 +209,76 @@ export default function Filters() {
             </div>
           </div>
         </div>
+        {/*//* Filter By rooms num */}
+        <div className="flex flex-col gap-2">
+          <h3 className="font-bold text-neutral-800!">الغرف</h3>
+          <div className="flex flex-col gap-2">
+            {roomsList.map(({ name, label, icon, nofPeople }) => (
+              <div
+                key={label}
+                className={clsx(
+                  "flex items-center justify-between gap-3 transition-opacity duration-300",
+                  area === 48 &&
+                    [3, 4, 5].includes(label) &&
+                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
+                  area === 75 &&
+                    [2, 5].includes(label) &&
+                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
+                  area === 96 &&
+                    [2, 3, 4].includes(label) &&
+                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
+                )}
+              >
+                <label htmlFor={label} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="category"
+                    className={clsx(
+                      "radio transition-all duration-300 checked:bg-primary-500 text-white! border",
+                      room === label
+                        ? "border-primary-500"
+                        : "border-secondary-100",
+                    )}
+                    checked={room === label}
+                    id={label}
+                    // checked={!!adv.find((adv) => adv === label)}
+                    onChange={() => handelRoomsNum(label)}
+                  />
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={icon}
+                      alt="icon"
+                      className={clsx(
+                        "w-6 transition-all duration-300",
+                        room === label && "blue-img-filter",
+                      )}
+                    />
+                    <span
+                      className={clsx(
+                        "text-sm text-[#45556C] leading-5 transition-all duration-300",
+                        room === label &&
+                          "text-shadow-md text-white! font-bold text-shadow-primary-600",
+                      )}
+                    >
+                      {name}
+                    </span>
+                  </div>
+                </label>
+                <span
+                  className={clsx(
+                    "text-xs leading-4 transition-colors duration-300",
+                    room === label
+                      ? "text-primary-400!"
+                      : "text-secondary-400!",
+                  )}
+                >
+                  {nofPeople}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/*//* Filter by area and beds */}
         <div
           className={clsx(
             "flex flex-col transition-all duration-300",
@@ -442,81 +517,12 @@ export default function Filters() {
                 <img
                   src={icon}
                   className={clsx(
-                    "w-6 transition-all duration-300",
+                    "w-6 h-6 object-contain transition-all duration-300",
                     !!adv.find((advLabel) => advLabel === label) &&
                       "blue-img-filter scale-110",
                   )}
                 />
               </label>
-            ))}
-          </div>
-        </div>
-        {/*//* Filter By rooms num */}
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-neutral-800!">الغرف</h3>
-          <div className="flex flex-col gap-2">
-            {roomsList.map(({ name, label, icon, nofPeople }) => (
-              <div
-                key={label}
-                className={clsx(
-                  "flex items-center justify-between gap-3 transition-opacity duration-300",
-                  area === 48 &&
-                    [3, 4, 5].includes(label) &&
-                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
-                  area === 75 &&
-                    [2, 5].includes(label) &&
-                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
-                  area === 96 &&
-                    [2, 3, 4].includes(label) &&
-                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
-                )}
-              >
-                <label htmlFor={label} className="flex items-center gap-4">
-                  <input
-                    type="checkbox"
-                    name="category"
-                    className={clsx(
-                      "radio transition-all duration-300 checked:bg-primary-500 text-white! border",
-                      room === label
-                        ? "border-primary-500"
-                        : "border-secondary-100",
-                    )}
-                    checked={room === label}
-                    id={label}
-                    // checked={!!adv.find((adv) => adv === label)}
-                    onChange={() => handelRoomsNum(label)}
-                  />
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={icon}
-                      alt="icon"
-                      className={clsx(
-                        "w-6 transition-all duration-300",
-                        room === label && "blue-img-filter",
-                      )}
-                    />
-                    <span
-                      className={clsx(
-                        "text-sm text-[#45556C] leading-5 transition-all duration-300",
-                        room === label &&
-                          "text-shadow-md text-white! font-bold text-shadow-primary-600",
-                      )}
-                    >
-                      {name}
-                    </span>
-                  </div>
-                </label>
-                <span
-                  className={clsx(
-                    "text-xs leading-4 transition-colors duration-300",
-                    room === label
-                      ? "text-primary-400!"
-                      : "text-secondary-400!",
-                  )}
-                >
-                  {nofPeople}
-                </span>
-              </div>
             ))}
           </div>
         </div>
@@ -581,59 +587,122 @@ const PriceRange = ({ values, setValues }) => {
   );
 };
 
-function DatePicker({ date, setDate, calendarRef, id }) {
+import { DayPicker } from "react-day-picker";
+import { format } from "date-fns";
+import { ar } from "date-fns/locale";
+
+function DatePicker({
+  id,
+  date,
+  setDate,
+  className = "",
+  arriveDate,
+  setLiveDate,
+  liveDate,
+}) {
   const popoverRef = useRef();
-  const today = getTodayString();
 
-  const arriveDate = useArriveDate((state) => state.arriveDate);
-  const liveDate = useLiveDate((state) => state.liveDate);
+  const today = new Date();
 
-  useEffect(() => {
-    const calendar = calendarRef.current;
+  // آخر يوم في الشهر القادم
+  const lastDayNextMonth = useMemo(
+    () => new Date(today.getFullYear(), today.getMonth() + 2, 0),
+    [],
+  );
 
-    const handleChange = () => {
-      setDate(calendar.value);
+  const minLiveDate = useMemo(() => {
+    if (!arriveDate) return today;
 
-      requestAnimationFrame(() => {
-        popoverRef.current?.hidePopover();
-      });
-    };
+    const d = new Date(arriveDate);
+    d.setDate(d.getDate() + 1);
 
-    calendar.addEventListener("change", handleChange);
+    return d;
+  }, [arriveDate]);
 
-    return () => {
-      calendar.removeEventListener("change", handleChange);
-    };
-  }, []);
+  const disabled = useMemo(() => {
+    if (id !== "live-date") {
+      return [{ before: today }];
+    }
+
+    if (!arriveDate) return [];
+
+    return [
+      {
+        before: minLiveDate,
+      },
+    ];
+  }, [id, arriveDate, minLiveDate]);
+
+  const selectedDate = date ? new Date(date) : undefined;
+
+  const maxLiveDate = useMemo(() => {
+    if (!arriveDate) return lastDayNextMonth;
+
+    const d = new Date(arriveDate);
+    d.setDate(d.getDate() + 14);
+
+    return d;
+  }, [arriveDate, lastDayNextMonth]);
 
   return (
     <>
       <button
-        popoverTarget={id}
-        className={clsx(
-          "input pr-7",
-          date ? "text-primary-500!" : "text-secondary-500!",
-        )}
+        popoverTarget={arriveDate || id !== "live-date" ? id : undefined}
+        type="button"
         style={{ anchorName: `--${id}` }}
+        disabled={id === "live-date" && !arriveDate}
+        className={clsx(
+          "input pr-7 w-full",
+          className,
+          date ? "text-primary-500!" : "text-secondary-500!",
+          id === "live-date" && !arriveDate && "opacity-60 cursor-not-allowed",
+        )}
       >
         {date || "اختر التاريخ"}
       </button>
 
       <div
         id={id}
-        ref={popoverRef}
         popover="auto"
-        className="dropdown bg-base-100 rounded-box shadow-lg"
+        ref={popoverRef}
         style={{ positionAnchor: `--${id}` }}
+        className="dropdown rounded-xl bg-white p-3 shadow-xl border"
+        dir="ltr"
       >
-        <calendar-date
-          ref={calendarRef}
-          class="cally"
-          min={id === "arrive-date" ? today : arriveDate || today}
-          max={id === "live-date" ? undefined : liveDate || undefined}
-        >
-          <calendar-month />
-        </calendar-date>
+        <DayPicker
+          locale={ar}
+          mode="single"
+          selected={selectedDate}
+          animate
+          fixedWeeks
+          pagedNavigation
+          navLayout="around"
+          captionLayout="dropdown"
+          startMonth={new Date(today.getFullYear(), today.getMonth(), 1)}
+          endMonth={new Date(today.getFullYear(), today.getMonth() + 1, 1)}
+          disabled={disabled}
+          fromDate={id === "live-date" ? minLiveDate : today}
+          toDate={
+            id === "arrive-date"
+              ? liveDate
+                ? new Date(liveDate)
+                : lastDayNextMonth
+              : maxLiveDate
+          }
+          onSelect={(day) => {
+            if (!day) return;
+
+            if (id === "arrive-date") {
+              setLiveDate("");
+            }
+
+            setDate(format(day, "yyyy-MM-dd"));
+
+            requestAnimationFrame(() => {
+              popoverRef.current?.hidePopover();
+            });
+          }}
+        />
       </div>
     </>
   );

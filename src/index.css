@@ -305,7 +305,7 @@ button {
 
 @keyframes bg-mover {
   0% {
-    background-position: right bottom;
+    background-position: right top;
     background-size: 200%;
   }
 
@@ -315,22 +315,8 @@ button {
   }
 
   100% {
-    background-position: right bottom;
+    background-position: right top;
     background-size: 200%;
-  }
-}
-
-@keyframes bg-mover-lg {
-  0% {
-    background-position: right center;
-  }
-
-  50% {
-    background-position: left center;
-  }
-
-  100% {
-    background-position: right center;
   }
 }
 
@@ -338,18 +324,16 @@ button {
   background:
     linear-gradient(
       to top,
-      var(--color-primary-100) 0%,
-      #d8f2ff60 35%,
+      var(--color-main-bg) 0%,
+      #fbfafd60 35%,
       rgba(0, 0, 0, 0.1) 70%,
       rgba(0, 0, 0, 0.25) 100%
     ),
-    url("/images/chaletHeroSec.png");
+    url("/images/chaletHeroSec.png") no-repeat center/cover;
 
-  @media (min-width: 768px) {
-    animation: bg-mover-lg 30s ease-in-out infinite;
-  }
   @media (max-width: 767px) {
     animation: bg-mover 30s ease-in-out infinite;
+    background-repeat: repeat;
   }
 }
 
@@ -367,4 +351,20 @@ button {
   to {
     stroke-dashoffset: 0;
   }
+}
+
+.react-international-phone-country-selector-button {
+  padding-left: 4px !important;
+  height: 50px !important;
+}
+
+.react-international-phone-input {
+  flex-grow: 1;
+  height: 50px !important;
+  color: var(--color-primary-600) !important;
+}
+
+calendar-day[disabled] {
+  opacity: 0.3;
+  pointer-events: none;
 }
