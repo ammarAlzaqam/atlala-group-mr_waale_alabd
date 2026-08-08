@@ -408,10 +408,14 @@ export default function ChaletDetailsPage() {
                     مميزات الشالية
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {chalet?.adv?.map(({ name, label }, index) => (
-                      <div key={label} className="flex items-center gap-2">
-                        <p className="text-xs sm:text-[16px] whitespace-nowrap text-gray-500! font-semibold">
+                    {chalet?.adv?.map(({ name, label, Icon }, index) => (
+                      <div key={label} className="flex items-end gap-2">
+                        <p className="relative pt-4 text-xs sm:text-[16px] whitespace-nowrap text-gray-500! font-semibold">
                           {name}
+                          <img
+                            src={Icon}
+                            className="absolute w-4 top-0 right-1/2 translate-x-1/2"
+                          />
                         </p>
                         <LuCircleDotDashed
                           className={clsx(

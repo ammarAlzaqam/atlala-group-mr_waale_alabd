@@ -176,6 +176,7 @@ export default function Layout() {
               id="search"
               ref={searchRef}
               value={search}
+              disabled={!open}
               onChange={(e) => {
                 setSearch(e.target.value);
 

@@ -187,18 +187,34 @@ export const advList = [
 ];
 
 const adv = {
-  airCon: { label: "airCondition", name: "تكييف كامل" },
-  autoWashing: { label: "auto_washing", name: "غسالة اتوماتيك" },
-  microwave: { label: "microwave", name: "ميكروواف" },
-  oven: { label: "oven", name: "فرن" },
-  grill: { label: "grill", name: "شواية" },
-  swing: { label: "swing-chair", name: "مرجيحه" },
-  garden: { label: "garden", name: "حديقة خاصة" },
-  aqua: { label: "aqua", name: "قريب من منطقة الاكوا" },
-  kidsArea: { label: "kidsArea", name: "مطل علي اكوا الأطفال" },
-  waterDispenser: { label: "water_dispenser", name: "موزع ماء" },
-  waterFilter: { label: "water_filter", name: "فلتر ماء" },
-  pergola: { label: "pergola", name: "قريب من البرجولة" },
+  airCon: { label: "airCondition", name: "تكييف كامل", Icon: airConditionIcon },
+  autoWashing: {
+    label: "auto_washing",
+    name: "غسالة اتوماتيك",
+    Icon: autoWashingIcon,
+  },
+  microwave: { label: "microwave", name: "ميكروواف", Icon: microwaveIcon },
+  oven: { label: "oven", name: "فرن", Icon: ovenIcon },
+  grill: { label: "grill", name: "شواية", Icon: grillIcon },
+  swing: { label: "swing-chair", name: "مرجيحه", Icon: swingIcon },
+  garden: { label: "garden", name: "حديقة خاصة", Icon: gardenIcon },
+  aqua: { label: "aqua", name: "قريب من منطقة الاكوا", Icon: aquaIcon },
+  kidsArea: {
+    label: "kidsArea",
+    name: "مطل علي اكوا الأطفال",
+    Icon: kidsAreaIcon,
+  },
+  waterDispenser: {
+    label: "water_dispenser",
+    name: "موزع ماء",
+    Icon: waterDispenserIcon,
+  },
+  waterFilter: {
+    label: "water_filter",
+    name: "فلتر ماء",
+    Icon: waterFilterIcon,
+  },
+  pergola: { label: "pergola", name: "قريب من البرجولة", Icon: pergolaIcon },
 };
 
 export const areas = {
