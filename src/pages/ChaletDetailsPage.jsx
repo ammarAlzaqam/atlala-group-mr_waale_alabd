@@ -167,7 +167,7 @@ export default function ChaletDetailsPage() {
             {/*//! Chalet images */}
             <div className="md:sticky md:top-3 col-span-5 md:col-span-3 rounded-2xl overflow-hidden self-start flex flex-col gap-2 border-2 border-primary-800/10 shadow-xl shadow-primary-200/40">
               {/*//* Chalet display Img */}
-              <div className="relative w-full aspect-5/4 md:aspect-video overflow-hidden">
+              <div className="relative w-full aspect-10/12 sm:aspect-16/11 overflow-hidden">
                 {/*// swiper arrows */}
                 <div
                   onClick={(e) => handleImgSwiper("decrease")}

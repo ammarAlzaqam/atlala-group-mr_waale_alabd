@@ -121,7 +121,7 @@ export default function ChaletCard({ ch }) {
               )}
               onClick={() => toggleFavorites(ch)}
             >
-              <img src={distinctIcon} alt="distinctIcon" className="w-10" />
+              <img src={distinctIcon} alt="distinctIcon" className="w-12" />
             </div>
           )}
         </div>

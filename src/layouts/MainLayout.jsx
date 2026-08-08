@@ -2,12 +2,15 @@ import { Link, Outlet } from "react-router-dom";
 import Header from "../components/mainLayout/Header";
 import Footer from "../components/mainLayout/Footer";
 import { MdFavoriteBorder } from "react-icons/md";
-import { useFavorites } from "../store";
+import { useFavorites, useIsScrolled } from "../store";
 import clsx from "clsx";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function HomeLayout() {
   const favorites = useFavorites((state) => state.favorites);
+  const isScrolled = useIsScrolled((state) => state.isScrolled);
+  const setIsScrolled = useIsScrolled((state) => state.setIsScrolled);
+
   return (
     <div className="flex min-h-dvh flex-col">
       <Header />
@@ -18,7 +21,7 @@ export default function HomeLayout() {
 
       <Footer />
 
-      {/*//* fixed icons (favorites & whatsapp) */}
+      {/*//* fixed icons (favorites) */}
       <Link
         to="/chalets/favorites"
         className={clsx(
@@ -26,6 +29,7 @@ export default function HomeLayout() {
           favorites.length > 0
             ? "opacity-100!"
             : "opacity-0! pointer-events-none translate-y-2",
+          !isScrolled && "translate-y-12 delay-100",
         )}
       >
         <MdFavoriteBorder
