@@ -30,6 +30,7 @@ export default function ChaletDetailsPage() {
   const navigate = useNavigate();
 
   const sheetChaletList = useSheetChaletsList((state) => state.sheetChaletList);
+  const chaletsLoader = useChaletsLoader((state) => state.chaletsLoader);
 
   const handleImgSwiper = (type) => {
     if (type === "increase") {
@@ -209,6 +210,7 @@ export default function ChaletDetailsPage() {
                         sheetChaletData?.validList?.[0]?.from?.d === currDay
                           ? tags.available.color
                           : tags.reserved.color,
+                        chaletsLoader && "animate-pulse",
                       )}
                     >
                       <img
@@ -477,7 +479,10 @@ export default function ChaletDetailsPage() {
                       {validRanges.map(({ from, to }, index) => (
                         <div
                           key={index}
-                          className="bg-white px-4 xl:px-2 py-3 rounded-lg flex items-center justify-between gap-2"
+                          className={clsx(
+                            "bg-white px-4 xl:px-2 py-3 rounded-lg flex items-center justify-between gap-2",
+                            chaletsLoader && "animate-pulse",
+                          )}
                         >
                           {from.d === to.d && from.m === to.m ? (
                             from.d === currDay && from.m === currentMonth ? (
@@ -579,7 +584,12 @@ export default function ChaletDetailsPage() {
                           {getMonthName(month)} - {month}
                         </h4>
 
-                        <div className="grid grid-cols-7 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-2">
+                        <div
+                          className={clsx(
+                            "grid grid-cols-7 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-2",
+                            chaletsLoader && "animate-pulse",
+                          )}
+                        >
                           {Array.from({ length: days }, (_, i) => {
                             const day = i + 1;
 
@@ -774,6 +784,7 @@ import { pestAdvList } from "../constants/advantages";
 import { LuCircleDotDashed } from "react-icons/lu";
 import {
   useArriveDate,
+  useChaletsLoader,
   useIsScrolled,
   useLiveDate,
   useSheetChaletsList,

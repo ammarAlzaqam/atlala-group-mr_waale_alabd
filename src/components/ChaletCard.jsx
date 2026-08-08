@@ -3,7 +3,12 @@ import clsx from "clsx";
 import { FaArrowLeft, FaRegHeart, FaRegHourglass } from "react-icons/fa";
 import { IoMdArrowBack, IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { useAdv, useFavorites, useSheetChaletsList } from "../store";
+import {
+  useAdv,
+  useChaletsLoader,
+  useFavorites,
+  useSheetChaletsList,
+} from "../store";
 import { useEffect, useMemo, useState } from "react";
 import { tags } from "../constants/chalets";
 import { getMonthName, getNumOfDays } from "../utils/dateHelpers";
@@ -18,6 +23,8 @@ export default function ChaletCard({ ch }) {
   const adv = useAdv((state) => state.adv);
 
   const sheetChaletList = useSheetChaletsList((state) => state.sheetChaletList);
+
+  const chaletsLoader = useChaletsLoader((state) => state.chaletsLoader);
 
   const currDay = new Date().getDate();
 
@@ -56,6 +63,7 @@ export default function ChaletCard({ ch }) {
                     sheetChaletData?.validList[0].from?.d === currDay
                     ? tags.available.color
                     : tags.reserved.color,
+                  chaletsLoader && "animate-pulse",
                 )}
               >
                 <img
@@ -167,43 +175,45 @@ export default function ChaletCard({ ch }) {
           </div>
 
           {/* valid or not */}
-          <div className="flex items-center justify-between gap-5">
-            {sheetChaletData ? (
-              sheetChaletData?.validList?.[0]?.from?.d === currDay ? (
-                firstValid?.from === firstValid?.to ? (
-                  <div className="flex items-center gap-1">
-                    <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
-                    <span className="text-xs sm:text-sm font-semibold text-green-600!">
-                      متاح اليوم
-                    </span>
-                  </div>
+          <div className={clsx("flex items-center justify-between gap-5")}>
+            <div className={clsx(chaletsLoader && "animate-pulse")}>
+              {sheetChaletData ? (
+                sheetChaletData?.validList?.[0]?.from?.d === currDay ? (
+                  firstValid?.from === firstValid?.to ? (
+                    <div className="flex items-center gap-1">
+                      <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
+                      <span className="text-xs sm:text-sm font-semibold text-green-600!">
+                        متاح اليوم
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-1">
+                      <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
+                      <span className="text-xs sm:text-sm font-semibold text-green-600!">
+                        متاح حتي يوم {lastValid?.to}~{getMonthName(lastValid.m)}
+                      </span>
+                    </div>
+                  )
                 ) : (
-                  <div className="flex items-center gap-1">
-                    <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
-                    <span className="text-xs sm:text-sm font-semibold text-green-600!">
-                      متاح حتي يوم {lastValid?.to}~{getMonthName(lastValid.m)}
-                    </span>
+                  <div className="flex items-center gap-2">
+                    <FaRegHourglass className="text-sm text-red-500 shrink-0" />
+                    {firstValid?.from === firstValid?.to ? (
+                      <span className="text-xs sm:text-sm font-semibold text-red-500!">
+                        متاح في يوم {firstValid?.from}~
+                        {getMonthName(firstValid?.m)}
+                      </span>
+                    ) : (
+                      <span className="text-xs sm:text-sm font-semibold text-red-500!">
+                        من {firstValid?.from}~{getMonthName(firstValid?.m)} حتي{" "}
+                        {lastValid?.to}~{getMonthName(lastValid?.m)}
+                      </span>
+                    )}
                   </div>
                 )
               ) : (
-                <div className="flex items-center gap-2">
-                  <FaRegHourglass className="text-sm text-red-500 shrink-0" />
-                  {firstValid?.from === firstValid?.to ? (
-                    <span className="text-xs sm:text-sm font-semibold text-red-500!">
-                      متاح في يوم {firstValid?.from}~
-                      {getMonthName(firstValid?.m)}
-                    </span>
-                  ) : (
-                    <span className="text-xs sm:text-sm font-semibold text-red-500!">
-                      من {firstValid?.from}~{getMonthName(firstValid?.m)} حتي{" "}
-                      {lastValid?.to}~{getMonthName(lastValid?.m)}
-                    </span>
-                  )}
-                </div>
-              )
-            ) : (
-              <div className="w-full max-w-55 h-7 skeleton" />
-            )}
+                <div className="w-full max-w-55 h-7 skeleton" />
+              )}
+            </div>
 
             <Link to={`/chalets/${ch?.num}`} className="shrink-0">
               <button className="btn text-white! bg-accent-600 rounded-xl">

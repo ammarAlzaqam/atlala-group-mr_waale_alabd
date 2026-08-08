@@ -11,7 +11,7 @@ import ContactPage from "./pages/ContactPage";
 import ChaletDetailsPage from "./pages/ChaletDetailsPage";
 import { Toaster } from "react-hot-toast";
 import { useEffect, useMemo, useState } from "react";
-import { useSheetChaletsList, useSheetNotes } from "./store";
+import { useChaletsLoader, useSheetChaletsList, useSheetNotes } from "./store";
 import buildBookings from "./utils/buildBookings";
 import "cally";
 import "aos/dist/aos.css";
@@ -22,6 +22,7 @@ export default function App() {
     (state) => state.setSheetChaletList,
   );
   const setSheetNotes = useSheetNotes((state) => state.setSheetNotes);
+  const setChaletsLoader = useChaletsLoader((state) => state.setChaletsLoader);
 
   const sheetDataLink = import.meta.env.VITE_SHEET_API_URL;
 
@@ -35,6 +36,8 @@ export default function App() {
     const getData = async () => {
       const res = await fetch(sheetDataLink);
       const data = await res.json();
+
+      setChaletsLoader(false);
 
       setSheetChaletList({
         m8: buildBookings(data.m8, 8, null, data.m9),

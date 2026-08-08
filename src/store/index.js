@@ -101,6 +101,11 @@ export const useSheetChaletsList = create(
   ),
 );
 
+export const useChaletsLoader = create((set) => ({
+  chaletsLoader: true,
+  setChaletsLoader: (newValue) => set(() => ({ chaletsLoader: newValue })),
+}));
+
 export const useSheetNotes = create(
   persist(
     (set) => ({

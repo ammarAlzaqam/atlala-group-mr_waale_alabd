@@ -589,6 +589,54 @@ const chaletsList = [
     ],
   },
   {
+    chaletImages: chaletsLgImages.ch24208,
+    locationImg: locationCh24Img,
+    num: 24208,
+    price: 5000,
+    view: [tags.poolView, tags.beachView],
+    adv: [adv.airCon, adv.autoWashing, adv.kidsArea, adv.microwave],
+    details: [
+      floors.second,
+      areas.area75,
+      rooms.fourRooms.room,
+      rooms.fourRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.fourRooms.nofPeople,
+      // nof beds
+      beds[1],
+      // nof sofa
+      couch[2],
+    ],
+  },
+  {
+    chaletImages: chaletsLgImages.ch24209,
+    locationImg: locationCh24Img,
+    num: 24209,
+    price: 5000,
+    view: [tags.poolView, tags.beachView],
+    adv: [adv.airCon, adv.autoWashing, adv.kidsArea, adv.microwave],
+    details: [
+      floors.second,
+      areas.area75,
+      rooms.fourRooms.room,
+      rooms.fourRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.fourRooms.nofPeople,
+      // nof beds
+      beds[1],
+      // nof sofa
+      couch[2],
+    ],
+  },
+  {
     chaletImages: chaletsLgImages.ch31112,
     locationImg: locationCh31Img,
     num: 31112,
@@ -1159,6 +1207,34 @@ const chaletsList = [
     ],
     details: [
       floors.ground,
+      //!NoEdit
+      areas.area48,
+      //!NoEdit
+      rooms.towRooms.room,
+      //!NoEdit
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      //!NoEdit
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
+    ],
+  },
+  {
+    chaletImages: chaletsSmImages.ch100204,
+    locationImg: locationCh100Img,
+    num: 100204,
+    price: 2800,
+    view: [tags.poolView],
+    adv: [adv.airCon, adv.microwave, adv.kidsArea, adv.autoWashing],
+    details: [
+      floors.second,
       //!NoEdit
       areas.area48,
       //!NoEdit
