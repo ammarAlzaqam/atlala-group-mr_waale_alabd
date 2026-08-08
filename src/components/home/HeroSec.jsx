@@ -191,7 +191,7 @@ export default function HeroSec() {
                       key={title}
                       className="group relative flex items-center justify-center aspect-auto py-3 text-center sm:text-start rounded-xl bg-linear-to-br from-primary-500 via-primary-500 to-transparent px-4 overflow-hidden transition-all duration-300 hover:-translate-y-0.5"
                     >
-                      <div className="absolute inset-0 bg-linear-to-br from-primary-500 via-primary-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-linear-to-br from-primary-500 via-primary-500 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300" />
                       <img
                         src={icon}
                         alt={title}

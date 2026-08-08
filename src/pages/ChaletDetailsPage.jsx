@@ -430,7 +430,7 @@ export default function ChaletDetailsPage() {
                   <h3 className="font-semibold text-lg sm:text-xl">
                     معلومات الشالية
                   </h3>
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4 gap-4">
                     {chalet?.infos?.map(({ title, icon }, index) => (
                       <div
                         key={index}
@@ -937,8 +937,10 @@ function ReservationModal({
 
 رقم الشاليه: #${chalet.num}
 
-الوصول: ${checkIn} (1:00 ظهراً)
-المغادرة: ${checkOut} (10:00 صباحاً)
+الوصول: ${checkIn} 
+(1:00 ظهراً)
+المغادرة: ${checkOut} 
+(10:00 صباحاً)
 
 عدد الليالي: ${nofNights}
 
@@ -947,7 +949,7 @@ function ReservationModal({
 مبلغ التأمين (مسترد): ${saveAmount.toLocaleString()} ج.م
 إجمالي المبلغ: ${finalPrice.toLocaleString()} ج.م
 
-أؤكد استعدادي لتحويل عربون الحجز وقدره ${deposit.toLocaleString()} ج.م (قيمة ليلة واحدة) فور تأكيد الحجز.
+أؤكد استعدادي لتحويل عربون الحجز وقدره ${deposit.toLocaleString()} ج.م (قيمة ليلة واحدة) فور تأكيد الحجز علي الرقم التالي 01021174061 او علي 01276413266
 
 شاكرين لكم حسن تعاونكم، وفي انتظار ردكم الكريم.
 
@@ -1065,7 +1067,7 @@ ${username}
                 style={{ backgroundImage: chalet.coverImg }}
               >
                 <img
-                  src={chalet.coverImg}
+                  src={chalet?.chaletImages?.[0]}
                   className="absolute top-0 left-0 w-full h-full aspect-square object-cover"
                   alt="chalet-cover-img"
                 />
@@ -1261,7 +1263,7 @@ ${username}
             <div className="flex items-center gap-3 px-3 py-5 rounded-xl bg-primary-300/15">
               <IoMdInformationCircle className="text-lg text-primary-600!" />
               <p className="font-semibold text-primary-600!">
-                الحد الأقصي المسموح: {chalet?.infos?.[2]?.title}
+                الحد الأقصي المسموح: {chalet?.infos?.[1]?.title}
               </p>
             </div>
           </div>

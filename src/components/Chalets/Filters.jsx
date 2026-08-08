@@ -106,6 +106,13 @@ export default function Filters() {
     handelRoomsNum(room);
   }, [area]);
 
+  useEffect(() => {
+    if (floor !== "ground" && floor) {
+      let newAdv = adv.filter((item) => !["grill", "garden"].includes(item));
+      setAdv(newAdv);
+    }
+  }, [floor]);
+
   return (
     <div
       onDoubleClick={(e) => e.stopPropagation()}
@@ -485,7 +492,13 @@ export default function Filters() {
               <label
                 htmlFor={label}
                 key={label}
-                className="flex items-center gap-2"
+                className={clsx(
+                  "flex items-center gap-2 transition-opacity duration-300",
+                  floor &&
+                    floor !== "ground" &&
+                    ["garden", "grill"].includes(label) &&
+                    "opacity-50 pointer-events-none",
+                )}
               >
                 <div className="flex items-center gap-2">
                   <input

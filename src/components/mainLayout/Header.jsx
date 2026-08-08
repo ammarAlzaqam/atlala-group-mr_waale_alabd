@@ -7,10 +7,12 @@ import { Turn as Hamburger } from "hamburger-react";
 import navLinks from "../../constants/navLinks";
 import SideBar from "./SideBar";
 import { mediaLinks } from "../../constants/social";
+import { useIsScrolled } from "../../store";
 
 export default function Header() {
   const [isOpen, setOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const isScrolled = useIsScrolled((state) => state.isScrolled);
+  const setIsScrolled = useIsScrolled((state) => state.setIsScrolled);
 
   useEffect(() => {
     const handleScroll = () => {

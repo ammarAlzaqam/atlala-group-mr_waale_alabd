@@ -37,7 +37,7 @@ export const useRoom = create((set) => ({
 }));
 
 export const usePriceRanking = create((set) => ({
-  priceRanking: "highest",
+  priceRanking: "lowest",
   setPriceRanking: (newValue) => set(() => ({ priceRanking: newValue })),
 }));
 
@@ -124,3 +124,8 @@ export const useFastSearch = create(
     },
   ),
 );
+
+export const useIsScrolled = create((set) => ({
+  isScrolled: false,
+  setIsScrolled: (newValue) => set(() => ({ isScrolled: newValue })),
+}));

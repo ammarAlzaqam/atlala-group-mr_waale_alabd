@@ -2,13 +2,15 @@ import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import chaletsList from "../constants/chalets";
 import toast from "react-hot-toast";
 import ChaletCard from "../components/ChaletCard";
-import { useFastSearch } from "../store";
+import { useFastSearch, useIsScrolled } from "../store";
 import { MdElectricBolt } from "react-icons/md";
 import { toastInfo } from "../utils/toast";
+import { mediaLinks } from "../constants/social";
+import { IoIosArrowUp } from "react-icons/io";
 
 export default function Layout() {
   const fastSearch = useFastSearch((state) => state.fastSearch);
@@ -16,6 +18,9 @@ export default function Layout() {
 
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
+
+  const isScrolled = useIsScrolled((state) => state.isScrolled);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -53,7 +58,42 @@ export default function Layout() {
   }, [open]);
 
   useEffect(() => {
-    addEventListener("dblclick", () => !open && setOpen(true));
+    return () => {};
+  }, []);
+
+  useEffect(() => {
+    let startX = 0;
+    let startY = 0;
+
+    const handleTouchStart = (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
+
+      const diffX = endX - startX;
+      const diffY = endY - startY;
+
+      // لازم تكون الحركة أفقية بوضوح
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 80 && !open) {
+        setOpen(true);
+      }
+    };
+
+    const handleOpenSearchModal = () => !open && setOpen(true);
+
+    addEventListener("touchstart", handleTouchStart);
+    addEventListener("touchend", handleTouchEnd);
+    addEventListener("dblclick", handleOpenSearchModal);
+
+    return () => {
+      removeEventListener("touchstart", handleTouchStart);
+      removeEventListener("touchend", handleTouchEnd);
+      removeEventListener("dblclick", handleOpenSearchModal);
+    };
   }, []);
 
   useEffect(() => {
@@ -65,12 +105,13 @@ export default function Layout() {
       <Outlet />
 
       {/*//* fixed icons (favorites & whatsapp) */}
-      <div className="fixed z-30 bottom-5 right-5 flex flex-col gap-2">
+      <div className={clsx("fixed z-30 bottom-5 right-5 flex flex-col")}>
         {/*//! >> Search link */}
         <div
           onClick={() => setOpen(true)}
           className={clsx(
-            "bg-primary-500 p-2 rounded-full shadow-lg hover:shadow-primary-500/50 transition-all duration-300 hover:bg-primary-600 cursor-pointer group backdrop-blur-[2px]",
+            "bg-primary-500 p-2 rounded-full shadow-lg hover:shadow-primary-500/50 transition-all delay-100 duration-300 hover:bg-primary-600 cursor-pointer group backdrop-blur-[2px]",
+            isScrolled && "-translate-y-2",
           )}
         >
           <IoSearch
@@ -79,18 +120,20 @@ export default function Layout() {
             )}
           />
         </div>
-        {/*//TODO >> add whatsapp link */}
-        <div
+        {/*//! >> up button */}
+        <button
+          onClick={() => scrollTo({ top: 0, behavior: "smooth" })}
           className={clsx(
-            "bg-green-500 p-2 rounded-full shadow-lg hover:shadow-green-500/50 transition-all duration-300 hover:bg-green-500/80 cursor-pointer group backdrop-blur-[2px]",
+            "h-10 w-10 flex justify-center items-center bg-accent-600 rounded-full shadow-lg hover:shadow-accent-600/50 transition-all duration-300 hover:bg-accent-600/80 cursor-pointer group backdrop-blur-[2px] overflow-hidden",
+            isScrolled ? "max-h-200" : "max-h-0 opacity-0 scale-50",
           )}
         >
-          <FaWhatsapp
+          <IoIosArrowUp
             className={clsx(
               "text-2xl text-white group-hover:scale-110 transition-transform duration-300",
             )}
           />
-        </div>
+        </button>
       </div>
       {/*//* fixed Search input */}
       <div

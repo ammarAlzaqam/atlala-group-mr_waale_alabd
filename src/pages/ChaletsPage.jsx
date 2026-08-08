@@ -96,7 +96,7 @@ export default function ChaletsPage() {
         !classification || chalet.infos[0].label === classification;
 
       // السراير
-      const bedMatched = !bed || chalet.infos[1].label === bed;
+      const bedMatched = !bed || chalet.infos[2].label === bed;
 
       // الدور
       const floorMatched = !floor || chalet.details[0].label === floor;
@@ -185,10 +185,11 @@ export default function ChaletsPage() {
                 onChange={(e) => {
                   setPriceRanking(e.target.value);
                 }}
+                value={priceRanking}
                 className="select w-fit shrink-0 rounded-xl border-secondary-100"
               >
-                <option value="highest">الاعلي سعراً</option>
                 <option value="lowest">الاقل سعراً</option>
+                <option value="highest">الاعلي سعراً</option>
               </select>
             </div>
             {chaletsForPage.length > 0 ? (
