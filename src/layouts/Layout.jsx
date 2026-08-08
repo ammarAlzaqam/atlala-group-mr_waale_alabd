@@ -96,6 +96,18 @@ export default function Layout() {
     };
   }, []);
 
+  const setIsScrolled = useIsScrolled((state) => state.setIsScrolled);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(scrollY > 20);
+    };
+
+    addEventListener("scroll", handleScroll);
+
+    return () => removeEventListener("scroll", handleScroll);
+  }, []);
+
   useEffect(() => {
     open && searchRef?.current?.focus();
   }, [open]);

@@ -29,7 +29,7 @@ export default function HomeLayout() {
           favorites.length > 0
             ? "opacity-100!"
             : "opacity-0! pointer-events-none translate-y-2",
-          !isScrolled && "translate-y-12 delay-100",
+          !isScrolled && "translate-y-12 delay-200",
         )}
       >
         <MdFavoriteBorder

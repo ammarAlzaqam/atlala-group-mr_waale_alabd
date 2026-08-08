@@ -772,7 +772,12 @@ import { FaCalendar, FaHouseCircleCheck, FaX } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
 import { pestAdvList } from "../constants/advantages";
 import { LuCircleDotDashed } from "react-icons/lu";
-import { useArriveDate, useLiveDate, useSheetChaletsList } from "../store";
+import {
+  useArriveDate,
+  useIsScrolled,
+  useLiveDate,
+  useSheetChaletsList,
+} from "../store";
 import { date } from "yup";
 import {
   getMonthName,
@@ -789,6 +794,8 @@ import { CiCircleQuestion } from "react-icons/ci";
 import { GoPeople, GoQuestion } from "react-icons/go";
 
 function ChHeroSec({ chNum }) {
+  const isScrolled = useIsScrolled((state) => state.isScrolled);
+
   return (
     <div className="flex justify-center pt-17 pb-22 md:bg-top bg-move">
       <div className="container flex flex-col items-center text-center">
@@ -856,6 +863,7 @@ function ChHeroSec({ chNum }) {
         to="/chalets"
         className={clsx(
           "fixed z-30 bottom-29 right-5 bg-primary-400 p-2 rounded-full shadow-lg hover:shadow-primary-500/50 transition-all duration-300 hover:bg-primary-500/80 cursor-pointer group backdrop-blur-[2px]",
+          !isScrolled && "translate-y-12 delay-200",
         )}
       >
         <PiWarehouse

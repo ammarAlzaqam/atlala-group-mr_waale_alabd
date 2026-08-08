@@ -12,17 +12,6 @@ import { useIsScrolled } from "../../store";
 export default function Header() {
   const [isOpen, setOpen] = useState(false);
   const isScrolled = useIsScrolled((state) => state.isScrolled);
-  const setIsScrolled = useIsScrolled((state) => state.setIsScrolled);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(scrollY > 20);
-    };
-
-    addEventListener("scroll", handleScroll);
-
-    return () => removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div
