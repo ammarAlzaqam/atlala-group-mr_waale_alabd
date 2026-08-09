@@ -66,11 +66,15 @@ export default function Layout() {
     let startY = 0;
 
     const handleTouchStart = (e) => {
+      if (e.target.closest("[data-no-swipe]")) return;
+
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
     };
 
     const handleTouchEnd = (e) => {
+      if (e.target.closest("[data-no-swipe]")) return;
+
       const endX = e.changedTouches[0].clientX;
       const endY = e.changedTouches[0].clientY;
 

@@ -318,6 +318,7 @@ export default function ChaletDetailsPage() {
                 ref={containerRef}
                 className="relative w-full flex overflow-auto scrollbar-none gap-2 p-1"
                 onDoubleClick={(e) => e.stopPropagation()}
+                data-no-swipe
               >
                 {chalet?.chaletImages?.map((chImg, index) => (
                   <div
@@ -698,6 +699,7 @@ export default function ChaletDetailsPage() {
             </div>
             {/*//! Ch Location img */}
             <div
+              data-no-swipe
               onDoubleClick={(e) => e.stopPropagation()}
               className="relative col-span-1 md:col-span-5 rounded-xl overflow-hidden border-2 border-primary-300/30"
             >

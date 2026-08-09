@@ -18,6 +18,7 @@ import {
   useSheetChaletsList,
   useView,
 } from "../store";
+import clsx from "clsx";
 
 export default function ChaletsPage() {
   const [nofPages, setNofPages] = useState(0);
@@ -118,6 +119,10 @@ export default function ChaletsPage() {
       data.sort((a, b) => b.price - a.price);
     } else if (priceRanking === "lowest") {
       data.sort((a, b) => a.price - b.price);
+    } else if (priceRanking === "num-highest") {
+      data.sort((a, b) => b.num - a.num);
+    } else if (priceRanking === "num-lowest") {
+      data.sort((a, b) => a.num - b.num);
     }
 
     setNofPages(Math.ceil(data.length / chPerPage));
@@ -190,6 +195,10 @@ export default function ChaletsPage() {
               >
                 <option value="lowest">الاقل سعراً</option>
                 <option value="highest">الاعلي سعراً</option>
+                <option value="num-lowest">رقم الشاليه من الأصغر للأكبر</option>
+                <option value="num-highest">
+                  رقم الشاليه من الأكبر للأصغر
+                </option>
               </select>
             </div>
             {chaletsForPage.length > 0 ? (
@@ -203,7 +212,8 @@ export default function ChaletsPage() {
                 {/* pagination */}
                 <div className="join self-center">
                   <button
-                    className="join-item btn"
+                    disabled={pageNumber >= nofPages}
+                    className={clsx("join-item btn")}
                     onClick={() => {
                       if (pageNumber < nofPages) {
                         setPageNumber(pageNumber + 1);
@@ -218,6 +228,7 @@ export default function ChaletsPage() {
                   </button>
                   <button
                     className="join-item btn"
+                    disabled={pageNumber <= 1}
                     onClick={() => {
                       if (pageNumber > 1) {
                         setPageNumber(pageNumber - 1);
