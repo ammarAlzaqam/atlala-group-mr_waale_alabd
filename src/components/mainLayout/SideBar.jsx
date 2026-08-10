@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import logoIcon from "../../assets/icons/logo2.png";
+import logoIcon from "../../assets/icons/logo.png";
 import homeIcon from "../../assets/icons/nav/home.png";
 import navLinks from "../../constants/navLinks";
 import clsx from "clsx";
@@ -25,7 +25,7 @@ export default function SideBar({ isOpen, setOpen }) {
       <aside
         onClick={(e) => e.stopPropagation()}
         className={clsx(
-          "h-full bg-primary-900 overflow-y-auto overflow-x-hidden px-8 py-6 transition-transform duration-500 flex flex-col justify-between items-center",
+          "h-full bg-primary-800 overflow-y-auto overflow-x-hidden px-8 py-6 transition-transform duration-500 flex flex-col justify-between items-center",
           isOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
@@ -72,7 +72,7 @@ export default function SideBar({ isOpen, setOpen }) {
                     <span
                       className={clsx(
                         "text-xl font-bold leading-6 z-2 transition-color duration-300",
-                        isActive ? "text-primary-500!" : "text-secondary-500!",
+                        isActive ? "text-primary-400!" : "text-secondary-500!",
                       )}
                     >
                       {name}

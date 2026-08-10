@@ -193,10 +193,16 @@ export default function ChaletsPage() {
                 value={priceRanking}
                 className="select w-fit shrink-0 rounded-xl border-secondary-100"
               >
-                <option value="lowest">الاقل سعراً</option>
-                <option value="highest">الاعلي سعراً</option>
-                <option value="num-lowest">رقم الشاليه من الأصغر للأكبر</option>
-                <option value="num-highest">
+                <option value="lowest" className="whitespace-nowrap">
+                  الاقل سعراً
+                </option>
+                <option value="highest" className="whitespace-nowrap">
+                  الاعلي سعراً
+                </option>
+                <option value="num-lowest" className="whitespace-nowrap">
+                  رقم الشاليه من الأصغر للأكبر
+                </option>
+                <option value="num-highest" className="whitespace-nowrap">
                   رقم الشاليه من الأكبر للأصغر
                 </option>
               </select>

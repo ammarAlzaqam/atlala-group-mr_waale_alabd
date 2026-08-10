@@ -22,7 +22,7 @@ export default function Header() {
     >
       <div className="container py-2 flex flex-row-reverse sm:flex-row justify-between gap-3">
         <Link to="/" className="flex items-center gap-4">
-          <img src={logo} alt="logo_img" className="w-35 md:w-40 lg:w-45" />
+          <img src={logo} alt="logo_img" className="h-12 lg:h-15" />
         </Link>
         <nav className="hidden sm:flex *:pr-5">
           {navLinks.map(({ name, route }) => (
@@ -40,7 +40,7 @@ export default function Header() {
             </NavLink>
           ))}
         </nav>
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex  items-center gap-4">
           <a
             href={mediaLinks.phone}
             className="btn media flex items-center gap-2 border bg-transparent border-accent-500 py-1.5 px-3 rounded-lg"
@@ -60,7 +60,7 @@ export default function Header() {
             <span className="hidden lg:block">تواصل واتساب</span>
           </a>
         </div>
-        <div className="z-111 block sm:hidden">
+        <div className="z-111 block self-center sm:hidden">
           <Hamburger
             toggled={isOpen}
             toggle={setOpen}
