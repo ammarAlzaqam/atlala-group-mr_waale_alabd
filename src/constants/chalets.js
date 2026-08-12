@@ -623,7 +623,7 @@ const chaletsList = [
       // rooms details
       rooms.fourRooms.nofPeople,
       // nof beds
-      beds[1],
+      beds[1].xl,
       // nof sofa
       couch[2],
     ],
@@ -653,7 +653,7 @@ const chaletsList = [
       // rooms details
       rooms.fourRooms.nofPeople,
       // nof beds
-      beds[1],
+      beds[1].xl,
       // nof sofa
       couch[2],
     ],
@@ -989,7 +989,7 @@ const chaletsList = [
       // rooms details
       rooms.towRooms.nofPeople,
       // nof beds
-      beds[1],
+      beds[1].sm,
       // nof sofa
       couch[1],
     ],
@@ -1122,7 +1122,7 @@ const chaletsList = [
       // rooms details
       rooms.towRooms.nofPeople,
       // nof beds
-      beds[1],
+      beds[1].sm,
       // nof sofa
       couch[1],
     ],
