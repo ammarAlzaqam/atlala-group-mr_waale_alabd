@@ -51,6 +51,11 @@ export const useBed = create((set) => ({
   setBed: (newValue) => set(() => ({ bed: newValue })),
 }));
 
+export const useSofa = create((set) => ({
+  sofa: "",
+  setSofa: (newValue) => set(() => ({ sofa: newValue })),
+}));
+
 export const useFloor = create((set) => ({
   floor: "",
   setFloor: (newValue) => set(() => ({ floor: newValue })),

@@ -64,7 +64,7 @@ export default function Header() {
           <Hamburger
             toggled={isOpen}
             toggle={setOpen}
-            color={isOpen ? "#ffffff" : "#85cfff"}
+            color={isOpen ? "#ffffff" : "var(--color-primary-400)"}
             size={26}
           />
         </div>

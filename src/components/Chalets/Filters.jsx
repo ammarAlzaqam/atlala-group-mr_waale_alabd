@@ -5,6 +5,7 @@ import {
   areasList,
   beds,
   classificationList,
+  couch,
   floors,
   floorsList,
   roomsList,
@@ -20,6 +21,7 @@ import {
   useLiveDate,
   usePriceRange,
   useRoom,
+  useSofa,
   useView,
 } from "../../store";
 import clsx from "clsx";
@@ -50,6 +52,8 @@ export default function Filters() {
   const setBed = useBed((state) => state.setBed);
   const floor = useFloor((state) => state.floor);
   const setFloor = useFloor((state) => state.setFloor);
+  const sofa = useSofa((state) => state.sofa);
+  const setSofa = useSofa((state) => state.setSofa);
 
   const arrivalDateRef = useRef(null);
   const departureDateRef = useRef(null);
@@ -216,76 +220,7 @@ export default function Filters() {
             </div>
           </div>
         </div>
-        {/*//* Filter By rooms num */}
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-neutral-800!">الغرف</h3>
-          <div className="flex flex-col gap-2">
-            {roomsList.map(({ name, label, icon, nofPeople }) => (
-              <div
-                key={label}
-                className={clsx(
-                  "flex items-center justify-between gap-3 transition-opacity duration-300",
-                  area === 48 &&
-                    [3, 4, 5].includes(label) &&
-                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
-                  area === 75 &&
-                    [2, 5].includes(label) &&
-                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
-                  area === 96 &&
-                    [2, 3, 4].includes(label) &&
-                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
-                )}
-              >
-                <label htmlFor={label} className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    name="category"
-                    className={clsx(
-                      "radio transition-all duration-300 checked:bg-primary-500 text-white! border",
-                      room === label
-                        ? "border-primary-500"
-                        : "border-secondary-100",
-                    )}
-                    checked={room === label}
-                    id={label}
-                    // checked={!!adv.find((adv) => adv === label)}
-                    onChange={() => handelRoomsNum(label)}
-                  />
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={icon}
-                      alt="icon"
-                      className={clsx(
-                        "w-6 transition-all duration-300",
-                        room === label && "blue-img-filter",
-                      )}
-                    />
-                    <span
-                      className={clsx(
-                        "text-sm text-[#45556C] leading-5 transition-all duration-300",
-                        room === label &&
-                          "text-shadow-md text-white! font-bold text-shadow-primary-600",
-                      )}
-                    >
-                      {name}
-                    </span>
-                  </div>
-                </label>
-                <span
-                  className={clsx(
-                    "text-xs leading-4 transition-colors duration-300",
-                    room === label
-                      ? "text-primary-400!"
-                      : "text-secondary-400!",
-                  )}
-                >
-                  {nofPeople}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-        {/*//* Filter by area and beds */}
+        {/*//* Filter by area and beds and sofas */}
         <div
           className={clsx(
             "flex flex-col transition-all duration-300",
@@ -352,6 +287,31 @@ export default function Filters() {
                     index={index}
                     bed={bed}
                     setBed={setBed}
+                    area={area}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          {/*//* Filter by sofas */}
+          <div className={clsx("transition-all duration-300")}>
+            <div
+              className={clsx(
+                "flex flex-col gap-2 transition-all duration-300",
+                area
+                  ? "max-h-200 overflow-y-auto"
+                  : "max-h-0 overflow-y-hidden",
+              )}
+            >
+              <h3 className="font-bold text-neutral-800!">الكنب</h3>
+              <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                {couch.map((sofaItem, index) => (
+                  <SofaCard
+                    key={index}
+                    sofaItem={sofaItem}
+                    index={index}
+                    sofa={sofa}
+                    setSofa={setSofa}
                     area={area}
                   />
                 ))}
@@ -536,6 +496,75 @@ export default function Filters() {
                   )}
                 />
               </label>
+            ))}
+          </div>
+        </div>
+        {/*//* Filter By rooms num */}
+        <div className="flex flex-col gap-2">
+          <h3 className="font-bold text-neutral-800!">الغرف</h3>
+          <div className="flex flex-col gap-2">
+            {roomsList.map(({ name, label, icon, nofPeople }) => (
+              <div
+                key={label}
+                className={clsx(
+                  "flex items-center justify-between gap-3 transition-opacity duration-300",
+                  area === 48 &&
+                    [3, 4, 5].includes(label) &&
+                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
+                  area === 75 &&
+                    [2, 5].includes(label) &&
+                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
+                  area === 96 &&
+                    [2, 3, 4].includes(label) &&
+                    "opacity-50 cursor-not-allowed *:cursor-not-allowed *:*:cursor-not-allowed",
+                )}
+              >
+                <label htmlFor={label} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="category"
+                    className={clsx(
+                      "radio transition-all duration-300 checked:bg-primary-500 text-white! border",
+                      room === label
+                        ? "border-primary-500"
+                        : "border-secondary-100",
+                    )}
+                    checked={room === label}
+                    id={label}
+                    // checked={!!adv.find((adv) => adv === label)}
+                    onChange={() => handelRoomsNum(label)}
+                  />
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={icon}
+                      alt="icon"
+                      className={clsx(
+                        "w-6 transition-all duration-300",
+                        room === label && "blue-img-filter",
+                      )}
+                    />
+                    <span
+                      className={clsx(
+                        "text-sm text-[#45556C] leading-5 transition-all duration-300",
+                        room === label &&
+                          "text-shadow-md text-white! font-bold text-shadow-primary-600",
+                      )}
+                    >
+                      {name}
+                    </span>
+                  </div>
+                </label>
+                <span
+                  className={clsx(
+                    "text-xs leading-4 transition-colors duration-300",
+                    room === label
+                      ? "text-primary-400!"
+                      : "text-secondary-400!",
+                  )}
+                >
+                  {nofPeople}
+                </span>
+              </div>
             ))}
           </div>
         </div>
@@ -772,6 +801,55 @@ const BedCard = ({ bedItem, index, bed, setBed, area }) => {
         )}
       >
         {bedValue.title}
+      </span>
+    </button>
+  );
+};
+
+const SofaCard = ({ sofaItem, index, sofa, setSofa, area }) => {
+  const isDisabled =
+    (area === 48 && [2, 3].includes(index)) ||
+    (area === 75 && index === 0) ||
+    (area === 96 && index !== 0) ||
+    !area;
+
+  useEffect(() => {
+    if ((isDisabled && sofa === sofaItem.label) || !area) {
+      setSofa("");
+    }
+  }, [isDisabled, sofa, sofaItem.label]);
+
+  return (
+    <button
+      key={sofaItem.label}
+      className={clsx(
+        "py-2 rounded-lg border flex flex-col justify-center items-center gap-2 cursor-pointer transition-all duration-300",
+        sofa === sofaItem.label
+          ? "border-primary-600/50"
+          : "border-[#E2E8F0] hover:shadow-lg hover:shadow-primary-500/30",
+        isDisabled && "opacity-40 pointer-events-none scale-75",
+      )}
+      onClick={() =>
+        sofa === sofaItem.label ? setSofa(null) : setSofa(sofaItem.label)
+      }
+    >
+      <img
+        className={clsx(
+          "w-8 h-8 object-contain",
+          sofa === sofaItem.label
+            ? "blue-img-filter"
+            : "grayscale-100 opacity-50",
+        )}
+        src={sofaItem.icon}
+        alt="brand-img"
+      />
+      <span
+        className={clsx(
+          "font-medium text-xs leading-4 transition-colors duration-300",
+          sofa === sofaItem.label ? "text-primary-600!" : "text-secondary-400!",
+        )}
+      >
+        {sofaItem.title}
       </span>
     </button>
   );

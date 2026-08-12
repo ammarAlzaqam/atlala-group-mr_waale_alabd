@@ -16,6 +16,7 @@ import {
   usePriceRanking,
   useRoom,
   useSheetChaletsList,
+  useSofa,
   useView,
 } from "../store";
 import clsx from "clsx";
@@ -39,6 +40,7 @@ export default function ChaletsPage() {
   const classification = useClassification((state) => state.classification);
   const bed = useBed((state) => state.bed);
   const floor = useFloor((state) => state.floor);
+  const sofa = useSofa((state) => state.sofa);
 
   const pageNumber = usePageNumber((state) => state.pageNumber);
   const setPageNumber = usePageNumber((state) => state.setPageNumber);
@@ -102,6 +104,9 @@ export default function ChaletsPage() {
       // الدور
       const floorMatched = !floor || chalet.details[0].label === floor;
 
+      // الكنب
+      const couchMatched = !sofa || chalet.infos[3].label === sofa;
+
       return (
         priceMatched &&
         viewMatched &&
@@ -110,7 +115,8 @@ export default function ChaletsPage() {
         roomMatched &&
         classificationMatched &&
         bedMatched &&
-        floorMatched
+        floorMatched &&
+        couchMatched
       );
     });
 
@@ -138,6 +144,7 @@ export default function ChaletsPage() {
     classification,
     bed,
     floor,
+    sofa,
   ]);
 
   const filteredChalets = useMemo(() => {

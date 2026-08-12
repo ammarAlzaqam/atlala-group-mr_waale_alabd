@@ -3,17 +3,17 @@
 @plugin "daisyui";
 
 @theme {
-  /* Primary */
+  /* Primary - Porto Matroh Teal */
   --color-primary-100: #d9f3ef;
-  --color-primary-200: #b2e6df;
-  --color-primary-300: #7dd2c8;
-  --color-primary-400: #42b8aa;
+  --color-primary-200: #b5e5df;
+  --color-primary-300: #7ccfc5;
+  --color-primary-400: #43b5a9;
   --color-primary-500: #02665a;
   --color-primary-600: #00554b;
-  --color-primary-700: #00453e;
-  --color-primary-800: #00352f;
-  --color-primary-900: #00251f;
-  --color-primary-950: #001713;
+  --color-primary-700: #00463f;
+  --color-primary-800: #003832;
+  --color-primary-900: #002923;
+  --color-primary-950: #001b18;
 
   /* Secondary */
   --color-secondary-100: #e4e4cc;
@@ -26,17 +26,17 @@
   --color-secondary-800: #303221;
   --color-secondary-900: #1b1d0e;
 
-  /* Accent - Luxury Gold */
-  --color-accent-100: #f9efd6;
-  --color-accent-200: #f2ddb0;
-  --color-accent-300: #e9ca87;
-  --color-accent-400: #ddb760;
-  --color-accent-500: #cca763;
-  --color-accent-600: #b48f49;
-  --color-accent-700: #937337;
-  --color-accent-800: #6f5627;
-  --color-accent-900: #4d3b18;
-  --color-accent-950: #2f220d;
+  /* Accent - Soft Luxury Gold */
+  --color-accent-100: #fbf4df;
+  --color-accent-200: #f3e2b7;
+  --color-accent-300: #e8cd8b;
+  --color-accent-400: #d9b967;
+  --color-accent-500: #c9a65a;
+  --color-accent-600: #ae8a43;
+  --color-accent-700: #8f6f35;
+  --color-accent-800: #6d5429;
+  --color-accent-900: #4b3a1c;
+  --color-accent-950: #2d2312;
 
   --color-main-bg: #fbfafd;
 
@@ -63,11 +63,11 @@ h5,
 h6,
 .headerLink {
   font-family: "Tajawal", sans-serif;
-  color: #004c6c;
+  color: var(--color-primary-600);
 
   * {
     font-family: "Tajawal", sans-serif;
-    color: #004c6c;
+    color: var(--color-primary-600);
   }
 }
 

@@ -12,7 +12,7 @@ export default function ContactPage() {
         title="تواصل معنا"
         des="نحن هنا للإجابة عن جميع استفساراتك ومساعدتك في اختيار الوحدة المناسبة."
       />
-      <div className="flex justify-center bg-main-bg">
+      <div className="flex justify-center">
         <div className="container flex flex-col lg:flex-row gap-x-12 gap-y-18 gap-12">
           {/*//! Contact Information */}
           <div className="flex flex-col gap-5 lg:w-2/5">

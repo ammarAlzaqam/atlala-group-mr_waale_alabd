@@ -171,18 +171,18 @@ export const tags = {
 
 export const advList = [
   { label: "airCondition", name: "تكييف كامل", icon: airConditionIcon },
+  { label: "smart_tv", name: "شاشة TV", icon: smartScreenIcon },
   { label: "auto_washing", name: "غسالة اتوماتيك", icon: autoWashingIcon },
   { label: "microwave", name: "ميكروواف", icon: microwaveIcon },
   { label: "oven", name: "فرن", icon: ovenIcon },
+  { label: "water_dispenser", name: "موزع مياه", icon: waterDispenserIcon },
+  { label: "water_filter", name: "فلتر ماء", icon: waterFilterIcon },
   { label: "grill", name: "شواية", icon: grillIcon },
   { label: "swing-chair", name: "مرجيحه", icon: swingIcon },
   { label: "garden", name: "حديقة خاصة", icon: gardenIcon },
   { label: "aqua", name: "قريب من منطقة الاكوا", icon: aquaIcon },
-  { label: "kidsArea", name: "مطل علي اكوا الاطفال", icon: kidsAreaIcon },
-  { label: "water-dispenser", name: "موزع مياه", icon: waterDispenserIcon },
-  { label: "water_filter", name: "فلتر ماء", icon: waterFilterIcon },
+  { label: "kidsArea", name: "قريب من اكوا الأطفال", icon: kidsAreaIcon },
   { label: "pergola", name: "قريب من البرجولة", icon: pergolaIcon },
-  { label: "smart_tv", name: "شاشة TV", icon: smartScreenIcon },
 ];
 
 const adv = {
@@ -360,36 +360,36 @@ export const beds = [
 
 export const rooms = {
   towRooms: {
-    room: { title: "1 غرفة", icon: bedIcon },
-    bath: { title: "1 حمام", icon: bathRoomIcon },
+    room: { title: "1 غرفة", icon: bedIcon, label: 2 },
+    bath: { title: "1 حمام", icon: bathRoomIcon, label: 2 },
     label: 2,
     icon: room1,
     nofPeople: { label: "3", title: "3 أفراد وطفلين", icon: group3 },
   },
   threeRooms: {
-    room: { title: "1 غرفة", icon: bedIcon },
-    bath: { title: "2 حمام", icon: bathRoomIcon },
+    room: { title: "1 غرفة", icon: bedIcon, label: 3 },
+    bath: { title: "2 حمام", icon: bathRoomIcon, label: 3 },
     label: 3,
     icon: room2,
     nofPeople: { label: "5", title: "4 أفراد و3أطفال", icon: group5 },
   },
   fourRooms: {
-    room: { title: "2 غرفة", icon: bedIcon },
-    bath: { title: "2 حمام", icon: bathRoomIcon },
+    room: { title: "2 غرفة", icon: bedIcon, label: 4 },
+    bath: { title: "2 حمام", icon: bathRoomIcon, label: 4 },
     label: 4,
     icon: room3,
     nofPeople: { label: "5", title: "6 أفراد وطفلين", icon: group6 },
   },
   fiveRooms: {
-    room: { title: "3 غرفة", icon: bedIcon },
-    bath: { title: "2 حمام", icon: bathRoomIcon },
+    room: { title: "3 غرفة", icon: bedIcon, label: 5 },
+    bath: { title: "2 حمام", icon: bathRoomIcon, label: 5 },
     label: 5,
     icon: room4,
     nofPeople: { label: "8", title: "8 أفراد وطفلين", icon: group8 },
   },
 };
 
-const couch = [
+export const couch = [
   {
     title: "ركنة سرير",
     icon: cornerIcon,

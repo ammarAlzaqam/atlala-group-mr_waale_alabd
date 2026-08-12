@@ -158,7 +158,7 @@ export default function Layout() {
           setOpen(false);
         }}
         className={clsx(
-          "fixed z-1000 top-0 right-0 pt-8 w-full h-dvh bg-black/70 backdrop-blur-sm flex flex-col justify-center items-center gap-8 transition-all duration-300",
+          "fixed z-1000 top-0 right-0 pt-8 w-full h-dvh bg-black/70 backdrop-blur-sm flex flex-col justify-start items-center gap-8 transition-all duration-300",
           open ? "opacity-100" : "opacity-0 pointer-events-none",
         )}
       >

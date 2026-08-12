@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import { FaRegCalendarAlt, FaRegUser, FaSearch } from "react-icons/fa";
 import { PiMapPinSimpleAreaBold } from "react-icons/pi";
-import logo from "../../assets/icons/logo2.png";
+import logo from "../../assets/icons/logo.png";
 import { useRef, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { clsx } from "clsx";
@@ -54,7 +54,7 @@ export default function HeroSec() {
               متكاملة - شاطئ خاص
             </p>
             <img
-              className="absolute z-1 h-full top-0 left-1/2 -translate-x-1/2 opacity-40"
+              className="absolute z-1 h-full top-0 left-1/2 -translate-x-1/2 opacity-60"
               src={logo}
               alt="icon-logo"
             />
