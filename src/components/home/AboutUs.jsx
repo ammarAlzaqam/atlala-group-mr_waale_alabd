@@ -2,10 +2,13 @@ import floralIcon from "../../assets/icons/decor/floral.png";
 import aboutInfos from "../../constants/AboutInfos";
 import protoImg from "../../assets/images/about/aboutSec/porto.png";
 import officeIcon from "../../assets/icons/about/office2.png";
+import reefImg from "../../assets/icons/about/reefImg.png";
+
+import { ImQuotesLeft } from "react-icons/im";
 
 export default function AboutUs() {
   return (
-    <div className="flex justify-center pt-15 pb-25 md:pb-20">
+    <div className="flex flex-col items-center gap-16 pt-8 md:pt-15 pb-15 md:pb-20">
       <div className="container flex flex-col lg:flex-row lg:items-end gap-12">
         {/*//! Details */}
         <div className="flex flex-col gap-6 shrink-0">
@@ -82,9 +85,9 @@ export default function AboutUs() {
         <div className="relative">
           <img
             src={protoImg}
-            className="z-1 aspect-square sm:aspect-12/8 2xl:aspect-video object-cover rounded-tr-[60%] sm:rounded-tr-[70%] rounded-br-[80px]"
+            className="z-1 aspect-square sm:aspect-12/8 2xl:aspect-video object-cover rounded-tr-[50%] sm:rounded-tr-[70%] rounded-br-[80px]"
           />
-          <div className="absolute z-2 -bottom-3 -left-15 md:-left-25 2xl:-left-35 translate-y-10/12 w-[110%] 2xl:w-full h-50 sm:h-90 bg-main-bg rounded-tr-[100%] rounded-tl-[100%]" />
+          <div className="absolute z-2 -bottom-3 -left-18 md:-left-25 2xl:-left-35 translate-y-10/12 w-[115%] sm:w-[110%] 2xl:w-full h-50 sm:h-90 bg-main-bg rounded-tr-[100%] rounded-tl-[100%]" />
           <div className="absolute z-3 -bottom-10 sm:-bottom-7 left-[15%] md:left-[20%] lg:left-[10%] 2xl:left-[15%] rounded-2xl bg-primary-500 px-4 sm:px-8 py-3 flex flex-col sm:flex-row items-center gap-1 sm:gap-6">
             <img
               src={officeIcon}
@@ -94,6 +97,23 @@ export default function AboutUs() {
             <h4 className="text-white! text-xs sm:text-base 2xl:text-lg font-normal sm:font-semibold leading-[160%] text-center max-w-50">
               مكتبنا بجوار بواية <br /> بورتو مطروح مباشرة
             </h4>
+          </div>
+        </div>
+      </div>
+      <div className="container z-2">
+        <div className="bg-primary-100/60 rounded-3xl px-6 md:px-10 py-6 flex flex-col md:flex-row justify-between gap-4 md:gap-12">
+          <img
+            src={reefImg}
+            alt="reef-img"
+            className="md:w-[calc(50%-25px)] xxl:w-1/3 shrink-0 object-contain"
+          />
+          <div className="w-[90%] md:w-0.5 mx-auto h-0.5 md:h-auto bg-accent-500/50" />
+          <div className="relative flex items-center gap-8 max-w-full md:max-w-[calc(50%-25px)] xxl:max-w-1/3 md:pl-15 lg:pl-25">
+            <h3 className="font-semibold text-center">
+              إطلالة العقارية .. خبرة نعرف بها بورتو مطروح ، واهتمام نضعه في كل
+              تفاصيل إقامتك.
+            </h3>
+            <ImQuotesLeft className="absolute bottom-1/2 md:top-0 right-1/2 left-auto md:right-auto md:left-0 translate-1/2 md:translate-0 text-6xl md:text-4xl text-primary-500/20 md:text-primary-500/50" />
           </div>
         </div>
       </div>

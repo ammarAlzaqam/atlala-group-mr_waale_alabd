@@ -651,11 +651,12 @@ export default function ChaletDetailsPage() {
                 </div>
                 {/* buttons */}
                 <div className="flex flex-col gap-4">
+                  {/*//TODO>> un disabled button */}
                   <div
                     onClick={() => {
                       setOpen(true);
                     }}
-                    className="btn bg-accent-500 text-white! rounded-lg"
+                    className="btn bg-accent-500 text-white! rounded-lg pointer-events-none opacity-50"
                   >
                     <FaCalendar className="text-white!" />
                     احجز الأن
@@ -756,14 +757,15 @@ export default function ChaletDetailsPage() {
           </div>
         </div>
       </div>
+      {/*//TODO>> run reservation modal */}
       {/* Reservation Modal */}
-      <ReservationModal
+      {/* <ReservationModal
         chalet={chalet}
         sheetChaletData={sheetChaletData}
         sheetChaletDataNextM={sheetChaletDataNextM}
         open={open}
         setOpen={setOpen}
-      />
+      /> */}
     </div>
   );
 }

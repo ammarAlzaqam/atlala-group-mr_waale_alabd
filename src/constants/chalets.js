@@ -900,7 +900,7 @@ const chaletsList = [
     chaletImages: chaletsSmImages.ch25009,
     locationImg: locationCh25Img,
     num: 25009,
-    price: 3000,
+    price: 3500,
     view: [tags.poolView],
     adv: [
       adv.airCon,
@@ -934,7 +934,7 @@ const chaletsList = [
     chaletImages: chaletsSmImages.ch25010,
     locationImg: locationCh25Img,
     num: 25010,
-    price: 3000,
+    price: 3500,
     view: [tags.poolView],
     adv: [
       adv.airCon,
