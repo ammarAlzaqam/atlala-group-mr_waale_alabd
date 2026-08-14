@@ -172,7 +172,7 @@ const AdvCard = ({ title, icon, index }) => (
       <img
         src={icon}
         alt="icon-img"
-        className="w-[70%] max-w-16 blue-img-filter"
+        className="w-[70%] max-w-16 green-img-filter"
       />
     </div>
     {/* num */}

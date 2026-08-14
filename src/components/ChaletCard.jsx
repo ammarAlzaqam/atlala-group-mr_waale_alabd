@@ -2,6 +2,7 @@ import { MdFavorite } from "react-icons/md";
 import clsx from "clsx";
 import { FaArrowLeft, FaRegHeart, FaRegHourglass } from "react-icons/fa";
 import { IoMdArrowBack, IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { CgUnavailable } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import {
   useAdv,
@@ -178,36 +179,46 @@ export default function ChaletCard({ ch }) {
           <div className={clsx("flex items-center justify-between gap-5")}>
             <div className={clsx(chaletsLoader && "animate-pulse")}>
               {sheetChaletData ? (
-                sheetChaletData?.validList?.[0]?.from?.d === currDay ? (
-                  firstValid?.from === firstValid?.to ? (
-                    <div className="flex items-center gap-1">
-                      <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
-                      <span className="text-xs sm:text-sm font-semibold text-green-600!">
-                        متاح اليوم
-                      </span>
-                    </div>
+                sheetChaletData?.validList?.length > 0 ? (
+                  sheetChaletData?.validList?.[0]?.from?.d === currDay ? (
+                    firstValid?.from === firstValid?.to ? (
+                      <div className="flex items-center gap-1">
+                        <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
+                        <span className="text-xs sm:text-sm font-semibold text-green-600!">
+                          متاح اليوم
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-1">
+                        <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
+                        <span className="text-xs sm:text-sm font-semibold text-green-600!">
+                          متاح حتي يوم {lastValid?.to}~
+                          {getMonthName(lastValid.m)}
+                        </span>
+                      </div>
+                    )
                   ) : (
-                    <div className="flex items-center gap-1">
-                      <IoMdCheckmarkCircleOutline className="text-sm text-green-600 shrink-0" />
-                      <span className="text-xs sm:text-sm font-semibold text-green-600!">
-                        متاح حتي يوم {lastValid?.to}~{getMonthName(lastValid.m)}
-                      </span>
+                    <div className="flex items-center gap-2">
+                      <FaRegHourglass className="text-sm text-red-500 shrink-0" />
+                      {firstValid?.from === firstValid?.to ? (
+                        <span className="text-xs sm:text-sm font-semibold text-red-500!">
+                          متاح في يوم {firstValid?.from}~
+                          {getMonthName(firstValid?.m)}
+                        </span>
+                      ) : (
+                        <span className="text-xs sm:text-sm font-semibold text-red-500!">
+                          من {firstValid?.from}~{getMonthName(firstValid?.m)}{" "}
+                          حتي {lastValid?.to}~{getMonthName(lastValid?.m)}
+                        </span>
+                      )}
                     </div>
                   )
                 ) : (
                   <div className="flex items-center gap-2">
-                    <FaRegHourglass className="text-sm text-red-500 shrink-0" />
-                    {firstValid?.from === firstValid?.to ? (
-                      <span className="text-xs sm:text-sm font-semibold text-red-500!">
-                        متاح في يوم {firstValid?.from}~
-                        {getMonthName(firstValid?.m)}
-                      </span>
-                    ) : (
-                      <span className="text-xs sm:text-sm font-semibold text-red-500!">
-                        من {firstValid?.from}~{getMonthName(firstValid?.m)} حتي{" "}
-                        {lastValid?.to}~{getMonthName(lastValid?.m)}
-                      </span>
-                    )}
+                    <CgUnavailable className="text-red-500 shrink-0" />
+                    <p className="text-xs sm:text-sm font-semibold text-red-500!">
+                      غير متاح
+                    </p>
                   </div>
                 )
               ) : (

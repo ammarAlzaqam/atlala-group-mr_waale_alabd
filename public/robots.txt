@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+# TODO>> Add Website Domain InsteadOf YOUR_DOMAIN.com
+Sitemap: https://YOUR-DOMAIN.com/sitemap.xml

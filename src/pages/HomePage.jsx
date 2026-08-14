@@ -1,3 +1,4 @@
+import AboutUs from "../components/home/AboutUs";
 import Advantages from "../components/home/Advantages";
 import Chalets from "../components/home/Chalets";
 import ChooseUs from "../components/home/ChooseUs";
@@ -8,6 +9,7 @@ export default function HomePage() {
     <div className="flex flex-col">
       <HeroSec />
       <Advantages />
+      <AboutUs />
       <Chalets />
       <ChooseUs />
     </div>

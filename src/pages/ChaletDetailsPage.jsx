@@ -127,7 +127,7 @@ export default function ChaletDetailsPage() {
   useEffect(() => {
     setImgIndex(0);
     setIsLoaded(true);
-  }, []);
+  }, [chaletNum, chalet?.chaletImages?.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -410,7 +410,7 @@ export default function ChaletDetailsPage() {
                   <h3 className="font-semibold text-lg sm:text-xl">
                     مميزات الشالية
                   </h3>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-x-3 gap-y-5">
                     {chalet?.adv?.map(({ name, label, Icon }, index) => (
                       <div key={label} className="flex items-end gap-2">
                         <p className="relative pt-6 text-xs sm:text-[16px] whitespace-nowrap text-gray-500! font-semibold">
@@ -974,7 +974,7 @@ function ReservationModal({
 مبلغ التأمين (مسترد): ${saveAmount.toLocaleString()} ج.م
 إجمالي المبلغ: ${finalPrice.toLocaleString()} ج.م
 
-أؤكد استعدادي لتحويل عربون الحجز وقدره ${deposit.toLocaleString()} ج.م (قيمة ليلة واحدة) فور تأكيد الحجز علي الرقم التالي 01021174061 او علي 01276413266
+أؤكد استعدادي لتحويل عربون الحجز وقدره ${deposit.toLocaleString()} ج.م (قيمة ليلة واحدة) فور تأكيد الحجز
 
 شاكرين لكم حسن تعاونكم، وفي انتظار ردكم الكريم.
 
@@ -1046,11 +1046,11 @@ ${username}
           <p className="z-2">أكمل بيانات الحجز للاستمرار</p>
           {/* absolute shadow bg */}
           <div className="relative w-20 h-1 bg-primary-700 rounded-[100%] mt-3">
-            <div className="absolute z-1 top-0 right-full w-30 h-0 rotate-45 shadow-[0_-40px_100px_8px_var(--color-accent-700)]" />
-            <div className="absolute z-1 top-0 left-0 translate-x-20 w-30 h-0 -rotate-45 shadow-[0_-40px_100px_8px_var(--color-primary-700)]" />
+            <div className="absolute z-1 top-0 right-full w-30 h-0 rotate-45 shadow-[0_-40px_120px_8px_var(--color-accent-700)]" />
+            <div className="absolute z-1 top-0 left-0 translate-x-20 w-30 h-0 -rotate-45 shadow-[0_-40px_120px_8px_var(--color-primary-700)]" />
           </div>
         </div>
-        <div className="flex z-2 flex-col-reverse md:flex-row gap-4">
+        <div className="flex flex-col-reverse md:flex-row gap-4">
           {/*//! Chalet info */}
           <div className="flex-1 flex flex-col gap-8 bg-main-bg shadow-lg px-2 sm:px-4 py-6 rounded-xl">
             {/* infos title */}

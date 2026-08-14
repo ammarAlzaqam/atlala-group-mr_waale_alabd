@@ -189,8 +189,8 @@ button {
 }
 
 .green-img-filter {
-  filter: brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(2200%)
-    hue-rotate(132deg) brightness(78%) contrast(110%);
+  filter: brightness(0) saturate(100%) invert(29%) sepia(31%) saturate(1235%)
+    hue-rotate(126deg) brightness(89%) contrast(98%);
 }
 
 .gold-img-filter {
@@ -367,4 +367,9 @@ button {
 calendar-day[disabled] {
   opacity: 0.3;
   pointer-events: none;
+}
+
+.react-international-phone-country-selector-dropdown {
+  left: auto;
+  right: 0;
 }

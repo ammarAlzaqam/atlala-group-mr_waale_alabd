@@ -9,7 +9,7 @@ import ChaletCard from "../ChaletCard";
 
 export default function Chalets() {
   return (
-    <div className="flex justify-center py-10 bg-primary-300/10">
+    <div className="flex z-10 justify-center py-10 bg-primary-300/10">
       <div className="container flex flex-col gap-8">
         <div className="flex flex-col md:flex-row items-end justify-between gap-5">
           <div className="flex flex-col gap-4">

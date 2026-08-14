@@ -176,7 +176,7 @@ export default function HeroSec() {
                 </div>
               </label>
               {/* submit btn */}
-              <button className="btn w-full md:w-auto flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 active:scale-[0.98] text-white! border-none text-lg font-head rounded-xl py-3 cursor-pointer transition-all duration-300 shadow-lg shadow-cyan-500/25">
+              <button className="btn w-full md:w-auto flex items-center justify-center gap-2 bg-primary-400 hover:bg-primary-500 active:scale-[0.98] text-white! border-none text-lg font-head rounded-xl py-3 cursor-pointer transition-all! duration-300 shadow-lg shadow-cyan-500/25">
                 <IoSearch className="text-white!" />
                 بحث
               </button>

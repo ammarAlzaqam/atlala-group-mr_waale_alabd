@@ -49,7 +49,7 @@ export default function ChaletsPage() {
     const arrive = new Date(arriveDate);
     const leave = new Date(leaveDate);
     const current = new Date(arrive);
-    while (current <= leave) {
+    while (current < leave) {
       const monthKey = `m${current.getMonth() + 1}`;
       const chalet = sheetChaletList?.[monthKey]?.[chaletNum];
       if (!chalet) return false;

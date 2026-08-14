@@ -735,7 +735,10 @@ function DatePicker({
             if (!day) return;
 
             if (id === "arrive-date") {
-              setLiveDate("");
+              const liveDate = new Date(day);
+              liveDate.setDate(liveDate.getDate() + 3);
+
+              setLiveDate(format(liveDate, "yyyy-MM-dd"));
             }
 
             setDate(format(day, "yyyy-MM-dd"));
