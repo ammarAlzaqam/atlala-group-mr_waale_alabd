@@ -1,5 +1,5 @@
 import floralIcon from "../../assets/icons/decor/floral.png";
-import aboutInfos from "../../constants/AboutInfos";
+import aboutInfos from "../../constants/aboutInfos";
 import protoImg from "../../assets/images/about/aboutSec/porto.png";
 import officeIcon from "../../assets/icons/about/office2.png";
 import reefImg from "../../assets/icons/about/reefImg.png";
@@ -72,7 +72,7 @@ export default function AboutUs() {
                 <h2 className="z-2 text-accent-500! text-4xl font-bold">
                   {title}
                 </h2>
-                <p className="text-center z-2 transition-color duration-300 group-hover:text-white!">
+                <p className="text-center z-2 transition-colors duration-300 group-hover:text-white!">
                   {des}
                 </p>
                 <div className="absolute z-1 bottom-4 translate-y-4 right-1/2 translate-x-1/2 w-6 h-0.5 bg-primary-500 group-hover:opacity-0 transition-opacity duration-300" />
