@@ -105,7 +105,7 @@ export default function AboutUs() {
           <img
             src={reefImg}
             alt="reef-img"
-            className="md:w-[calc(50%-25px)] xxl:w-1/3 shrink-0 object-contain"
+            className="md:w-[calc(50%-25px)] xxl:w-1/3 shrink-0 object-contain opacity-80"
           />
           <div className="w-[90%] md:w-0.5 mx-auto h-0.5 md:h-auto bg-accent-500/50" />
           <div className="relative flex items-center gap-8 max-w-full md:max-w-[calc(50%-25px)] xxl:max-w-1/3 md:pl-15 lg:pl-25">
