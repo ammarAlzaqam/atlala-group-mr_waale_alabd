@@ -47,12 +47,16 @@ export default function ChaletCard({ ch }) {
       <div className="flex flex-col gap-4 h-full">
         {/*//! imgs and absolute view, favIcon, price and distinctIcon */}
         <div className="relative h-72 overflow-hidden">
-          <img
-            src={ch?.chaletImages?.[0]}
-            loading="lazy"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-            alt="chalet-cover-img"
-          />
+          {ch?.chaletImages ? (
+            <img
+              src={ch?.chaletImages?.[0]}
+              loading="lazy"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              alt="chalet-cover-img"
+            />
+          ) : (
+            <div className="w-full h-full skeleton" />
+          )}
           {/* view & isValid */}
           <div className="absolute top-3 right-3 flex flex-wrap *:shrink-0 gap-2">
             {/*// is valid tag */}
