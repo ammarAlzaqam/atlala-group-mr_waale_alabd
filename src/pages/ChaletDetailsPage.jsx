@@ -759,13 +759,13 @@ export default function ChaletDetailsPage() {
       </div>
       {/*//TODO>> run reservation modal */}
       {/* Reservation Modal */}
-      {/* <ReservationModal
+      <ReservationModal
         chalet={chalet}
         sheetChaletData={sheetChaletData}
         sheetChaletDataNextM={sheetChaletDataNextM}
         open={open}
         setOpen={setOpen}
-      /> */}
+      />
     </div>
   );
 }

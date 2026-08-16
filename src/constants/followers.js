@@ -26,8 +26,8 @@ const followers = [
     icon: villaIcon,
   },
   {
-    count: 100000,
-    suffix: "+",
+    count: 100,
+    suffix: "k+",
     label: "media",
     title: "متابع عبر منصات التواصل الاجتماعي يثقون في إطلالة العقارية",
     icon: mediaIcon,

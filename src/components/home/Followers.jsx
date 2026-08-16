@@ -75,7 +75,7 @@ const FollowerCard = ({ item: { icon, count, suffix, title } }) => {
       className="relative bg-white px-4 pt-12 pb-8 flex flex-col items-center text-center gap-2 shadow-lg shadow-primary-400/20"
     >
       {/* Icon */}
-      <div className="absolute z-3 top-0 right-1/2 translate-x-1/2 -translate-y-1/2 p-4 bg-[#ecf7f6] rounded-full shadow-[0_-10px_20px_1px_var(--color-primary-200)]">
+      <div className="absolute z-3 top-0 right-1/2 translate-x-1/2 -translate-y-1/2 p-4 bg-[#ecf7f6] rounded-full shadow-[0_-10px_20px_1px_#43b5a950]">
         <img
           src={icon}
           alt="follower-icon"

@@ -4,6 +4,7 @@ import Chalets from "../components/home/Chalets";
 import ChooseUs from "../components/home/ChooseUs";
 import Followers from "../components/home/Followers";
 import HeroSec from "../components/home/HeroSec";
+import Testimonials from "../components/home/Testimonials";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <Chalets />
       <Followers />
       <ChooseUs />
+      <Testimonials />
     </div>
   );
 }
