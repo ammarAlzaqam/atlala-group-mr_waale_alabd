@@ -1,4 +1,5 @@
 import testimonialsImg1 from "../assets/images/testimonials/msgs/1.jpeg";
+import testimonialsImg2 from "../assets/images/testimonials/msgs/2.jpeg";
 import userImg1 from "../assets/images/testimonials/users/Ammar2.jpg";
 
 import supportIcon from "../assets/images/testimonials/adv/headphone.png";
@@ -14,7 +15,7 @@ const testimonialsList = [
     userImg: userImg1,
   },
   {
-    img: testimonialsImg1,
+    img: testimonialsImg2,
     name: "عمار عبده",
     city: "البحيرة",
     userImg: userImg1,
@@ -26,7 +27,7 @@ const testimonialsList = [
     userImg: userImg1,
   },
   {
-    img: testimonialsImg1,
+    img: testimonialsImg2,
     name: "عمار عبده",
     city: "البحيرة",
     userImg: userImg1,
@@ -38,7 +39,7 @@ const testimonialsList = [
     userImg: userImg1,
   },
   {
-    img: testimonialsImg1,
+    img: testimonialsImg2,
     name: "عمار عبده",
     city: "البحيرة",
     userImg: userImg1,
@@ -50,7 +51,7 @@ const testimonialsList = [
     userImg: userImg1,
   },
   {
-    img: testimonialsImg1,
+    img: testimonialsImg2,
     name: "عمار عبده",
     city: "البحيرة",
     userImg: userImg1,
@@ -62,7 +63,7 @@ const testimonialsList = [
     userImg: userImg1,
   },
   {
-    img: testimonialsImg1,
+    img: testimonialsImg2,
     name: "عمار عبده",
     city: "البحيرة",
     userImg: userImg1,
@@ -74,7 +75,7 @@ const testimonialsList = [
     userImg: userImg1,
   },
   {
-    img: testimonialsImg1,
+    img: testimonialsImg2,
     name: "عمار عبده",
     city: "البحيرة",
     userImg: userImg1,
