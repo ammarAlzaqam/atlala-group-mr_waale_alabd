@@ -6,7 +6,9 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
-import testimonialsList from "../../constants/testimonials";
+import testimonialsList, {
+  testimonialsAdvList,
+} from "../../constants/testimonials";
 
 import { RiDoubleQuotesL } from "react-icons/ri";
 import clsx from "clsx";
@@ -14,13 +16,15 @@ import { IoStar } from "react-icons/io5";
 import { useState } from "react";
 
 import mainLogo from "../../assets/icons/main-logo.jpg";
+import transparentBgImg from "../../assets/images/testimonials/bottom-bg.png";
+import transparentSmBgImg from "../../assets/images/testimonials/bottom-sm-bg.png";
 
 export default function Testimonials() {
   return (
-    <div className="flex justify-center py-12">
+    <div className="relative flex justify-center py-12">
       <div className="container flex flex-col gap-6 sm:gap-12">
         {/*//? Head Title */}
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex z-3 flex-col items-center gap-3">
           {/*//! title */}
           <div className="flex items-center gap-4">
             <img
@@ -45,7 +49,8 @@ export default function Testimonials() {
             قضاء أوقات مميزة في بورتو مطروح
           </p>
         </div>
-        <div className="relative">
+        {/*//? Swiper */}
+        <div className="relative z-3">
           <Swiper
             modules={[Navigation, Autoplay]}
             loop={true}
@@ -164,7 +169,40 @@ export default function Testimonials() {
             <FaChevronRight />
           </button>
         </div>
+        {/*//? adv */}
+        <div className="relative rounded-3xl shadow z-3 px-4 py-8 md:p-10 pt-6 grid grid-cols-2 md:grid-cols-4 gap-6 bg-white">
+          {testimonialsAdvList.map(({ title, label, des, icon }) => (
+            <div className="flex flex-col md:flex-row items-center md:justify-center gap-4 md:gap-6">
+              <img
+                src={icon}
+                alt="adv-icon"
+                className="w-10 green-img-filter"
+              />
+              <div className="flex flex-col items-center text-center gap-1">
+                <h3 className="font-semibold text-lg whitespace-nowrap">
+                  {title}
+                </h3>
+                <p className="text-sm">{des}</p>
+              </div>
+            </div>
+          ))}
+          <div className="absolute right-0 md:right-1/4 bottom-1/2 h-px md:h-[30%] w-1/3 md:w-px translate-y-1/2 -translate-x-1/4 md:translate-x-3/4 bg-secondary-500/30" />
+          <div className="absolute right-1/2 top-0 md:top-auto sm:bottom-1/2 h-[31%] md:h-[30%] w-px translate-y-1/3 sm:translate-y-1/2 translate-x-1/2 bg-secondary-500/30" />
+          <div className="absolute right-1/2 bottom-0 md:hidden h-[31%] md:h-[30%] w-px -translate-y-1/3 sm:translate-y-1/2 translate-x-1/2 bg-secondary-500/30" />
+          <div className="absolute left-0 md:left-auto md:right-3/4 bottom-1/2 h-px md:h-[30%] w-1/3 md:w-px translate-y-1/2 translate-x-1/4 md:translate-x-3/4 bg-secondary-500/30" />
+        </div>
       </div>
+      <img
+        src={transparentBgImg}
+        alt="see-bg-img"
+        className="absolute hidden sm:block z-1 bottom-0 left-0 w-full opacity-50"
+      />
+      <img
+        src={transparentSmBgImg}
+        alt="see-bg-img"
+        className="absolute sm:hidden z-1 bottom-0 left-0 w-full h-450 object-cover opacity-50"
+      />
+      <div className="absolute z-2 bottom-0 left-0 w-full h-20 sm:h-50 bg-linear-to-t from-white to-transparent" />
     </div>
   );
 }

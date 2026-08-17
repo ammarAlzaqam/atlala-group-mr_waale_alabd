@@ -47,7 +47,7 @@ export default function ChaletCard({ ch }) {
       <div className="flex flex-col gap-4 h-full">
         {/*//! imgs and absolute view, favIcon, price and distinctIcon */}
         <div className="relative h-72 overflow-hidden">
-          {ch?.chaletImages ? (
+          {ch?.chaletImages?.[0] ? (
             <img
               src={ch?.chaletImages?.[0]}
               loading="lazy"
