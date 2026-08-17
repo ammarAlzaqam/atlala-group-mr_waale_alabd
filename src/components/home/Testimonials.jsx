@@ -188,7 +188,7 @@ export default function Testimonials() {
           ))}
           <div className="absolute right-0 md:right-1/4 bottom-1/2 h-px md:h-[30%] w-1/3 md:w-px translate-y-1/2 -translate-x-1/4 md:translate-x-3/4 bg-secondary-500/30" />
           <div className="absolute right-1/2 top-0 md:top-auto sm:bottom-1/2 h-[31%] md:h-[30%] w-px translate-y-1/3 sm:translate-y-1/2 translate-x-1/2 bg-secondary-500/30" />
-          <div className="absolute right-1/2 bottom-0 md:hidden h-[31%] md:h-[30%] w-px -translate-y-1/3 sm:translate-y-1/2 translate-x-1/2 bg-secondary-500/30" />
+          <div className="absolute right-1/2 bottom-0 md:hidden h-[31%] md:h-[30%] w-px -translate-y-1/3 translate-x-1/2 bg-secondary-500/30" />
           <div className="absolute left-0 md:left-auto md:right-3/4 bottom-1/2 h-px md:h-[30%] w-1/3 md:w-px translate-y-1/2 translate-x-1/4 md:translate-x-3/4 bg-secondary-500/30" />
         </div>
       </div>
@@ -200,7 +200,7 @@ export default function Testimonials() {
       <img
         src={transparentSmBgImg}
         alt="see-bg-img"
-        className="absolute sm:hidden z-1 bottom-0 left-0 w-full h-450 object-cover opacity-50"
+        className="absolute sm:hidden z-1 bottom-0 left-0 w-full h-145 object-cover opacity-50"
       />
       <div className="absolute z-2 bottom-0 left-0 w-full h-20 sm:h-50 bg-linear-to-t from-white to-transparent" />
     </div>
