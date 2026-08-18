@@ -2,6 +2,53 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+:root {
+  color-scheme: light;
+
+  --color-primary-100: #d9f3ef;
+  --color-primary-200: #b5e5df;
+  --color-primary-300: #7ccfc5;
+  --color-primary-400: #43b5a9;
+  --color-primary-500: #02665a;
+  --color-primary-600: #00554b;
+  --color-primary-700: #00463f;
+  --color-primary-800: #003832;
+  --color-primary-900: #002923;
+  --color-primary-950: #001b18;
+
+  --color-secondary-100: #e4e4cc;
+  --color-secondary-200: #c8c8b0;
+  --color-secondary-300: #acad96;
+  --color-secondary-400: #91927d;
+  --color-secondary-500: #777964;
+  --color-secondary-600: #5e604d;
+  --color-secondary-700: #474836;
+  --color-secondary-800: #303221;
+  --color-secondary-900: #1b1d0e;
+
+  --color-accent-100: #fbf4df;
+  --color-accent-200: #f3e2b7;
+  --color-accent-300: #e8cd8b;
+  --color-accent-400: #d9b967;
+  --color-accent-500: #c9a65a;
+  --color-accent-600: #ae8a43;
+  --color-accent-700: #8f6f35;
+  --color-accent-800: #6d5429;
+  --color-accent-900: #4b3a1c;
+  --color-accent-950: #2d2312;
+
+  --color-main-bg: #fbfafd;
+}
+
+html,
+body,
+#root {
+  background-color: var(--color-main-bg);
+  color: var(--color-primary-600);
+
+  color-scheme: light;
+}
+
 @theme {
   /* Primary - Porto Matroh Teal */
   --color-primary-100: #d9f3ef;
