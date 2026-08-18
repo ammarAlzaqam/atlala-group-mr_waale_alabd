@@ -95,7 +95,7 @@ export default function Testimonials() {
                         {Array(5)
                           .fill(null)
                           .map((_, index) => (
-                            <IoStar className="text-amber-400" />
+                            <IoStar key={index} className="text-amber-400" />
                           ))}
                       </div>
                       <div
@@ -172,7 +172,10 @@ export default function Testimonials() {
         {/*//? adv */}
         <div className="relative rounded-3xl shadow z-3 px-4 py-8 md:p-10 pt-6 grid grid-cols-2 md:grid-cols-4 gap-6 bg-white">
           {testimonialsAdvList.map(({ title, label, des, icon }) => (
-            <div className="flex flex-col md:flex-row items-center md:justify-center gap-4 md:gap-6">
+            <div
+              key={label}
+              className="flex flex-col md:flex-row items-center md:justify-center gap-4 md:gap-6"
+            >
               <img
                 src={icon}
                 alt="adv-icon"

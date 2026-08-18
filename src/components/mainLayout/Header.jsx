@@ -15,6 +15,7 @@ export default function Header() {
 
   return (
     <div
+      data-aos="fade-in"
       className={clsx(
         "fixed w-full top-0 z-40 flex justify-center transition-all shadow-lg shadow-transparent",
         isScrolled ? "bg-primary-700 shadow-primary-400/10!" : "bg-transparent",

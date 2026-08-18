@@ -139,3 +139,8 @@ export const useIsScrolled = create((set) => ({
   isScrolled: false,
   setIsScrolled: (newValue) => set(() => ({ isScrolled: newValue })),
 }));
+
+export const useLoading = create((set) => ({
+  loading: true,
+  setLoading: (newValue) => set(() => ({ loading: newValue })),
+}));

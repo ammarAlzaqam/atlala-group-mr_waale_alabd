@@ -484,7 +484,7 @@ const chaletsList = [
     chaletImages: chaletsLgImages.ch4108,
     locationImg: locationCh4Img,
     num: 4108,
-    price: 4000,
+    price: 3800,
     view: [tags.poolView],
     adv: [
       adv.airCon,

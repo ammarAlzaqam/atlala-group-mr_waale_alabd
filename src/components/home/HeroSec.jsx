@@ -11,6 +11,7 @@ import { GoPeople } from "react-icons/go";
 import additionalAdv from "../../constants/additionalAdv";
 import toast from "react-hot-toast";
 import { useArea, useArriveDate, useLiveDate } from "../../store";
+import { MovingDesText, MovingTitleText } from "../motion/TextOpacity";
 
 export default function HeroSec() {
   const calendarArriveRef = useRef();
@@ -39,24 +40,34 @@ export default function HeroSec() {
   };
 
   return (
-    <section className="bg-[url('/images/main-herosec.png')] bg-cover bg-center">
+    <section
+      data-aos="fade-in"
+      className="bg-[url('/images/main-herosec.png')] bg-cover bg-center"
+    >
       {/*//! Overlay */}
       <div className="w-full h-full bg-black/50 pt-20 flex justify-center pb-10 ">
         {/*//! Container */}
         <div className="container flex flex-col items-center gap-0">
           {/*//* head title */}
           <div className="relative flex flex-col items-center gap-2">
-            <h1 className="text-center z-2 text-white! font-bold text-2xl md:text-4xl max-w-120 leading-[130%] tracking-widest">
-              شركة إطلالة للتسويق والاستثمار والتطوير العقاري
-            </h1>
-            <p className="text-center z-2 font-semibold text-md md:text-lg text-white! text-shadow-lg text-shadow-black/20">
-              استمتع بإجازة لا تُنسى في بورتو مطروح شاليهات فاخرة - خدمات
-              متكاملة - شاطئ خاص
-            </p>
+            <MovingTitleText
+              text="شركة إطلالة للتسويق والاستثمار والتطوير العقاري"
+              className="text-center z-2 text-white! font-bold text-2xl md:text-4xl max-w-120 leading-[130%] tracking-widest"
+              effect="slideUp"
+              from="center"
+              duration="0.7"
+            />
+            <MovingDesText
+              text=" استمتع بإجازة لا تُنسى في بورتو مطروح شاليهات فاخرة - خدمات متكاملة - شاطئ خاص"
+              className="text-center z-2 font-semibold text-md md:text-lg text-white! text-shadow-lg text-shadow-black/20"
+              effect="blur"
+              staggerTime="0.07"
+            />
             <img
-              className="absolute z-1 h-full top-0 left-1/2 -translate-x-1/2 opacity-60"
+              className="absolute z-1 h-full top-0 left-1/2 -translate-x-1/2 opacity-60!"
               src={logo}
               alt="icon-logo"
+              data-aos="zoom-out"
             />
           </div>
           {/*// Cta btn */}

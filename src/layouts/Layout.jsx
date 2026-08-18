@@ -119,7 +119,6 @@ export default function Layout() {
   return (
     <div className="bg-main-bg">
       <Outlet />
-
       {/*//* fixed icons (favorites & whatsapp) */}
       <div className={clsx("fixed z-30 bottom-5 right-5 flex flex-col")}>
         {/*//! >> Search link */}
@@ -246,7 +245,7 @@ export default function Layout() {
           </label>
           <div
             onClick={handelSearch}
-            className="btn flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 active:scale-[0.98] text-white! border-none text-lg font-head rounded-xl py-3 cursor-pointer transition-all duration-200 shadow-lg shadow-cyan-500/25"
+            className="btn flex items-center justify-center gap-2 bg-primary-400 hover:bg-primary-500 active:scale-[0.98] text-white! border-none text-lg font-head rounded-xl py-3 cursor-pointer transition-all! duration-200 shadow-lg shadow-cyan-500/25"
           >
             <IoSearch className="text-white!" />
             بحث

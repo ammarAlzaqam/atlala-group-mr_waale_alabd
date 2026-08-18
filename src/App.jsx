@@ -17,6 +17,7 @@ import "cally";
 import "aos/dist/aos.css";
 import Aos from "aos";
 import buildNotes from "./utils/buildNots";
+
 export default function App() {
   const setSheetChaletList = useSheetChaletsList(
     (state) => state.setSheetChaletList,

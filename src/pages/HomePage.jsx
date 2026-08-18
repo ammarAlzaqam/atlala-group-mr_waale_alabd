@@ -1,3 +1,4 @@
+import { useState } from "react";
 import AboutUs from "../components/home/AboutUs";
 import Advantages from "../components/home/Advantages";
 import Chalets from "../components/home/Chalets";
@@ -5,17 +6,25 @@ import ChooseUs from "../components/home/ChooseUs";
 import Followers from "../components/home/Followers";
 import HeroSec from "../components/home/HeroSec";
 import Testimonials from "../components/home/Testimonials";
+import PageLoader from "../components/PageLoader";
 
 export default function HomePage() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <div className="flex flex-col">
-      <HeroSec />
-      <Advantages />
-      <AboutUs />
-      <Chalets />
-      <Followers />
-      <ChooseUs />
-      <Testimonials />
+      {!loading && (
+        <>
+          <HeroSec />
+          <Advantages />
+          <AboutUs />
+          <Chalets />
+          <Followers />
+          <ChooseUs />
+          <Testimonials />
+        </>
+      )}
+      <PageLoader loading={loading} setLoading={setLoading} />
     </div>
   );
 }
