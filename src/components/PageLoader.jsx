@@ -36,11 +36,10 @@ export default function PageLoader({ loading, setLoading }) {
             <img
               src={logoImg}
               alt="Logo-img"
-              className="absolute z-10 bottom-1/2 right-1/2 translate-1/2"
+              className="absolute z-10 bottom-1/2 right-1/2 translate-1/2 w-full"
             />
           </div>
         </div>
-
         <div className="box"></div>
         <div className="box"></div>
         <div className="box"></div>
