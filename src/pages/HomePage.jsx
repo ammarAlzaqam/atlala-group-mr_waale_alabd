@@ -14,7 +14,8 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col scrollbar-none!">
-      {!loading && <HeroSec />}
+      <PageLoader loading={loading} setLoading={setLoading} />
+      <HeroSec />
       <Advantages />
       <AboutUs />
       <Chalets />
@@ -22,8 +23,6 @@ export default function HomePage() {
       <Facilities />
       <ChooseUs />
       <Testimonials />
-
-      <PageLoader loading={loading} setLoading={setLoading} />
     </div>
   );
 }

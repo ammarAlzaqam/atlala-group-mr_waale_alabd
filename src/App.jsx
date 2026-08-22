@@ -31,7 +31,8 @@ export default function App() {
   useEffect(() => {
     // Animate on scroll initiate
     Aos.init({
-      duration: 1000,
+      duration: 1200,
+      once: true,
     });
 
     const getData = async () => {

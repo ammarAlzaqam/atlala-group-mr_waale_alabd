@@ -98,7 +98,7 @@ export default function Facilities() {
                   {({ isActive }) => (
                     <div
                       className={clsx(
-                        "bg-white rounded-xl flex! flex-col! transition-color duration-300 shadow-lg",
+                        "bg-white rounded-xl flex! flex-col! transition-color duration-300 shadow-lg group",
                       )}
                     >
                       {/* coverImg and icon */}
@@ -108,7 +108,8 @@ export default function Facilities() {
                           alt="facility-img"
                           className={clsx(
                             "w-full h-70 sm:h-55 object-cover rounded-xl transition-all duration-300",
-                            !isActive && "brightness-70",
+                            !isActive &&
+                              "brightness-70 group-hover:brightness-100",
                           )}
                         />
                         <div className="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/2 bg-white p-3 shadow-lg rounded-full">
@@ -117,7 +118,9 @@ export default function Facilities() {
                             alt="facility-icon"
                             className={clsx(
                               "w-10 h-10 object-contain transition-all duration-300",
-                              isActive ? "green-img-filter" : "opacity-70",
+                              isActive
+                                ? "green-img-filter"
+                                : "opacity-50 group-hover:opacity-100",
                             )}
                           />
                         </div>
@@ -126,7 +129,7 @@ export default function Facilities() {
                       <div
                         className={clsx(
                           "flex-1 flex flex-col items-center text-center gap-10 justify-between p-5 pt-11 transition-opacity duration-300",
-                          !isActive && "opacity-70",
+                          !isActive && "opacity-50 group-hover:opacity-100",
                         )}
                       >
                         {/* Des, title */}
