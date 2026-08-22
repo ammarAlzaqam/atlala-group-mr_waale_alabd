@@ -9,12 +9,17 @@ import "../css/loader.css";
 export default function PageLoader({ loading, setLoading }) {
   useEffect(() => {
     setLoading(true);
+    document.body.style.overflow = "hidden";
 
     const timer = setTimeout(() => {
       setLoading(false);
+      document.body.style.overflow = "auto";
     }, 3000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = "";
+    };
   }, []);
 
   return (
@@ -26,9 +31,10 @@ export default function PageLoader({ loading, setLoading }) {
       )}
     >
       <div
+        data-aos="zoom-in"
         className={clsx(
-          "loader transition-transform duration-700",
-          !loading && "scale-50",
+          "loader transition-all! duration-700",
+          !loading && "scale-0",
         )}
       >
         <div className="box">

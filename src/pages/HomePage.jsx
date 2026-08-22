@@ -7,23 +7,22 @@ import Followers from "../components/home/Followers";
 import HeroSec from "../components/home/HeroSec";
 import Testimonials from "../components/home/Testimonials";
 import PageLoader from "../components/PageLoader";
+import Facilities from "../components/home/Facilities";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <div className="flex flex-col">
-      {!loading && (
-        <>
-          <HeroSec />
-          <Advantages />
-          <AboutUs />
-          <Chalets />
-          <Followers />
-          <ChooseUs />
-          <Testimonials />
-        </>
-      )}
+    <div className="flex flex-col scrollbar-none!">
+      {!loading && <HeroSec />}
+      <Advantages />
+      <AboutUs />
+      <Chalets />
+      <Followers />
+      <Facilities />
+      <ChooseUs />
+      <Testimonials />
+
       <PageLoader loading={loading} setLoading={setLoading} />
     </div>
   );

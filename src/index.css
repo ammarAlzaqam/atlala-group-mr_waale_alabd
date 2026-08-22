@@ -505,3 +505,12 @@ calendar-day[disabled] {
   fill: #ecf7f6;
   z-index: 2;
 }
+
+.facilities-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.facilities-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+}

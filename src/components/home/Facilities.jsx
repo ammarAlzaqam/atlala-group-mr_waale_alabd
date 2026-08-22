@@ -5,7 +5,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaEye, FaStar } from "react-icons/fa";
 import testimonialsList, {
   testimonialsAdvList,
 } from "../../constants/testimonials";
@@ -16,10 +16,12 @@ import { IoStar } from "react-icons/io5";
 import { useState } from "react";
 
 import mainLogo from "../../assets/icons/main-logo.jpg";
-import transparentBgImg from "../../assets/images/testimonials/bottom-bg.png";
-import transparentSmBgImg from "../../assets/images/testimonials/bottom-sm-bg.png";
+import transparentBgImg from "../../assets/images/facilities/bg.png";
+import transparentSmBgImg from "../../assets/images/facilities/bg.png";
+import facilities, { facilitiesAdvList } from "../../constants/facilities";
+import { Link } from "react-router-dom";
 
-export default function Testimonials() {
+export default function Facilities() {
   return (
     <div className="relative flex justify-center py-12">
       <div className="container flex flex-col gap-6 sm:gap-12">
@@ -32,7 +34,7 @@ export default function Testimonials() {
               alt="wave-decor-icon"
               className="w-7 green-img-filter"
             />
-            <h3 className="text-xl font-bold">آراء عملائنا</h3>
+            <h3 className="text-xl font-bold">مرافقنا وخدماتنا</h3>
             <img
               src={waveLineIcon}
               alt="wave-decor-icon"
@@ -41,13 +43,20 @@ export default function Testimonials() {
           </div>
           {/*//! subTitle */}
           <h2 className="text-3xl text-center font-bold">
-            ما يقوله عملاؤنا عن إطلالة
+            كل ما تحتاجه داخل بورتو مطروح
           </h2>
           {/*//! des */}
           <p className="text-center max-w-md leading-[200%]">
-            نفخر بثقة عملائنا ورضاهم عن تجربتهم معنا, إليكم بعض من آرائهم بعد
-            قضاء أوقات مميزة في بورتو مطروح
+            استمتع يتجربة متكاملة من المراقق والخدمات المصممة لتمنحك الراحة
+            والترفيه على مدار اليوم
           </p>
+          <Link
+            to="/services"
+            className="btn bg-accent-500 text-white! w-[90%] max-w-xs"
+          >
+            <FaEye />
+            عرض كل الخدمات
+          </Link>
         </div>
         {/*//? Swiper */}
         <div className="relative z-3">
@@ -72,68 +81,83 @@ export default function Testimonials() {
                 slidesPerView: 2,
               },
               1024: {
-                slidesPerView: 3,
-              },
-              1399: {
                 slidesPerView: 4,
               },
+              1540: {
+                slidesPerView: 6,
+              },
             }}
-            className="sm:mx-10! py-5! sm:px-3!"
+            className="facilities-swiper sm:mx-10! py-5! sm:px-3!"
           >
-            {testimonialsList.map(({ img, name, city, userImg }, index) => (
-              <SwiperSlide key={index}>
-                {({ isActive }) => (
-                  <div
-                    className={clsx(
-                      "bg-white shadow-lg shadow-primary-400/30 p-4 rounded-xl flex! flex-col! gap-4! transition-color duration-300 border",
-                      isActive ? "border-primary-400" : "border-transparent",
-                    )}
-                  >
-                    {/*//* quote and stars icons */}
-                    <div className="flex items-end justify-between">
-                      <div className="flex item-center gap-2">
-                        {Array(5)
-                          .fill(null)
-                          .map((_, index) => (
-                            <IoStar key={index} className="text-amber-400" />
-                          ))}
-                      </div>
-                      <div
-                        className={clsx(
-                          "rounded-full p-2 transition-colors duration-300",
-                          isActive ? "bg-primary-400" : "bg-primary-100/80",
-                        )}
-                      >
-                        <RiDoubleQuotesL
+            {facilities.map(
+              (
+                { images, label, title, des, price, availability, icon },
+                index,
+              ) => (
+                <SwiperSlide key={index}>
+                  {({ isActive }) => (
+                    <div
+                      className={clsx(
+                        "bg-white rounded-xl flex! flex-col! transition-color duration-300 shadow-lg",
+                      )}
+                    >
+                      {/* coverImg and icon */}
+                      <div className="relative">
+                        <img
+                          src={images[0]}
+                          alt="facility-img"
                           className={clsx(
-                            "text-2xl transition-colors duration-300",
-                            isActive ? "text-white" : "text-primary-400",
+                            "w-full h-70 sm:h-55 object-cover rounded-xl transition-all duration-300",
+                            !isActive && "brightness-70",
                           )}
                         />
+                        <div className="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/2 bg-white p-3 shadow-lg rounded-full">
+                          <img
+                            src={icon}
+                            alt="facility-icon"
+                            className={clsx(
+                              "w-10 h-10 object-contain transition-all duration-300",
+                              isActive ? "green-img-filter" : "opacity-70",
+                            )}
+                          />
+                        </div>
+                      </div>
+                      {/* Details */}
+                      <div
+                        className={clsx(
+                          "flex-1 flex flex-col items-center text-center gap-10 justify-between p-5 pt-11 transition-opacity duration-300",
+                          !isActive && "opacity-70",
+                        )}
+                      >
+                        {/* Des, title */}
+                        <div className="flex flex-col items-center gap-4">
+                          <h3 className="font-semibold">{title}</h3>
+                          <p className="">{des}</p>
+                        </div>
+                        {/* price, availability, button */}
+                        <div className="flex w-full flex-col items-center gap-4">
+                          <h5 className="text-accent-500! font-semibold">
+                            {price}
+                          </h5>
+                          <div className="p-2 w-full bg-primary-200/30 rounded-xl text-center">
+                            <h5 className="text-primary-500!">
+                              {availability}
+                            </h5>
+                          </div>
+                          <Link
+                            to={`/services/${label}`}
+                            className="btn w-full bg-transparent border-transparent text-secondary-600 gap-3"
+                          >
+                            <FaEye />
+                            عرض التفاصيل
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                    {/*//* Img */}
-                    <img src={img} alt="testimonials-img" />
-                    {/*//* Divider */}
-                    <div className="w-full h-0.5 bg-secondary-300/30 rounded-[100%]" />
-                    {/*//* Company Info */}
-                    <div className="flex items-center gap-4">
-                      <img
-                        src={mainLogo}
-                        alt="logo-img"
-                        className="w-11 h-11 object-cover rounded-full"
-                      />
-                      <div className="flex flex-col gap-px">
-                        <h3 className="text-lg text-primary-400! font-medium">
-                          إطلالة العقارية
-                        </h3>
-                        <p className="text-xs">بورتو مطروح</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </SwiperSlide>
-            ))}
+                  )}
+                </SwiperSlide>
+              ),
+            )}
           </Swiper>
 
           {/* Previous */}
@@ -171,7 +195,7 @@ export default function Testimonials() {
         </div>
         {/*//? adv */}
         <div className="relative rounded-3xl shadow z-3 px-4 py-8 md:p-10 pt-6 grid grid-cols-2 md:grid-cols-4 gap-6 bg-white w-full xl:max-w-10/12 xl:mx-auto">
-          {testimonialsAdvList.map(({ title, label, des, icon }) => (
+          {facilitiesAdvList.map(({ title, label, des, icon }) => (
             <div
               key={label}
               className="flex flex-col md:flex-row items-center md:justify-center gap-4 md:gap-6"
@@ -203,9 +227,9 @@ export default function Testimonials() {
       <img
         src={transparentSmBgImg}
         alt="see-bg-img"
-        className="absolute sm:hidden z-1 bottom-0 left-0 w-full h-145 object-cover opacity-50"
+        className="absolute sm:hidden z-1 bottom-0 left-0 w-full h-145 object-cover object-right opacity-50"
       />
-      <div className="absolute z-2 bottom-0 left-0 w-full h-20 sm:h-50 bg-linear-to-t from-white to-transparent" />
+      <div className="absolute z-2 bottom-0 left-0 w-full h-20 sm:h-50 bg-linear-to-t from-[#f4f9fa] to-transparent" />
     </div>
   );
 }

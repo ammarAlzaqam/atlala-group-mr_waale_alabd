@@ -174,100 +174,101 @@ export default function ChaletsPage() {
 
   return (
     <>
-      {!loading && (
-        <section className="flex flex-col gap-8 bg-[#FCFBFE] pb-12">
+      <section className="flex flex-col gap-8 bg-[#FCFBFE] pb-12">
+        {!loading && (
           <HeroSec
             title="اكتشف شاليهك المثالي"
             des="اختر من بين 63 شاليه مميز في قرية بورتو مطروح بأفضل المواقع والأسعار."
           />
-          {/*Main (filters & Chalets) */}
-          <div className="flex justify-center">
-            <div className="container flex flex-col md:flex-row md:items-start gap-6">
-              <Filters />
-              <div className="flex flex-col gap-4 grow">
-                {/* head title */}
-                <div className="flex items-start md:items-center justify-between">
-                  {/*//TODO => Num of chalets */}
-                  <div className="flex flex-col gap-2">
-                    <h3 className="font-bold text-xl md:text-2xl leading-[120%]">
-                      اعثر على شاليهك المفضل
-                    </h3>
-                    <p className="text-xs md:text-sm text-secondary-500 whitespace-nowrap">
-                      تم العثور على ({filteredChalets.length}) من (
-                      {chaletsList.length}) شاليه
-                    </p>
-                  </div>
-                  <select
-                    onChange={(e) => {
-                      setPriceRanking(e.target.value);
-                    }}
-                    value={priceRanking}
-                    className="select w-fit shrink-0 rounded-xl border-secondary-100"
-                  >
-                    <option value="lowest" className="whitespace-nowrap">
-                      الاقل سعراً
-                    </option>
-                    <option value="highest" className="whitespace-nowrap">
-                      الاعلي سعراً
-                    </option>
-                    <option value="num-lowest" className="whitespace-nowrap">
-                      رقم الشاليه من الأصغر للأكبر
-                    </option>
-                    <option value="num-highest" className="whitespace-nowrap">
-                      رقم الشاليه من الأكبر للأصغر
-                    </option>
-                  </select>
-                </div>
-                {chaletsForPage.length > 0 ? (
-                  <div className="flex flex-col gap-8">
-                    {/* chalets */}
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full">
-                      {chaletsForPage.map((ch) => (
-                        <ChaletCard key={ch.num} ch={ch} />
-                      ))}
-                    </div>
-                    {/* pagination */}
-                    <div className="join self-center">
-                      <button
-                        disabled={pageNumber >= nofPages}
-                        className={clsx("join-item btn")}
-                        onClick={() => {
-                          if (pageNumber < nofPages) {
-                            setPageNumber(pageNumber + 1);
-                            scrollTo(0, 350);
-                          }
-                        }}
-                      >
-                        «
-                      </button>
-                      <button className="join-item btn">
-                        Page {pageNumber} of {nofPages}
-                      </button>
-                      <button
-                        className="join-item btn"
-                        disabled={pageNumber <= 1}
-                        onClick={() => {
-                          if (pageNumber > 1) {
-                            setPageNumber(pageNumber - 1);
-                            scrollTo(0, 350);
-                          }
-                        }}
-                      >
-                        »
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <p className="text-secondary-400">
-                    لم نعثر على أي شاليهات مطابقة. جرّب تعديل معايير البحث أو
-                    إزالة بعض الفلاتر.
+        )}
+        {/*Main (filters & Chalets) */}
+        <div className="flex justify-center">
+          <div className="container flex flex-col md:flex-row md:items-start gap-6">
+            <Filters />
+            <div className="flex flex-col gap-4 grow">
+              {/* head title */}
+              <div className="flex items-start md:items-center justify-between">
+                {/*//TODO => Num of chalets */}
+                <div className="flex flex-col gap-2">
+                  <h3 className="font-bold text-xl md:text-2xl leading-[120%]">
+                    اعثر على شاليهك المفضل
+                  </h3>
+                  <p className="text-xs md:text-sm text-secondary-500 whitespace-nowrap">
+                    تم العثور على ({filteredChalets.length}) من (
+                    {chaletsList.length}) شاليه
                   </p>
-                )}
+                </div>
+                <select
+                  onChange={(e) => {
+                    setPriceRanking(e.target.value);
+                  }}
+                  value={priceRanking}
+                  className="select w-fit shrink-0 rounded-xl border-secondary-100"
+                >
+                  <option value="lowest" className="whitespace-nowrap">
+                    الاقل سعراً
+                  </option>
+                  <option value="highest" className="whitespace-nowrap">
+                    الاعلي سعراً
+                  </option>
+                  <option value="num-lowest" className="whitespace-nowrap">
+                    رقم الشاليه من الأصغر للأكبر
+                  </option>
+                  <option value="num-highest" className="whitespace-nowrap">
+                    رقم الشاليه من الأكبر للأصغر
+                  </option>
+                </select>
               </div>
+              {chaletsForPage.length > 0 ? (
+                <div className="flex flex-col gap-8">
+                  {/* chalets */}
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full">
+                    {chaletsForPage.map((ch) => (
+                      <ChaletCard key={ch.num} ch={ch} />
+                    ))}
+                  </div>
+                  {/* pagination */}
+                  <div className="join self-center">
+                    <button
+                      disabled={pageNumber >= nofPages}
+                      className={clsx("join-item btn")}
+                      onClick={() => {
+                        if (pageNumber < nofPages) {
+                          setPageNumber(pageNumber + 1);
+                          scrollTo(0, 350);
+                        }
+                      }}
+                    >
+                      «
+                    </button>
+                    <button className="join-item btn">
+                      Page {pageNumber} of {nofPages}
+                    </button>
+                    <button
+                      className="join-item btn"
+                      disabled={pageNumber <= 1}
+                      onClick={() => {
+                        if (pageNumber > 1) {
+                          setPageNumber(pageNumber - 1);
+                          scrollTo(0, 350);
+                        }
+                      }}
+                    >
+                      »
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-secondary-400">
+                  لم نعثر على أي شاليهات مطابقة. جرّب تعديل معايير البحث أو
+                  إزالة بعض الفلاتر.
+                </p>
+              )}
             </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
+
       <PageLoader loading={loading} setLoading={setLoading} />
     </>
   );
