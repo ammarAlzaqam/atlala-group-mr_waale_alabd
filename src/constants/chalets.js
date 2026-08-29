@@ -714,10 +714,16 @@ const chaletsList = [
     num: 23111,
     price: 4000,
     view: [tags.poolView],
-    adv: [adv.airCon, adv.smartTv, adv.autoWashing, adv.kidsArea, adv.oven],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.autoWashing,
+      adv.kidsArea,
+      adv.oven,
+    ],
+    details: [
       floors.first,
       areas.area75,
       rooms.threeRooms.room,
@@ -905,10 +911,16 @@ const chaletsList = [
     num: 31112,
     price: 4200,
     view: [tags.poolView],
-    adv: [adv.airCon, adv.smartTv, adv.autoWashing, adv.swing, adv.microwave],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.autoWashing,
+      adv.swing,
+      adv.microwave,
+    ],
+    details: [
       floors.first,
       areas.area75,
       rooms.threeRooms.room,
@@ -1300,10 +1312,16 @@ const chaletsList = [
     num: 105102,
     price: 4200,
     view: [tags.poolView],
-    adv: [adv.airCon, adv.smartTv, adv.swing, adv.microwave, adv.autoWashing],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.swing,
+      adv.microwave,
+      adv.autoWashing,
+    ],
+    details: [
       floors.first,
       areas.area75,
       rooms.threeRooms.room,
@@ -1430,10 +1448,15 @@ const chaletsList = [
     num: 55101,
     price: 2800,
     view: [tags.poolView],
-    adv: [adv.airCon, adv.smartTv, adv.microwave, adv.pergola],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.microwave,
+      adv.pergola,
+    ],
+    details: [
       floors.first,
       areas.area48,
       rooms.towRooms.room,
@@ -1456,10 +1479,15 @@ const chaletsList = [
     num: 62108,
     price: 2800,
     view: [tags.poolView],
-    adv: [adv.airCon, adv.smartTv, adv.oven, adv.kidsArea],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.oven,
+      adv.kidsArea,
+    ],
+    details: [
       floors.first,
       areas.area48,
       rooms.towRooms.room,
@@ -1482,10 +1510,15 @@ const chaletsList = [
     num: 64106,
     price: 2800,
     view: [tags.poolView],
-    adv: [adv.airCon, adv.smartTv, adv.oven, adv.kidsArea],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.oven,
+      adv.kidsArea,
+    ],
+    details: [
       floors.first,
       areas.area48,
       rooms.towRooms.room,
@@ -1640,10 +1673,15 @@ const chaletsList = [
     num: 74102,
     price: 3000,
     view: [tags.poolView, tags.beachView],
-    adv: [adv.airCon, adv.smartTv, adv.microwave, adv.kidsArea],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.microwave,
+      adv.kidsArea,
+    ],
+    details: [
       floors.first,
       areas.area48,
       rooms.towRooms.room,
@@ -1666,10 +1704,16 @@ const chaletsList = [
     num: 85201,
     price: 3000,
     view: [tags.poolView, tags.aquaView],
-    adv: [adv.airCon, adv.smartTv, adv.microwave, adv.oven, adv.autoWashing],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.microwave,
+      adv.oven,
+      adv.autoWashing,
+    ],
+    details: [
       floors.second,
       //!NoEdit
       areas.area48,
@@ -1696,10 +1740,15 @@ const chaletsList = [
     num: 88201,
     price: 2800,
     view: [tags.aquaView],
-    adv: [adv.airCon, adv.smartTv, adv.oven, adv.waterDispenser],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.oven,
+      adv.waterDispenser,
+    ],
+    details: [
       floors.second,
       //!NoEdit
       areas.area48,
@@ -1838,10 +1887,14 @@ const chaletsList = [
     num: 100205,
     price: 2800,
     view: [tags.poolView],
-    adv: [adv.airCon, adv.smartTv, adv.oven],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.oven,
+    ],
+    details: [
       floors.second,
       //!NoEdit
       areas.area48,
@@ -1868,10 +1921,16 @@ const chaletsList = [
     num: 100206,
     price: 2800,
     view: [tags.poolView, tags.beachView],
-    adv: [adv.airCon, adv.smartTv, adv.oven, adv.microwave, adv.kidsArea],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.oven,
+      adv.microwave,
+      adv.kidsArea,
+    ],
+    details: [
       floors.second,
       //!NoEdit
       areas.area48,
@@ -1898,10 +1957,15 @@ const chaletsList = [
     num: 101208,
     price: 2800,
     view: [tags.poolView],
-    adv: [adv.airCon, adv.smartTv, adv.oven, adv.autoWashing],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.oven,
+      adv.autoWashing,
+    ],
+    details: [
       floors.second,
       //!NoEdit
       areas.area48,
@@ -1928,10 +1992,14 @@ const chaletsList = [
     num: 103207,
     price: 2700,
     view: [tags.poolView],
-    adv: [adv.airCon, adv.smartTv, adv.oven],
-    details: [
+    adv: [
+      adv.airCon,
+      adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.oven,
+    ],
+    details: [
       floors.second,
       //!NoEdit
       areas.area48,
