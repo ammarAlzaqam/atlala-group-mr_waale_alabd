@@ -12,7 +12,6 @@ export default function Advantages() {
             <div
               key={title}
               data-aos="fade-up"
-              data-aos-anchor-placement="top-center"
               className={clsx(
                 "relative z-2 lg:flex-1 border-b sm:border-b-0 border-l-0 sm:border-l border-black/5 flex flex-col items-center gap-6 w-[70%] sm:w-[50%] md:w-[25%] lg:w-auto pb-5 sm:pb-0",
                 index + 1 === advList.length && "border-none",

@@ -90,6 +90,7 @@ export default function Filters() {
     setArea("");
     setRoom("");
     setClassification("");
+    setFloor("");
   };
 
   const noFilters = useMemo(
@@ -120,7 +121,10 @@ export default function Filters() {
   return (
     <div
       onDoubleClick={(e) => e.stopPropagation()}
-      className="z-30 sticky top-18 md:top-20 w-full md:w-70 lg:w-100 shrink-0 bg-white border border-neutral-300/50 rounded-xl flex flex-col"
+      className={clsx(
+        "z-30 top-18 md:top-20 w-full md:w-70 lg:w-100 shrink-0 bg-white border border-neutral-300/50 rounded-xl flex flex-col transition-all duration-300",
+        open ? "fixed right-1/2 translate-x-1/2 w-[90%]!" : "sticky",
+      )}
     >
       {/*//* title */}
       <button

@@ -1,3 +1,40 @@
+//* Ch10104
+import ch10104CoverImg from "../assets/images/chalets/sm/10104-48/coverImg.jpeg";
+import ch10104Img1 from "../assets/images/chalets/sm/10104-48/1.jpeg";
+import ch10104Img2 from "../assets/images/chalets/sm/10104-48/2.jpeg";
+import ch10104Img3 from "../assets/images/chalets/sm/10104-48/3.jpeg";
+import ch10104Img4 from "../assets/images/chalets/sm/10104-48/4.jpeg";
+import ch10104Img5 from "../assets/images/chalets/sm/10104-48/5.jpeg";
+import ch10104Img6 from "../assets/images/chalets/sm/10104-48/6.jpeg";
+import ch10104Img7 from "../assets/images/chalets/sm/10104-48/7.jpeg";
+import ch10104Img8 from "../assets/images/chalets/sm/10104-48/8.jpeg";
+import ch10104Img9 from "../assets/images/chalets/sm/10104-48/9.jpeg";
+import ch10104Img10 from "../assets/images/chalets/sm/10104-48/10.jpeg";
+import ch10104Img11 from "../assets/images/chalets/sm/10104-48/11.jpeg";
+import ch10104Img12 from "../assets/images/chalets/sm/10104-48/12.jpeg";
+import ch10104Img13 from "../assets/images/chalets/sm/10104-48/13.jpeg";
+import ch10104Img14 from "../assets/images/chalets/sm/10104-48/14.jpeg";
+import ch10104Img15 from "../assets/images/chalets/sm/10104-48/15.jpeg";
+import ch10104Img16 from "../assets/images/chalets/sm/10104-48/16.jpeg";
+import ch10104Img17 from "../assets/images/chalets/sm/10104-48/17.jpeg";
+//* Ch11107
+import ch11107CoverImg from "../assets/images/chalets/sm/11107-48/coverImg.jpeg";
+import ch11107Img1 from "../assets/images/chalets/sm/11107-48/1.jpeg";
+import ch11107Img2 from "../assets/images/chalets/sm/11107-48/2.jpeg";
+import ch11107Img3 from "../assets/images/chalets/sm/11107-48/3.jpeg";
+import ch11107Img4 from "../assets/images/chalets/sm/11107-48/4.jpeg";
+import ch11107Img5 from "../assets/images/chalets/sm/11107-48/5.jpeg";
+import ch11107Img6 from "../assets/images/chalets/sm/11107-48/6.jpeg";
+import ch11107Img7 from "../assets/images/chalets/sm/11107-48/7.jpeg";
+import ch11107Img8 from "../assets/images/chalets/sm/11107-48/8.jpeg";
+import ch11107Img9 from "../assets/images/chalets/sm/11107-48/9.jpeg";
+import ch11107Img10 from "../assets/images/chalets/sm/11107-48/10.jpeg";
+import ch11107Img11 from "../assets/images/chalets/sm/11107-48/11.jpeg";
+import ch11107Img12 from "../assets/images/chalets/sm/11107-48/12.jpeg";
+import ch11107Img13 from "../assets/images/chalets/sm/11107-48/13.jpeg";
+import ch11107Img14 from "../assets/images/chalets/sm/11107-48/14.jpeg";
+import ch11107Img15 from "../assets/images/chalets/sm/11107-48/15.jpeg";
+import ch11107Img16 from "../assets/images/chalets/sm/11107-48/16.jpeg";
 //* Ch 25009
 import ch25009CoverImg from "../assets/images/chalets/sm/25009-48/coverImg.jpg";
 import ch25009Img1 from "../assets/images/chalets/sm/25009-48/1.jpg";
@@ -24,6 +61,24 @@ import ch25010Img7 from "../assets/images/chalets/sm/25010-48/7.jpg";
 import ch25010Img8 from "../assets/images/chalets/sm/25010-48/8.jpg";
 import ch25010Img9 from "../assets/images/chalets/sm/25010-48/9.jpg";
 import ch25010Img10 from "../assets/images/chalets/sm/25010-48/10.jpg";
+//* Ch28201
+import ch28201CoverImg from "../assets/images/chalets/sm/28201-48/coverImg.jpeg";
+import ch28201Img1 from "../assets/images/chalets/sm/28201-48/1.jpeg";
+import ch28201Img2 from "../assets/images/chalets/sm/28201-48/2.jpeg";
+import ch28201Img3 from "../assets/images/chalets/sm/28201-48/3.jpeg";
+import ch28201Img4 from "../assets/images/chalets/sm/28201-48/4.jpeg";
+import ch28201Img5 from "../assets/images/chalets/sm/28201-48/5.jpeg";
+import ch28201Img6 from "../assets/images/chalets/sm/28201-48/6.jpeg";
+import ch28201Img7 from "../assets/images/chalets/sm/28201-48/7.jpeg";
+import ch28201Img8 from "../assets/images/chalets/sm/28201-48/8.jpeg";
+import ch28201Img9 from "../assets/images/chalets/sm/28201-48/9.jpeg";
+import ch28201Img10 from "../assets/images/chalets/sm/28201-48/10.jpeg";
+import ch28201Img11 from "../assets/images/chalets/sm/28201-48/11.jpeg";
+import ch28201Img12 from "../assets/images/chalets/sm/28201-48/12.jpeg";
+import ch28201Img13 from "../assets/images/chalets/sm/28201-48/13.jpeg";
+import ch28201Img14 from "../assets/images/chalets/sm/28201-48/14.jpeg";
+import ch28201Img15 from "../assets/images/chalets/sm/28201-48/15.jpeg";
+import ch28201Img16 from "../assets/images/chalets/sm/28201-48/16.jpeg";
 //* Ch 54002
 import ch54002CoverImg from "../assets/images/chalets/sm/54002-48/coverImg.jpg";
 import ch54002Img1 from "../assets/images/chalets/sm/54002-48/1.jpg";
@@ -97,6 +152,24 @@ import ch68007Img9 from "../assets/images/chalets/sm/68007-48/9.jpg";
 import ch68007Img10 from "../assets/images/chalets/sm/68007-48/10.jpg";
 import ch68007Img11 from "../assets/images/chalets/sm/68007-48/11.jpg";
 import ch68007Img12 from "../assets/images/chalets/sm/68007-48/12.jpg";
+//* Ch68201
+import ch68201CoverImg from "../assets/images/chalets/sm/68201-48/coverImg.jpeg";
+import ch68201Img1 from "../assets/images/chalets/sm/68201-48/1.jpeg";
+import ch68201Img2 from "../assets/images/chalets/sm/68201-48/2.jpeg";
+import ch68201Img3 from "../assets/images/chalets/sm/68201-48/3.jpeg";
+import ch68201Img4 from "../assets/images/chalets/sm/68201-48/4.jpeg";
+import ch68201Img5 from "../assets/images/chalets/sm/68201-48/5.jpeg";
+import ch68201Img6 from "../assets/images/chalets/sm/68201-48/6.jpeg";
+import ch68201Img7 from "../assets/images/chalets/sm/68201-48/7.jpeg";
+import ch68201Img8 from "../assets/images/chalets/sm/68201-48/8.jpeg";
+import ch68201Img9 from "../assets/images/chalets/sm/68201-48/9.jpeg";
+import ch68201Img10 from "../assets/images/chalets/sm/68201-48/10.jpeg";
+import ch68201Img11 from "../assets/images/chalets/sm/68201-48/11.jpeg";
+import ch68201Img12 from "../assets/images/chalets/sm/68201-48/12.jpeg";
+import ch68201Img13 from "../assets/images/chalets/sm/68201-48/13.jpeg";
+import ch68201Img14 from "../assets/images/chalets/sm/68201-48/14.jpeg";
+import ch68201Img15 from "../assets/images/chalets/sm/68201-48/15.jpeg";
+import ch68201Img16 from "../assets/images/chalets/sm/68201-48/16.jpeg";
 //* Ch 70203
 import ch70203CoverImg from "../assets/images/chalets/sm/70203-48/coverImg.jpg";
 import ch70203Img1 from "../assets/images/chalets/sm/70203-48/1.jpg";
@@ -153,6 +226,26 @@ import ch74102Img11 from "../assets/images/chalets/sm/74102-48/11.jpg";
 import ch74102Img12 from "../assets/images/chalets/sm/74102-48/12.jpg";
 import ch74102Img13 from "../assets/images/chalets/sm/74102-48/13.jpg";
 import ch74102Img14 from "../assets/images/chalets/sm/74102-48/14.jpg";
+//* Ch77001
+import ch77001CoverImg from "../assets/images/chalets/sm/77001-48/coverImg.jpeg";
+import ch77001Img1 from "../assets/images/chalets/sm/77001-48/1.jpeg";
+import ch77001Img2 from "../assets/images/chalets/sm/77001-48/2.jpeg";
+import ch77001Img3 from "../assets/images/chalets/sm/77001-48/3.jpeg";
+import ch77001Img4 from "../assets/images/chalets/sm/77001-48/4.jpeg";
+import ch77001Img5 from "../assets/images/chalets/sm/77001-48/5.jpeg";
+import ch77001Img6 from "../assets/images/chalets/sm/77001-48/6.jpeg";
+import ch77001Img7 from "../assets/images/chalets/sm/77001-48/7.jpeg";
+import ch77001Img8 from "../assets/images/chalets/sm/77001-48/8.jpeg";
+import ch77001Img9 from "../assets/images/chalets/sm/77001-48/9.jpeg";
+import ch77001Img10 from "../assets/images/chalets/sm/77001-48/10.jpeg";
+import ch77001Img11 from "../assets/images/chalets/sm/77001-48/11.jpeg";
+import ch77001Img12 from "../assets/images/chalets/sm/77001-48/12.jpeg";
+import ch77001Img13 from "../assets/images/chalets/sm/77001-48/13.jpeg";
+import ch77001Img14 from "../assets/images/chalets/sm/77001-48/14.jpeg";
+import ch77001Img15 from "../assets/images/chalets/sm/77001-48/15.jpeg";
+import ch77001Img16 from "../assets/images/chalets/sm/77001-48/16.jpeg";
+import ch77001Img17 from "../assets/images/chalets/sm/77001-48/17.jpeg";
+import ch77001Img18 from "../assets/images/chalets/sm/77001-48/18.jpeg";
 //* Ch 85201
 import ch85201CoverImg from "../assets/images/chalets/sm/85201-48/coverImg.jpg";
 import ch85201Img1 from "../assets/images/chalets/sm/85201-48/1.jpg";
@@ -163,6 +256,27 @@ import ch85201Img5 from "../assets/images/chalets/sm/85201-48/5.jpg";
 import ch85201Img6 from "../assets/images/chalets/sm/85201-48/6.jpg";
 import ch85201Img7 from "../assets/images/chalets/sm/85201-48/7.jpg";
 import ch85201Img8 from "../assets/images/chalets/sm/85201-48/8.jpg";
+//* Ch87101
+import ch87101CoverImg from "../assets/images/chalets/sm/87101-48/coverImg.jpeg";
+import ch87101Img1 from "../assets/images/chalets/sm/87101-48/1.jpeg";
+import ch87101Img2 from "../assets/images/chalets/sm/87101-48/2.jpeg";
+import ch87101Img3 from "../assets/images/chalets/sm/87101-48/3.jpeg";
+import ch87101Img4 from "../assets/images/chalets/sm/87101-48/4.jpeg";
+import ch87101Img5 from "../assets/images/chalets/sm/87101-48/5.jpeg";
+import ch87101Img6 from "../assets/images/chalets/sm/87101-48/6.jpeg";
+import ch87101Img7 from "../assets/images/chalets/sm/87101-48/7.jpeg";
+import ch87101Img8 from "../assets/images/chalets/sm/87101-48/8.jpeg";
+import ch87101Img9 from "../assets/images/chalets/sm/87101-48/9.jpeg";
+import ch87101Img10 from "../assets/images/chalets/sm/87101-48/10.jpeg";
+import ch87101Img11 from "../assets/images/chalets/sm/87101-48/11.jpeg";
+import ch87101Img12 from "../assets/images/chalets/sm/87101-48/12.jpeg";
+import ch87101Img13 from "../assets/images/chalets/sm/87101-48/13.jpeg";
+import ch87101Img14 from "../assets/images/chalets/sm/87101-48/14.jpeg";
+import ch87101Img15 from "../assets/images/chalets/sm/87101-48/15.jpeg";
+import ch87101Img16 from "../assets/images/chalets/sm/87101-48/16.jpeg";
+import ch87101Img17 from "../assets/images/chalets/sm/87101-48/17.jpeg";
+import ch87101Img18 from "../assets/images/chalets/sm/87101-48/18.jpeg";
+import ch87101Img19 from "../assets/images/chalets/sm/87101-48/19.jpeg";
 //* Ch 88201
 import ch88201CoverImg from "../assets/images/chalets/sm/88201-48/coverImg.jpg";
 import ch88201Img1 from "../assets/images/chalets/sm/88201-48/1.jpg";
@@ -207,6 +321,42 @@ import ch99010Img11 from "../assets/images/chalets/sm/99010-48/11.jpg";
 import ch99010Img12 from "../assets/images/chalets/sm/99010-48/12.jpg";
 import ch99010Img13 from "../assets/images/chalets/sm/99010-48/13.jpg";
 import ch99010Img14 from "../assets/images/chalets/sm/99010-48/14.jpg";
+//* Ch99108
+import ch99108CoverImg from "../assets/images/chalets/sm/99108-48/coverImg.jpeg";
+import ch99108Img1 from "../assets/images/chalets/sm/99108-48/1.jpeg";
+import ch99108Img2 from "../assets/images/chalets/sm/99108-48/2.jpeg";
+import ch99108Img3 from "../assets/images/chalets/sm/99108-48/3.jpeg";
+import ch99108Img4 from "../assets/images/chalets/sm/99108-48/4.jpeg";
+import ch99108Img5 from "../assets/images/chalets/sm/99108-48/5.jpeg";
+import ch99108Img6 from "../assets/images/chalets/sm/99108-48/6.jpeg";
+import ch99108Img7 from "../assets/images/chalets/sm/99108-48/7.jpeg";
+import ch99108Img8 from "../assets/images/chalets/sm/99108-48/8.jpeg";
+import ch99108Img9 from "../assets/images/chalets/sm/99108-48/9.jpeg";
+import ch99108Img10 from "../assets/images/chalets/sm/99108-48/10.jpeg";
+import ch99108Img11 from "../assets/images/chalets/sm/99108-48/11.jpeg";
+import ch99108Img12 from "../assets/images/chalets/sm/99108-48/12.jpeg";
+import ch99108Img13 from "../assets/images/chalets/sm/99108-48/13.jpeg";
+import ch99108Img14 from "../assets/images/chalets/sm/99108-48/14.jpeg";
+import ch99108Img15 from "../assets/images/chalets/sm/99108-48/15.jpeg";
+//* Ch100203
+import ch100203CoverImg from "../assets/images/chalets/sm/100203-48/coverImg.jpeg";
+import ch100203Img1 from "../assets/images/chalets/sm/100203-48/1.jpeg";
+import ch100203Img2 from "../assets/images/chalets/sm/100203-48/2.jpeg";
+import ch100203Img3 from "../assets/images/chalets/sm/100203-48/3.jpeg";
+import ch100203Img4 from "../assets/images/chalets/sm/100203-48/4.jpeg";
+import ch100203Img5 from "../assets/images/chalets/sm/100203-48/5.jpeg";
+import ch100203Img6 from "../assets/images/chalets/sm/100203-48/6.jpeg";
+import ch100203Img7 from "../assets/images/chalets/sm/100203-48/7.jpeg";
+import ch100203Img8 from "../assets/images/chalets/sm/100203-48/8.jpeg";
+import ch100203Img9 from "../assets/images/chalets/sm/100203-48/9.jpeg";
+import ch100203Img10 from "../assets/images/chalets/sm/100203-48/10.jpeg";
+import ch100203Img11 from "../assets/images/chalets/sm/100203-48/11.jpeg";
+import ch100203Img12 from "../assets/images/chalets/sm/100203-48/12.jpeg";
+import ch100203Img13 from "../assets/images/chalets/sm/100203-48/13.jpeg";
+import ch100203Img14 from "../assets/images/chalets/sm/100203-48/14.jpeg";
+import ch100203Img15 from "../assets/images/chalets/sm/100203-48/15.jpeg";
+import ch100203Img16 from "../assets/images/chalets/sm/100203-48/16.jpeg";
+import ch100203Img17 from "../assets/images/chalets/sm/100203-48/17.jpeg";
 //* Ch 100204
 import ch100204CoverImg from "../assets/images/chalets/sm/100204-48/coverImg.jpg";
 import ch100204Img1 from "../assets/images/chalets/sm/100204-48/1.jpg";
@@ -272,6 +422,45 @@ import ch103207Img10 from "../assets/images/chalets/sm/103207-48/10.jpg";
 import ch103207Img11 from "../assets/images/chalets/sm/103207-48/11.jpg";
 
 export const chaletsSmImages = {
+  ch10104: [
+    ch10104CoverImg,
+    ch10104Img1,
+    ch10104Img2,
+    ch10104Img3,
+    ch10104Img4,
+    ch10104Img5,
+    ch10104Img6,
+    ch10104Img7,
+    ch10104Img8,
+    ch10104Img9,
+    ch10104Img10,
+    ch10104Img11,
+    ch10104Img12,
+    ch10104Img13,
+    ch10104Img14,
+    ch10104Img15,
+    ch10104Img16,
+    ch10104Img17,
+  ],
+  ch11107: [
+    ch11107CoverImg,
+    ch11107Img1,
+    ch11107Img2,
+    ch11107Img3,
+    ch11107Img4,
+    ch11107Img5,
+    ch11107Img6,
+    ch11107Img7,
+    ch11107Img8,
+    ch11107Img9,
+    ch11107Img10,
+    ch11107Img11,
+    ch11107Img12,
+    ch11107Img13,
+    ch11107Img14,
+    ch11107Img15,
+    ch11107Img16,
+  ],
   ch25009: [
     ch25009CoverImg,
     ch25009Img1,
@@ -299,6 +488,25 @@ export const chaletsSmImages = {
     ch25010Img8,
     ch25010Img9,
     ch25010Img10,
+  ],
+  ch28201: [
+    ch28201CoverImg,
+    ch28201Img1,
+    ch28201Img2,
+    ch28201Img3,
+    ch28201Img4,
+    ch28201Img5,
+    ch28201Img6,
+    ch28201Img7,
+    ch28201Img8,
+    ch28201Img9,
+    ch28201Img10,
+    ch28201Img11,
+    ch28201Img12,
+    ch28201Img13,
+    ch28201Img14,
+    ch28201Img15,
+    ch28201Img16,
   ],
   ch54002: [
     ch54002CoverImg,
@@ -379,6 +587,25 @@ export const chaletsSmImages = {
     ch68007Img11,
     ch68007Img12,
   ],
+  ch68201: [
+    ch68201CoverImg,
+    ch68201Img1,
+    ch68201Img2,
+    ch68201Img3,
+    ch68201Img4,
+    ch68201Img5,
+    ch68201Img6,
+    ch68201Img7,
+    ch68201Img8,
+    ch68201Img9,
+    ch68201Img10,
+    ch68201Img11,
+    ch68201Img12,
+    ch68201Img13,
+    ch68201Img14,
+    ch68201Img15,
+    ch68201Img16,
+  ],
   ch70203: [
     ch70203CoverImg,
     ch70203Img1,
@@ -439,6 +666,27 @@ export const chaletsSmImages = {
     ch74102Img13,
     ch74102Img14,
   ],
+  ch77001: [
+    ch77001CoverImg,
+    ch77001Img1,
+    ch77001Img2,
+    ch77001Img3,
+    ch77001Img4,
+    ch77001Img5,
+    ch77001Img6,
+    ch77001Img7,
+    ch77001Img8,
+    ch77001Img9,
+    ch77001Img10,
+    ch77001Img11,
+    ch77001Img12,
+    ch77001Img13,
+    ch77001Img14,
+    ch77001Img15,
+    ch77001Img16,
+    ch77001Img17,
+    ch77001Img18,
+  ],
   ch85201: [
     ch85201CoverImg,
     ch85201Img1,
@@ -449,6 +697,28 @@ export const chaletsSmImages = {
     ch85201Img6,
     ch85201Img7,
     ch85201Img8,
+  ],
+  ch87101: [
+    ch87101CoverImg,
+    ch87101Img1,
+    ch87101Img2,
+    ch87101Img3,
+    ch87101Img4,
+    ch87101Img5,
+    ch87101Img6,
+    ch87101Img7,
+    ch87101Img8,
+    ch87101Img9,
+    ch87101Img10,
+    ch87101Img11,
+    ch87101Img12,
+    ch87101Img13,
+    ch87101Img14,
+    ch87101Img15,
+    ch87101Img16,
+    ch87101Img17,
+    ch87101Img18,
+    ch87101Img19,
   ],
   ch88201: [
     ch88201CoverImg,
@@ -496,6 +766,44 @@ export const chaletsSmImages = {
     ch99010Img12,
     ch99010Img13,
     ch99010Img14,
+  ],
+  ch99108: [
+    ch99108CoverImg,
+    ch99108Img1,
+    ch99108Img2,
+    ch99108Img3,
+    ch99108Img4,
+    ch99108Img5,
+    ch99108Img6,
+    ch99108Img7,
+    ch99108Img8,
+    ch99108Img9,
+    ch99108Img10,
+    ch99108Img11,
+    ch99108Img12,
+    ch99108Img13,
+    ch99108Img14,
+    ch99108Img15,
+  ],
+  ch100203: [
+    ch100203CoverImg,
+    ch100203Img1,
+    ch100203Img2,
+    ch100203Img3,
+    ch100203Img4,
+    ch100203Img5,
+    ch100203Img6,
+    ch100203Img7,
+    ch100203Img8,
+    ch100203Img9,
+    ch100203Img10,
+    ch100203Img11,
+    ch100203Img12,
+    ch100203Img13,
+    ch100203Img14,
+    ch100203Img15,
+    ch100203Img16,
+    ch100203Img17,
   ],
   ch100204: [
     ch100204CoverImg,

@@ -770,6 +770,7 @@ export default function ChaletDetailsPage() {
   );
 }
 
+//! HeroSec
 import { MdOutlineArrowBackIos, MdOutlineAutoMode } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import logo from "../assets/icons/logo.png";
@@ -812,8 +813,8 @@ function ChHeroSec({ chNum }) {
   const isScrolled = useIsScrolled((state) => state.isScrolled);
 
   return (
-    <div className="flex justify-center pt-17 pb-22 md:bg-top bg-move">
-      <div className="container flex flex-col items-center text-center">
+    <div className="relative flex justify-center pt-17 pb-22 md:bg-top bg-move">
+      <div className="container z-3 flex flex-col items-center text-center">
         <div className="relative w-full flex justify-center">
           <img src={logo} alt="logo-icon" className="w-40 z-2" />
           <h3
@@ -887,10 +888,13 @@ function ChHeroSec({ chNum }) {
           )}
         />
       </Link>
+      {/*//* shadow bottom bg */}
+      <div className="absolute z-1 bottom-0 left-0 w-full h-full bg-linear-to-t from-main-bg via-[#fbfafd60] to-[#0000001a]" />
     </div>
   );
 }
 
+// !Reservation
 import infoIcon from "../assets/icons/chalets/reservation/info.png";
 import reservationIcon from "../assets/icons/chalets/reservation/reservation.png";
 import { IoSearch } from "react-icons/io5";
@@ -1314,6 +1318,7 @@ ${username}
   );
 }
 
+//! DatePicker
 import { DayPicker } from "react-day-picker";
 import mergeValidList from "../utils/mergeValidList";
 

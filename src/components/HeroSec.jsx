@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 export default function HeroSec({ title, des }) {
   return (
     <div
-      className="flex justify-center -mb-15 md:mb-0 h-100 bg-[linear-gradient(to_top,rgb(252,251,254)0%,rgba(252,251,254,0.6)35%,rgba(0,0,0,0.30)70%,rgba(0,0,0,0.45)100%),url('/images/hero-sec-bg2.png')] sm:bg-[linear-gradient(to_top,rgb(252,251,254)0%,rgba(252,251,254,0.6)35%,rgba(0,0,0,0.15)70%,rgba(0,0,0,0.35)100%),url('/images/hero-sec-bg.png')] bg-center sm:bg-top bg-cover"
+      className="flex justify-center -mb-15 md:mb-0 h-100 bg-[linear-gradient(to_top,rgb(252,251,254)0%,rgba(252,251,254,0.6)35%,rgba(0,0,0,0.30)70%,rgba(0,0,0,0.45)100%),url('/images/main-herosec2.png')]"
       style={{
-        backgroundPosition: "top",
+        backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
