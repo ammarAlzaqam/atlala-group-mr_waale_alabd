@@ -14,38 +14,47 @@ import buggyIcon from "../assets/icons/advantages/buggy.png";
 
 export const advList = [
   {
+    label: "office",
     title: "مكتب الشركة بجوار البوابة الرئيسية",
     icon: officeIcon,
   },
   {
+    label: "parking",
     title: "موقف سيارات مجاني داخل القرية",
     icon: parkingIcon,
   },
   {
+    label: "facilities",
     title: "بيئة آمنة ومناسبة للأطفال",
     icon: safeIcon,
   },
   {
+    label: "facilities",
     title: "خدمة صيانة ودعم على مدار الساعة",
     icon: maintenanceIcon,
   },
   {
+    label: "aqua",
     title: "أكوا بارك مخصصه للكبار داخل القرية",
     icon: aquaParkIcon,
   },
   {
+    label: "beach",
     title: "شماسي وكراسي مجانية على الشاطئ",
     icon: chairIcon,
   },
   {
+    label: "beach",
     title: "أتوبيسات مجانية للتنقل إلى الشاطئ",
     icon: busIcon,
   },
   {
+    label: "facilities",
     title: "20 حمام سباحة بمساحات متنوعة",
     icon: poolIcon,
   },
   {
+    label: "beach",
     title: "شاطئ خاص بإطلالة مميزة على البحر",
     icon: beachIcon,
   },
@@ -53,18 +62,22 @@ export const advList = [
 
 export const advListAdv = [
   {
+    label: "kidsAqua",
     title: "أكوا بارك مخصص للأطفال الصغار",
     icon: kidsAquaParkIcon,
   },
   {
+    label: "grill",
     title: "مطاعم وكافيهات وهايبر ماركت",
     icon: restaurantIcon,
   },
   {
+    label: "facilities",
     title: "ساحة ترفيهية بشاشة عرض عملاقة",
     icon: cinemaIcon,
   },
   {
+    label: "wheel",
     title: "تأجير الدراجات والمركبات الترفيهية",
     icon: buggyIcon,
   },

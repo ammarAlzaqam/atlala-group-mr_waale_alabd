@@ -87,16 +87,21 @@ export default function Layout() {
       }
     };
 
-    const handleOpenSearchModal = () => !open && setOpen(true);
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.key.toLowerCase() === "q" && !open) {
+        e.preventDefault();
+        setOpen(true);
+      }
+    };
 
     addEventListener("touchstart", handleTouchStart);
     addEventListener("touchend", handleTouchEnd);
-    addEventListener("dblclick", handleOpenSearchModal);
+    addEventListener("keydown", handleKeyDown);
 
     return () => {
       removeEventListener("touchstart", handleTouchStart);
       removeEventListener("touchend", handleTouchEnd);
-      removeEventListener("dblclick", handleOpenSearchModal);
+      removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 

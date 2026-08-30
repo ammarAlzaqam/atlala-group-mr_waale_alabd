@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { FiCheckCircle } from "react-icons/fi";
 import PageLoader from "../components/PageLoader";
 import { useState } from "react";
+import waveLineIcon from "../assets/icons/decor/zigzag.png";
+import facilities from "../constants/facilities";
+import { FaEye } from "react-icons/fa";
 
 export default function ServicesPage() {
   const [loading, setLoading] = useState(true);
@@ -27,8 +30,14 @@ export default function ServicesPage() {
             des="نوفر لك كل ما يضمن لك إقامة مريحة وآمنة واستمتاع لا يُنسي في بورتو مطروح"
           />
           <div className="flex flex-wrap gap-x-4 gap-y-6 justify-center">
-            {advList.concat(advListAdv).map(({ title, icon }, index) => (
-              <AdvCard key={title} title={title} icon={icon} index={index} />
+            {advList.concat(advListAdv).map(({ title, icon, label }, index) => (
+              <AdvCard
+                key={title}
+                title={title}
+                icon={icon}
+                index={index}
+                label={label}
+              />
             ))}
           </div>
         </div>
@@ -110,6 +119,50 @@ export default function ServicesPage() {
           </div>
         </div>
       </div>
+      {/* Facilities */}
+      <div className="flex justify-center pb-8">
+        <div className="container flex flex-col gap-5">
+          {/*//? Head Title */}
+          <div className="flex z-3 flex-col items-center gap-3">
+            {/* title */}
+            <div className="flex items-center gap-4">
+              <img
+                src={waveLineIcon}
+                alt="wave-decor-icon"
+                className="w-7 green-img-filter"
+              />
+
+              <h3 className="text-xl font-bold">خدماتنا ومرافقنا</h3>
+
+              <img
+                src={waveLineIcon}
+                alt="wave-decor-icon"
+                className="w-7 green-img-filter"
+              />
+            </div>
+
+            {/* subTitle */}
+            <h2 className="text-3xl text-center font-bold">
+              كل ما تحتاجه لقضاء وقت ممتع
+            </h2>
+
+            {/* description */}
+            <p className="text-center max-w-md leading-[200%]">
+              اكتشف مجموعة متكاملة من المرافق والخدمات التي توفر لك الراحة
+              والترفيه، لتستمتع بكل لحظة داخل بورتو مطروح.
+            </p>
+          </div>
+          {/* Facilities */}
+          <div
+            id="facilities"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          >
+            {facilities.map((facility) => (
+              <FacilityCard key={facility.label} facility={facility} />
+            ))}
+          </div>
+        </div>
+      </div>
       <PageLoader loading={loading} setLoading={setLoading} />
     </div>
   );
@@ -167,8 +220,9 @@ const TopTitle = ({ badge, title, des }) => {
   );
 };
 
-const AdvCard = ({ title, icon, index }) => (
-  <div
+const AdvCard = ({ title, icon, index, label }) => (
+  <a
+    href={`#${label}`}
     className={clsx(
       "relative flex flex-col items-center gap-5 py-5 px-3 shadow-lg shadow-gray-400/60 border border-gray-400/20 rounded-xl w-[calc(50%-8px)] md:w-[calc(25%-12px)] lg:w-[calc(20%-12.8px)] xl:w-[calc(14.2857%-13.71428px)]",
       "transition-all duration-300 hover:shadow-primary-500/50 hover:border-primary-500/20 hover:-translate-y-2 group",
@@ -190,5 +244,64 @@ const AdvCard = ({ title, icon, index }) => (
     <h3 className="text-center text-lg font-medium text-primary-600">
       {title}
     </h3>
-  </div>
+  </a>
 );
+
+const FacilityCard = ({ facility }) => {
+  const { images, icon, title, des, price, availability, label } = facility;
+
+  return (
+    <div
+      id={label}
+      className={clsx(
+        "bg-white rounded-xl flex! flex-col! transition-color duration-300 shadow-lg group",
+      )}
+    >
+      {/* coverImg and icon */}
+      <div className="relative">
+        <img
+          src={images[0]}
+          alt="facility-img"
+          className={clsx(
+            "w-full h-70 sm:h-55 object-cover rounded-xl transition-all duration-300",
+          )}
+        />
+        <div className="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/2 bg-white p-3 shadow-lg rounded-full">
+          <img
+            src={icon}
+            alt="facility-icon"
+            className={clsx(
+              "w-10 h-10 object-contain transition-all duration-300 green-img-filter",
+            )}
+          />
+        </div>
+      </div>
+      {/* Details */}
+      <div
+        className={clsx(
+          "flex-1 flex flex-col items-center text-center gap-10 justify-between p-5 pt-11 transition-opacity duration-300",
+        )}
+      >
+        {/* Des, title */}
+        <div className="flex flex-col items-center gap-4">
+          <h3 className="font-semibold">{title}</h3>
+          <p className="">{des}</p>
+        </div>
+        {/* price, availability, button */}
+        <div className="flex w-full flex-col items-center gap-4">
+          <h5 className="text-accent-500! font-semibold">{price}</h5>
+          <div className="p-2 w-full bg-primary-200/30 rounded-xl text-center">
+            <h5 className="text-primary-500!">{availability}</h5>
+          </div>
+          <Link
+            to={`/services/${label}`}
+            className="btn w-full bg-transparent border-transparent text-secondary-600 gap-3"
+          >
+            <FaEye />
+            عرض التفاصيل
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};

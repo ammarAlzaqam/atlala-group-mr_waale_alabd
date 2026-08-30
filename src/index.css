@@ -94,6 +94,10 @@ body,
   --font-body: "Cairo", sans-serif;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 p,
 span,
 input,

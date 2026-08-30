@@ -73,24 +73,6 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    document.querySelector(".btn")?.addEventListener("dblclick", (e) => {
-      e.stopPropagation();
-    });
-
-    document.querySelector("button")?.addEventListener("dblclick", (e) => {
-      e.stopPropagation();
-    });
-
-    document.querySelector("input")?.addEventListener("dblclick", (e) => {
-      e.stopPropagation();
-    });
-
-    document.querySelector("a")?.addEventListener("dblclick", (e) => {
-      e.stopPropagation();
-    });
-  }, []);
-
   return (
     <div className="text-right" data-theme="light" dir="rtl">
       <BrowserRouter>
