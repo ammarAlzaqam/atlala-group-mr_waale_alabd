@@ -3,6 +3,8 @@ import locationCh2Img from "../assets/images/locations/2.jpg";
 import locationCh4Img from "../assets/images/locations/4.jpg";
 import locationCh10Img from "../assets/images/locations/10.jpg";
 import locationCh11Img from "../assets/images/locations/11.jpg";
+import locationCh13Img from "../assets/images/locations/13.jpg";
+import locationCh20Img from "../assets/images/locations/20.jpg";
 import locationCh23Img from "../assets/images/locations/23.jpg";
 import locationCh24Img from "../assets/images/locations/24.jpg";
 import locationCh25Img from "../assets/images/locations/25.jpg";
@@ -19,8 +21,10 @@ import locationCh67Img from "../assets/images/locations/67.jpg";
 import locationCh68Img from "../assets/images/locations/68.jpg";
 import locationCh70Img from "../assets/images/locations/70.jpg";
 import locationCh72Img from "../assets/images/locations/72.jpg";
+import locationCh73Img from "../assets/images/locations/73.jpg";
 import locationCh74Img from "../assets/images/locations/74.jpg";
 import locationCh77Img from "../assets/images/locations/77.jpg";
+import locationCh84Img from "../assets/images/locations/84.jpg";
 import locationCh85Img from "../assets/images/locations/85.jpg";
 import locationCh87Img from "../assets/images/locations/87.jpg";
 import locationCh88Img from "../assets/images/locations/88.jpg";
@@ -28,6 +32,7 @@ import locationCh99Img from "../assets/images/locations/99.jpg";
 import locationCh100Img from "../assets/images/locations/100.jpg";
 import locationCh101Img from "../assets/images/locations/101.jpg";
 import locationCh103Img from "../assets/images/locations/103.jpg";
+import locationCh104Img from "../assets/images/locations/104.jpg";
 import locationCh105Img from "../assets/images/locations/105.jpg";
 
 //! Icons
@@ -157,21 +162,28 @@ export const tags = {
   },
   beachView: {
     icon: beachViewIcon,
-    name: "على البحر",
+    name: "إطلالة بحر",
     label: "beach view",
     color:
       "bg-linear-to-t from-cyan-500/80 via-40% via-cyan-600/80 to-70% to-cyan-700/80 text-white!",
   },
   poolView: {
     icon: poolViewIcon,
-    name: "على المسبح",
+    name: "إطلالة مسبح",
     label: "pool view",
     color:
       "bg-linear-to-t from-blue-500/80 via-40% via-blue-600/80 to-70% to-blue-700/80 text-white!",
   },
+  gardenView: {
+    icon: gardenViewIcon,
+    name: "إطلالة حديقة",
+    label: "garden view",
+    color:
+      "bg-linear-to-t from-lime-600/80 via-40% via-lime-700/80 to-70% to-lime-800/80 text-white!",
+  },
   aquaView: {
     icon: aquaViewIcon,
-    name: "على الاكوا",
+    name: "إطلالة اكوا",
     label: "aqua view",
     color:
       "bg-linear-to-t from-violet-500/80 via-40% via-violet-600/80 to-70% to-violet-700/80 text-white!",
@@ -190,6 +202,7 @@ export const advList = [
   { label: "aqua", name: "قريب من منطقة الاكوا", icon: aquaIcon },
   { label: "kidsArea", name: "قريب من اكوا الأطفال", icon: kidsAreaIcon },
   { label: "pergola", name: "قريب من البرجولة", icon: pergolaIcon },
+  { label: "field", name: "بجوار الملعب", icon: fieldIcon },
 ];
 
 const adv = {
@@ -227,13 +240,11 @@ const adv = {
     name: "بوتجاز كهربائي",
     Icon: electricStoveIcon,
   },
-
   electricKettle: {
     label: "electric_kettle",
     name: "غلاية كهربائية",
     Icon: electricKettleIcon,
   },
-
   field: {
     label: "field",
     name: "بجوار الملعب",
@@ -437,6 +448,7 @@ export const couch = [
 ];
 
 const chaletsList = [
+  // ch2001
   {
     chaletImages: chaletsLgImages.ch2001,
     locationImg: locationCh2Img,
@@ -473,6 +485,7 @@ const chaletsList = [
       couch[3],
     ],
   },
+  // ch2102
   {
     chaletImages: chaletsLgImages.ch2102,
     locationImg: locationCh2Img,
@@ -506,6 +519,7 @@ const chaletsList = [
       couch[3],
     ],
   },
+  // ch4108
   {
     chaletImages: chaletsLgImages.ch4108,
     locationImg: locationCh4Img,
@@ -539,6 +553,7 @@ const chaletsList = [
       couch[3],
     ],
   },
+  // ch10104
   {
     chaletImages: chaletsSmImages.ch10104,
     locationImg: locationCh10Img,
@@ -572,6 +587,7 @@ const chaletsList = [
       couch[1],
     ],
   },
+  // ch11107
   {
     chaletImages: chaletsSmImages.ch11107,
     locationImg: locationCh11Img,
@@ -604,6 +620,75 @@ const chaletsList = [
       couch[2],
     ],
   },
+  // ch13007
+  {
+    chaletImages: chaletsSmImages.ch13007,
+    locationImg: locationCh13Img,
+    num: 13007,
+    price: 3000,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.garden,
+      adv.grill,
+      adv.swing,
+      adv.kidsArea,
+      adv.microwave,
+    ],
+    details: [
+      floors.ground,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[2],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[2],
+    ],
+  },
+  // ch20105
+  {
+    chaletImages: chaletsLgImages.ch20105,
+    locationImg: locationCh20Img,
+    num: 20105,
+    price: 4000,
+    view: [tags.poolView, tags.beachView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.microwave,
+      adv.autoWashing,
+      adv.field,
+    ],
+    details: [
+      floors.first,
+      areas.area75,
+      rooms.fourRooms.room,
+      rooms.fourRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.fourRooms.nofPeople,
+      // nof beds
+      beds[1].xl,
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch23011
   {
     chaletImages: chaletsLgImages.ch23011,
     locationImg: locationCh23Img,
@@ -639,6 +724,7 @@ const chaletsList = [
       couch[2],
     ],
   },
+  // ch23012
   {
     chaletImages: chaletsLgImages.ch23012,
     locationImg: locationCh23Img,
@@ -674,6 +760,7 @@ const chaletsList = [
       couch[3],
     ],
   },
+  // ch23103
   {
     chaletImages: chaletsLgImages.ch23103,
     locationImg: locationCh23Img,
@@ -708,6 +795,7 @@ const chaletsList = [
       couch[3],
     ],
   },
+  // ch23111
   {
     chaletImages: chaletsLgImages.ch23111,
     locationImg: locationCh23Img,
@@ -740,6 +828,7 @@ const chaletsList = [
       couch[2],
     ],
   },
+  // ch23113
   {
     chaletImages: chaletsLgImages.ch23113,
     locationImg: locationCh23Img,
@@ -772,6 +861,7 @@ const chaletsList = [
       couch[3],
     ],
   },
+  // ch24012
   {
     chaletImages: chaletsLgImages.ch24012,
     locationImg: locationCh24Img,
@@ -807,6 +897,7 @@ const chaletsList = [
       couch[3],
     ],
   },
+  // ch24208
   {
     chaletImages: chaletsLgImages.ch24208,
     locationImg: locationCh24Img,
@@ -839,6 +930,7 @@ const chaletsList = [
       couch[2],
     ],
   },
+  // ch24209
   {
     chaletImages: chaletsLgImages.ch24209,
     locationImg: locationCh24Img,
@@ -869,6 +961,79 @@ const chaletsList = [
       beds[1].xl,
       // nof sofa
       couch[2],
+    ],
+  },
+  // ch25009
+  {
+    chaletImages: chaletsSmImages.ch25009,
+    locationImg: locationCh25Img,
+    num: 25009,
+    price: 3500,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.swing,
+      adv.garden,
+      adv.grill,
+      adv.microwave,
+      adv.oven,
+      adv.autoWashing,
+      adv.kidsArea,
+    ],
+    details: [
+      floors.ground,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch25010
+  {
+    chaletImages: chaletsSmImages.ch25010,
+    locationImg: locationCh25Img,
+    num: 25010,
+    price: 3500,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.swing,
+      adv.garden,
+      adv.grill,
+      adv.microwave,
+      adv.autoWashing,
+      adv.kidsArea,
+    ],
+    details: [
+      floors.ground,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
     ],
   },
   // ch28201
@@ -905,6 +1070,7 @@ const chaletsList = [
       couch[1],
     ],
   },
+  // ch31112
   {
     chaletImages: chaletsLgImages.ch31112,
     locationImg: locationCh31Img,
@@ -937,6 +1103,7 @@ const chaletsList = [
       couch[3],
     ],
   },
+  // ch36005
   {
     chaletImages: chaletsLgImages.ch36005,
     locationImg: locationCh36Img,
@@ -971,6 +1138,206 @@ const chaletsList = [
       couch[1],
     ],
   },
+  // ch54002
+  {
+    chaletImages: chaletsSmImages.ch54002,
+    locationImg: locationCh54Img,
+    num: 54002,
+    price: 3000,
+    view: [tags.gardenView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.microwave,
+      adv.garden,
+      adv.grill,
+      adv.swing,
+      adv.autoWashing,
+    ],
+    details: [
+      floors.ground,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[1].sm,
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch54007
+  {
+    chaletImages: chaletsSmImages.ch54007,
+    locationImg: locationCh54Img,
+    num: 54007,
+    price: 3300,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.autoWashing,
+      adv.microwave,
+      adv.garden,
+      adv.grill,
+      adv.swing,
+    ],
+    details: [
+      floors.ground,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[2],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[1].sm,
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch55101
+  {
+    chaletImages: chaletsSmImages.ch55101,
+    locationImg: locationCh55Img,
+    num: 55101,
+    price: 2800,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.microwave,
+      adv.pergola,
+    ],
+    details: [
+      floors.first,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch62108
+  {
+    chaletImages: chaletsSmImages.ch62108,
+    locationImg: locationCh62Img,
+    num: 62108,
+    price: 2800,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.oven,
+      adv.kidsArea,
+    ],
+    details: [
+      floors.first,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch64106
+  {
+    chaletImages: chaletsSmImages.ch64106,
+    locationImg: locationCh62Img,
+    num: 64106,
+    price: 2800,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.oven,
+      adv.kidsArea,
+    ],
+    details: [
+      floors.first,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch65208
+  {
+    chaletImages: chaletsSmImages.ch65208,
+    locationImg: locationCh65Img,
+    num: 65208,
+    price: 2800,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.microwave,
+      adv.kidsArea,
+      adv.autoWashing,
+    ],
+    details: [
+      floors.second,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[0],
+    ],
+  },
+  // ch66004
   {
     chaletImages: chaletsLgImages.ch66004,
     locationImg: locationCh66Img,
@@ -1004,6 +1371,7 @@ const chaletsList = [
       couch[3],
     ],
   },
+  // ch67003
   {
     chaletImages: chaletsLgImages.ch67003,
     locationImg: locationCh67Img,
@@ -1036,6 +1404,41 @@ const chaletsList = [
       beds[1].xl,
       // nof sofa
       couch[3],
+    ],
+  },
+  // ch68007
+  {
+    chaletImages: chaletsSmImages.ch68007,
+    locationImg: locationCh68Img,
+    num: 68007,
+    price: 3000,
+    view: [],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.microwave,
+      adv.garden,
+      adv.grill,
+      adv.swing,
+      adv.kidsArea,
+    ],
+    details: [
+      floors.ground,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[1].sm,
+      // nof sofa
+      couch[1],
     ],
   },
   // ch68201
@@ -1071,6 +1474,7 @@ const chaletsList = [
       couch[0],
     ],
   },
+  // ch70203
   {
     chaletImages: chaletsSmImages.ch70203,
     locationImg: locationCh70Img,
@@ -1104,6 +1508,7 @@ const chaletsList = [
       couch[3],
     ],
   },
+  // ch72208
   {
     chaletImages: chaletsLgImages.ch72208,
     locationImg: locationCh72Img,
@@ -1135,6 +1540,141 @@ const chaletsList = [
       beds[1].xl,
       // nof sofa
       couch[3],
+    ],
+  },
+  // ch73207
+  {
+    chaletImages: chaletsSmImages.ch73207,
+    locationImg: locationCh73Img,
+    num: 73207,
+    price: 3000,
+    view: [tags.poolView, tags.beachView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.microwave,
+      adv.oven,
+      adv.kidsArea,
+      adv.autoWashing,
+    ],
+    details: [
+      floors.ground,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[2],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch74005
+  {
+    chaletImages: chaletsSmImages.ch74005,
+    locationImg: locationCh74Img,
+    num: 74005,
+    price: 3500,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.garden,
+      adv.grill,
+      adv.swing,
+      adv.microwave,
+      adv.kidsArea,
+      adv.autoWashing,
+    ],
+    details: [
+      floors.ground,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[2],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch74101
+  {
+    chaletImages: chaletsSmImages.ch74101,
+    locationImg: locationCh74Img,
+    num: 74101,
+    price: 3000,
+    view: [tags.poolView, tags.beachView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.microwave,
+      adv.kidsArea,
+      adv.autoWashing,
+    ],
+    details: [
+      floors.first,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[2],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch74102
+  {
+    chaletImages: chaletsSmImages.ch74102,
+    locationImg: locationCh74Img,
+    num: 74102,
+    price: 3000,
+    view: [tags.poolView, tags.beachView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.microwave,
+      adv.kidsArea,
+    ],
+    details: [
+      floors.first,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[2],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[1].sm,
+      // nof sofa
+      couch[1],
     ],
   },
   // ch77001
@@ -1173,6 +1713,43 @@ const chaletsList = [
       couch[1],
     ],
   },
+  // ch85201
+  {
+    chaletImages: chaletsSmImages.ch85201,
+    locationImg: locationCh85Img,
+    num: 85201,
+    price: 3000,
+    view: [tags.poolView, tags.aquaView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.microwave,
+      adv.oven,
+      adv.autoWashing,
+    ],
+    details: [
+      floors.second,
+      //!NoEdit
+      areas.area48,
+      //!NoEdit
+      rooms.towRooms.room,
+      //!NoEdit
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[2],
+      // rooms details
+      //!NoEdit
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[3].sm,
+      // nof sofa
+      couch[1],
+    ],
+  },
   // ch87101
   {
     chaletImages: chaletsSmImages.ch87101,
@@ -1206,6 +1783,7 @@ const chaletsList = [
       couch[1],
     ],
   },
+  // ch87201
   {
     chaletImages: chaletsLgImages.ch87201,
     locationImg: locationCh87Img,
@@ -1239,6 +1817,120 @@ const chaletsList = [
       beds[4],
       // nof sofa
       couch[0],
+    ],
+  },
+  // ch88201
+  {
+    chaletImages: chaletsSmImages.ch88201,
+    locationImg: locationCh88Img,
+    num: 88201,
+    price: 2800,
+    view: [tags.aquaView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.oven,
+      adv.waterDispenser,
+    ],
+    details: [
+      floors.second,
+      //!NoEdit
+      areas.area48,
+      //!NoEdit
+      rooms.towRooms.room,
+      //!NoEdit
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      //!NoEdit
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[1].sm,
+      // nof sofa
+      couch[0],
+    ],
+  },
+  // ch99009
+  {
+    chaletImages: chaletsSmImages.ch99009,
+    locationImg: locationCh99Img,
+    num: 99009,
+    price: 3000,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.microwave,
+      adv.garden,
+      adv.grill,
+      adv.swing,
+      adv.autoWashing,
+    ],
+    details: [
+      floors.ground,
+      //!NoEdit
+      areas.area48,
+      //!NoEdit
+      rooms.towRooms.room,
+      //!NoEdit
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      //!NoEdit
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch99010
+  {
+    chaletImages: chaletsSmImages.ch99010,
+    locationImg: locationCh99Img,
+    num: 99010,
+    price: 3000,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.microwave,
+      adv.garden,
+      adv.grill,
+      adv.swing,
+      adv.autoWashing,
+    ],
+    details: [
+      floors.ground,
+      //!NoEdit
+      areas.area48,
+      //!NoEdit
+      rooms.towRooms.room,
+      //!NoEdit
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      //!NoEdit
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
     ],
   },
   // ch99108
@@ -1306,545 +1998,7 @@ const chaletsList = [
       couch[2],
     ],
   },
-  {
-    chaletImages: chaletsLgImages.ch105102,
-    locationImg: locationCh105Img,
-    num: 105102,
-    price: 4200,
-    view: [tags.poolView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.swing,
-      adv.microwave,
-      adv.autoWashing,
-    ],
-    details: [
-      floors.first,
-      areas.area75,
-      rooms.threeRooms.room,
-      rooms.threeRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[2],
-      // rooms details
-      rooms.threeRooms.nofPeople,
-      // nof beds
-      beds[0],
-      // nof sofa
-      couch[3],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch25009,
-    locationImg: locationCh25Img,
-    num: 25009,
-    price: 3500,
-    view: [tags.poolView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.swing,
-      adv.garden,
-      adv.grill,
-      adv.microwave,
-      adv.oven,
-      adv.autoWashing,
-      adv.kidsArea,
-    ],
-    details: [
-      floors.ground,
-      areas.area48,
-      rooms.towRooms.room,
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[1],
-      // rooms details
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[0],
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch25010,
-    locationImg: locationCh25Img,
-    num: 25010,
-    price: 3500,
-    view: [tags.poolView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.swing,
-      adv.garden,
-      adv.grill,
-      adv.microwave,
-      adv.autoWashing,
-      adv.kidsArea,
-    ],
-    details: [
-      floors.ground,
-      areas.area48,
-      rooms.towRooms.room,
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[1],
-      // rooms details
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[0],
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch54002,
-    locationImg: locationCh54Img,
-    num: 54002,
-    price: 3000,
-    view: [],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.microwave,
-      adv.garden,
-      adv.grill,
-      adv.autoWashing,
-    ],
-    details: [
-      floors.ground,
-      areas.area48,
-      rooms.towRooms.room,
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[1],
-      // rooms details
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[1].sm,
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch55101,
-    locationImg: locationCh55Img,
-    num: 55101,
-    price: 2800,
-    view: [tags.poolView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.microwave,
-      adv.pergola,
-    ],
-    details: [
-      floors.first,
-      areas.area48,
-      rooms.towRooms.room,
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[1],
-      // rooms details
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[0],
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch62108,
-    locationImg: locationCh62Img,
-    num: 62108,
-    price: 2800,
-    view: [tags.poolView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.oven,
-      adv.kidsArea,
-    ],
-    details: [
-      floors.first,
-      areas.area48,
-      rooms.towRooms.room,
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[1],
-      // rooms details
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[0],
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch64106,
-    locationImg: locationCh62Img,
-    num: 64106,
-    price: 2800,
-    view: [tags.poolView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.oven,
-      adv.kidsArea,
-    ],
-    details: [
-      floors.first,
-      areas.area48,
-      rooms.towRooms.room,
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[1],
-      // rooms details
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[0],
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch65208,
-    locationImg: locationCh65Img,
-    num: 65208,
-    price: 2800,
-    view: [tags.poolView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.microwave,
-      adv.kidsArea,
-      adv.autoWashing,
-    ],
-    details: [
-      floors.second,
-      areas.area48,
-      rooms.towRooms.room,
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[1],
-      // rooms details
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[0],
-      // nof sofa
-      couch[0],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch68007,
-    locationImg: locationCh68Img,
-    num: 68007,
-    price: 3000,
-    view: [],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.microwave,
-      adv.garden,
-      adv.grill,
-      adv.kidsArea,
-    ],
-    details: [
-      floors.ground,
-      areas.area48,
-      rooms.towRooms.room,
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[1],
-      // rooms details
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[1].sm,
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch74005,
-    locationImg: locationCh74Img,
-    num: 74005,
-    price: 3500,
-    view: [tags.poolView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.garden,
-      adv.grill,
-      adv.swing,
-      adv.microwave,
-      adv.kidsArea,
-      adv.autoWashing,
-    ],
-    details: [
-      floors.ground,
-      areas.area48,
-      rooms.towRooms.room,
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[2],
-      // rooms details
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[0],
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch74101,
-    locationImg: locationCh74Img,
-    num: 74101,
-    price: 3000,
-    view: [tags.poolView, tags.beachView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.microwave,
-      adv.kidsArea,
-      adv.autoWashing,
-    ],
-    details: [
-      floors.first,
-      areas.area48,
-      rooms.towRooms.room,
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[2],
-      // rooms details
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[0],
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch74102,
-    locationImg: locationCh74Img,
-    num: 74102,
-    price: 3000,
-    view: [tags.poolView, tags.beachView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.microwave,
-      adv.kidsArea,
-    ],
-    details: [
-      floors.first,
-      areas.area48,
-      rooms.towRooms.room,
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[2],
-      // rooms details
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[1].sm,
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch85201,
-    locationImg: locationCh85Img,
-    num: 85201,
-    price: 3000,
-    view: [tags.poolView, tags.aquaView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.microwave,
-      adv.oven,
-      adv.autoWashing,
-    ],
-    details: [
-      floors.second,
-      //!NoEdit
-      areas.area48,
-      //!NoEdit
-      rooms.towRooms.room,
-      //!NoEdit
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[2],
-      // rooms details
-      //!NoEdit
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[3].sm,
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch88201,
-    locationImg: locationCh88Img,
-    num: 88201,
-    price: 2800,
-    view: [tags.aquaView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.oven,
-      adv.waterDispenser,
-    ],
-    details: [
-      floors.second,
-      //!NoEdit
-      areas.area48,
-      //!NoEdit
-      rooms.towRooms.room,
-      //!NoEdit
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[1],
-      // rooms details
-      //!NoEdit
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[1].sm,
-      // nof sofa
-      couch[0],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch99009,
-    locationImg: locationCh99Img,
-    num: 99009,
-    price: 3000,
-    view: [tags.poolView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.microwave,
-      adv.garden,
-      adv.grill,
-      adv.swing,
-      adv.autoWashing,
-    ],
-    details: [
-      floors.ground,
-      //!NoEdit
-      areas.area48,
-      //!NoEdit
-      rooms.towRooms.room,
-      //!NoEdit
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[1],
-      // rooms details
-      //!NoEdit
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[0],
-      // nof sofa
-      couch[1],
-    ],
-  },
-  {
-    chaletImages: chaletsSmImages.ch99010,
-    locationImg: locationCh99Img,
-    num: 99010,
-    price: 3000,
-    view: [tags.poolView],
-    adv: [
-      adv.airCon,
-      adv.smartTv,
-      adv.electricStove,
-      adv.electricKettle,
-      adv.microwave,
-      adv.garden,
-      adv.grill,
-      adv.swing,
-      adv.autoWashing,
-    ],
-    details: [
-      floors.ground,
-      //!NoEdit
-      areas.area48,
-      //!NoEdit
-      rooms.towRooms.room,
-      //!NoEdit
-      rooms.towRooms.bath,
-    ],
-    infos: [
-      // التصنيف
-      classificationList[1],
-      // rooms details
-      //!NoEdit
-      rooms.towRooms.nofPeople,
-      // nof beds
-      beds[0],
-      // nof sofa
-      couch[1],
-    ],
-  },
+  // ch100204
   {
     chaletImages: chaletsSmImages.ch100204,
     locationImg: locationCh100Img,
@@ -1881,6 +2035,7 @@ const chaletsList = [
       couch[1],
     ],
   },
+  // ch100205
   {
     chaletImages: chaletsSmImages.ch100205,
     locationImg: locationCh100Img,
@@ -1915,6 +2070,7 @@ const chaletsList = [
       couch[1],
     ],
   },
+  // ch100206
   {
     chaletImages: chaletsSmImages.ch100206,
     locationImg: locationCh100Img,
@@ -1951,6 +2107,7 @@ const chaletsList = [
       couch[1],
     ],
   },
+  // ch101208
   {
     chaletImages: chaletsSmImages.ch101208,
     locationImg: locationCh101Img,
@@ -1986,6 +2143,7 @@ const chaletsList = [
       couch[1],
     ],
   },
+  // ch103207
   {
     chaletImages: chaletsSmImages.ch103207,
     locationImg: locationCh103Img,
@@ -2018,6 +2176,147 @@ const chaletsList = [
       beds[1].sm,
       // nof sofa
       couch[1],
+    ],
+  },
+  // ch103102
+  {
+    chaletImages: chaletsSmImages.ch103207,
+    locationImg: locationCh103Img,
+    num: 103207,
+    price: 2700,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.oven,
+    ],
+    details: [
+      floors.second,
+      //!NoEdit
+      areas.area48,
+      //!NoEdit
+      rooms.towRooms.room,
+      //!NoEdit
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[0],
+      // rooms details
+      //!NoEdit
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[1].sm,
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch104105
+  {
+    chaletImages: chaletsSmImages.ch104105,
+    locationImg: locationCh104Img,
+    num: 104105,
+    price: 2800,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.autoWashing,
+      adv.pergola,
+      adv.microwave,
+    ],
+    details: [
+      floors.first,
+      //!NoEdit
+      areas.area48,
+      //!NoEdit
+      rooms.towRooms.room,
+      //!NoEdit
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      //!NoEdit
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[2],
+    ],
+  },
+  // ch105001
+  {
+    chaletImages: chaletsLgImages.ch105001,
+    locationImg: locationCh105Img,
+    num: 105001,
+    price: 4300,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.garden,
+      adv.grill,
+      adv.swing,
+      adv.autoWashing,
+      adv.microwave,
+      adv.oven,
+    ],
+    details: [
+      floors.ground,
+      areas.area75,
+      rooms.threeRooms.room,
+      rooms.threeRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.threeRooms.nofPeople,
+      // nof beds
+      beds[1].xl,
+      // nof sofa
+      couch[3],
+    ],
+  },
+  // ch105102
+  {
+    chaletImages: chaletsLgImages.ch105102,
+    locationImg: locationCh105Img,
+    num: 105102,
+    price: 4200,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.swing,
+      adv.microwave,
+      adv.autoWashing,
+    ],
+    details: [
+      floors.first,
+      areas.area75,
+      rooms.threeRooms.room,
+      rooms.threeRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[2],
+      // rooms details
+      rooms.threeRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[3],
     ],
   },
 ];
