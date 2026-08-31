@@ -123,7 +123,9 @@ export default function Filters() {
       onDoubleClick={(e) => e.stopPropagation()}
       className={clsx(
         "z-30 top-18 md:top-20 w-full md:w-70 lg:w-100 shrink-0 bg-white border border-neutral-300/50 rounded-xl flex flex-col transition-all duration-300",
-        open ? "fixed right-1/2 translate-x-1/2 w-[90%]!" : "sticky",
+        open
+          ? "fixed right-1/2 translate-x-1/2 w-[90%]! md:sticky md:translate-0 md:right-auto md:w-70! lg:w-100!"
+          : "sticky",
       )}
     >
       {/*//* title */}

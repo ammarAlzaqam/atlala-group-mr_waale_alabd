@@ -1888,7 +1888,7 @@ const chaletsList = [
       //!NoEdit
       rooms.towRooms.nofPeople,
       // nof beds
-      beds[0].sm,
+      beds[0],
       // nof sofa
       couch[1],
     ],
