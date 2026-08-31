@@ -1,5 +1,6 @@
 //? location imgs
 import locationCh2Img from "../assets/images/locations/2.jpg";
+import locationCh3Img from "../assets/images/locations/3.jpg";
 import locationCh4Img from "../assets/images/locations/4.jpg";
 import locationCh10Img from "../assets/images/locations/10.jpg";
 import locationCh11Img from "../assets/images/locations/11.jpg";
@@ -11,6 +12,7 @@ import locationCh25Img from "../assets/images/locations/25.jpg";
 import locationCh28Img from "../assets/images/locations/28.jpg";
 import locationCh31Img from "../assets/images/locations/31.jpg";
 import locationCh36Img from "../assets/images/locations/36.jpg";
+import locationCh49Img from "../assets/images/locations/49.jpg";
 import locationCh54Img from "../assets/images/locations/54.jpg";
 import locationCh55Img from "../assets/images/locations/55.jpg";
 import locationCh62Img from "../assets/images/locations/62.jpg";
@@ -23,6 +25,7 @@ import locationCh70Img from "../assets/images/locations/70.jpg";
 import locationCh72Img from "../assets/images/locations/72.jpg";
 import locationCh73Img from "../assets/images/locations/73.jpg";
 import locationCh74Img from "../assets/images/locations/74.jpg";
+import locationCh75Img from "../assets/images/locations/75.jpg";
 import locationCh77Img from "../assets/images/locations/77.jpg";
 import locationCh84Img from "../assets/images/locations/84.jpg";
 import locationCh85Img from "../assets/images/locations/85.jpg";
@@ -448,7 +451,7 @@ export const couch = [
 ];
 
 const chaletsList = [
-  // ch2001
+  // ch2001-75
   {
     chaletImages: chaletsLgImages.ch2001,
     locationImg: locationCh2Img,
@@ -485,7 +488,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch2102
+  // ch2102-75
   {
     chaletImages: chaletsLgImages.ch2102,
     locationImg: locationCh2Img,
@@ -519,7 +522,43 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch4108
+  // ch3202-75
+  {
+    chaletImages: chaletsLgImages.ch3202,
+    locationImg: locationCh3Img,
+    num: 3202,
+    price: 4000,
+    view: [tags.poolView, tags.beachView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.autoWashing,
+      adv.swing,
+      adv.kidsArea,
+      adv.microwave,
+      adv.oven,
+      adv.pergola,
+    ],
+    details: [
+      floors.second,
+      areas.area75,
+      rooms.threeRooms.room,
+      rooms.threeRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.threeRooms.nofPeople,
+      // nof beds
+      beds[1].xl,
+      // nof sofa
+      couch[3],
+    ],
+  },
+  // ch4108-75
   {
     chaletImages: chaletsLgImages.ch4108,
     locationImg: locationCh4Img,
@@ -553,7 +592,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch10104
+  // ch10104-48
   {
     chaletImages: chaletsSmImages.ch10104,
     locationImg: locationCh10Img,
@@ -587,7 +626,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch11107
+  // ch11107-48
   {
     chaletImages: chaletsSmImages.ch11107,
     locationImg: locationCh11Img,
@@ -620,7 +659,7 @@ const chaletsList = [
       couch[2],
     ],
   },
-  // ch13007
+  // ch13007-48
   {
     chaletImages: chaletsSmImages.ch13007,
     locationImg: locationCh13Img,
@@ -655,7 +694,39 @@ const chaletsList = [
       couch[2],
     ],
   },
-  // ch20105
+  // ch13101-48
+  {
+    chaletImages: chaletsSmImages.ch13101,
+    locationImg: locationCh13Img,
+    num: 13101,
+    price: 2800,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.kidsArea,
+      adv.oven,
+    ],
+    details: [
+      floors.first,
+      areas.area48,
+      rooms.towRooms.room,
+      rooms.towRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[1],
+      // rooms details
+      rooms.towRooms.nofPeople,
+      // nof beds
+      beds[0],
+      // nof sofa
+      couch[1],
+    ],
+  },
+  // ch20105-75
   {
     chaletImages: chaletsLgImages.ch20105,
     locationImg: locationCh20Img,
@@ -688,7 +759,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch23011
+  // ch23011-75
   {
     chaletImages: chaletsLgImages.ch23011,
     locationImg: locationCh23Img,
@@ -724,7 +795,7 @@ const chaletsList = [
       couch[2],
     ],
   },
-  // ch23012
+  // ch23012-75
   {
     chaletImages: chaletsLgImages.ch23012,
     locationImg: locationCh23Img,
@@ -760,7 +831,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch23103
+  // ch23103-75
   {
     chaletImages: chaletsLgImages.ch23103,
     locationImg: locationCh23Img,
@@ -795,7 +866,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch23111
+  // ch23111-75
   {
     chaletImages: chaletsLgImages.ch23111,
     locationImg: locationCh23Img,
@@ -828,7 +899,7 @@ const chaletsList = [
       couch[2],
     ],
   },
-  // ch23113
+  // ch23113-75
   {
     chaletImages: chaletsLgImages.ch23113,
     locationImg: locationCh23Img,
@@ -861,7 +932,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch24012
+  // ch24012-75
   {
     chaletImages: chaletsLgImages.ch24012,
     locationImg: locationCh24Img,
@@ -897,7 +968,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch24208
+  // ch24208-75
   {
     chaletImages: chaletsLgImages.ch24208,
     locationImg: locationCh24Img,
@@ -930,7 +1001,7 @@ const chaletsList = [
       couch[2],
     ],
   },
-  // ch24209
+  // ch24209-75
   {
     chaletImages: chaletsLgImages.ch24209,
     locationImg: locationCh24Img,
@@ -963,7 +1034,7 @@ const chaletsList = [
       couch[2],
     ],
   },
-  // ch25009
+  // ch25009-48
   {
     chaletImages: chaletsSmImages.ch25009,
     locationImg: locationCh25Img,
@@ -1000,7 +1071,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch25010
+  // ch25010-48
   {
     chaletImages: chaletsSmImages.ch25010,
     locationImg: locationCh25Img,
@@ -1036,7 +1107,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch28201
+  // ch28201-48
   {
     chaletImages: chaletsSmImages.ch28201,
     locationImg: locationCh28Img,
@@ -1070,7 +1141,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch31112
+  // ch31112-75
   {
     chaletImages: chaletsLgImages.ch31112,
     locationImg: locationCh31Img,
@@ -1103,7 +1174,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch36005
+  // ch36005-75
   {
     chaletImages: chaletsLgImages.ch36005,
     locationImg: locationCh36Img,
@@ -1138,7 +1209,42 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch54002
+  // ch49009-75
+  {
+    chaletImages: chaletsLgImages.ch49009,
+    locationImg: locationCh49Img,
+    num: 49009,
+    price: 4500,
+    view: [tags.garden],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.autoWashing,
+      adv.garden,
+      adv.grill,
+      adv.swing,
+      adv.microwave,
+    ],
+    details: [
+      floors.ground,
+      areas.area75,
+      rooms.threeRooms.room,
+      rooms.threeRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[2],
+      // rooms details
+      rooms.threeRooms.nofPeople,
+      // nof beds
+      beds[1].xl,
+      // nof sofa
+      couch[2],
+    ],
+  },
+  // ch54002-48
   {
     chaletImages: chaletsSmImages.ch54002,
     locationImg: locationCh54Img,
@@ -1173,7 +1279,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch54007
+  // ch54007-48
   {
     chaletImages: chaletsSmImages.ch54007,
     locationImg: locationCh54Img,
@@ -1208,7 +1314,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch55101
+  // ch55101-48
   {
     chaletImages: chaletsSmImages.ch55101,
     locationImg: locationCh55Img,
@@ -1240,7 +1346,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch62108
+  // ch62108-48
   {
     chaletImages: chaletsSmImages.ch62108,
     locationImg: locationCh62Img,
@@ -1272,10 +1378,10 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch64106
+  // ch64106-48
   {
     chaletImages: chaletsSmImages.ch64106,
-    locationImg: locationCh62Img,
+    locationImg: locationCh64Img,
     num: 64106,
     price: 2800,
     view: [tags.poolView],
@@ -1304,7 +1410,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch65208
+  // ch65208-48
   {
     chaletImages: chaletsSmImages.ch65208,
     locationImg: locationCh65Img,
@@ -1337,7 +1443,7 @@ const chaletsList = [
       couch[0],
     ],
   },
-  // ch66004
+  // ch66004-75
   {
     chaletImages: chaletsLgImages.ch66004,
     locationImg: locationCh66Img,
@@ -1371,7 +1477,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch67003
+  // ch67003-75
   {
     chaletImages: chaletsLgImages.ch67003,
     locationImg: locationCh67Img,
@@ -1406,7 +1512,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch68007
+  // ch68007-48
   {
     chaletImages: chaletsSmImages.ch68007,
     locationImg: locationCh68Img,
@@ -1441,7 +1547,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch68201
+  // ch68201-48
   {
     chaletImages: chaletsSmImages.ch68201,
     locationImg: locationCh68Img,
@@ -1474,7 +1580,7 @@ const chaletsList = [
       couch[0],
     ],
   },
-  // ch70203
+  // ch70203-48
   {
     chaletImages: chaletsSmImages.ch70203,
     locationImg: locationCh70Img,
@@ -1508,7 +1614,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch72208
+  // ch72208-75
   {
     chaletImages: chaletsLgImages.ch72208,
     locationImg: locationCh72Img,
@@ -1542,7 +1648,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch73207
+  // ch73207-48
   {
     chaletImages: chaletsSmImages.ch73207,
     locationImg: locationCh73Img,
@@ -1576,7 +1682,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch74005
+  // ch74005-48
   {
     chaletImages: chaletsSmImages.ch74005,
     locationImg: locationCh74Img,
@@ -1612,7 +1718,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch74101
+  // ch74101-48
   {
     chaletImages: chaletsSmImages.ch74101,
     locationImg: locationCh74Img,
@@ -1645,7 +1751,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch74102
+  // ch74102-48
   {
     chaletImages: chaletsSmImages.ch74102,
     locationImg: locationCh74Img,
@@ -1677,7 +1783,44 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch77001
+  // ch75001-75
+  {
+    chaletImages: chaletsLgImages.ch75001,
+    locationImg: locationCh75Img,
+    num: 75001,
+    price: 4500,
+    view: [tags.poolView],
+    adv: [
+      adv.airCon,
+      adv.smartTv,
+      adv.electricStove,
+      adv.electricKettle,
+      adv.garden,
+      adv.grill,
+      adv.swing,
+      adv.autoWashing,
+      adv.microwave,
+      adv.oven,
+      adv.kidsArea,
+    ],
+    details: [
+      floors.ground,
+      areas.area75,
+      rooms.threeRooms.room,
+      rooms.threeRooms.bath,
+    ],
+    infos: [
+      // التصنيف
+      classificationList[2],
+      // rooms details
+      rooms.threeRooms.nofPeople,
+      // nof beds
+      beds[1].xl,
+      // nof sofa
+      couch[3],
+    ],
+  },
+  // ch77001-48
   {
     chaletImages: chaletsSmImages.ch77001,
     locationImg: locationCh77Img,
@@ -1713,7 +1856,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch84207
+  // ch84207-48
   {
     chaletImages: chaletsSmImages.ch84207,
     locationImg: locationCh84Img,
@@ -1750,7 +1893,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch85201
+  // ch85201-48
   {
     chaletImages: chaletsSmImages.ch85201,
     locationImg: locationCh85Img,
@@ -1787,7 +1930,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch87101
+  // ch87101-48
   {
     chaletImages: chaletsSmImages.ch87101,
     locationImg: locationCh87Img,
@@ -1820,7 +1963,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch87201
+  // ch87201-96
   {
     chaletImages: chaletsLgImages.ch87201,
     locationImg: locationCh87Img,
@@ -1856,7 +1999,7 @@ const chaletsList = [
       couch[0],
     ],
   },
-  // ch88201
+  // ch88201-48
   {
     chaletImages: chaletsSmImages.ch88201,
     locationImg: locationCh88Img,
@@ -1892,7 +2035,7 @@ const chaletsList = [
       couch[0],
     ],
   },
-  // ch99009
+  // ch99009-48
   {
     chaletImages: chaletsSmImages.ch99009,
     locationImg: locationCh99Img,
@@ -1931,7 +2074,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch99010
+  // ch99010-48
   {
     chaletImages: chaletsSmImages.ch99010,
     locationImg: locationCh99Img,
@@ -1970,7 +2113,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch99108
+  // ch99108-48
   {
     chaletImages: chaletsSmImages.ch99108,
     locationImg: locationCh99Img,
@@ -2003,7 +2146,7 @@ const chaletsList = [
       couch[2],
     ],
   },
-  // ch100203
+  // ch100203-48
   {
     chaletImages: chaletsSmImages.ch100203,
     locationImg: locationCh100Img,
@@ -2035,7 +2178,7 @@ const chaletsList = [
       couch[2],
     ],
   },
-  // ch100204
+  // ch100204-48
   {
     chaletImages: chaletsSmImages.ch100204,
     locationImg: locationCh100Img,
@@ -2072,7 +2215,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch100205
+  // ch100205-48
   {
     chaletImages: chaletsSmImages.ch100205,
     locationImg: locationCh100Img,
@@ -2107,7 +2250,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch100206
+  // ch100206-48
   {
     chaletImages: chaletsSmImages.ch100206,
     locationImg: locationCh100Img,
@@ -2144,7 +2287,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch101208
+  // ch101208-48
   {
     chaletImages: chaletsSmImages.ch101208,
     locationImg: locationCh101Img,
@@ -2180,7 +2323,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch103102
+  // ch103102-48
   {
     chaletImages: chaletsSmImages.ch103102,
     locationImg: locationCh103Img,
@@ -2217,7 +2360,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch103207
+  // ch103207-48
   {
     chaletImages: chaletsSmImages.ch103207,
     locationImg: locationCh103Img,
@@ -2252,7 +2395,7 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch104105
+  // ch104105-48
   {
     chaletImages: chaletsSmImages.ch104105,
     locationImg: locationCh104Img,
@@ -2289,7 +2432,7 @@ const chaletsList = [
       couch[2],
     ],
   },
-  // ch105001
+  // ch105001-75
   {
     chaletImages: chaletsLgImages.ch105001,
     locationImg: locationCh105Img,
@@ -2325,7 +2468,7 @@ const chaletsList = [
       couch[3],
     ],
   },
-  // ch105102
+  // ch105102-75
   {
     chaletImages: chaletsLgImages.ch105102,
     locationImg: locationCh105Img,

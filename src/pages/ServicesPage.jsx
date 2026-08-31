@@ -254,7 +254,7 @@ const FacilityCard = ({ facility }) => {
     <div
       id={label}
       className={clsx(
-        "bg-white rounded-xl flex! flex-col! transition-color duration-300 shadow-lg group",
+        "bg-white rounded-xl flex! flex-col! shadow-lg group transition-transform duration-300 hover:-translate-y-2",
       )}
     >
       {/* coverImg and icon */}
