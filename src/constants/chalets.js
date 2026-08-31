@@ -2180,22 +2180,24 @@ const chaletsList = [
       couch[1],
     ],
   },
-  // ch103207
+  // ch103102
   {
-    chaletImages: chaletsSmImages.ch103207,
+    chaletImages: chaletsSmImages.ch103102,
     locationImg: locationCh103Img,
-    num: 103207,
-    price: 2700,
+    num: 103102,
+    price: 2800,
     view: [tags.poolView],
     adv: [
       adv.airCon,
       adv.smartTv,
       adv.electricStove,
       adv.electricKettle,
+      adv.kidsArea,
+      adv.autoWashing,
       adv.oven,
     ],
     details: [
-      floors.second,
+      floors.first,
       //!NoEdit
       areas.area48,
       //!NoEdit
@@ -2205,17 +2207,17 @@ const chaletsList = [
     ],
     infos: [
       // التصنيف
-      classificationList[0],
+      classificationList[1],
       // rooms details
       //!NoEdit
       rooms.towRooms.nofPeople,
       // nof beds
-      beds[1].sm,
+      beds[0],
       // nof sofa
       couch[1],
     ],
   },
-  // ch103102
+  // ch103207
   {
     chaletImages: chaletsSmImages.ch103207,
     locationImg: locationCh103Img,
