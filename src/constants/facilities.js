@@ -12,6 +12,7 @@ import parkingCoverImg from "../assets/images/facilities/parking.jpg";
 import pergolaCoverImg from "../assets/images/facilities/pergola.jpg";
 import shoppingCoverImg from "../assets/images/facilities/superMarket.jpg";
 import wheelCoverImg from "../assets/images/facilities/bicycle.jpg";
+import poolCoverImg from "../assets/images/facilities/swimmingPool.jpg";
 
 import aquaIcon from "../assets/icons/facilities/list/aqua.png";
 import beachIcon from "../assets/icons/facilities/list/beach.png";
@@ -27,6 +28,7 @@ import parkingIcon from "../assets/icons/facilities/list/parking.png";
 import pergolaIcon from "../assets/icons/facilities/list/pergola.png";
 import shoppingIcon from "../assets/icons/facilities/list/shopping-cart.png";
 import wheelIcon from "../assets/icons/facilities/list/wheel.png";
+import swimmingPoolIcon from "../assets/icons/facilities/list/swimming-pool.png";
 
 import facilitiesIcon from "../assets/icons/facilities/adv/facilities.png";
 import familyIcon from "../assets/icons/facilities/adv/family.png";
@@ -35,16 +37,6 @@ import availableIcon from "../assets/icons/facilities/adv/availability.png";
 
 const facilities = [
   {
-    images: [parkingCoverImg],
-    label: "parking",
-    title: "موقف السيارات",
-    des: "مواقف واسعة ومميزة خلف كل عمارة لراحتك وسهولة ركن سيارتك.",
-    price: "مجاني",
-    availability: "24/7",
-    icon: parkingIcon,
-  },
-
-  {
     images: [aquaCoverImg],
     label: "aqua",
     title: "أكوا بارك للكبار",
@@ -52,6 +44,16 @@ const facilities = [
     price: "400 ج.م (نقدمها مجاناً)",
     availability: "10ص - 2م",
     icon: aquaIcon,
+  },
+
+  {
+    images: [poolCoverImg],
+    label: "swimming-pool",
+    title: "حمامات السباحة",
+    des: "حمامات سباحة متعددة وموزعة في القرية لتستمتع بالاستجمام والسباحة.",
+    price: "مجاني",
+    availability: "10ص - 7م",
+    icon: swimmingPoolIcon,
   },
 
   {
@@ -72,6 +74,16 @@ const facilities = [
     price: "حسب الطلب",
     availability: "يوميًا",
     icon: fastFoodIcon,
+  },
+
+  {
+    images: [parkingCoverImg],
+    label: "parking",
+    title: "موقف السيارات",
+    des: "مواقف واسعة ومميزة خلف كل عمارة لراحتك وسهولة ركن سيارتك.",
+    price: "مجاني",
+    availability: "24/7",
+    icon: parkingIcon,
   },
 
   {

@@ -88,15 +88,16 @@ export default function ChaletCard({ ch }) {
             ) : (
               <div className="rounded-full w-22 h-8 skeleton" />
             )}
-            {ch?.view?.map(({ name, label, color, icon }) => (
-              <div
-                key={name}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold ${color} flex items-center gap-1`}
-              >
-                <img className="w-4 invert-100" src={icon} />
-                {name}
-              </div>
-            ))}
+            {ch?.view?.length > 0 &&
+              ch?.view?.map(({ name, label, color, icon }) => (
+                <div
+                  key={label}
+                  className={`px-3 py-1.5 rounded-full text-xs font-bold ${color} flex items-center gap-1`}
+                >
+                  <img className="w-4 invert-100" src={icon} />
+                  {name}
+                </div>
+              ))}
           </div>
           {/* favorite */}
           <div

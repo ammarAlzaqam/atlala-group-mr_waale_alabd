@@ -967,6 +967,7 @@ const chaletsList = [
       // nof sofa
       couch[3],
     ],
+    vip: true,
   },
   // ch24208-75
   {
@@ -1208,6 +1209,7 @@ const chaletsList = [
       // nof sofa
       couch[1],
     ],
+    vip: true,
   },
   // ch49009-75
   {
@@ -1215,7 +1217,7 @@ const chaletsList = [
     locationImg: locationCh49Img,
     num: 49009,
     price: 4500,
-    view: [tags.garden],
+    view: [tags.gardenView],
     adv: [
       adv.airCon,
       adv.smartTv,
@@ -1313,6 +1315,7 @@ const chaletsList = [
       // nof sofa
       couch[1],
     ],
+    vip: true,
   },
   // ch55101-48
   {
@@ -1449,7 +1452,7 @@ const chaletsList = [
     locationImg: locationCh66Img,
     num: 66004,
     price: 4300,
-    view: [],
+    view: [tags.gardenView],
     adv: [
       adv.airCon,
       adv.smartTv,
@@ -1518,7 +1521,7 @@ const chaletsList = [
     locationImg: locationCh68Img,
     num: 68007,
     price: 3000,
-    view: [],
+    view: [tags.gardenView],
     adv: [
       adv.airCon,
       adv.smartTv,
@@ -1750,6 +1753,7 @@ const chaletsList = [
       // nof sofa
       couch[1],
     ],
+    vip: true,
   },
   // ch74102-48
   {
@@ -1892,6 +1896,7 @@ const chaletsList = [
       // nof sofa
       couch[1],
     ],
+    vip: true,
   },
   // ch85201-48
   {
@@ -1929,6 +1934,7 @@ const chaletsList = [
       // nof sofa
       couch[1],
     ],
+    vip: true,
   },
   // ch87101-48
   {
@@ -1998,6 +2004,7 @@ const chaletsList = [
       // nof sofa
       couch[0],
     ],
+    vip: true,
   },
   // ch88201-48
   {
@@ -2500,6 +2507,7 @@ const chaletsList = [
       // nof sofa
       couch[3],
     ],
+    vip: true,
   },
 ];
 

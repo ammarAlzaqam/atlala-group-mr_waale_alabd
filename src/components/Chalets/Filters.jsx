@@ -103,7 +103,8 @@ export default function Filters() {
       adv.length === 0 &&
       !area &&
       !room &&
-      !classification,
+      !classification &&
+      !floor,
     [arriveDate, liveDate, priceRange, view, adv, area, room, classification],
   );
 
@@ -150,7 +151,6 @@ export default function Filters() {
               onDoubleClick={(e) => e.stopPropagation()}
             >
               <MdOutlineFilterAltOff className="text-secondary-500!" />
-              <span>مسح</span>
             </div>
             <IoIosArrowUp
               className={clsx(
